@@ -10,7 +10,7 @@ export const site = {
 
   // Formulaire : clé Web3Forms (liée à contact@lunixel.fr), à coller entre les guillemets.
   // Tant qu'elle est vide, le formulaire prépare un e-mail dans la messagerie du visiteur.
-  web3formsKey: '',
+  web3formsKey: '05625749-b303-402a-827b-75f3eebc4fa1',
 
   // Mentions légales. Les champs vides ne s'affichent pas.
   legal: {
