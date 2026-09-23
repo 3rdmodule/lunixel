@@ -1,0 +1,86 @@
+# Publication de lunixel.fr sur GitHub Pages.
+#  - Racine du dépôt : site Lunixel (fichiers statiques), copié tel quel.
+#  - concept/<nom>/ : un concept par dossier. S'il contient un package.json (Astro, Vite…),
+#    il est construit avec BASE_PATH=/concept/<nom> ; sinon il est copié tel quel.
+name: Publication lunixel.fr
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '_upload/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://lunixel.fr' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/configure-pages@v5
+
+      - name: Site Lunixel (racine du dépôt)
+        run: |
+          mkdir -p _site
+          shopt -s dotglob nullglob
+          for f in *; do
+            case "$f" in
+              .git|.github|.gitignore|concept|_upload|_site|README.md) continue ;;
+            esac
+            cp -r "$f" _site/
+          done
+
+      - name: Concepts
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for dir in concept/*/; do
+            name=$(basename "$dir")
+            out="_site/concept/$name"
+            mkdir -p "$out"
+            if [ -f "$dir/package.json" ]; then
+              echo "::group::Build concept/$name"
+              (
+                cd "$dir"
+                if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+                BASE_PATH="/concept/$name" npm run build
+                if node -e "process.exit(require('./package.json').scripts?.['check:links'] ? 0 : 1)"; then
+                  BASE_PATH="/concept/$name" npm run check:links
+                fi
+              )
+              cp -r "$dir/dist/." "$out/"
+              echo "::endgroup::"
+            else
+              cp -r "$dir/." "$out/"
+            fi
+          done
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
