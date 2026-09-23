@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Tbc from '../components/Tbc.astro';
+import { partners, mentor } from '../data/partners';
+import { url } from '../lib/url';
+---
+
+<Base
+  title="Musiciens et partenaires"
+  description="Les musiciens, groupes et professionnels qui confient leurs instruments à Hugo Abecassis, et les rencontres qui ont compté dans son parcours."
+  breadcrumbs={[{ name: 'Partenaires', path: '/partenaires/' }]}
+>
+  <section class="page-intro container">
+    <div class="page-intro__meta"><span class="num">—</span><span class="label">Partenaires</span></div>
+    <h1>Les musiciens</h1>
+    <p class="lead">Un instrument se règle pour quelqu'un. Voici des musiciens et des pros qui confient les leurs à Hugo.</p>
+  </section>
+
+  <section class="section--tight" aria-labelledby="partners-title">
+    <div class="container">
+      <SectionHead number="01" label="Musiciens, groupes, professionnels" title="Ils travaillent avec Hugo" id="partners-title">
+        <p>
+          Chaque fiche présente une relation de travail : l'instrument, ce qui a été fait, ce que cela a changé.
+          <Tbc note="noms, accords de publication, photos et crédits" />
+        </p>
+      </SectionHead>
+      <ul class="partners">
+        {
+          partners.map((p, i) => (
+            <li class="partner">
+              <Photo id={p.photo} sizes="(min-width: 900px) 30vw, 100vw" plate={`P. ${String(i + 1).padStart(2, '0')}`} />
+              <div class="partner__body">
+                <h3 class="partner__name">
+                  {p.name} {p.placeholder && <Tbc />}
+                </h3>
+                <p class="label">{p.discipline}</p>
+                <p class="partner__text">{p.collaboration}</p>
+                {p.instrument && (
+                  <p class="small">
+                    <span class="label">Instrument</span> · {p.instrument}
+                  </p>
+                )}
+                {p.url && (
+                  <a class="link" href={p.url} target="_blank" rel="noopener">
+                    Site <span class="arrow">↗</span>
+                  </a>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section tone-papier" aria-labelledby="mentor-title">
+    <div class="container grid mentor">
+      <div class="mentor__head">
+        <SectionHead number="02" label="Transmission" title="Celui qui lui a appris le métier" id="mentor-title" />
+      </div>
+      <div class="mentor__body">
+        <p class="mentor__name serif">{mentor.name}</p>
+        <p class="label">{mentor.role}</p>
+        <p class="mentor__text">{mentor.relation}</p>
+        <a class="link" href={mentor.link.url} target="_blank" rel="noopener">
+          {mentor.link.label} <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="join-title">
+    <div class="container join">
+      <h2 id="join-title" class="lead">Vous jouez sur un instrument entretenu, restauré ou fabriqué par Hugo ?</h2>
+      <p class="muted">Votre témoignage, une photo, un enregistrement : ils ont leur place ici.</p>
+      <a class="link" href={url('/contact/?motif=autre')}>Écrire à Hugo <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .partners { list-style: none; display: grid; gap: clamp(56px, 8vw, 96px) var(--col-gap); }
+  .partner { display: grid; gap: 20px; align-content: start; }
+  .partner__body { display: grid; gap: 10px; justify-items: start; }
+  .partner__name { font-size: clamp(1.8rem, 1.4rem + 1.4vw, 2.6rem); }
+  .partner__text { color: var(--muted); max-width: 40ch; margin: 0; }
+  @media (min-width: 900px) {
+    .partners { grid-template-columns: repeat(3, 1fr); }
+    .partner:nth-child(2) { margin-top: clamp(64px, 8vw, 128px); }
+  }
+
+  .mentor { row-gap: var(--space-m); }
+  .mentor__head, .mentor__body { grid-column: 1 / -1; }
+  .mentor__body { display: grid; gap: 12px; justify-items: start; }
+  .mentor__name { font-size: clamp(2.6rem, 1.8rem + 3vw, 4.5rem); line-height: 1; }
+  .mentor__text { max-width: 46ch; color: var(--muted); font-size: calc(var(--fs-body) * 1.06); }
+  @media (min-width: 900px) {
+    .mentor__head { grid-column: 1 / 5; }
+    .mentor__body { grid-column: 6 / 12; }
+  }
+
+  .join { display: grid; gap: 20px; justify-items: start; max-width: 60rem; }
+  .join .lead { max-width: 26ch; }
+</style>

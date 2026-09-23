@@ -1,0 +1,172 @@
+---
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+import { site } from '../config/site';
+import { url, absoluteUrl } from '../lib/url';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Crumb { name: string; path: string }
+interface Props {
+  title: string;
+  description: string;
+  /** Titre complet sans suffixe (accueil). */
+  rawTitle?: boolean;
+  overlayHeader?: boolean;
+  breadcrumbs?: Crumb[];
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, rawTitle = false, overlayHeader = false, breadcrumbs = [], ogImage = '/og.jpg', jsonLd = [] } = Astro.props;
+
+const fullTitle = rawTitle ? title : `${title} · Hugo Abecassis, luthier`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = absoluteUrl(ogImage, Astro.site);
+const homeUrl = absoluteUrl('/', Astro.site);
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${homeUrl}#hugo`,
+  name: 'Hugo Abecassis',
+  jobTitle: 'Luthier',
+  description: "Luthier : entretien, restauration et fabrication d'instruments à cordes. Formé en Belgique auprès de Gauthier Louppe.",
+  url: homeUrl,
+  knowsAbout: [
+    'Lutherie',
+    "Restauration d'instruments à cordes",
+    "Entretien et réglage d'instruments à cordes",
+    "Fabrication d'instruments sur mesure",
+    'Violon',
+    'Alto',
+    'Violoncelle',
+    'Contrebasse',
+    'Guitare',
+  ],
+  workLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressRegion: 'Normandie', addressCountry: 'FR' } },
+  sameAs: site.sameAs,
+};
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${homeUrl}#site`,
+  name: 'Hugo Abecassis, luthier',
+  url: homeUrl,
+  inLanguage: 'fr-FR',
+  about: { '@id': `${homeUrl}#hugo` },
+};
+const crumbs =
+  breadcrumbs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [{ name: 'Accueil', path: '/' }, ...breadcrumbs].map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: c.name,
+          item: absoluteUrl(c.path, Astro.site),
+        })),
+      }
+    : null;
+const structured = [person, website, ...(crumbs ? [crumbs] : []), ...jsonLd];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!site.indexable && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="author" content="Hugo Abecassis" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Hugo Abecassis, luthier" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="32x32" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <link rel="sitemap" href={url('/sitemap-index.xml')} />
+
+    <Font cssVariable="--font-serif" preload={[{ style: 'normal' }]} />
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-mono" />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {structured.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <Header overlay={overlayHeader} />
+    <main id="contenu" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <dialog class="lightbox" data-lightbox-dialog aria-label="Image agrandie">
+      <button class="lightbox__close" type="button" data-lightbox-close>Fermer</button>
+      <figure class="lightbox__figure">
+        <img alt="" data-lightbox-img hidden />
+        <p class="lightbox__brief serif italic" data-lightbox-brief hidden></p>
+        <figcaption class="label" data-lightbox-caption></figcaption>
+      </figure>
+      <div class="lightbox__nav">
+        <button type="button" data-lightbox-prev aria-label="Image précédente">←</button>
+        <button type="button" data-lightbox-next aria-label="Image suivante">→</button>
+      </div>
+    </dialog>
+
+    <script>
+      import '../scripts/site.ts';
+    </script>
+    {
+      site.booking.mode === 'cal' && site.booking.calLink && (
+        <script is:inline define:vars={{ calOrigin: site.booking.calOrigin }}>
+          window.__CAL_ORIGIN__ = calOrigin;
+        </script>
+      )
+    }
+  </body>
+</html>
+
+<style is:global>
+  main:focus { outline: none; }
+  .lightbox {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--nuit);
+    color: var(--ivoire);
+  }
+  .lightbox::backdrop { background: var(--nuit); }
+  .lightbox__close {
+    position: absolute; top: 16px; right: var(--gutter); z-index: 2;
+    border: 0; background: none; color: inherit; padding: 12px 0; min-height: 44px; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 0.3em;
+  }
+  .lightbox__figure { height: 100%; display: grid; place-items: center; align-content: center; gap: 16px; padding: 72px var(--gutter) 96px; }
+  .lightbox__figure img { max-height: calc(100svh - 200px); width: auto; object-fit: contain; }
+  .lightbox__brief { max-width: 32ch; font-size: clamp(1.4rem, 1rem + 1.6vw, 2.2rem); line-height: 1.25; text-align: center; opacity: 0.85; }
+  .lightbox__figure .label { color: #b9b2a6; }
+  .lightbox__nav { position: absolute; bottom: 24px; left: 0; right: 0; display: flex; justify-content: center; gap: 12px; }
+  .lightbox__nav button {
+    width: 52px; height: 52px; border: 1px solid #3a3631; background: transparent; color: inherit; cursor: pointer; font-size: 1.1rem;
+  }
+  .lightbox__nav button:hover { border-color: var(--garance-clair); color: var(--garance-clair); }
+</style>

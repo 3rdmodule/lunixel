@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Tbc from '../components/Tbc.astro';
+import { atelierChapters, details } from '../data/atelier';
+import { serviceBySlug } from '../data/services';
+
+const steps = serviceBySlug.fabrication.steps ?? [];
+const [first, ...rest] = atelierChapters;
+---
+
+<Base
+  title="L'atelier"
+  description="Le lieu, les bois, les outils et les gestes d'un luthier qui travaille à la main, selon les techniques des maîtres italiens et français des XVIIe et XVIIIe siècles."
+  breadcrumbs={[{ name: "L'atelier", path: '/atelier/' }]}
+>
+  <section class="page-intro container">
+    <div class="page-intro__meta"><span class="num">—</span><span class="label">L'atelier</span></div>
+    <h1>L'atelier</h1>
+    <p class="lead">L'établi, les outils, les bois, et le temps qu'il faut.</p>
+  </section>
+
+  <!-- Plan large -->
+  <section class="container atelier-wide" aria-label={first.title}>
+    <Photo id={first.photo} sizes="(min-width: 1440px) 1312px, 100vw" eager plate="Pl. 01" caption />
+    <div class="grid atelier-wide__text">
+      <div class="chapter__head">
+        <span class="num">{first.number}</span>
+        <h2>{first.title}</h2>
+      </div>
+      <p class="chapter__text">{first.text} {first.tbc && <Tbc note={first.tbc} />}</p>
+    </div>
+  </section>
+
+  <!-- Chapitres -->
+  <section class="section" aria-label="Chapitres de l'atelier">
+    <div class="container chapters">
+      {
+        rest.map((c, i) => (
+          <article class:list={['chapter', { 'chapter--alt': i % 2 === 1 }]}>
+            <div class="chapter__photo">
+              <Photo id={c.photo} sizes="(min-width: 900px) 50vw, 100vw" plate={`Pl. 0${i + 2}`} caption />
+            </div>
+            <div class="chapter__body" data-reveal-text>
+              <div class="chapter__head">
+                <span class="num">{c.number}</span>
+                <h2>{c.title}</h2>
+              </div>
+              <p class="chapter__text">{c.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Étapes -->
+  <section class="section tone-papier" aria-labelledby="steps-title">
+    <div class="container">
+      <SectionHead number="06" label="D'une planche à un instrument" title="Les étapes" id="steps-title">
+        <p>La fabrication d'un instrument, en sept temps. <Tbc note="déroulé à valider avec Hugo" /></p>
+      </SectionHead>
+      <ol class="steps steps--row atelier-steps">
+        {
+          steps.map((s) => (
+            <li>
+              <span class="steps__title">{s.title}</span>
+              <span class="steps__text">{s.text}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Détails -->
+  <section class="section" aria-labelledby="details-title">
+    <div class="container">
+      <SectionHead number="07" label="Regarder de près" title="De près" id="details-title">
+        <p>Filets, ouïes, copeaux, vernis : ça se joue souvent au millimètre.</p>
+      </SectionHead>
+      <div class="details">
+        {details.map((id, i) => <Photo id={id} sizes="(min-width: 900px) 33vw, 50vw" caption plate={`D. ${String(i + 1).padStart(2, '0')}`} lightbox compact />)}
+      </div>
+      <p class="label mt-m">Touchez une image pour l'agrandir · {details.length} détails</p>
+    </div>
+  </section>
+
+  <CtaBand title="Passer à l'atelier." text="Sur rendez-vous : pour déposer un instrument, en parler, ou voir comment c'est fait." />
+</Base>
+
+<style>
+  .atelier-wide :global(.photo__frame) { aspect-ratio: 16 / 9; }
+  @media (max-width: 700px) {
+    .atelier-wide :global(.photo__frame) { aspect-ratio: 4 / 5; }
+  }
+  .atelier-wide__text { margin-top: var(--space-l); row-gap: 20px; }
+  .chapter__head { display: flex; gap: 16px; align-items: baseline; grid-column: 1 / -1; }
+  .chapter__head h2 { font-size: var(--fs-h2); }
+  .chapter__text { grid-column: 1 / -1; max-width: 38ch; font-size: calc(var(--fs-body) * 1.08); color: var(--muted); }
+  @media (min-width: 900px) {
+    .atelier-wide__text .chapter__head { grid-column: 1 / 6; }
+    .atelier-wide__text .chapter__text { grid-column: 7 / 12; }
+  }
+
+  .chapters { display: grid; gap: clamp(88px, 12vw, 176px); }
+  .chapter { display: grid; gap: var(--space-m); align-items: end; }
+  .chapter__body { display: grid; gap: 20px; }
+  @media (min-width: 900px) {
+    .chapter { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
+    .chapter__photo { grid-column: 1 / 8; }
+    .chapter__body { grid-column: 9 / 13; padding-bottom: 48px; }
+    .chapter--alt .chapter__photo { grid-column: 6 / 13; grid-row: 1; }
+    .chapter--alt .chapter__body { grid-column: 1 / 5; grid-row: 1; }
+  }
+
+  .atelier-steps { overflow-x: auto; scroll-snap-type: x mandatory; }
+  @media (min-width: 900px) {
+    .atelier-steps > li { scroll-snap-align: start; }
+  }
+
+  .details { columns: 2; column-gap: var(--col-gap); }
+  .details :global(.photo) { break-inside: avoid; margin-bottom: clamp(24px, 3vw, 40px); }
+  @media (min-width: 900px) {
+    .details { columns: 3; }
+  }
+</style>

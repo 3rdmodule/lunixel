@@ -1,0 +1,8 @@
+---
+/** Marqueur [À CONFIRMER] — visible uniquement en phase concept. */
+import { site } from '../config/site';
+interface Props { note?: string }
+const { note } = Astro.props;
+---
+
+{site.conceptMode && <span class="tbc">[À CONFIRMER{note ? ` : ${note}` : ''}]</span>}

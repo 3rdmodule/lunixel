@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import SectionHead from '../components/SectionHead.astro';
+import BookingLink from '../components/BookingLink.astro';
+import PressList from '../components/PressList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Tbc from '../components/Tbc.astro';
+import { services } from '../data/services';
+import { creations } from '../data/creations';
+import { press } from '../data/press';
+import { url } from '../lib/url';
+
+const featured = creations.filter((c) => c.featured);
+const [main, ...side] = featured;
+const milestones = [
+  { place: 'Belgique', text: 'Formation auprès du luthier Gauthier Louppe.' },
+  { place: 'Avranches', text: 'Un atelier dans le sud de la Manche.' },
+  { place: 'Saint-Lô, 2015', text: 'Instruments du quatuor, guitares, créations.' },
+  { place: 'Demain', text: 'Un atelier à son nom.', tbc: true },
+];
+---
+
+<Base
+  rawTitle
+  title="Hugo Abecassis, luthier en Normandie · Entretien, restauration, fabrication"
+  description="Entretien, restauration et fabrication d'instruments à cordes : violon, alto, violoncelle, contrebasse, guitare. Un travail à la main, selon les techniques des XVIIe et XVIIIe siècles."
+  overlayHeader
+>
+  <!-- 1 · Hero -->
+  <section class="hero tone-nuit" aria-labelledby="hero-title">
+    <Photo id="hero" fill eager sizes="100vw" />
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <h1 id="hero-title" class="hero__title">
+        <span class="hero__kicker mono">Hugo Abecassis<span class="ame" aria-hidden="true"></span>Luthier en Normandie</span>
+        <span class="display hero__display">Du violon à la guitare en caisse de vin.</span>
+      </h1>
+      <div class="row hero__actions">
+        <a class="btn hero__btn" href={url('/atelier/')}>Découvrir l'atelier <span class="arrow" aria-hidden="true">→</span></a>
+        <BookingLink variant="link" />
+      </div>
+    </div>
+    <p class="hero__legend label container" aria-hidden="true">Entretien · Restauration · Fabrication</p>
+  </section>
+
+  <!-- 2 · Introduction -->
+  <section class="section intro" aria-labelledby="intro-title">
+    <div class="container grid">
+      <div class="intro__num"><span class="num">01</span></div>
+      <h2 id="intro-title" class="lead intro__lead" data-reveal-text>
+        Hugo Abecassis est luthier. Il règle, répare et fabrique des instruments à cordes : violons, altos, violoncelles, contrebasses, guitares.
+      </h2>
+      <div class="intro__text">
+        <p>
+          Formé en Belgique auprès du luthier Gauthier Louppe, il travaille surtout à la main, avec les techniques des anciens luthiers
+          italiens et français. Et il aime inventer : un violon d'amour, un quinton de forme nouvelle, des guitares faites avec des caisses de vin.
+        </p>
+        <a class="link mt-s" href={url('/parcours/')}>Son parcours <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="intro__photo">
+        <Photo id="mains" sizes="(min-width: 900px) 30vw, 70vw" caption plate="Pl. 01" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Savoir-faire -->
+  <section class="section" aria-labelledby="sf-title">
+    <div class="container">
+      <SectionHead number="02" label="Savoir-faire" title="Ce qu'il fait à l'atelier" id="sf-title" />
+      <ul class="services">
+        {
+          services.map((s, i) => (
+            <li class="service">
+              <a href={url(`/savoir-faire/${s.slug}/`)} class="service__link">
+                <Photo id={s.photo} sizes="(min-width: 900px) 30vw, 100vw" plate={`Pl. 0${i + 2}`} />
+                <span class="service__meta">
+                  <span class="num">{s.number}</span>
+                  <span class="label">{s.kicker}</span>
+                </span>
+                <h3 class="service__title">{s.title}</h3>
+                <p class="service__text">{s.short}</p>
+                <span class="link service__more">
+                  Découvrir <span class="arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 · Réalisations -->
+  <section class="section works" aria-labelledby="works-title">
+    <div class="container">
+      <SectionHead number="03" label="Réalisations" title="Quelques instruments" id="works-title">
+        <p>Des classiques, et quelques idées bien à lui.</p>
+      </SectionHead>
+      <div class="works__grid">
+        <a class="work work--main" href={url(`/savoir-faire/fabrication/#${main.slug}`)}>
+          <Photo id={main.photo} sizes="(min-width: 900px) 55vw, 100vw" />
+          <span class="work__caption">
+            <span class="work__name serif">{main.name}</span>
+            <span class="label">{main.type}{main.year && ` · ${main.year}`}</span>
+          </span>
+        </a>
+        {
+          side.map((c) => (
+            <a class="work" href={url(`/savoir-faire/fabrication/#${c.slug}`)}>
+              <Photo id={c.photo} sizes="(min-width: 900px) 30vw, 100vw" ratio={c.slug === 'pinarbox' ? 1 : 4 / 5} />
+              <span class="work__caption">
+                <span class="work__name serif">{c.name}</span>
+                <span class="label">{c.type}</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="mt-l"><a class="link" href={url('/savoir-faire/fabrication/#creations')}>Toutes les créations <span class="arrow" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <!-- 5 · Parcours & presse -->
+  <section class="section tone-papier" aria-labelledby="trust-title">
+    <div class="container grid trust">
+      <div class="trust__left">
+        <SectionHead number="04" label="Parcours" title="De la Belgique à la Normandie" id="trust-title" />
+        <ol class="milestones">
+          {
+            milestones.map((m) => (
+              <li>
+                <span class="label">{m.place}</span>
+                <span class="milestones__text">
+                  {m.text} {m.tbc && <Tbc note="calendrier et lieu" />}
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+        <a class="link mt-m" href={url('/parcours/')}>Lire le parcours <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="trust__right">
+        <p class="label">Dans la presse</p>
+        <PressList items={press.slice(0, 2)} compact />
+        <a class="link mt-m" href={url('/parcours/#presse')}>Toutes les parutions <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Appel final -->
+  <CtaBand />
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: max(640px, 100svh);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero :global(.photo--fill) { z-index: -2; }
+  .hero__shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(21, 20, 18, 0.55) 0%, rgba(21, 20, 18, 0) 22%, rgba(21, 20, 18, 0) 45%, rgba(21, 20, 18, 0.72) 100%);
+  }
+  .hero__content { padding-bottom: clamp(88px, 12vh, 140px); }
+  .hero__title { display: grid; gap: clamp(16px, 2.5vw, 28px); font-size: inherit; }
+  .hero__kicker { color: var(--ivoire); opacity: 0.85; display: inline-flex; align-items: center; }
+  .hero__display { max-width: 12ch; color: var(--ivoire); font-size: clamp(3.5rem, 1.4rem + 7vw, 8.5rem); }
+  .hero__actions { margin-top: clamp(28px, 4vw, 48px); }
+  .hero__btn { background: var(--ivoire); color: var(--encre); border-color: var(--ivoire); }
+  .hero__btn:hover { background: var(--garance-clair); border-color: var(--garance-clair); color: var(--nuit); }
+  .hero__legend { position: absolute; bottom: 24px; left: 0; right: 0; text-align: right; color: #b9b2a6; }
+  @media (max-width: 700px) {
+    .hero__legend { display: none; }
+  }
+
+  /* Intro */
+  .intro__num { grid-column: 1 / -1; margin-bottom: var(--space-m); }
+  .intro__lead { grid-column: 1 / -1; font-size: var(--fs-lead); max-width: 26ch; }
+  .intro__text { grid-column: 1 / -1; margin-top: var(--space-m); max-width: 40ch; color: var(--muted); }
+  .intro__text .link { color: var(--fg); }
+  .intro__photo { grid-column: 3 / -1; margin-top: var(--space-l); }
+  @media (min-width: 900px) {
+    .intro__num { grid-column: 1 / 2; margin: 0; padding-top: 0.6em; }
+    .intro__lead { grid-column: 2 / 10; font-size: clamp(2rem, 1.2rem + 1.9vw, 3.1rem); }
+    .intro__text { grid-column: 6 / 10; }
+    .intro__photo { grid-column: 10 / 13; grid-row: 1 / span 2; margin-top: 0; align-self: end; }
+  }
+
+  /* Services */
+  .services { list-style: none; display: grid; gap: clamp(56px, 8vw, 96px) var(--col-gap); }
+  .service__link { display: grid; gap: 14px; text-decoration: none; color: inherit; }
+  .service__link:hover { color: inherit; }
+  .service__meta { display: flex; gap: 14px; align-items: baseline; margin-top: 8px; }
+  .service__title { font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem); }
+  .service__text { color: var(--muted); max-width: 34ch; margin: 0; }
+  .service__more { justify-self: start; }
+  .service__link:hover .service__more { color: var(--accent); }
+  .service__link:hover .service__more :global(.arrow) { transform: translateX(4px); }
+  @media (min-width: 900px) {
+    .services { grid-template-columns: repeat(3, 1fr); }
+    .service:nth-child(2) { margin-top: clamp(64px, 8vw, 128px); }
+    .service:nth-child(3) { margin-top: clamp(32px, 4vw, 64px); }
+  }
+
+  /* Réalisations */
+  .works__grid { display: grid; gap: clamp(40px, 6vw, 72px) var(--col-gap); }
+  .work { display: grid; gap: 14px; text-decoration: none; color: inherit; }
+  .work:hover { color: inherit; }
+  .work__caption { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .work__name { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.3rem); line-height: 1; transition: color 300ms var(--ease); }
+  .work:hover .work__name { color: var(--accent); }
+  @media (min-width: 900px) {
+    .works__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; }
+    .work--main { grid-column: 1 / 8; grid-row: 1 / span 2; }
+    .work:nth-child(2) { grid-column: 9 / 13; }
+    .work:nth-child(3) { grid-column: 9 / 13; }
+  }
+
+  /* Parcours & presse */
+  .trust { row-gap: var(--space-l); }
+  .trust__left, .trust__right { grid-column: 1 / -1; display: grid; align-content: start; justify-items: start; }
+  .trust__right .label { margin-bottom: 20px; }
+  .trust__right :global(.press) { width: 100%; }
+  .milestones { list-style: none; width: 100%; border-top: 1px solid var(--line); }
+  .milestones li { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+  .milestones__text { font-family: var(--font-serif), Georgia, serif; font-size: 1.3rem; line-height: 1.25; }
+  @media (min-width: 900px) {
+    .trust__left { grid-column: 1 / 7; }
+    .trust__right { grid-column: 8 / 13; padding-top: clamp(40px, 6vw, 88px); }
+  }
+</style>

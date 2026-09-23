@@ -1,0 +1,20 @@
+---
+interface Props {
+  number?: string;
+  label: string;
+  title?: string;
+  id?: string;
+  level?: 'h2' | 'h3';
+}
+const { number, label, title, id, level = 'h2' } = Astro.props;
+const Heading = level;
+---
+
+<header class="section-head">
+  <div class="section-head__meta">
+    {number && <span class="num">{number}</span>}
+    <span class="label">{label}</span>
+  </div>
+  {title && <Heading id={id}>{title}</Heading>}
+  <slot />
+</header>

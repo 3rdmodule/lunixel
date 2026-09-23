@@ -1,0 +1,110 @@
+# Build statique Astro + déploiement GitHub Pages.
+#
+# Le chemin de base est calculé automatiquement :
+#  - sans configuration : le site est servi à la racine de l'URL GitHub Pages du dépôt
+#    (ex. https://<compte>.github.io/<depot>/) — utile pour la prévisualisation ;
+#  - avec la variable de dépôt BASE_PATH (ex. /concept/hugoabecassis) : le site est construit
+#    pour ce chemin, et placé dans le bon sous-dossier de l'artefact Pages.
+# Variables de dépôt (Settings › Secrets and variables › Actions › Variables) :
+#   BASE_PATH       /concept/hugoabecassis   (futur domaine propre : /)
+#   SITE_URL        https://lunixel.fr        (futur : https://hugoabecassis.fr)
+#   SITE_INDEXABLE  false                     (true uniquement sur le domaine définitif)
+# Voir DEPLOY.md.
+
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configuration GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Calcul du chemin de base
+        id: paths
+        env:
+          PAGES_BASE: ${{ steps.pages.outputs.base_path }}
+          PAGES_ORIGIN: ${{ steps.pages.outputs.origin }}
+          VAR_BASE: ${{ vars.BASE_PATH }}
+          VAR_SITE: ${{ vars.SITE_URL }}
+        run: |
+          set -euo pipefail
+          PAGES_BASE="${PAGES_BASE%/}"
+          BASE="${VAR_BASE:-$PAGES_BASE}"
+          BASE="/${BASE#/}"; BASE="${BASE%/}"; [ -z "$BASE" ] && BASE="/"
+          SITE="${VAR_SITE:-$PAGES_ORIGIN}"
+          if [ -n "$PAGES_BASE" ]; then
+            case "$BASE/" in
+              "$PAGES_BASE"/*) SUB="${BASE#$PAGES_BASE}" ;;
+              *) echo "::error::BASE_PATH ($BASE) doit commencer par le chemin servi par GitHub Pages ($PAGES_BASE). Voir DEPLOY.md."; exit 1 ;;
+            esac
+          else
+            SUB="$BASE"
+          fi
+          SUB="${SUB#/}"
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+          echo "site=$SITE" >> "$GITHUB_OUTPUT"
+          echo "sub=$SUB" >> "$GITHUB_OUTPUT"
+          echo "Site : $SITE — base : $BASE — sous-dossier de l'artefact : '${SUB}'"
+
+      - name: Installation
+        run: npm ci
+
+      - name: Build
+        env:
+          BASE_PATH: ${{ steps.paths.outputs.base }}
+          SITE_URL: ${{ steps.paths.outputs.site }}
+          SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
+        run: npm run build
+
+      - name: Vérification des liens internes
+        env:
+          BASE_PATH: ${{ steps.paths.outputs.base }}
+        run: npm run check:links
+
+      - name: Préparation de l'artefact
+        env:
+          SUB: ${{ steps.paths.outputs.sub }}
+        run: |
+          set -euo pipefail
+          mkdir -p "_site/$SUB"
+          cp -r dist/. "_site/$SUB/"
+          touch _site/.nojekyll
+          if [ -n "$SUB" ]; then cp dist/404.html _site/404.html; fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Déploiement
+        id: deployment
+        uses: actions/deploy-pages@v4

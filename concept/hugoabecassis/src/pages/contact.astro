@@ -1,0 +1,176 @@
+---
+import Base from '../layouts/Base.astro';
+import Tbc from '../components/Tbc.astro';
+import { site } from '../config/site';
+
+const { email, phone, city, area, hours, instagram } = site.contact;
+const motifs = [
+  { value: 'entretien', label: 'Entretien, réglage' },
+  { value: 'restauration', label: 'Restauration, réparation' },
+  { value: 'estimation', label: 'Estimation, conseil' },
+  { value: 'fabrication', label: "Fabrication d'un instrument" },
+  { value: 'autre', label: 'Autre demande' },
+];
+const instruments = ['Violon', 'Alto', 'Violoncelle', 'Contrebasse', 'Guitare', 'Instrument ancien ou rare', 'Autre'];
+const isCal = site.booking.mode === 'cal' && site.booking.calLink;
+---
+
+<Base
+  title="Contact et rendez-vous"
+  description="Écrire à Hugo Abecassis ou demander un rendez-vous pour l'entretien, la restauration ou la fabrication d'un instrument à cordes."
+  breadcrumbs={[{ name: 'Contact', path: '/contact/' }]}
+>
+  <section class="page-intro container">
+    <div class="page-intro__meta"><span class="num">—</span><span class="label">Contact</span></div>
+    <h1>Parlons de votre instrument</h1>
+    <p class="lead">Dites simplement de quel instrument il s'agit et ce qui ne va pas, ou ce dont vous rêvez. Hugo vous répond.</p>
+  </section>
+
+  <section class="section--tight container contact">
+    <aside class="contact__info" aria-label="Coordonnées">
+      <dl class="coords">
+        <div>
+          <dt class="label">E-mail</dt>
+          <dd>{email ? <a href={`mailto:${email}`}>{email}</a> : <Tbc />}</dd>
+        </div>
+        <div>
+          <dt class="label">Téléphone</dt>
+          <dd>{phone ? <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a> : <Tbc />}</dd>
+        </div>
+        <div>
+          <dt class="label">Atelier</dt>
+          <dd>{city ? `${city}, ${area}` : <>{area} <Tbc note="adresse du futur atelier" /></>}</dd>
+        </div>
+        <div>
+          <dt class="label">Accueil</dt>
+          <dd>{hours || <>Sur rendez-vous <Tbc note="jours et horaires" /></>}</dd>
+        </div>
+        {
+          instagram && (
+            <div>
+              <dt class="label">Réseaux</dt>
+              <dd><a href={instagram} target="_blank" rel="me noopener">Instagram ↗</a></dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div class="rdv" id="rendez-vous">
+        <span class="ame-divider rdv__ame" aria-hidden="true"></span>
+        <h2 class="rdv__title">Prendre rendez-vous</h2>
+        {
+          isCal ? (
+            <>
+              <p class="muted">Choisissez un créneau : diagnostic, dépôt d'instrument ou premier échange pour une fabrication.</p>
+              <a class="btn" href={`https://cal.com/${site.booking.calLink}`} data-booking data-cal-link={site.booking.calLink}>
+                Voir les disponibilités <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </>
+          ) : (
+            <p class="muted">
+              Indiquez l'objet de votre visite et vos disponibilités dans le formulaire : Hugo vous propose un créneau. Pour une restauration, joindre
+              quelques photos aide à préparer le diagnostic.
+            </p>
+          )
+        }
+      </div>
+    </aside>
+
+    <form class="form" data-contact-form data-endpoint={site.form.endpoint} action={site.form.endpoint || undefined} method="post" novalidate>
+      <h2 class="sr-only">Formulaire de contact</h2>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-name">Nom</label>
+          <input id="f-name" name="nom" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-phone">Téléphone <span class="opt">facultatif</span></label>
+          <input id="f-phone" name="telephone" type="tel" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="f-instrument">Instrument</label>
+          <select id="f-instrument" name="instrument" required>
+            <option value="" disabled selected>Choisir</option>
+            {instruments.map((i) => <option value={i}>{i}</option>)}
+          </select>
+        </div>
+      </div>
+      <fieldset class="field field--choices">
+        <legend>Votre demande</legend>
+        <select name="motif" aria-label="Type de demande" required>
+          {motifs.map((m) => <option value={m.value}>{m.label}</option>)}
+        </select>
+      </fieldset>
+      <div class="field">
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" rows="6" required placeholder="L'instrument, son histoire, ce que vous entendez, vos disponibilités…"></textarea>
+      </div>
+      <div class="field field--check">
+        <input id="f-consent" name="consentement" type="checkbox" required />
+        <label for="f-consent">J'accepte que ces informations soient utilisées pour répondre à ma demande. Elles ne sont ni revendues ni utilisées à d'autres fins.</label>
+      </div>
+      <input type="text" name="_gotcha" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="form__foot">
+        <button class="btn" type="submit">Envoyer <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="form__status small" data-form-status role="status" aria-live="polite"></p>
+      </div>
+      {!site.form.endpoint && <p class="small muted"><Tbc note="service d'envoi du formulaire (Formspree, Web3Forms…)" /></p>}
+    </form>
+  </section>
+</Base>
+
+<style>
+  .contact { display: grid; gap: var(--space-l); padding-bottom: var(--space-section); }
+  @media (min-width: 960px) {
+    .contact { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: start; }
+    .contact__info { grid-column: 1 / 5; }
+    .form { grid-column: 6 / 13; }
+  }
+
+  .coords { margin: 0; border-top: 1px solid var(--line); }
+  .coords > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+  .coords dd { margin: 0; }
+
+  .rdv { margin-top: var(--space-l); display: grid; gap: 18px; justify-items: start; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .rdv__ame { margin: 0; height: 48px; }
+  .rdv__title { font-size: var(--fs-h3); }
+
+  .form { display: grid; gap: 28px; }
+  .form__row { display: grid; gap: 28px; }
+  @media (min-width: 640px) { .form__row { grid-template-columns: 1fr 1fr; } }
+  .field { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+  .field label, .field legend { font-size: var(--fs-small); font-weight: 500; padding: 0; }
+  .opt { color: var(--muted); font-weight: 400; }
+  .field input:not([type='checkbox']),
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--pierre);
+    border-radius: 0;
+    background: transparent;
+    font-size: 1.0625rem;
+    transition: border-color 250ms var(--ease);
+  }
+  .field select { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231b1a17'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right: 24px; }
+  .field textarea { resize: vertical; line-height: 1.5; }
+  .field :is(input, select, textarea):focus { outline: none; border-bottom-color: var(--garance); box-shadow: 0 1px 0 var(--garance); }
+  .field :is(input, select, textarea):focus-visible { outline: none; }
+  .field :is(input, select, textarea):user-invalid { border-bottom-color: var(--garance); }
+  .field--check { grid-template-columns: 22px 1fr; align-items: start; gap: 12px; }
+  .field--check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--encre); }
+  .field--check label { font-weight: 400; color: var(--muted); }
+  .form__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+  .form__status:empty { display: none; }
+  .form__status { max-width: 40ch; }
+  .form__status[data-kind='error'] { color: var(--garance); }
+  .form__status[data-kind='ok'] { color: var(--encre); }
+</style>

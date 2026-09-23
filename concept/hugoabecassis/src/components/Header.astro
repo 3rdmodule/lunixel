@@ -1,0 +1,196 @@
+---
+import { nav } from '../config/site';
+import { url, stripBase } from '../lib/url';
+import BookingLink from './BookingLink.astro';
+
+interface Props { overlay?: boolean }
+const { overlay = false } = Astro.props;
+const current = stripBase(Astro.url.pathname);
+const isActive = (href: string) => current === href || (href !== '/' && current.startsWith(href));
+---
+
+<header class:list={['site-header', { 'site-header--overlay': overlay }]} data-header>
+  <div class="container site-header__inner">
+    <a href={url('/')} class="signature" aria-label="Hugo Abecassis, luthier — accueil">
+      <span class="signature__name">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="signature__role mono">Luthier</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <BookingLink variant="small" class="site-header__cta" label="Prendre rendez-vous" />
+      <BookingLink variant="small" class="site-header__cta-short" label="Rendez-vous" />
+      <button class="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>
+        <span>Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="menu" class="menu" aria-label="Menu" data-menu>
+  <div class="container menu__inner">
+    <div class="menu__top">
+      <a href={url('/')} class="signature"><span class="signature__name">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="signature__role mono">Luthier</span></a>
+      <button class="menu-toggle" type="button" data-menu-close><span>Fermer</span></button>
+    </div>
+    <nav aria-label="Navigation mobile">
+      <ol class="menu__list">
+        <li><a href={url('/')} aria-current={current === '/' ? 'page' : undefined}><span class="num">00</span>Accueil</a></li>
+        {
+          nav.map((item, i) => (
+            <li>
+              <a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
+                <span class="num">{String(i + 1).padStart(2, '0')}</span>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <div class="menu__bottom">
+      <BookingLink />
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    height: var(--header-h);
+    color: var(--encre);
+    transition: background-color 400ms var(--ease), color 400ms var(--ease), box-shadow 400ms var(--ease);
+  }
+  .site-header--overlay { color: var(--ivoire); --fg: var(--ivoire); --bg: var(--encre); --accent: var(--garance-clair); }
+  .site-header.is-solid {
+    color: var(--encre);
+    --fg: var(--encre);
+    --bg: var(--ivoire);
+    --accent: var(--garance);
+    background: color-mix(in srgb, var(--ivoire) 88%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--encre) 9%, transparent);
+  }
+  .site-header__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .signature {
+    display: inline-flex;
+    align-items: baseline;
+    text-decoration: none;
+    white-space: nowrap;
+    color: inherit;
+  }
+  .signature:hover { color: inherit; }
+  .signature__name { font-family: var(--font-serif), Georgia, serif; font-size: 1.5rem; line-height: 1; letter-spacing: -0.005em; }
+  .signature .ame { height: 0.95em; margin-inline: 0.6em; }
+  .signature__role { font-size: 0.6875rem; }
+
+  .site-nav { display: none; }
+  .site-nav ul { list-style: none; display: flex; gap: clamp(18px, 2.4vw, 40px); }
+  .site-nav a {
+    position: relative;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    padding-block: 8px;
+  }
+  .site-nav a::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 1px;
+    height: 0;
+    background: var(--accent);
+    transform: translateY(-50%);
+    transition: height 300ms var(--ease);
+  }
+  .site-nav a[aria-current='page']::before,
+  .site-nav a:hover::before { height: 1em; }
+  .site-nav a:hover { color: inherit; }
+
+  .site-header__actions { display: flex; align-items: center; gap: 12px; }
+  .site-header :global(.site-header__cta) { display: none; }
+  .site-header :global(.site-header__cta-short) { min-height: 36px; padding: 0 14px; font-size: 0.8125rem; }
+  .site-header :global(.site-header__cta-short .arrow) { display: none; }
+
+  .menu-toggle {
+    border: 0;
+    background: none;
+    padding: 10px 0 10px 8px;
+    min-height: 44px;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+  }
+
+  @media (max-width: 420px) {
+    .signature__role, .signature .ame { display: none; }
+    .signature__name { font-size: 1.35rem; }
+  }
+  @media (min-width: 1080px) {
+    .site-nav { display: block; }
+    .menu-toggle { display: none; }
+    .site-header :global(.site-header__cta) { display: inline-flex; }
+    .site-header :global(.site-header__cta-short) { display: none; }
+  }
+
+  /* Menu plein écran (mobile / tablette) */
+  .menu {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--ivoire);
+    color: var(--encre);
+  }
+  .menu::backdrop { background: var(--ivoire); }
+  .menu__inner { min-height: 100%; display: flex; flex-direction: column; }
+  .menu__top { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
+  .menu__list { list-style: none; margin-top: clamp(24px, 6vh, 64px); border-top: 1px solid var(--filet); }
+  .menu__list a {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    min-height: 64px;
+    padding-block: 12px;
+    border-bottom: 1px solid var(--filet);
+    font-family: var(--font-serif), Georgia, serif;
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+    text-decoration: none;
+  }
+  .menu__list a[aria-current='page'] { color: var(--garance); }
+  .menu__bottom { margin-top: auto; padding-block: 32px 40px; }
+  .menu__bottom :global(.btn) { width: 100%; }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu[open] { animation: menu-in 420ms var(--ease); }
+    @keyframes menu-in { from { opacity: 0; } to { opacity: 1; } }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Tbc from '../components/Tbc.astro';
+import { site } from '../config/site';
+---
+
+<Base title="Mentions légales" description="Mentions légales du site de Hugo Abecassis, luthier." breadcrumbs={[{ name: 'Mentions légales', path: '/mentions-legales/' }]}>
+  <section class="page-intro container">
+    <div class="page-intro__meta"><span class="num">—</span><span class="label">Informations</span></div>
+    <h1>Mentions légales</h1>
+  </section>
+
+  <section class="section--tight container legal">
+    <h2>Éditeur</h2>
+    <p>Hugo Abecassis, luthier. <Tbc note="statut, SIRET, adresse, contact" /></p>
+
+    <h2>Conception et réalisation</h2>
+    <p><a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a>. Le site est actuellement présenté sous forme de concept.</p>
+
+    <h2>Hébergement</h2>
+    <p>GitHub Pages, GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis. <Tbc note="à mettre à jour si l'hébergement change" /></p>
+
+    <h2>Photographies et contenus</h2>
+    <p>Les textes et photographies sont la propriété de leurs auteurs. <Tbc note="crédits photographiques" /> Les articles de presse cités restent la propriété de leurs éditeurs ; ils sont signalés par un lien vers leur source.</p>
+
+    <h2>Données personnelles</h2>
+    <p>
+      Les informations transmises par le formulaire de contact servent uniquement à répondre à votre demande. Elles ne sont ni revendues ni
+      utilisées à d'autres fins. Vous pouvez demander leur consultation, leur rectification ou leur suppression en écrivant à Hugo Abecassis.
+      <Tbc note="adresse de contact, durée de conservation, service d'envoi" />
+    </p>
+
+    <h2>Cookies et mesure d'audience</h2>
+    <p>Ce site ne dépose aucun cookie de mesure d'audience ni de publicité. Le module de réservation, lorsqu'il est activé, n'est chargé que si vous cliquez sur « Prendre rendez-vous ».</p>
+
+    <h2>Typographies</h2>
+    <p>Instrument Serif, Instrument Sans et IBM Plex Mono, sous licence SIL Open Font License, hébergées sur ce site.</p>
+  </section>
+</Base>
+
+<style>
+  .legal { max-width: 52rem; margin-left: 0; padding-bottom: var(--space-section); }
+  .legal h2 { font-size: var(--fs-h3); margin: 48px 0 12px; }
+  .legal h2:first-child { margin-top: 0; }
+  .legal p { color: var(--muted); }
+  @media (min-width: 1440px) { .legal { margin-left: auto; margin-right: auto; max-width: var(--maxw); } .legal > * { max-width: 52rem; } }
+</style>

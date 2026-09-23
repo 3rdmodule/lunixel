@@ -1,0 +1,70 @@
+---
+import { site, nav } from '../config/site';
+import { url } from '../lib/url';
+import Tbc from './Tbc.astro';
+const year = new Date().getFullYear();
+const { email, phone, city, area, instagram } = site.contact;
+---
+
+<footer class="site-footer tone-nuit">
+  <div class="container">
+    <div class="site-footer__top">
+      <a href={url('/')} class="site-footer__sig">
+        <span class="serif">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="mono">Luthier</span>
+      </a>
+      <p class="site-footer__line serif italic">Entretien, restauration et fabrication d'instruments à cordes.</p>
+    </div>
+
+    <div class="site-footer__cols">
+      <nav aria-label="Pied de page">
+        <p class="label">Le site</p>
+        <ul>
+          <li><a href={url('/')}>Accueil</a></li>
+          {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+      <div>
+        <p class="label">Savoir-faire</p>
+        <ul>
+          <li><a href={url('/savoir-faire/entretien/')}>Entretien</a></li>
+          <li><a href={url('/savoir-faire/restauration/')}>Restauration</a></li>
+          <li><a href={url('/savoir-faire/fabrication/')}>Fabrication</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Contact</p>
+        <ul>
+          <li>{email ? <a href={`mailto:${email}`}>{email}</a> : <>E-mail <Tbc /></>}</li>
+          <li>{phone ? <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a> : <>Téléphone <Tbc /></>}</li>
+          <li>{city ? `${city}, ${area}` : <>{area} <Tbc note="lieu de l'atelier" /></>}</li>
+          {instagram && <li><a href={instagram} rel="me noopener" target="_blank">Instagram ↗</a></li>}
+          <li><a href={url('/contact/#rendez-vous')}>Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© {year} Hugo Abecassis · <a href={url('/mentions-legales/')}>Mentions légales</a></p>
+      <p class="site-footer__credit">Site réalisé par <a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-block: clamp(72px, 10vw, 128px) 32px; font-size: var(--fs-small); }
+  .site-footer a { text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  .site-footer__top { display: grid; gap: 16px; padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
+  .site-footer__sig { display: inline-flex; align-items: baseline; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem); line-height: 1; }
+  .site-footer__sig .mono { font-size: 0.75rem; }
+  .site-footer__line { color: var(--muted); font-size: 1.25rem; }
+  .site-footer__cols { display: grid; gap: 40px; padding-block: 48px; }
+  .site-footer__cols ul { list-style: none; display: grid; gap: 10px; margin-top: 16px; }
+  .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8125rem; }
+  .site-footer__credit { color: var(--pierre); }
+  @media (min-width: 800px) {
+    .site-footer__top { grid-template-columns: 1fr 1fr; align-items: end; }
+    .site-footer__line { justify-self: end; text-align: right; max-width: 22ch; }
+    .site-footer__cols { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

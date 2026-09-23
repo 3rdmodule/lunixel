@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+import Photo from '../../components/Photo.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { services } from '../../data/services';
+import { url } from '../../lib/url';
+
+const families = [
+  { name: 'Cordes frottées', items: 'Violon, alto, violoncelle, contrebasse' },
+  { name: 'Cordes pincées', items: 'Guitare classique, folk, jazz, électrique ; luth, mandoline' },
+  { name: 'Instruments anciens ou rares', items: 'Violes, oud, saz, koto, tres…' },
+];
+---
+
+<Base
+  title="Savoir-faire : entretien, restauration, fabrication"
+  description="Réglage, réparation, restauration et fabrication sur mesure d'instruments du quatuor, de guitares et d'instruments anciens ou rares."
+  breadcrumbs={[{ name: 'Savoir-faire', path: '/savoir-faire/' }]}
+>
+  <section class="page-intro container">
+    <div class="page-intro__meta"><span class="num">—</span><span class="label">Savoir-faire</span></div>
+    <h1>Entretenir, restaurer, fabriquer</h1>
+    <p class="lead">Trois façons de s'occuper d'un instrument, avec le même but : qu'il sonne bien et qu'il dure.</p>
+  </section>
+
+  <section class="section sf-list" aria-label="Les trois savoir-faire">
+    <div class="container">
+      {
+        services.map((s, i) => (
+          <article class:list={['sf', { 'sf--alt': i % 2 === 1 }]} id={s.slug}>
+            <a class="sf__photo" href={url(`/savoir-faire/${s.slug}/`)} tabindex="-1" aria-hidden="true">
+              <Photo id={s.photo} sizes="(min-width: 900px) 55vw, 100vw" plate={`Pl. ${s.number}`} />
+            </a>
+            <div class="sf__body" data-reveal-text>
+              <div class="section-head__meta">
+                <span class="num">{s.number}</span>
+                <span class="label">{s.kicker}</span>
+              </div>
+              <h2>
+                <a href={url(`/savoir-faire/${s.slug}/`)}>{s.title}</a>
+              </h2>
+              <p class="sf__lead">{s.lead}</p>
+              <a class="link" href={url(`/savoir-faire/${s.slug}/`)}>
+                En savoir plus sur {s.title.toLowerCase()} <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section tone-papier" aria-labelledby="families-title">
+    <div class="container">
+      <SectionHead label="Les instruments" title="Les instruments suivis à l'atelier" id="families-title" />
+      <ul class="def-list">
+        {
+          families.map((f) => (
+            <li>
+              <span class="def-list__title">{f.name}</span>
+              <span class="def-list__text">{f.items}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .sf-list .container { display: grid; gap: clamp(96px, 12vw, 176px); }
+  .sf { display: grid; gap: var(--space-m); align-items: center; }
+  .sf__body { display: grid; gap: 20px; justify-items: start; }
+  .sf__body h2 { font-size: var(--fs-h1); }
+  .sf__body h2 a { text-decoration: none; }
+  .sf__lead { font-family: var(--font-serif), Georgia, serif; font-size: 1.45rem; line-height: 1.3; color: var(--muted); max-width: 30ch; }
+  @media (min-width: 900px) {
+    .sf { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
+    .sf__photo { grid-column: 1 / 7; }
+    .sf__body { grid-column: 8 / 13; }
+    .sf--alt .sf__photo { grid-column: 7 / 13; grid-row: 1; }
+    .sf--alt .sf__body { grid-column: 1 / 6; grid-row: 1; }
+  }
+</style>
