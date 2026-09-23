@@ -40,5 +40,26 @@ const year = new Date().getFullYear();
       <span>© {year} Lunixel · Conçu et développé par Lunixel</span>
       <span class="perf" data-perf hidden><i class="px" aria-hidden="true"></i><span data-perf-text></span></span>
     </div>
+    <p class="footer-powered">Powered by <a href="https://3rdmodule.com/" rel="noopener">3rdModule</a></p>
   </div>
 </footer>
+
+<style>
+  .footer-powered {
+    margin-top: var(--s-2);
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    color: var(--fg-soft);
+    opacity: 0.8;
+  }
+  .footer-powered a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .footer-powered a:hover,
+  .footer-powered a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>
