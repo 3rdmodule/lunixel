@@ -1,0 +1,30 @@
+---
+import { site } from '../config.js';
+import { activites } from '../data/content.js';
+interface Props { title?: string; lead?: string }
+const {
+  title = 'La boutique est fermée. Votre site, lui, est encore ouvert.',
+  lead = 'Parlons de votre vitrine. Dites-nous simplement qui vous êtes : on s’occupe de la suite.',
+} = Astro.props;
+---
+<section class="final theme-profonde" aria-labelledby="final-title" data-final>
+  <div class="final__glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="final__inner" data-reveal>
+      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Parler de votre projet</p>
+      <h2 id="final-title" class="display">{title}</h2>
+      <p class="lead">{lead}</p>
+      <div>
+        <p class="soft" id="final-chips-label" style="margin-bottom:0.9rem">Vous êtes…</p>
+        <ul class="chips" role="list" aria-labelledby="final-chips-label">
+          {activites.map(([v, l]) => <li><a class="chip" href={`/contact/?activite=${v}`}><i class="px" aria-hidden="true"></i>{l}</a></li>)}
+        </ul>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="/contact/">Parler de mon projet</a>
+        <a class="arrow-link" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+      <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit, sans engagement</span><span>Réponse sous {site.responseTime}</span></p>
+    </div>
+  </div>
+</section>

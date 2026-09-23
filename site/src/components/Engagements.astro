@@ -1,0 +1,8 @@
+---
+import { engagements } from '../data/content.js';
+---
+<ul class="engagements" role="list">
+  {engagements.map((e) => (
+    <li><i class="px" aria-hidden="true"></i><strong>{e.title}</strong><span>{e.text}</span></li>
+  ))}
+</ul>

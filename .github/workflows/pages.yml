@@ -1,5 +1,6 @@
 # Publication de lunixel.fr sur GitHub Pages.
-#  - Racine du dépôt : site Lunixel (fichiers statiques), copié tel quel.
+#  - site/ : site Lunixel (Astro), construit et publié à la racine de lunixel.fr.
+#  - Racine du dépôt : fichiers statiques éventuels, copiés tels quels.
 #  - concept/<nom>/ : un concept par dossier. S'il contient un package.json (Astro, Vite…),
 #    il est construit avec BASE_PATH=/concept/<nom> ; sinon il est copié tel quel.
 name: Publication lunixel.fr
@@ -40,10 +41,19 @@ jobs:
           shopt -s dotglob nullglob
           for f in *; do
             case "$f" in
-              .git|.github|.gitignore|concept|_upload|_site|README.md) continue ;;
+              .git|.github|.gitignore|concept|site|_upload|_site|README.md) continue ;;
             esac
             cp -r "$f" _site/
           done
+
+      - name: Site Lunixel (dossier site/, Astro)
+        if: hashFiles('site/package.json') != ''
+        working-directory: site
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npm run build
+          cp -r dist/. ../_site/
 
       - name: Concepts
         run: |

@@ -3,7 +3,7 @@
 Dépôt publié sur GitHub Pages à l'adresse **https://lunixel.fr**.
 
 ```
-/                         site Lunixel (fichiers statiques : index.html, style.css…) — à venir
+site/                     site Lunixel (Astro) → lunixel.fr/
 concept/<nom>/            concepts clients, publiés sous lunixel.fr/concept/<nom>/
   hugoabecassis/          Hugo Abecassis, luthier (Astro) → lunixel.fr/concept/hugoabecassis/
 .github/workflows/
@@ -14,8 +14,7 @@ concept/<nom>/            concepts clients, publiés sous lunixel.fr/concept/<no
 
 ## Site Lunixel
 
-Déposer les fichiers du site à la **racine** du dépôt. Le workflow `pages.yml` les copie tels quels (tout sauf `concept/`, `.github/`, `_upload/`, `README.md`).
-Tant qu'il n'y a pas de `index.html` à la racine, `lunixel.fr/` affiche la page 404 de GitHub.
+Le site vit dans `site/` (Astro). À chaque push, `pages.yml` installe les dépendances, prend les captures des projets, construit le site et le publie à la racine de lunixel.fr. Réglages, projets et textes : voir `site/README.md`.
 
 ## Concepts
 

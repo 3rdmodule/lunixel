@@ -1,0 +1,19 @@
+---
+import { besoins } from '../data/content.js';
+interface Props { detailed?: boolean }
+const { detailed = false } = Astro.props;
+---
+<div class="besoins">
+  {besoins.map((b, i) => (
+    <div class="besoin" data-reveal>
+      <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+      <h3>{b.title}</h3>
+      <p>{b.text}</p>
+      {detailed && <p>{b.more}</p>}
+      <details class="clair">
+        <summary>{b.term} <span class="tag">En clair</span></summary>
+        <p>{b.clair.charAt(0).toUpperCase() + b.clair.slice(1)}</p>
+      </details>
+    </div>
+  ))}
+</div>

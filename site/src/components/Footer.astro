@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../config.js';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer theme-profonde">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Logo label="Lunixel" />
+        <p>{site.signature}</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h2>Le site</h2>
+          <ul>
+            <li><a href="/realisations/">Réalisations</a></li>
+            <li><a href="/concepts/">Concepts</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="/contact/">Parler de mon projet</a></li>
+            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Informations</h2>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} Lunixel · Conçu et développé par Lunixel</span>
+      <span class="perf" data-perf hidden><i class="px" aria-hidden="true"></i><span data-perf-text></span></span>
+    </div>
+  </div>
+</footer>

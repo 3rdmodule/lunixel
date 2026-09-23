@@ -1,0 +1,60 @@
+---
+// Un projet dans son cadre : capture réelle si elle existe, sinon un aperçu dessiné.
+import { getCaptures, captureSrc } from '../lib/captures.js';
+interface Props {
+  project: any;
+  variant?: string; // 'desktop' | 'phone' | clé d'une capture supplémentaire
+  index?: number;
+  eager?: boolean;
+  sizes?: string;
+  lightable?: boolean;
+  alt?: string;
+  vt?: string;
+  barLabel?: string;
+  barKind?: 'realisation' | 'concept';
+}
+const { project, variant = 'desktop', index = 0, eager = false, sizes, lightable = false, alt, vt, barLabel, barKind } = Astro.props;
+const cap = getCaptures(project.slug);
+const phone = variant === 'phone';
+let entry, name;
+if (variant === 'desktop') { entry = cap.desktop; name = `${project.slug}-desktop`; }
+else if (phone) { entry = cap.mobile?.[index]; name = `${project.slug}-mobile-${index}`; }
+else { entry = cap.extra?.[variant]; name = `${project.slug}-${variant}`; }
+const label = alt ?? (phone ? `Le site ${project.name} sur téléphone` : `Page d’accueil du site ${project.name}`);
+const srcset = (ext) => entry.widths.map((w) => `${captureSrc(name, w, ext)} ${w}w`).join(', ');
+const s = sizes ?? (phone ? '(min-width: 64rem) 17rem, 62vw' : '(min-width: 64rem) 60vw, 92vw');
+const p = project.palette;
+const style = `--a-bg:${p.bg};--a-fg:${p.fg};--a-accent:${p.accent}`;
+---
+<div class:list={['vitrine', { 'vitrine--phone': phone, lightable }]}>
+  {!phone && (
+    <div class="vitrine__bar" aria-hidden="true">
+      <i></i><i></i><i></i>
+      {barLabel && <span class="vitrine__label">{barLabel}<b class:list={['px', { 'px--off': barKind === 'concept' }]}></b>{barKind === 'concept' ? 'Concept' : 'Réalisation'}</span>}
+    </div>
+  )}
+  <div class="vitrine__screen" style={vt ? `view-transition-name:${vt}` : undefined}>
+    {entry ? (
+      <picture>
+        <source type="image/avif" srcset={srcset('avif')} sizes={s} />
+        <source type="image/webp" srcset={srcset('webp')} sizes={s} />
+        <img
+          src={captureSrc(name, entry.widths[entry.widths.length - 1], 'webp')}
+          width={entry.w}
+          height={entry.h}
+          alt={label}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : undefined}
+          decoding="async"
+        />
+      </picture>
+    ) : (
+      <div class:list={['apercu', `apercu--${project.slug}`]} style={style} role="img" aria-label={`Aperçu du site ${project.name}`}>
+        {project.slug === '3rd-records' && (<><div class="disc"></div><p class="apercu__title"><b>3RD</b> records</p><p class="apercu__kicker">Pop · Bedroom pop · Lofi · Hip-hop</p></>)}
+        {project.slug === 'nube-games' && (<><p class="apercu__kicker">Prototype · jouable en ligne</p><p class="apercu__title">Fields <em>of</em> Fire</p><p class="apercu__sub">La partie est lancée. À vous de jouer.</p><span class="apercu__btn">Jouer gratuitement</span></>)}
+        {project.slug === 'le-domaine-musical' && (<><p class="apercu__kicker">Saint-Lô · Normandie · depuis 1988</p><p class="apercu__title">Au cœur des cordes</p><p class="apercu__sub">Pianos neufs, récents et restaurés, quatuor à cordes, guitares.</p><span class="apercu__btn">Voir les 227 instruments</span></>)}
+        {project.slug === 'fabienne-hiot' && (<><p class="apercu__kicker">Naturopathe · Biorésonance</p><p class="apercu__title">Vibrez en harmonie pour votre bien-être</p><p class="apercu__sub">Naturopathie, réflexologie et massages, à Agay.</p><span class="apercu__btn">Prendre rendez-vous</span></>)}
+      </div>
+    )}
+  </div>
+</div>

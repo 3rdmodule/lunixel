@@ -1,0 +1,106 @@
+---
+import Base from '../../layouts/Base.astro';
+import Vitrine from '../../components/Vitrine.astro';
+import Status from '../../components/Status.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { concepts, projectPath } from '../../data/projects.js';
+import { getCaptures } from '../../lib/captures.js';
+import { site } from '../../config.js';
+
+export function getStaticPaths() {
+  return concepts.map((p, i) => ({ params: { slug: p.slug }, props: { project: p, next: concepts[(i + 1) % concepts.length] } }));
+}
+const { project: p, next } = Astro.props;
+const caps = getCaptures(p.slug);
+const url = `${site.url}${projectPath(p)}`;
+const jsonld = [
+  {
+    '@type': 'CreativeWork',
+    name: `Concept de site pour ${p.name}`,
+    description: p.summary,
+    url,
+    creator: { '@id': `${site.url}/#studio` },
+    inLanguage: 'fr-FR',
+    genre: 'Concept de site web',
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Concepts', item: `${site.url}/concepts/` },
+      { '@type': 'ListItem', position: 3, name: p.name, item: url },
+    ],
+  },
+];
+---
+<Base title={`${p.name} · Concept Lunixel`} description={`${p.question} Un concept de site imaginé par Lunixel pour ${p.name}, ${p.business.toLowerCase()} à ${p.place}.`} jsonld={jsonld}>
+  <section class="page-hero theme-nuit" style="padding-bottom:0">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/concepts/">Concepts</a></li><li aria-current="page">{p.name}</li></ol></nav>
+        <div class="concept-banner"><Status kind="concept" /><span><strong>Concept imaginé par Lunixel.</strong> Ce site n’a pas été commandé par {p.name} et n’est pas son site officiel.</span></div>
+        <h1 class="h-1 display">{p.question}</h1>
+        <p class="lead">{p.name} · {p.business}, {p.place}</p>
+      </div>
+      <div class="case-cover lightable is-lit">
+        <Vitrine project={p} eager vt={`shot-${p.slug}`} sizes="(min-width: 90rem) 1360px, 94vw" alt={`Concept de page d’accueil pour ${p.name}`} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-nuit" aria-labelledby="observation-title">
+    <div class="container case-intro">
+      <div data-reveal>
+        <p class="eyebrow" style="margin-bottom:var(--s-2)"><i class="px" aria-hidden="true"></i>L’observation</p>
+        <h2 id="observation-title" class="h-3" style="max-width:30ch">{p.tagline}</h2>
+      </div>
+      <p class="lead" style="color:var(--fg);max-width:48ch" data-reveal>{p.observation}</p>
+    </div>
+  </section>
+
+  <section class="section theme-jour" aria-labelledby="choix-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Les choix</p>
+        <h2 id="choix-title" class="h-2">Ce qu’on a imaginé.</h2>
+        <p class="lead">{p.style}</p>
+      </div>
+      <dl class="choices" data-reveal>
+        {p.choices.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  {caps.mobile?.length > 0 && (
+    <section class="section theme-jour" style="background:var(--papier-ombre);padding-bottom:calc(var(--section) + 2.5rem)" aria-labelledby="mobile-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Sur téléphone</p>
+          <h2 id="mobile-title" class="h-2">Tout tient sous le pouce.</h2>
+        </div>
+        <div class="phones">
+          {[0, 1, 2].filter((i) => caps.mobile[i]).map((i) => <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du concept ${p.name} sur téléphone`} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section theme-nuit" aria-labelledby="prototype-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le prototype</p>
+        <h2 id="prototype-title" class="h-2">Le concept se visite.</h2>
+        <p class="lead">Le prototype est en ligne. Il n’est pas référencé par les moteurs de recherche, pour ne jamais être confondu avec le site officiel.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn--ghost" href={p.prototypeUrl} rel="noopener" target="_blank">Voir le prototype<span class="sr-only"> (nouvel onglet)</span></a>
+      </div>
+      <hr class="rule" style="margin-block:var(--s-7) var(--s-5)" />
+      <a class="next-project" href={projectPath(next)}>
+        <span class="eyebrow">Concept suivant</span>
+        <span class="h-2 display">{next.name} →</span>
+      </a>
+    </div>
+  </section>
+  <FinalCta title="Imaginons le vôtre." lead="Parlez-nous de votre métier. On vous montre ce qu’il pourrait devenir en ligne." />
+</Base>

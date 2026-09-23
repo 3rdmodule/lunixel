@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorkItem from '../../components/WorkItem.astro';
+import Status from '../../components/Status.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { realisations } from '../../data/projects.js';
+---
+<Base
+  title="Réalisations · Lunixel, studio web"
+  description="Des sites en ligne, avec le besoin, les choix et le résultat de chaque projet : 3rd Records, label indépendant, et Nube Games, studio de jeux de société."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Réalisations</li></ol></nav>
+      <h1 class="h-1 display">Des sites en ligne, qui travaillent pour ceux qui les tiennent.</h1>
+      <p class="lead">Chaque réalisation raconte un besoin, trois décisions et un résultat. Ici, que du réel : des sites livrés et visibles aujourd’hui.</p>
+      <div class="legend"><Status kind="realisation" /></div>
+    </div>
+  </section>
+  <section class="section theme-nuit" style="padding-top:0" aria-label="Les réalisations">
+    <div class="container">
+      <div class="work-list">
+        {realisations.map((p) => <WorkItem project={p} headingLevel="h2" />)}
+      </div>
+      <div class="encart" style="margin-top:clamp(4rem,2rem + 6vw,8rem)" data-reveal>
+        <i class="px px--off" aria-hidden="true"></i>
+        <h2 class="h-2">La prochaine vitrine pourrait être la vôtre.</h2>
+        <p class="lead">Chaque pixel vide attend sa lumière. Parlez-nous de votre activité : on vous dit simplement ce qu’on ferait.</p>
+        <div class="cta-row">
+          <a class="btn" href="/contact/">Parler de mon projet</a>
+          <a class="arrow-link" href="/concepts/">Voir aussi nos concepts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

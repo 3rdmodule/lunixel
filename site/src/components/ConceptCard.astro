@@ -1,0 +1,16 @@
+---
+import Vitrine from './Vitrine.astro';
+import Status from './Status.astro';
+import { projectPath } from '../data/projects.js';
+interface Props { project: any; headingLevel?: 'h2' | 'h3' }
+const { project, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+const href = projectPath(project);
+---
+<article class="concept-card lightable" data-light data-reveal>
+  <Vitrine project={project} vt={`shot-${project.slug}`} sizes="(min-width: 48rem) 45vw, 92vw" />
+  <Status kind="concept" />
+  <H class="display"><a href={href}>{project.question}</a></H>
+  <p class="soft">{project.name} · {project.business}, {project.place}</p>
+  <a class="arrow-link" href={href}>Voir le concept<span class="sr-only"> : {project.name}</span></a>
+</article>

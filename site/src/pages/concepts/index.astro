@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import ConceptCard from '../../components/ConceptCard.astro';
+import Status from '../../components/Status.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { concepts } from '../../data/projects.js';
+---
+<Base
+  title="Concepts de sites · Lunixel"
+  description="Des sites imaginés par Lunixel pour des commerces et des indépendants, sans commande, pour explorer ce que leur métier peut devenir en ligne."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Concepts</li></ol></nav>
+      <h1 class="h-1 display">Avant de construire, on imagine.</h1>
+      <p class="lead">Ces sites ont été pensés pour de vrais commerces, <strong>sans commande de leur part</strong>. Ce sont des explorations : elles montrent comment on réfléchit à un métier avant d’en dessiner la vitrine.</p>
+      <div class="concept-banner"><Status kind="concept" /><span>Un concept n’est pas un site livré : il n’a pas été commandé par l’entreprise concernée, et n’est pas son site officiel.</span></div>
+    </div>
+  </section>
+  <section class="section theme-nuit" style="padding-top:0" aria-label="Les concepts">
+    <div class="container">
+      <div class="concept-grid" style="margin-top:0;border-top:0;padding-top:0">
+        {concepts.map((p) => <ConceptCard project={p} headingLevel="h2" />)}
+      </div>
+    </div>
+  </section>
+  <FinalCta title="Et si on imaginait le vôtre ?" lead="Racontez-nous votre métier. On vous montre ce qu’il pourrait devenir en ligne." />
+</Base>

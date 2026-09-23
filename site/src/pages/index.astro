@@ -1,0 +1,183 @@
+---
+import Base from '../layouts/Base.astro';
+import Vitrine from '../components/Vitrine.astro';
+import Status from '../components/Status.astro';
+import WorkItem from '../components/WorkItem.astro';
+import ConceptCard from '../components/ConceptCard.astro';
+import Besoins from '../components/Besoins.astro';
+import Methode from '../components/Methode.astro';
+import StudioBlock from '../components/StudioBlock.astro';
+import Engagements from '../components/Engagements.astro';
+import Formules from '../components/Formules.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { projects, realisations, concepts } from '../data/projects.js';
+import { situations, piliers } from '../data/content.js';
+import { site } from '../config.js';
+
+const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+const heroShots = [
+  { p: bySlug['3rd-records'], variant: 'desktop' },
+  { p: bySlug['nube-games'], variant: 'desktop' },
+  { p: bySlug['le-domaine-musical'], variant: 'phone' },
+];
+---
+<Base
+  title="Lunixel · Studio web pour artisans, commerçants et TPE"
+  description="Des sites sur mesure conçus, construits et entretenus pour les petites entreprises. Un seul interlocuteur, des prix clairs, zéro jargon."
+  assembleLogo
+>
+  <!-- 1. Ouverture -->
+  <section class="hero theme-nuit" data-hero aria-labelledby="hero-title">
+    <div class="hero__halo" aria-hidden="true"></div>
+    <div class="container grid hero__grid">
+      <div class="hero__head">
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Studio web indépendant · Artisans, commerçants, indépendants</p>
+        <h1 id="hero-title" class="h-hero display">Vous avez un <span class="lumiere">métier</span>.<br />On s’occupe du web.</h1>
+      </div>
+      <div class="hero__sub">
+        <p class="lead">Lunixel conçoit, construit et entretient des sites sur mesure pour les petites entreprises. <strong>Un seul interlocuteur, des explications claires,</strong> et un site dont vous serez fier.</p>
+        <div class="cta-row">
+          <a class="btn" href="/contact/">Parler de mon projet</a>
+          <a class="arrow-link" href="#travaux">Voir nos travaux</a>
+        </div>
+        <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit</span><span>Réponse sous {site.responseTime}</span></p>
+      </div>
+      <div class="hero__visual">
+        <div class="vitrines" aria-label="Quelques travaux du studio">
+          {heroShots.map(({ p, variant }, i) => (
+            <figure class:list={['lightable', { 'is-phone': variant === 'phone' }]} data-hero-light>
+              <a href={`/${p.kind === 'realisation' ? 'realisations' : 'concepts'}/${p.slug}/`} tabindex="-1" aria-hidden="true">
+                <Vitrine project={p} variant={variant} eager={i === 0} barLabel={p.name} barKind={p.kind} sizes={variant === 'phone' ? '(min-width: 64rem) 12rem, 46vw' : '(min-width: 64rem) 42vw, 80vw'} />
+              </a>
+              <figcaption><span>{p.name}</span><Status kind={p.kind} short /></figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="daybreak" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <!-- 2. Pour qui -->
+  <section class="section theme-jour" aria-labelledby="pour-qui-title" style="padding-top:clamp(3rem,2rem + 4vw,6rem)">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>01 · Pour qui</p>
+        <h2 id="pour-qui-title" class="h-2">Pour ceux qui ont mieux à faire que de s’occuper d’un site.</h2>
+        <p class="lead">Atelier, boutique, cabinet, restaurant, association : votre temps va à votre métier. C’est normal. Vous vous reconnaissez ?</p>
+      </div>
+      <ul class="situations" role="list">
+        {situations.map((s) => (
+          <li class="situation" data-reveal>
+            <q>{s.quote}</q>
+            <p><i class="px" aria-hidden="true"></i>{s.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. L'approche -->
+  <section class="section theme-jour" aria-labelledby="approche-title" style="padding-top:0">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · L’approche</p>
+        <h2 id="approche-title" class="h-2">Un seul interlocuteur, du premier appel à bien après la mise en ligne.</h2>
+      </div>
+      <div class="piliers">
+        {piliers.map((p, i) => (
+          <div class="pilier" data-reveal>
+            <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Travaux -->
+  <section class="section theme-nuit" id="travaux" aria-labelledby="travaux-title">
+    <div class="container">
+      <div class="work-head" data-reveal>
+        <div class="section-head" style="margin:0">
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>03 · Travaux</p>
+          <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent.</h2>
+          <p class="lead">Deux réalisations en ligne, deux concepts, quatre identités. Aucun modèle.</p>
+        </div>
+        <div class="legend">
+          <Status kind="realisation" />
+          <Status kind="concept" />
+        </div>
+      </div>
+      <div class="work-list">
+        {realisations.map((p) => <WorkItem project={p} />)}
+      </div>
+      <div class="concept-grid">
+        <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
+          <h3 class="h-3">Et avant même de vous rencontrer, on imagine.</h3>
+          <p class="soft" style="max-width:52ch">Nos concepts sont des sites pensés pour de vrais commerces, sans commande, pour explorer ce que leur métier pourrait devenir en ligne.</p>
+        </div>
+        {concepts.map((p) => <ConceptCard project={p} />)}
+      </div>
+      <div class="cta-row" style="margin-top:var(--s-6)">
+        <a class="arrow-link" href="/realisations/">Toutes les réalisations</a>
+        <a class="arrow-link" href="/concepts/">Tous les concepts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Ce qu'on prend en charge -->
+  <section class="section theme-jour" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Ce qu’on prend en charge</p>
+        <h2 id="services-title" class="h-2">Tout ce qu’un site demande, sans que vous ayez à y penser.</h2>
+        <p class="lead">Les mots techniques sont traduits : touchez « En clair » pour la version simple.</p>
+      </div>
+      <Besoins />
+      <div class="cta-row" style="margin-top:var(--s-6)">
+        <a class="arrow-link" href="/services/">Le détail des services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Comment ça se passe -->
+  <Methode />
+
+  <!-- 7. Le studio -->
+  <section class="section theme-jour" aria-labelledby="studio-title">
+    <div class="container studio">
+      <div class="section-head" style="margin:0" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>05 · Le studio</p>
+        <h2 id="studio-title" class="h-2">Un studio à taille humaine, un soin sans raccourci.</h2>
+        <p class="lead">Lunixel est un studio web indépendant. Pas de chaîne d’intermédiaires : vous parlez directement à ceux qui conçoivent et construisent votre site.</p>
+        <div><a class="arrow-link" href="/studio/">Découvrir le studio</a></div>
+      </div>
+      <div style="display:grid;gap:var(--s-5)">
+        <StudioBlock />
+        <Engagements />
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Combien ça coûte -->
+  <section class="section theme-jour" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="prix-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>06 · Combien ça coûte</p>
+        <h2 id="prix-title" class="h-2">Des prix annoncés avant de commencer. Pas de surprise après.</h2>
+        <p class="lead">Chaque projet reçoit un devis clair, détaillé et gratuit. Voici comment on travaille ensemble.</p>
+      </div>
+      <Formules />
+    </div>
+  </section>
+
+  <!-- 9. Questions -->
+  <Faq />
+
+  <!-- 10. Appel final -->
+  <FinalCta />
+</Base>

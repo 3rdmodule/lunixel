@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../config.js';
+---
+<Base title="Merci · Lunixel" description="Votre demande est bien arrivée. On vous répond sous 48 h." mobileCta={false} noindex>
+  <section class="lost theme-nuit">
+    <div class="lost__inner">
+      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Message reçu</p>
+      <h1 class="h-1 display">Merci<span data-thanks-name></span>.</h1>
+      <p class="lead">On a bien reçu votre demande. On la lit avec attention et on vous répond sous {site.responseTime}.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn--ghost" href="/realisations/">Revoir nos réalisations</a>
+        <a class="arrow-link" href="/">Retour à l’accueil</a>
+      </div>
+    </div>
+  </section>
+</Base>

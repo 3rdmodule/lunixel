@@ -1,0 +1,51 @@
+---
+import Logo from './Logo.astro';
+interface Props { path: string; assemble?: boolean }
+const { path, assemble = false } = Astro.props;
+const items = [
+  { href: '/realisations/', label: 'Réalisations' },
+  { href: '/concepts/', label: 'Concepts' },
+  { href: '/services/', label: 'Services' },
+  { href: '/studio/', label: 'Le studio' },
+];
+const current = (href) => (path.startsWith(href) ? 'page' : undefined);
+import { site } from '../config.js';
+---
+<header class="site-header theme-nuit" data-header>
+  <div class="container">
+    <a class="logo-link" href="/" aria-label="Lunixel, retour à l’accueil">
+      <Logo assemble={assemble} label="Lunixel" />
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        {items.map((i) => <li><a href={i.href} aria-current={current(i.href)}>{i.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="btn" href="/contact/"><span class="long">Parler de mon projet</span><span class="short">Parlons-en</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="5" width="16" height="2" rx="1" fill="currentColor"/><rect x="2" y="13" width="11" height="2" rx="1" fill="currentColor"/><rect x="15" y="13" width="3" height="2" rx="0.6" fill="#F6B940"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu theme-profonde" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu hidden>
+  <div class="mobile-menu__top">
+    <a class="logo-link" href="/" aria-label="Lunixel, retour à l’accueil"><Logo label="Lunixel" /></a>
+    <button class="menu-toggle" type="button" data-menu-close>
+      <span class="sr-only">Fermer le menu</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 4.5l11 11M15.5 4.5l-11 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="/" aria-current={path === '/' ? 'page' : undefined}><i class="px" aria-hidden="true"></i>Accueil</a></li>
+      {items.map((i) => <li><a href={i.href} aria-current={current(i.href)}><i class="px" aria-hidden="true"></i>{i.label}</a></li>)}
+    </ul>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--block" href="/contact/">Parler de mon projet</a>
+    <p class="soft">Ou écrivez-nous : <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
+  </div>
+</div>

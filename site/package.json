@@ -1,0 +1,23 @@
+{
+  "name": "lunixel.fr",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site de Lunixel, studio web pour artisans, commerçants et TPE.",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@fontsource/instrument-serif": "5.3.0",
+    "astro": "7.3.4"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0",
+    "sharp": "0.35.4"
+  }
+}

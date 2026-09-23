@@ -1,0 +1,31 @@
+---
+// Une phase de lune en pixels (grille 9 × 9). Pixels allumés en or, pixels éteints en contour.
+interface Props { phase: number; class?: string }
+const { phase, class: cls = '' } = Astro.props;
+const angles = [0.3, 0.5, 0.72, 1, 1];
+const phi = angles[phase] * Math.PI;
+const cells = [];
+for (let r = 0; r < 9; r++) {
+  for (let c = 0; c < 9; c++) {
+    const x = (c - 4) / 4.5;
+    const y = (r - 4) / 4.5;
+    if (x * x + y * y > 1.02) continue;
+    const lit = -x >= Math.sqrt(Math.max(0, 1 - y * y)) * Math.cos(phi) - 0.05;
+    cells.push({ c, r, lit });
+  }
+}
+const spark = phase === 4;
+---
+<svg class:list={['moon-phase', cls]} viewBox={spark ? '-0.2 -0.2 12.4 9.4' : '-0.2 -0.2 9.4 9.4'} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  {cells.map((p) => <rect x={p.c + 0.08} y={p.r + 0.08} width="0.84" height="0.84" rx="0.16" class={p.lit ? undefined : 'off'} />)}
+  {spark && (
+    <>
+      <rect class="spark" x="10.08" y="0.08" width="0.84" height="0.84" rx="0.16" />
+      <rect class="spark" x="9.08" y="1.08" width="0.84" height="0.84" rx="0.16" />
+      <rect class="spark" x="10.08" y="1.08" width="0.84" height="0.84" rx="0.16" />
+      <rect class="spark" x="11.08" y="1.08" width="0.84" height="0.84" rx="0.16" />
+      <rect class="spark" x="10.08" y="2.08" width="0.84" height="0.84" rx="0.16" />
+      <rect x="11.08" y="5.08" width="0.84" height="0.84" rx="0.16" />
+    </>
+  )}
+</svg>

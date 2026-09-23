@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config.js';
+---
+<Base title="Confidentialité · Lunixel" description="Comment Lunixel traite les informations envoyées depuis le site lunixel.fr. Pas de cookies, pas de pistage.">
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Confidentialité</li></ol></nav>
+      <h1 class="h-1 display">Confidentialité</h1>
+      <p class="lead">En bref : pas de cookies, pas de pistage. Ce que vous nous écrivez sert uniquement à vous répondre.</p>
+    </div>
+  </section>
+  <section class="section theme-jour">
+    <div class="container prose">
+      <h2>Ce que nous collectons</h2>
+      <p>Uniquement ce que vous choisissez de nous envoyer via le formulaire de contact ou par e-mail : votre prénom, le nom de votre entreprise, votre activité, votre projet, votre message, et votre e-mail ou votre téléphone.</p>
+      <h2>Pourquoi</h2>
+      <p>Pour répondre à votre demande et, si vous le souhaitez, préparer un devis. La base légale est votre demande elle-même (mesures précontractuelles). Vos informations ne sont jamais vendues ni utilisées pour de la prospection sans votre accord.</p>
+      <h2>Combien de temps</h2>
+      <p>Le temps nécessaire pour vous répondre et, le cas échéant, pour notre relation de travail. Sans suite de votre part, vos informations sont supprimées au plus tard trois ans après notre dernier échange.</p>
+      <h2>Qui y a accès</h2>
+      <p>Seulement Lunixel. Les messages transitent par notre messagerie professionnelle (OVH){site.web3formsKey ? ' et par le service d’envoi de formulaires Web3Forms' : ''}, qui agissent pour notre compte.</p>
+      <h2>Cookies et mesure d’audience</h2>
+      <p>Ce site ne dépose aucun cookie et n’utilise aucun outil de pistage publicitaire. Les polices de caractères sont hébergées sur le site lui-même : aucune donnée n’est transmise à un tiers quand vous le consultez.</p>
+      <h2>Vos droits</h2>
+      <p>Vous pouvez à tout moment demander l’accès, la rectification ou la suppression de vos informations en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>. Vous pouvez aussi adresser une réclamation à la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.</p>
+    </div>
+  </section>
+</Base>

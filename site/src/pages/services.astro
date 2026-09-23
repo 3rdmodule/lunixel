@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import Besoins from '../components/Besoins.astro';
+import Formules from '../components/Formules.astro';
+import Methode from '../components/Methode.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Vitrine from '../components/Vitrine.astro';
+import Status from '../components/Status.astro';
+import { projects } from '../data/projects.js';
+const nube = projects.find((p) => p.slug === 'nube-games');
+---
+<Base
+  title="Création et entretien de sites · Lunixel"
+  description="Site vitrine, référencement, hébergement, maintenance, outils sur mesure et applications web : ce que Lunixel prend en charge pour les petites entreprises."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Services</li></ol></nav>
+      <h1 class="h-1 display">Tout ce qu’un site demande. Sans que vous ayez à y penser.</h1>
+      <p class="lead">De la première idée à la mise en ligne, puis chaque mois : conception, design, développement, référencement, hébergement, maintenance, outils sur mesure. <strong>Un seul interlocuteur pour tout.</strong></p>
+      <div class="cta-row"><a class="btn" href="/contact/">Parler de mon projet</a><a class="arrow-link" href="#formules">Voir les formules</a></div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" aria-labelledby="besoins-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Vos besoins, nos réponses</p>
+        <h2 id="besoins-title" class="h-2">On part de ce que vous voulez obtenir, pas de la technique.</h2>
+        <p class="lead">Chaque mot technique est traduit : touchez « En clair ».</p>
+      </div>
+      <Besoins detailed />
+    </div>
+  </section>
+
+  <section class="section theme-nuit" aria-labelledby="outils-title">
+    <div class="container work">
+      <div class="work__media lightable" data-light>
+        <Vitrine project={nube} variant={'jeu'} alt="Le jeu Fields of Fire, développé par Lunixel, dans le navigateur" />
+      </div>
+      <div class="work__body" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Outils sur mesure et applications web</p>
+        <h2 id="outils-title" class="h-2">Quand un site ne suffit plus.</h2>
+        <p class="soft">Réservation, catalogue, espace client, outil interne, automatisations : on développe ce dont votre activité a besoin. Jusqu’à de vraies applications, comme <strong style="color:var(--fg)">Fields of Fire</strong>, un jeu de société jouable en ligne de 3 à 6 joueurs.</p>
+        <Status kind="realisation" />
+        <a class="arrow-link" href="/realisations/nube-games/">Voir l’étude de cas Nube Games</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" id="formules" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="formules-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Formules</p>
+        <h2 id="formules-title" class="h-2">Des prix annoncés avant de commencer. Pas de surprise après.</h2>
+        <p class="lead">Chaque projet reçoit un devis clair, détaillé et gratuit après un premier échange.</p>
+      </div>
+      <Formules />
+    </div>
+  </section>
+
+  <Methode id="methode-services" />
+  <Faq full />
+  <FinalCta />
+</Base>

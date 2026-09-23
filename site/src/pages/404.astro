@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Moon from '../components/Moon.astro';
+---
+<Base title="Page introuvable · Lunixel" description="Cette page est restée dans l’ombre." mobileCta={false} noindex>
+  <section class="lost theme-nuit">
+    <div class="lost__inner">
+      <Moon assemble />
+      <p class="eyebrow">Erreur 404</p>
+      <h1 class="h-1 display">Cette page est restée dans l’ombre.</h1>
+      <p class="lead">Elle a peut-être changé d’adresse. Reprenons depuis un repère connu.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn" href="/">Retour à l’accueil</a>
+        <a class="arrow-link" href="/contact/">Parler de mon projet</a>
+      </div>
+    </div>
+  </section>
+</Base>

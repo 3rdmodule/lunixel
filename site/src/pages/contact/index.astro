@@ -1,0 +1,121 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../config.js';
+import { activites, projetTypes } from '../../data/content.js';
+const delais = [['vite', 'Dès que possible'], ['3-mois', 'Dans les 3 mois'], ['pas-presse', 'Pas pressé']];
+const budgets = [['moins-1500', 'Moins de 1 500 €'], ['1500-3000', '1 500 à 3 000 €'], ['3000-6000', '3 000 à 6 000 €'], ['plus-6000', 'Plus de 6 000 €'], ['ne-sait-pas', 'Je ne sais pas']];
+const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:${site.email}`;
+---
+<Base
+  title="Parler de mon projet · Lunixel"
+  description="Quatre questions pour démarrer la conversation. Premier échange gratuit, sans engagement, réponse sous 48 h."
+  mobileCta={false}
+>
+  <section class="page-hero theme-nuit" style="padding-bottom:var(--section)">
+    <div class="container contact-layout">
+      <div class="contact-aside">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Contact</li></ol></nav>
+        <h1 class="h-1 display">Parlons de votre <span class="lumiere">projet</span>.</h1>
+        <p class="lead">Quatre questions, deux minutes. Pas besoin de savoir exactement ce que vous voulez : c’est à ça que sert le premier échange.</p>
+        <div>
+          <p class="eyebrow" style="margin-bottom:var(--s-2)"><i class="px" aria-hidden="true"></i>Et ensuite ?</p>
+          <ol class="next-steps" role="list">
+            <li><span>On lit votre message avec attention.</span></li>
+            <li><span>On vous répond sous {site.responseTime}, par e-mail ou par téléphone.</span></li>
+            <li><span>On convient d’un premier échange de 30 minutes, gratuit et sans engagement.</span></li>
+          </ol>
+        </div>
+        <p class="soft">Vous préférez écrire directement ?<br /><a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+
+      <form class="form" action={action} method="post" enctype={site.web3formsKey ? undefined : 'text/plain'} data-contact-form data-key={site.web3formsKey || undefined} data-to={site.email} novalidate>
+        {site.web3formsKey && (<>
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input type="hidden" name="redirect" value="https://lunixel.fr/contact/merci/" />
+          <input type="hidden" name="subject" value="Nouveau projet depuis lunixel.fr" />
+        </>)}
+        <div class="form__progress" aria-hidden="true">
+          <ol data-progress><li></li><li></li><li></li><li></li></ol>
+          <span data-counter>Étape 1 sur 4</span>
+        </div>
+        <p class="sr-only" aria-live="polite" data-counter-live></p>
+
+        <fieldset data-step="activite" class="is-current">
+          <legend>Vous êtes…<small>Choisissez ce qui vous ressemble le plus.</small></legend>
+          <div class="choice-list">
+            {activites.map(([v, l]) => (
+              <label class="choice"><input type="radio" name="activite" value={v} data-label={l} required /><span>{l}</span></label>
+            ))}
+          </div>
+          <p class="error" data-error-for="activite" role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="projet">
+          <legend>Votre projet<small>Une seule réponse, vous pourrez tout préciser ensuite.</small></legend>
+          <div class="choice-list">
+            {projetTypes.map(([v, l]) => (
+              <label class="choice"><input type="radio" name="projet" value={v} data-label={l} required /><span>{l}</span></label>
+            ))}
+          </div>
+          <p class="error" data-error-for="projet" role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="details">
+          <legend>En quelques mots<small>Tout est facultatif ici.</small></legend>
+          <div class="field">
+            <label for="message">Votre activité, votre idée, vos questions</label>
+            <textarea id="message" name="message" rows="5" placeholder="Ex. : Je suis fleuriste à Caen, j’aimerais que mes clients puissent voir mes bouquets et commander pour les fêtes."></textarea>
+          </div>
+          <div class="field">
+            <span class="label" id="delai-l">Quand aimeriez-vous être en ligne ?</span>
+            <div class="choice-list" role="radiogroup" aria-labelledby="delai-l">
+              {delais.map(([v, l]) => (<label class="choice"><input type="radio" name="delai" value={v} data-label={l} /><span>{l}</span></label>))}
+            </div>
+          </div>
+          <div class="field">
+            <span class="label" id="budget-l">Avez-vous une idée de budget ?</span>
+            <div class="choice-list" role="radiogroup" aria-labelledby="budget-l">
+              {budgets.map(([v, l]) => (<label class="choice"><input type="radio" name="budget" value={v} data-label={l} /><span>{l}</span></label>))}
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="contact">
+          <legend>Pour vous répondre<small>Un e-mail ou un téléphone, au choix.</small></legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" autocomplete="given-name" required aria-describedby="err-prenom" />
+              <p class="error" id="err-prenom" data-error-for="prenom" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="entreprise">Entreprise <span class="soft">(facultatif)</span></label>
+              <input id="entreprise" name="entreprise" autocomplete="organization" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="err-email" />
+              <p class="error" id="err-email" data-error-for="email" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" name="rappel" value="oui" /> <span>Je préfère être rappelé(e)</span></label>
+          <input class="honey" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <p class="form__legal">Vos informations servent uniquement à vous répondre. <a href="/confidentialite/">En savoir plus</a>.</p>
+        </fieldset>
+
+        <div class="form__nav">
+          <button class="btn" type="button" data-prev hidden>← Retour</button>
+          <button class="btn" type="button" data-next>Continuer</button>
+          <button class="btn" type="submit" data-submit><span class="label">Envoyer ma demande</span><span class="loader" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        </div>
+        <p class="form__status" data-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</Base>

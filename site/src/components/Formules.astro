@@ -1,0 +1,25 @@
+---
+import { formules } from '../data/content.js';
+import { site } from '../config.js';
+const price = (k) => site.prices[k];
+---
+<div class="formules">
+  {formules.map((f) => (
+    <article class:list={['formule', { 'formule--featured': f.featured }]} data-reveal>
+      <h3>{f.name}</h3>
+      <p>{f.pitch}</p>
+      <p class="formule__price">{price(f.key) ? (<>À partir de <strong>{price(f.key)}</strong></>) : (<strong>Sur devis</strong>)}</p>
+      <ul role="list">
+        {f.items.map((it) => <li><i class="px" aria-hidden="true"></i>{it}</li>)}
+      </ul>
+    </article>
+  ))}
+</div>
+<div class="serenite" data-reveal>
+  <div>
+    <p class="eyebrow"><i class="px" aria-hidden="true"></i>Chaque mois</p>
+    <h3 class="h-3" style="margin-top:0.5rem">Sérénité</h3>
+  </div>
+  <p class="soft">Hébergement, nom de domaine, sauvegardes, sécurité, mises à jour et petites modifications : votre site reste en ligne et en forme, sans que vous ayez à y penser.</p>
+  <p class="formule__price">{price('serenite') ? (<>À partir de <strong>{price('serenite')}</strong>/mois</>) : (<strong>Sur devis</strong>)}</p>
+</div>

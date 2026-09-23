@@ -1,0 +1,9 @@
+---
+interface Props { kind: 'realisation' | 'concept'; short?: boolean }
+const { kind, short = false } = Astro.props;
+const live = kind === 'realisation';
+---
+<span class:list={['status', live ? 'status--live' : 'status--concept']}>
+  <i class:list={['px', { 'px--off': !live }]} aria-hidden="true"></i>
+  {live ? (short ? 'Réalisation' : 'Réalisation · en ligne') : (short ? 'Concept' : 'Concept · sans commande')}
+</span>

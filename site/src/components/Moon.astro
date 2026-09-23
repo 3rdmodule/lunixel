@@ -1,0 +1,9 @@
+---
+// La lune seule (favicon, 404).
+import { MOON_CELLS, MOON_COLORS } from '../data/logo.js';
+interface Props { class?: string; assemble?: boolean }
+const { class: cls = '', assemble = false } = Astro.props;
+---
+<svg class:list={[cls, { assemble }]} viewBox="85 85 271 292" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  {MOON_CELLS.map(([c, r, k]) => <rect x={85 + c * 21} y={85 + r * 21} width="19" height="19" rx="2.6" fill={MOON_COLORS[k]} style={assemble ? `--d:${(13 - r) * 40 + c * 15}` : undefined} />)}
+</svg>

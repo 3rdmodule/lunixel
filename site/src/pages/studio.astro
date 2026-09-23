@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import StudioBlock from '../components/StudioBlock.astro';
+import Engagements from '../components/Engagements.astro';
+import Methode from '../components/Methode.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { piliers } from '../data/content.js';
+---
+<Base
+  title="Le studio · Lunixel"
+  description="Lunixel, lune et pixel : un studio web indépendant, à taille humaine, qui met les petites entreprises en lumière. Ce qu’on fait, comment, et ce qu’on vous promet."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Le studio</li></ol></nav>
+      <h1 class="h-1 display">Un studio à taille humaine, un soin sans raccourci.</h1>
+      <p class="lead">Lunixel est un studio web indépendant. On conçoit, on construit et on entretient les sites des artisans, commerçants, indépendants et petites structures. <strong>Vous avez un métier ; on s’occupe du web.</strong></p>
+    </div>
+  </section>
+
+  <section class="section theme-jour" aria-labelledby="nom-title">
+    <div class="container studio">
+      <div class="section-head" style="margin:0" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le nom</p>
+        <h2 id="nom-title" class="h-2">Une lune faite de pixels.</h2>
+        <p class="lead">Le pixel, c’est le détail : chaque bouton, chaque mot, chaque seconde de chargement compte. La lune, c’est la lumière dans la nuit, et le repère qui revient chaque soir.</p>
+      </div>
+      <StudioBlock />
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="padding-top:0" aria-labelledby="facon-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Notre façon de travailler</p>
+        <h2 id="facon-title" class="h-2">Ni grosse agence, ni solution toute faite.</h2>
+        <p class="lead">Le niveau d’exigence d’un studio, la simplicité d’un bon artisan : vous savez à qui vous parlez, ce que vous aurez, et combien ça coûte.</p>
+      </div>
+      <div class="piliers">
+        {piliers.map((p, i) => (
+          <div class="pilier" data-reveal>
+            <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="background:var(--papier-ombre)" aria-labelledby="engagements-title">
+    <div class="container studio">
+      <div class="section-head" style="margin:0" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Nos engagements</p>
+        <h2 id="engagements-title" class="h-2">Ce qu’on vous promet, noir sur blanc.</h2>
+        <p class="lead">Un prestataire injoignable, un site impossible à récupérer, une facture qui surprend : ça n’arrivera pas ici.</p>
+      </div>
+      <Engagements />
+    </div>
+  </section>
+
+  <Methode id="methode-studio" />
+  <FinalCta />
+</Base>

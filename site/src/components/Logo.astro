@@ -1,0 +1,13 @@
+---
+// Logo officiel, vectorisé. Le wordmark prend la couleur du texte (currentColor).
+import { MOON_CELLS, MOON_COLORS, WORDMARK_D } from '../data/logo.js';
+interface Props { assemble?: boolean; class?: string; label?: string }
+const { assemble = false, class: cls = '', label = 'Lunixel' } = Astro.props;
+// Ordre d'apparition : du bas du croissant vers le pixel isolé
+const cells = MOON_CELLS.map(([c, r, k], i) => ({ x: 85 + c * 21, y: 85 + r * 21, k, d: Math.round((13 - r) * 38 + c * 12) }));
+---
+<svg class:list={[cls, { assemble }]} viewBox="85 75 1419 302" role="img" aria-label={label} xmlns="http://www.w3.org/2000/svg">
+  {cells.map((p) => <rect x={p.x} y={p.y} width="19" height="19" rx="2.6" fill={MOON_COLORS[p.k]} style={assemble ? `--d:${p.d}` : undefined} />)}
+  <path fill="currentColor" d={WORDMARK_D} />
+  <rect x="1010" y="83" width="38" height="38" rx="5.2" fill="#F6B940" style={assemble ? '--d:620' : undefined} />
+</svg>

@@ -1,0 +1,38 @@
+---
+import MoonPhase from './MoonPhase.astro';
+import { etapes } from '../data/content.js';
+interface Props { headingLevel?: 'h2' | 'h3'; id?: string }
+const { id = 'methode' } = Astro.props;
+---
+<section class="section theme-nuit" id={id} aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <div class="methode" data-method>
+      <div>
+        <div class="section-head" style="margin-bottom:var(--s-5)">
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Comment ça se passe</p>
+          <h2 id={`${id}-title`} class="h-2">Cinq étapes. Vous savez toujours où on en est.</h2>
+          <p class="lead">Votre projet prend de la lumière à chaque étape, jusqu’à la mise en ligne. Et après, on reste là.</p>
+        </div>
+        <div class="methode__big" aria-hidden="true">
+          {etapes.map((_, i) => <MoonPhase phase={i} class={i === 0 ? 'is-active' : ''} />)}
+        </div>
+      </div>
+      <ol class="etapes" role="list">
+        {etapes.map((e, i) => (
+          <li class="etape" data-step={i}>
+            <MoonPhase phase={i} />
+            <div>
+              <h3>{e.title}</h3>
+              <p>{e.text}</p>
+              <p class="etape__phase">{String(i + 1).padStart(2, '0')} · {e.phase}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="cta-row" style="margin-top:var(--s-5)">
+      <a class="btn" href="/contact/">Parler de mon projet</a>
+      <span class="soft">Le premier échange est gratuit.</span>
+    </div>
+  </div>
+</section>

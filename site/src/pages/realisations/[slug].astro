@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import Vitrine from '../../components/Vitrine.astro';
+import Status from '../../components/Status.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { realisations, projectPath } from '../../data/projects.js';
+import { getCaptures } from '../../lib/captures.js';
+import { site } from '../../config.js';
+
+export function getStaticPaths() {
+  return realisations.map((p, i) => ({ params: { slug: p.slug }, props: { project: p, next: realisations[(i + 1) % realisations.length] } }));
+}
+const { project: p, next } = Astro.props;
+const caps = getCaptures(p.slug);
+const phones = [0, 1, 2];
+const url = `${site.url}${projectPath(p)}`;
+const jsonld = [
+  {
+    '@type': 'CreativeWork',
+    name: `Site ${p.name}`,
+    about: `${p.name}, ${p.business}`,
+    url,
+    creator: { '@id': `${site.url}/#studio` },
+    inLanguage: 'fr-FR',
+    sameAs: p.url,
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Réalisations', item: `${site.url}/realisations/` },
+      { '@type': 'ListItem', position: 3, name: p.name, item: url },
+    ],
+  },
+];
+const extras = p.extraCaptures || [];
+---
+<Base title={`${p.name} · Réalisation Lunixel`} description={`${p.tagline} ${p.summary}`} jsonld={jsonld}>
+  <section class="page-hero theme-nuit" style="padding-bottom:0">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/realisations/">Réalisations</a></li><li aria-current="page">{p.name}</li></ol></nav>
+        <Status kind="realisation" />
+        <h1 class="h-1 display">{p.name}</h1>
+        <p class="lead" style="max-width:44ch">{p.tagline}</p>
+      </div>
+      <div class="case-cover lightable is-lit">
+        <Vitrine project={p} eager vt={`shot-${p.slug}`} sizes="(min-width: 90rem) 1360px, 94vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-nuit" aria-labelledby="besoin-title">
+    <div class="container case-intro">
+      <div class="prose" data-reveal>
+        <h2 id="besoin-title" class="h-3" style="margin-bottom:var(--s-3)">Le besoin</h2>
+        <p class="lead" style="max-width:52ch;color:var(--fg)">{p.need}</p>
+        <p class="soft">{p.summary}</p>
+        {p.note && <p class="soft"><em>{p.note}</em></p>}
+      </div>
+      <dl class="fiche" data-reveal>
+        <div><dt>Client</dt><dd>{p.name}</dd></div>
+        <div><dt>Activité</dt><dd>{p.business}</dd></div>
+        <div><dt>Prestations</dt><dd>{p.services.join(', ')}</dd></div>
+        <div><dt>Technique</dt><dd>{p.tech.join(', ')}</dd></div>
+        <div><dt>En ligne</dt><dd><a href={p.url} rel="noopener" target="_blank">{p.url.replace(/^https:\/\/|\/$/g, '')}<span class="sr-only"> (nouvel onglet)</span></a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section theme-jour" aria-labelledby="decisions-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ce qu’on a fait</p>
+        <h2 id="decisions-title" class="h-2">Trois décisions qui font le site.</h2>
+      </div>
+      <div class="decisions">
+        {p.decisions.map((d, i) => (
+          <div class="decision" data-reveal>
+            <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+            <h3>{d.title}</h3>
+            <p>{d.text}</p>
+          </div>
+        ))}
+      </div>
+      {extras.filter((x) => caps.extra?.[x.key]).map((x) => (
+        <figure style="margin-top:var(--s-6);display:grid;gap:var(--s-2)" data-reveal>
+          <Vitrine project={p} variant={x.key} alt={x.label} sizes="(min-width: 90rem) 1360px, 94vw" />
+          <figcaption class="soft">{x.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  {caps.mobile?.length > 0 && (
+    <section class="section theme-jour" style="background:var(--papier-ombre);padding-bottom:calc(var(--section) + 2.5rem)" aria-labelledby="mobile-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Sur téléphone</p>
+          <h2 id="mobile-title" class="h-2">Pensé d’abord pour le pouce.</h2>
+          <p class="lead">La plupart des visiteurs arrivent depuis un téléphone. Le site y est aussi soigné que sur grand écran.</p>
+        </div>
+        <div class="phones">
+          {phones.filter((i) => caps.mobile[i]).map((i) => <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du site ${p.name} sur téléphone`} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section theme-nuit" aria-labelledby="resultat-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le résultat</p>
+        <h2 id="resultat-title" class="h-2">En ligne, et visible par tous.</h2>
+      </div>
+      <dl class="facts" data-reveal>
+        {p.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+      <div class="cta-row" style="margin-top:var(--s-5)">
+        <a class="btn btn--ghost" href={p.url} rel="noopener" target="_blank">Visiter le site<span class="sr-only"> (nouvel onglet)</span></a>
+      </div>
+      <hr class="rule" style="margin-block:var(--s-7) var(--s-5)" />
+      <a class="next-project" href={projectPath(next)}>
+        <span class="eyebrow">Réalisation suivante</span>
+        <span class="h-2 display">{next.name} →</span>
+      </a>
+    </div>
+  </section>
+  <FinalCta title="Votre projet pourrait être la prochaine étude de cas." lead="Dites-nous qui vous êtes et ce dont vous avez besoin. On vous répond avec des mots simples." />
+</Base>
