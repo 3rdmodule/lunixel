@@ -1,17 +1,22 @@
 ---
 import MoonPhase from './MoonPhase.astro';
 import { etapes } from '../data/content.js';
-interface Props { headingLevel?: 'h2' | 'h3'; id?: string }
-const { id = 'methode' } = Astro.props;
+import { site } from '../config.js';
+interface Props { id?: string; title?: string; lead?: string }
+const {
+  id = 'methode',
+  title = 'Comment ça se passe, concrètement',
+  lead = `En général, ${site.delay} entre notre premier appel et la mise en ligne.`,
+} = Astro.props;
 ---
 <section class="section theme-nuit" id={id} aria-labelledby={`${id}-title`}>
   <div class="container">
     <div class="methode" data-method>
       <div>
         <div class="section-head" style="margin-bottom:var(--s-5)">
-          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Comment ça se passe</p>
-          <h2 id={`${id}-title`} class="h-2">Cinq étapes. Vous savez toujours où on en est.</h2>
-          <p class="lead">Votre projet prend de la lumière à chaque étape, jusqu’à la mise en ligne. Et après, on reste là.</p>
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Méthode</p>
+          <h2 id={`${id}-title`} class="h-2">{title}</h2>
+          <p class="lead">{lead}</p>
         </div>
         <div class="methode__big" aria-hidden="true">
           {etapes.map((_, i) => <MoonPhase phase={i} class={i === 0 ? 'is-active' : ''} />)}

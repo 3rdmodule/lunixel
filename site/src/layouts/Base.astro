@@ -34,9 +34,17 @@ const graph = [
     email: site.email,
     description: site.description,
     slogan: site.signature,
-    logo: `${site.url}/favicon.svg`,
-    areaServed: { '@type': 'Country', name: 'France' },
+    logo: `${site.url}/generated/icons/apple-touch-icon.png`,
+    image: `${site.url}/generated/og/accueil.jpg`,
+    address: { '@type': 'PostalAddress', addressLocality: site.location.city, addressRegion: site.location.region, addressCountry: 'FR' },
+    areaServed: [
+      { '@type': 'City', name: site.location.city },
+      { '@type': 'AdministrativeArea', name: 'Métropole européenne de Lille' },
+      { '@type': 'Country', name: 'France' },
+    ],
+    priceRange: `À partir de ${site.prices.presence}`,
     knowsLanguage: 'fr',
+    ...(site.founder?.name ? { founder: { '@type': 'Person', name: site.founder.name } } : {}),
   },
   { '@type': 'WebSite', '@id': `${site.url}/#site`, url: `${site.url}/`, name: 'Lunixel', inLanguage: 'fr-FR', publisher: { '@id': `${site.url}/#studio` } },
   ...jsonld,
@@ -50,8 +58,7 @@ const graph = [
     <script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content="#1B1E3C" />
     <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

@@ -2,19 +2,23 @@
 import Base from '../layouts/Base.astro';
 import StudioBlock from '../components/StudioBlock.astro';
 import Engagements from '../components/Engagements.astro';
-import Methode from '../components/Methode.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { piliers } from '../data/content.js';
+import { site } from '../config.js';
+const { name, photo } = site.founder || {};
 ---
 <Base
-  title="Le studio · Lunixel"
-  description="Lunixel, lune et pixel : un studio web indépendant, à taille humaine, qui met les petites entreprises en lumière. Ce qu’on fait, comment, et ce qu’on vous promet."
+  title="Qui est derrière Lunixel, studio web indépendant"
+  description={`Lunixel est un studio web d’une seule personne, basé à ${site.location.city}. Un interlocuteur, des prix écrits, un suivi après la mise en ligne.`}
 >
   <section class="page-hero theme-nuit">
-    <div class="container page-hero__inner">
-      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Le studio</li></ol></nav>
-      <h1 class="h-1 display">Un studio à taille humaine, un soin sans raccourci.</h1>
-      <p class="lead">Lunixel est un studio web indépendant. On conçoit, on construit et on entretient les sites des artisans, commerçants, indépendants et petites structures. <strong>Vous avez un métier ; on s’occupe du web.</strong></p>
+    <div class:list={['container', { 'studio-hero': photo }]}>
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Le studio</li></ol></nav>
+        <h1 class="h-1 display">Qui est derrière Lunixel</h1>
+        <p class="lead">Une seule personne : moi{name && `, ${name}`}. Je conçois, j’écris et je code chaque site, et c’est moi que vous avez au téléphone. <strong>Je suis basé à {site.location.city}, {site.location.near}, et je travaille avec des clients partout en France.</strong></p>
+      </div>
+      {photo && <img class="studio-photo" src={photo} alt={name ? `${name}, Lunixel` : 'Le fondateur de Lunixel'} width="640" height="800" loading="eager" />}
     </div>
   </section>
 
@@ -22,8 +26,8 @@ import { piliers } from '../data/content.js';
     <div class="container studio">
       <div class="section-head" style="margin:0" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le nom</p>
-        <h2 id="nom-title" class="h-2">Une lune faite de pixels.</h2>
-        <p class="lead">Le pixel, c’est le détail : chaque bouton, chaque mot, chaque seconde de chargement compte. La lune, c’est la lumière dans la nuit, et le repère qui revient chaque soir.</p>
+        <h2 id="nom-title" class="h-2">Pourquoi « Lunixel »</h2>
+        <p class="lead">Lune + pixel. Le pixel pour le soin du détail. La lune parce qu’un site, c’est ce qui reste allumé quand votre boutique est fermée.</p>
       </div>
       <StudioBlock />
     </div>
@@ -32,9 +36,9 @@ import { piliers } from '../data/content.js';
   <section class="section theme-jour" style="padding-top:0" aria-labelledby="facon-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Notre façon de travailler</p>
-        <h2 id="facon-title" class="h-2">Ni grosse agence, ni solution toute faite.</h2>
-        <p class="lead">Le niveau d’exigence d’un studio, la simplicité d’un bon artisan : vous savez à qui vous parlez, ce que vous aurez, et combien ça coûte.</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ma façon de travailler</p>
+        <h2 id="facon-title" class="h-2">Un petit studio, pour de bonnes raisons</h2>
+        <p class="lead">Pas de commercial, pas d’intermédiaire. La personne qui vous répond au téléphone est celle qui fait votre site.</p>
       </div>
       <div class="piliers">
         {piliers.map((p, i) => (
@@ -51,14 +55,31 @@ import { piliers } from '../data/content.js';
   <section class="section theme-jour" style="background:var(--papier-ombre)" aria-labelledby="engagements-title">
     <div class="container studio">
       <div class="section-head" style="margin:0" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Nos engagements</p>
-        <h2 id="engagements-title" class="h-2">Ce qu’on vous promet, noir sur blanc.</h2>
-        <p class="lead">Un prestataire injoignable, un site impossible à récupérer, une facture qui surprend : ça n’arrivera pas ici.</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Mes engagements</p>
+        <h2 id="engagements-title" class="h-2">Quatre règles que je m’impose</h2>
+        <p class="lead">Vous pouvez me les rappeler si je ne les tiens pas.</p>
       </div>
       <Engagements />
     </div>
   </section>
 
-  <Methode id="methode-studio" />
-  <FinalCta />
+  <FinalCta title="On en parle ?" lead="30 minutes au téléphone, gratuites, pour voir si on est faits pour travailler ensemble." />
 </Base>
+
+<style>
+  .studio-hero {
+    display: grid;
+    gap: var(--s-5);
+    align-items: end;
+  }
+  .studio-photo {
+    width: min(100%, 22rem);
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+  @media (min-width: 64rem) {
+    .studio-hero {
+      grid-template-columns: 1fr auto;
+    }
+  }
+</style>

@@ -65,7 +65,7 @@ export function initForm(form) {
       const prenom = form.prenom.value.trim();
       const email = form.email.value.trim();
       const tel = form.telephone.value.trim();
-      setError('prenom', prenom ? '' : 'Indiquez votre prénom, pour qu’on sache à qui répondre.');
+      setError('prenom', prenom ? '' : 'Indiquez votre prénom, pour que je sache à qui répondre.');
       let contactMsg = '';
       if (!email && !tel) contactMsg = 'Laissez un e-mail ou un téléphone, au choix.';
       else if (email && !EMAIL.test(email)) contactMsg = email.includes('@') ? 'L’adresse e-mail semble incomplète.' : 'Il manque le @ dans l’adresse e-mail.';
@@ -136,7 +136,7 @@ export function initForm(form) {
     if (!key) {
       const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(toText(s))}`;
       window.location.href = href;
-      status.innerHTML = `Votre messagerie s’ouvre avec votre message prêt à partir : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez-nous directement à <a href="mailto:${to}">${to}</a>.`;
+      status.innerHTML = `Votre messagerie s’ouvre avec votre message prêt à partir : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez-moi directement à <a href="mailto:${to}">${to}</a>.`;
       return;
     }
 

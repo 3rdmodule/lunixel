@@ -53,6 +53,7 @@ const style = `--a-bg:${p.bg};--a-fg:${p.fg};--a-accent:${p.accent}`;
         {project.slug === '3rd-records' && (<><div class="disc"></div><p class="apercu__title"><b>3RD</b> records</p><p class="apercu__kicker">Pop · Bedroom pop · Lofi · Hip-hop</p></>)}
         {project.slug === 'nube-games' && (<><p class="apercu__kicker">Prototype · jouable en ligne</p><p class="apercu__title">Fields <em>of</em> Fire</p><p class="apercu__sub">La partie est lancée. À vous de jouer.</p><span class="apercu__btn">Jouer gratuitement</span></>)}
         {project.slug === 'le-domaine-musical' && (<><p class="apercu__kicker">Saint-Lô · Normandie · depuis 1988</p><p class="apercu__title">Au cœur des cordes</p><p class="apercu__sub">Pianos neufs, récents et restaurés, quatuor à cordes, guitares.</p><span class="apercu__btn">Voir les 227 instruments</span></>)}
+        {project.apercu && (<><p class="apercu__kicker">{project.apercu.kicker}</p><p class="apercu__title">{project.apercu.title}</p><p class="apercu__sub">{project.apercu.sub}</p>{project.apercu.btn && <span class="apercu__btn">{project.apercu.btn}</span>}</>)}
         {project.slug === 'fabienne-hiot' && (<><p class="apercu__kicker">Naturopathe · Biorésonance</p><p class="apercu__title">Vibrez en harmonie pour votre bien-être</p><p class="apercu__sub">Naturopathie, réflexologie et massages, à Agay.</p><span class="apercu__btn">Prendre rendez-vous</span></>)}
       </div>
     )}

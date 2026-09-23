@@ -1,14 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { site } from '../../config.js';
-import { activites, projetTypes } from '../../data/content.js';
+import { activites, projetTypes, budgets } from '../../data/content.js';
 const delais = [['vite', 'Dès que possible'], ['3-mois', 'Dans les 3 mois'], ['pas-presse', 'Pas pressé']];
-const budgets = [['moins-1500', 'Moins de 1 500 €'], ['1500-3000', '1 500 à 3 000 €'], ['3000-6000', '3 000 à 6 000 €'], ['plus-6000', 'Plus de 6 000 €'], ['ne-sait-pas', 'Je ne sais pas']];
 const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:${site.email}`;
 ---
 <Base
   title="Parler de mon projet · Lunixel"
-  description="Quatre questions pour démarrer la conversation. Premier échange gratuit, sans engagement, réponse sous 48 h."
+  description={`Quatre questions pour démarrer. Premier échange gratuit, réponse sous 48 h. Basé à ${site.location.city}, je travaille partout en France.`}
   mobileCta={false}
 >
   <section class="page-hero theme-nuit" style="padding-bottom:var(--section)">
@@ -20,11 +19,17 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
         <div>
           <p class="eyebrow" style="margin-bottom:var(--s-2)"><i class="px" aria-hidden="true"></i>Et ensuite ?</p>
           <ol class="next-steps" role="list">
-            <li><span>On lit votre message avec attention.</span></li>
-            <li><span>On vous répond sous {site.responseTime}, par e-mail ou par téléphone.</span></li>
-            <li><span>On convient d’un premier échange de 30 minutes, gratuit et sans engagement.</span></li>
+            <li><span>Je lis votre message moi-même.</span></li>
+            <li><span>Je vous réponds sous {site.responseTime}, par e-mail ou par téléphone.</span></li>
+            <li><span>On se cale un premier appel de 30 minutes, gratuit et sans engagement.</span></li>
           </ol>
         </div>
+        {site.bookingUrl && (
+          <div class="booking">
+            <p class="soft">Vous préférez choisir directement un créneau ?</p>
+            <a class="btn btn--ghost" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel de 30 min<span class="sr-only"> (nouvel onglet)</span></a>
+          </div>
+        )}
         <p class="soft">Vous préférez écrire directement ?<br /><a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
       </div>
 
@@ -64,7 +69,7 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
           <legend>En quelques mots<small>Tout est facultatif ici.</small></legend>
           <div class="field">
             <label for="message">Votre activité, votre idée, vos questions</label>
-            <textarea id="message" name="message" rows="5" placeholder="Ex. : Je suis fleuriste à Caen, j’aimerais que mes clients puissent voir mes bouquets et commander pour les fêtes."></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Ex. : Je suis fleuriste à Roubaix, j’aimerais que mes clients puissent voir mes bouquets et commander pour les fêtes."></textarea>
           </div>
           <div class="field">
             <span class="label" id="delai-l">Quand aimeriez-vous être en ligne ?</span>
@@ -119,3 +124,11 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
     </div>
   </section>
 </Base>
+
+<style>
+  .booking {
+    display: grid;
+    gap: var(--s-1);
+    justify-items: start;
+  }
+</style>

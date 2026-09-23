@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { site } from '../config.js';
+import { metiers, metierPath } from '../data/metiers.js';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer theme-profonde">
@@ -9,10 +10,11 @@ const year = new Date().getFullYear();
       <div class="footer-brand">
         <Logo label="Lunixel" />
         <p>{site.signature}</p>
+        <p class="footer-where">Basé à {site.location.city}, {site.location.near}. Je travaille partout en France.</p>
       </div>
       <div class="footer-cols">
         <div>
-          <h2>Le site</h2>
+          <p class="footer-title">Le site</p>
           <ul>
             <li><a href="/realisations/">Réalisations</a></li>
             <li><a href="/concepts/">Concepts</a></li>
@@ -21,14 +23,21 @@ const year = new Date().getFullYear();
           </ul>
         </div>
         <div>
-          <h2>Contact</h2>
+          <p class="footer-title">Pour qui</p>
           <ul>
-            <li><a href="/contact/">Parler de mon projet</a></li>
-            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+            {metiers.map((m) => <li><a href={metierPath(m)}>{m.label}</a></li>)}
           </ul>
         </div>
         <div>
-          <h2>Informations</h2>
+          <p class="footer-title">Contact</p>
+          <ul>
+            <li><a href="/contact/">Parler de mon projet</a></li>
+            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+            {site.bookingUrl && <li><a href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a></li>}
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Informations</p>
           <ul>
             <li><a href="/mentions-legales/">Mentions légales</a></li>
             <li><a href="/confidentialite/">Confidentialité</a></li>
@@ -45,6 +54,18 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  .footer-title {
+    font-family: var(--f-mono);
+    font-size: var(--step--2);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-soft);
+    margin: 0 0 var(--s-2);
+  }
+  .footer-where {
+    font-size: var(--step--1);
+  }
   .footer-powered {
     margin-top: var(--s-2);
     font-family: var(--f-mono);

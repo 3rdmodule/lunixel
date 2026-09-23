@@ -13,6 +13,7 @@ import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { projects, realisations, concepts } from '../data/projects.js';
 import { situations, piliers } from '../data/content.js';
+import { metiers, metierPath } from '../data/metiers.js';
 import { site } from '../config.js';
 
 const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
@@ -21,10 +22,11 @@ const heroShots = [
   { p: bySlug['nube-games'], variant: 'desktop' },
   { p: bySlug['le-domaine-musical'], variant: 'phone' },
 ];
+const name = site.founder?.name;
 ---
 <Base
-  title="Lunixel · Studio web pour artisans, commerçants et TPE"
-  description="Des sites sur mesure conçus, construits et entretenus pour les petites entreprises. Un seul interlocuteur, des prix clairs, zéro jargon."
+  title="Création de site internet pour artisans et TPE · Lunixel"
+  description="Sites internet sur mesure pour artisans, commerçants et indépendants, dès 200 €. Un seul interlocuteur, un prix écrit avant de commencer, un suivi après."
   assembleLogo
 >
   <!-- 1. Ouverture -->
@@ -32,16 +34,16 @@ const heroShots = [
     <div class="hero__halo" aria-hidden="true"></div>
     <div class="container grid hero__grid">
       <div class="hero__head">
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Studio web indépendant · Artisans, commerçants, indépendants</p>
-        <h1 id="hero-title" class="h-hero display">Vous avez un <span class="lumiere">métier</span>.<br />On s’occupe du web.</h1>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Création de sites internet · Artisans, commerçants, indépendants</p>
+        <h1 id="hero-title" class="h-hero display">Vous avez un <span class="lumiere">métier</span>.<br />Je m’occupe du web.</h1>
       </div>
       <div class="hero__sub">
-        <p class="lead">Lunixel conçoit, construit et entretient des sites sur mesure pour les petites entreprises. <strong>Un seul interlocuteur, des explications claires,</strong> et un site dont vous serez fier.</p>
+        <p class="lead">{name && `Je m’appelle ${name}. `}Je crée des sites pour des artisans, des boutiques, des thérapeutes, et je continue de m’en occuper une fois qu’ils sont en ligne. <strong>Vous m’expliquez votre métier, je fais le reste.</strong></p>
         <div class="cta-row">
           <a class="btn" href="/contact/">Parler de mon projet</a>
-          <a class="arrow-link" href="#travaux">Voir nos travaux</a>
+          <a class="arrow-link" href="#travaux">Voir mes travaux</a>
         </div>
-        <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit</span><span>Réponse sous {site.responseTime}</span></p>
+        <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit</span><span>Réponse sous {site.responseTime}</span><span>{site.location.city} · partout en France</span></p>
       </div>
       <div class="hero__visual">
         <div class="vitrines" aria-label="Quelques travaux du studio">
@@ -65,8 +67,8 @@ const heroShots = [
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>01 · Pour qui</p>
-        <h2 id="pour-qui-title" class="h-2">Pour ceux qui ont mieux à faire que de s’occuper d’un site.</h2>
-        <p class="lead">Atelier, boutique, cabinet, restaurant, association : votre temps va à votre métier. C’est normal. Vous vous reconnaissez ?</p>
+        <h2 id="pour-qui-title" class="h-2">Vous avez sûrement mieux à faire que de vous battre avec un site internet</h2>
+        <p class="lead">En général, c’est l’une de ces trois situations.</p>
       </div>
       <ul class="situations" role="list">
         {situations.map((s) => (
@@ -76,6 +78,10 @@ const heroShots = [
           </li>
         ))}
       </ul>
+      <p class="metiers-links" data-reveal>
+        <span class="soft">Voir ce que je fais pour :</span>
+        {metiers.map((m) => <a class="arrow-link" href={metierPath(m)}>{m.label}</a>)}
+      </p>
     </div>
   </section>
 
@@ -84,7 +90,7 @@ const heroShots = [
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · L’approche</p>
-        <h2 id="approche-title" class="h-2">Un seul interlocuteur, du premier appel à bien après la mise en ligne.</h2>
+        <h2 id="approche-title" class="h-2">Vous aurez affaire à moi, du premier appel jusqu’aux mises à jour</h2>
       </div>
       <div class="piliers">
         {piliers.map((p, i) => (
@@ -104,8 +110,8 @@ const heroShots = [
       <div class="work-head" data-reveal>
         <div class="section-head" style="margin:0">
           <p class="eyebrow"><i class="px" aria-hidden="true"></i>03 · Travaux</p>
-          <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent.</h2>
-          <p class="lead">Deux réalisations en ligne, deux concepts, quatre identités. Aucun modèle.</p>
+          <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent</h2>
+          <p class="lead">Deux sites en ligne et {concepts.length} concepts. Aucun ne ressemble aux autres, parce qu’aucun client ne ressemble aux autres.</p>
         </div>
         <div class="legend">
           <Status kind="realisation" />
@@ -117,8 +123,8 @@ const heroShots = [
       </div>
       <div class="concept-grid">
         <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
-          <h3 class="h-3">Et avant même de vous rencontrer, on imagine.</h3>
-          <p class="soft" style="max-width:52ch">Nos concepts sont des sites pensés pour de vrais commerces, sans commande, pour explorer ce que leur métier pourrait devenir en ligne.</p>
+          <h3 class="h-3">Et parfois, j’imagine un site avant qu’on me le demande</h3>
+          <p class="soft" style="max-width:52ch">Mes concepts sont des sites pensés pour de vrais commerces et artisans, sans commande, pour explorer ce que leur métier pourrait devenir en ligne.</p>
         </div>
         {concepts.map((p) => <ConceptCard project={p} />)}
       </div>
@@ -129,13 +135,13 @@ const heroShots = [
     </div>
   </section>
 
-  <!-- 5. Ce qu'on prend en charge -->
+  <!-- 5. Ce que je prends en charge -->
   <section class="section theme-jour" aria-labelledby="services-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Ce qu’on prend en charge</p>
-        <h2 id="services-title" class="h-2">Tout ce qu’un site demande, sans que vous ayez à y penser.</h2>
-        <p class="lead">Les mots techniques sont traduits : touchez « En clair » pour la version simple.</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Services</p>
+        <h2 id="services-title" class="h-2">Ce que je prends en charge</h2>
+        <p class="lead">Si un mot vous paraît technique, touchez « En clair ».</p>
       </div>
       <Besoins />
       <div class="cta-row" style="margin-top:var(--s-6)">
@@ -152,9 +158,9 @@ const heroShots = [
     <div class="container studio">
       <div class="section-head" style="margin:0" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>05 · Le studio</p>
-        <h2 id="studio-title" class="h-2">Un studio à taille humaine, un soin sans raccourci.</h2>
-        <p class="lead">Lunixel est un studio web indépendant. Pas de chaîne d’intermédiaires : vous parlez directement à ceux qui conçoivent et construisent votre site.</p>
-        <div><a class="arrow-link" href="/studio/">Découvrir le studio</a></div>
+        <h2 id="studio-title" class="h-2">{name ? `Derrière Lunixel, il y a ${name}` : 'Derrière Lunixel, une seule personne'}</h2>
+        <p class="lead">Lunixel, c’est moi. Je conçois, j’écris et je code chaque site, et c’est moi que vous avez au téléphone. Je suis basé à {site.location.city}, {site.location.near}, et je travaille avec des clients partout en France.</p>
+        <div><a class="arrow-link" href="/studio/">Qui est derrière Lunixel</a></div>
       </div>
       <div style="display:grid;gap:var(--s-5)">
         <StudioBlock />
@@ -167,9 +173,9 @@ const heroShots = [
   <section class="section theme-jour" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="prix-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>06 · Combien ça coûte</p>
-        <h2 id="prix-title" class="h-2">Des prix annoncés avant de commencer. Pas de surprise après.</h2>
-        <p class="lead">Chaque projet reçoit un devis clair, détaillé et gratuit. Voici comment on travaille ensemble.</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>06 · Prix</p>
+        <h2 id="prix-title" class="h-2">Combien ça coûte</h2>
+        <p class="lead">Voici les prix de départ. Après notre appel, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
       </div>
       <Formules />
     </div>
@@ -181,3 +187,13 @@ const heroShots = [
   <!-- 10. Appel final -->
   <FinalCta />
 </Base>
+
+<style>
+  .metiers-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-1) var(--s-3);
+    margin-top: var(--s-5);
+  }
+</style>

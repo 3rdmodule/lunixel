@@ -8,17 +8,18 @@ import FinalCta from '../components/FinalCta.astro';
 import Vitrine from '../components/Vitrine.astro';
 import Status from '../components/Status.astro';
 import { projects } from '../data/projects.js';
+import { metiers, metierPath } from '../data/metiers.js';
 const nube = projects.find((p) => p.slug === 'nube-games');
 ---
 <Base
-  title="Création et entretien de sites · Lunixel"
-  description="Site vitrine, référencement, hébergement, maintenance, outils sur mesure et applications web : ce que Lunixel prend en charge pour les petites entreprises."
+  title="Création de site internet, hébergement et suivi · Lunixel"
+  description="Site d’une ou plusieurs pages, référencement local, hébergement, suivi chaque mois et outils sur mesure, pour artisans, commerçants et TPE."
 >
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Services</li></ol></nav>
-      <h1 class="h-1 display">Tout ce qu’un site demande. Sans que vous ayez à y penser.</h1>
-      <p class="lead">De la première idée à la mise en ligne, puis chaque mois : conception, design, développement, référencement, hébergement, maintenance, outils sur mesure. <strong>Un seul interlocuteur pour tout.</strong></p>
+      <h1 class="h-1 display">Création de sites internet, et tout ce qui va avec</h1>
+      <p class="lead">Je conçois le site, je l’écris avec vous, je le mets en ligne et je m’en occupe ensuite. <strong>Vous n’avez qu’une personne à appeler.</strong></p>
       <div class="cta-row"><a class="btn" href="/contact/">Parler de mon projet</a><a class="arrow-link" href="#formules">Voir les formules</a></div>
     </div>
   </section>
@@ -26,11 +27,15 @@ const nube = projects.find((p) => p.slug === 'nube-games');
   <section class="section theme-jour" aria-labelledby="besoins-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Vos besoins, nos réponses</p>
-        <h2 id="besoins-title" class="h-2">On part de ce que vous voulez obtenir, pas de la technique.</h2>
-        <p class="lead">Chaque mot technique est traduit : touchez « En clair ».</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Vos besoins</p>
+        <h2 id="besoins-title" class="h-2">Ce que vous voulez obtenir</h2>
+        <p class="lead">Je pars de là, pas de la technique. Si un mot vous paraît technique, touchez « En clair ».</p>
       </div>
       <Besoins detailed />
+      <p class="metiers-links" data-reveal>
+        <span class="soft">Par métier :</span>
+        {metiers.map((m) => <a class="arrow-link" href={metierPath(m)}>{m.label}</a>)}
+      </p>
     </div>
   </section>
 
@@ -41,8 +46,8 @@ const nube = projects.find((p) => p.slug === 'nube-games');
       </div>
       <div class="work__body" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Outils sur mesure et applications web</p>
-        <h2 id="outils-title" class="h-2">Quand un site ne suffit plus.</h2>
-        <p class="soft">Réservation, catalogue, espace client, outil interne, automatisations : on développe ce dont votre activité a besoin. Jusqu’à de vraies applications, comme <strong style="color:var(--fg)">Fields of Fire</strong>, un jeu de société jouable en ligne de 3 à 6 joueurs.</p>
+        <h2 id="outils-title" class="h-2">Quand un site ne suffit plus</h2>
+        <p class="soft">Réservation, catalogue, espace client, outil interne : je développe ce dont votre activité a besoin. Jusqu’à de vraies applications, comme <strong style="color:var(--fg)">Fields of Fire</strong>, un jeu de société jouable en ligne de 3 à 6 joueurs.</p>
         <Status kind="realisation" />
         <a class="arrow-link" href="/realisations/nube-games/">Voir l’étude de cas Nube Games</a>
       </div>
@@ -53,14 +58,24 @@ const nube = projects.find((p) => p.slug === 'nube-games');
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Formules</p>
-        <h2 id="formules-title" class="h-2">Des prix annoncés avant de commencer. Pas de surprise après.</h2>
-        <p class="lead">Chaque projet reçoit un devis clair, détaillé et gratuit après un premier échange.</p>
+        <h2 id="formules-title" class="h-2">Les formules</h2>
+        <p class="lead">Voici les prix de départ. Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
       </div>
       <Formules />
     </div>
   </section>
 
-  <Methode id="methode-services" />
-  <Faq full />
-  <FinalCta />
+  <Methode id="methode-services" title="Du premier appel à la mise en ligne" />
+  <Faq full title="Vos questions, mes réponses" />
+  <FinalCta title="Un site, c’est souvent deux semaines. Commençons par 30 minutes." lead="Un premier appel gratuit pour comprendre votre activité et vous dire ce que je ferais." />
 </Base>
+
+<style>
+  .metiers-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-1) var(--s-3);
+    margin-top: var(--s-5);
+  }
+</style>

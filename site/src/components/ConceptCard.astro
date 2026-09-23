@@ -14,3 +14,11 @@ const href = projectPath(project);
   <p class="soft">{project.name} · {project.business}, {project.place}</p>
   <a class="arrow-link" href={href}>Voir le concept<span class="sr-only"> : {project.name}</span></a>
 </article>
+
+<style is:global>
+  @media (min-width: 64rem) {
+    .concept-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

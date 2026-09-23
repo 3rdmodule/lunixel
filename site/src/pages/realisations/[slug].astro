@@ -35,7 +35,7 @@ const jsonld = [
 ];
 const extras = p.extraCaptures || [];
 ---
-<Base title={`${p.name} · Réalisation Lunixel`} description={`${p.tagline} ${p.summary}`} jsonld={jsonld}>
+<Base title={`${p.name} · Réalisation Lunixel`} description={p.metaDescription ?? `${p.tagline} ${p.summary}`} jsonld={jsonld}>
   <section class="page-hero theme-nuit" style="padding-bottom:0">
     <div class="container">
       <div class="page-hero__inner">
@@ -71,8 +71,8 @@ const extras = p.extraCaptures || [];
   <section class="section theme-jour" aria-labelledby="decisions-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ce qu’on a fait</p>
-        <h2 id="decisions-title" class="h-2">Trois décisions qui font le site.</h2>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ce que j’ai fait</p>
+        <h2 id="decisions-title" class="h-2">Les trois choix qui ont compté</h2>
       </div>
       <div class="decisions">
         {p.decisions.map((d, i) => (
@@ -97,7 +97,7 @@ const extras = p.extraCaptures || [];
       <div class="container">
         <div class="section-head" data-reveal>
           <p class="eyebrow"><i class="px" aria-hidden="true"></i>Sur téléphone</p>
-          <h2 id="mobile-title" class="h-2">Pensé d’abord pour le pouce.</h2>
+          <h2 id="mobile-title" class="h-2">Pensé d’abord pour le téléphone</h2>
           <p class="lead">La plupart des visiteurs arrivent depuis un téléphone. Le site y est aussi soigné que sur grand écran.</p>
         </div>
         <div class="phones">
@@ -111,7 +111,7 @@ const extras = p.extraCaptures || [];
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le résultat</p>
-        <h2 id="resultat-title" class="h-2">En ligne, et visible par tous.</h2>
+        <h2 id="resultat-title" class="h-2">Le site aujourd’hui</h2>
       </div>
       <dl class="facts" data-reveal>
         {p.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
@@ -126,5 +126,5 @@ const extras = p.extraCaptures || [];
       </a>
     </div>
   </section>
-  <FinalCta title="Votre projet pourrait être la prochaine étude de cas." lead="Dites-nous qui vous êtes et ce dont vous avez besoin. On vous répond avec des mots simples." />
+  <FinalCta title="Vous avez un projet ? Parlons-en." lead="Dites-moi qui vous êtes et ce dont vous avez besoin. Je vous réponds avec des mots simples." />
 </Base>

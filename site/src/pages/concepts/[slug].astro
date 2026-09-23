@@ -33,7 +33,7 @@ const jsonld = [
   },
 ];
 ---
-<Base title={`${p.name} · Concept Lunixel`} description={`${p.question} Un concept de site imaginé par Lunixel pour ${p.name}, ${p.business.toLowerCase()} à ${p.place}.`} jsonld={jsonld}>
+<Base title={`${p.name} · Concept Lunixel`} description={p.metaDescription ?? `${p.question} Un concept de site imaginé par Lunixel pour ${p.name}, ${p.business.toLowerCase()} à ${p.place}.`} jsonld={jsonld}>
   <section class="page-hero theme-nuit" style="padding-bottom:0">
     <div class="container">
       <div class="page-hero__inner">
@@ -62,7 +62,7 @@ const jsonld = [
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Les choix</p>
-        <h2 id="choix-title" class="h-2">Ce qu’on a imaginé.</h2>
+        <h2 id="choix-title" class="h-2">Ce que j’ai imaginé</h2>
         <p class="lead">{p.style}</p>
       </div>
       <dl class="choices" data-reveal>
@@ -89,7 +89,7 @@ const jsonld = [
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le prototype</p>
-        <h2 id="prototype-title" class="h-2">Le concept se visite.</h2>
+        <h2 id="prototype-title" class="h-2">Le concept se visite</h2>
         <p class="lead">Le prototype est en ligne. Il n’est pas référencé par les moteurs de recherche, pour ne jamais être confondu avec le site officiel.</p>
       </div>
       <div class="cta-row">
@@ -102,5 +102,5 @@ const jsonld = [
       </a>
     </div>
   </section>
-  <FinalCta title="Imaginons le vôtre." lead="Parlez-nous de votre métier. On vous montre ce qu’il pourrait devenir en ligne." />
+  <FinalCta title="Et le vôtre, il ressemblerait à quoi ?" lead="Parlez-moi de votre métier, je vous montre ce qu’il pourrait devenir en ligne." />
 </Base>

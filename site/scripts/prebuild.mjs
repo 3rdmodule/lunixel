@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 import { projects } from '../src/data/projects.js';
+import { metiers } from '../src/data/metiers.js';
 import { MOON_CELLS, MOON_COLORS, WORDMARK_D } from '../src/data/logo.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -100,15 +101,16 @@ await fs.writeFile(path.join(out, 'manifest.json'), JSON.stringify(manifest, nul
 /* ---------- Images de partage (1200 × 630) ---------- */
 const fontUrl = (p) => pathToFileURL(path.join(root, 'node_modules', p)).href;
 const ogPages = {
-  accueil: ['Vous avez un <em>métier</em>.<br>On s’occupe du web.', 'Studio web pour artisans, commerçants et TPE'],
-  realisations: ['Des sites en ligne, qui travaillent pour ceux qui les tiennent.', 'Réalisations'],
-  concepts: ['Avant de construire, on imagine.', 'Concepts'],
-  services: ['Tout ce qu’un site demande. Sans que vous ayez à y penser.', 'Services'],
-  studio: ['Un studio à taille humaine, un soin sans raccourci.', 'Le studio'],
+  accueil: ['Vous avez un <em>métier</em>.<br>Je m’occupe du web.', 'Création de sites pour artisans, commerçants et TPE'],
+  realisations: ['Des sites qui ressemblent à ceux qui les tiennent.', 'Réalisations'],
+  concepts: ['Avant de construire, j’imagine.', 'Concepts'],
+  services: ['Création de sites internet, et tout ce qui va avec.', 'Services'],
+  studio: ['Qui est derrière Lunixel.', 'Le studio'],
   contact: ['Parlons de votre <em>projet</em>.', 'Contact'],
   'mentions-legales': ['Mentions légales', 'lunixel.fr'],
   confidentialite: ['Pas de cookies, pas de pistage.', 'Confidentialité'],
 };
+for (const m of metiers) ogPages[`metiers-${m.slug}`] = [m.h1 + '.', m.label];
 for (const p of projects) {
   const key = `${p.kind === 'realisation' ? 'realisations' : 'concepts'}-${p.slug}`;
   ogPages[key] = p.kind === 'realisation' ? [p.tagline, `Réalisation · ${p.name}`] : [p.question, `Concept · ${p.name}`];

@@ -11,6 +11,7 @@ export const projects = [
     url: 'https://3rdrecords.com/',
     captureUrl: 'https://3rdrecords.com/',
     tagline: 'Un label qui se visite comme on pose un disque.',
+    metaDescription: 'Le site du label 3rd Records : une platine à faire tourner, un lecteur toujours visible et un catalogue lisible par Google. Étude de cas Lunixel.',
     summary:
       'Le site d’un label pop, lofi et hip-hop : une platine à faire tourner du bout du doigt, un lecteur toujours à portée, et un catalogue que Google comprend.',
     services: ['Conception', 'Direction artistique du site', 'Développement', 'Référencement technique'],
@@ -48,6 +49,7 @@ export const projects = [
     captureUrl: 'https://nubegames.fr/',
     extraCaptures: [{ key: 'jeu', url: 'https://nubegames.fr/fields-of-fire/', label: 'Le jeu Fields of Fire, jouable dans le navigateur' }],
     tagline: 'Un jeu de société qui se joue avant même d’être imprimé.',
+    metaDescription: 'Le site de Nube Games et son jeu Fields of Fire, jouable gratuitement en ligne de 3 à 6 joueurs. Étude de cas Lunixel.',
     summary:
       'Le site du studio et son premier jeu, Fields of Fire, jouable gratuitement dans le navigateur : de 3 à 6 joueurs, sur un même écran ou à distance avec un code de salon.',
     services: ['Développement du site', 'Développement du jeu en ligne', 'Version bilingue'],
@@ -77,6 +79,32 @@ export const projects = [
     palette: { bg: '#0B0712', fg: '#F5EEF8', accent: '#D946A8' },
   },
   {
+    slug: 'hugo-abecassis',
+    kind: 'concept',
+    name: 'Hugo Abecassis',
+    business: 'Luthier',
+    place: 'Normandie',
+    prototypeUrl: 'https://lunixel.fr/concept/hugoabecassis/',
+    captureUrl: 'https://lunixel.fr/concept/hugoabecassis/',
+    captureScheme: 'dark',
+    question: 'Et si on montrait enfin le travail qui ne se voit pas ?',
+    metaDescription: 'Concept de site pour Hugo Abecassis, luthier : entretien, restauration et fabrication d’instruments à cordes, montrés comme des notes d’atelier.',
+    tagline: 'Le meilleur travail d’un luthier ne se remarque qu’à l’oreille.',
+    summary:
+      'Un concept pour un luthier formé aux techniques anciennes, qui règle, restaure et invente des instruments à cordes, jusqu’à des guitares faites dans des caisses de vin.',
+    observation:
+      'Une restauration réussie se fond dans l’instrument, un bon réglage ne se voit pas. Le site devait montrer ce travail invisible, sans tomber dans le cliché de l’établi et des outils au mur.',
+    choices: [
+      ['L’âme', 'Dans un violon, l’âme est une petite baguette cachée qui fait sonner l’instrument. Sur le site, elle devient un simple trait fin, et beaucoup de vide.'],
+      ['Trois portes d’entrée', 'Entretien, restauration, fabrication : chacun trouve tout de suite ce qui le concerne.'],
+      ['Les créations', 'Un violon d’amour, une guitare jazz, des guitares en caisses de vin, présentés comme des fiches d’atelier.'],
+      ['Un seul bouton', '« Prendre rendez-vous », avec le motif déjà rempli selon la page d’où l’on vient.'],
+    ],
+    style: 'Ivoire, encre et une touche de garance, un rouge des vernis anciens ; Instrument Serif, Instrument Sans et une police mono pour les notes d’atelier.',
+    apercu: { kicker: 'Luthier · Normandie', title: 'Hugo Abecassis, luthier', sub: 'Entretien, restauration et fabrication d’instruments à cordes.', btn: 'Prendre rendez-vous' },
+    palette: { bg: '#151412', fg: '#F3F0E8', accent: '#D7866D' },
+  },
+  {
     slug: 'le-domaine-musical',
     kind: 'concept',
     accord: true, // L'entreprise a donné son accord pour être présentée
@@ -87,6 +115,7 @@ export const projects = [
     captureUrl: 'https://3rdmodule.com/concept/pianoslechevallier',
     captureScheme: 'dark',
     question: 'Et si les 227 instruments du magasin se visitaient depuis le canapé ?',
+    metaDescription: 'Concept de site pour Le Domaine Musical à Saint-Lô : 227 instruments consultables en ligne, horaires et contact à portée de pouce.',
     tagline: 'Un magasin spécialisé, un catalogue vivant.',
     summary:
       'Un concept de refonte pour un magasin de pianos et d’instruments à cordes : tout le stock en ligne, les ateliers, l’histoire de la maison et l’envie de venir essayer.',
@@ -111,6 +140,7 @@ export const projects = [
     prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
     captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
     question: 'Et si prendre rendez-vous prenait dix secondes ?',
+    metaDescription: 'Concept de site pour Fabienne Hiot, naturopathe à Agay : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes.',
     tagline: 'Rassurer avant le premier rendez-vous.',
     summary:
       'Un concept pour une naturopathe : qui elle est, ce qu’elle propose, combien ça coûte et comment la joindre, le tout sous le pouce.',
