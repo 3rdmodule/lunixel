@@ -1,0 +1,58 @@
+# Import d'archives déposées dans _upload/ (depuis l'interface web de GitHub).
+#  _upload/root.tar.gz                  → extraite à la racine du dépôt
+#  _upload/concept__hugoabecassis.tar.gz → extraite dans concept/hugoabecassis/
+# Un fichier .deletions dans l'archive (un chemin par ligne) supprime ces fichiers.
+# Les workflows (.github/) ne sont jamais modifiés par ce biais.
+name: Import d'archive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_upload/*.tar.gz'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extraction
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          archives=(_upload/*.tar.gz)
+          if [ ${#archives[@]} -eq 0 ]; then echo "Aucune archive."; exit 0; fi
+          for f in "${archives[@]}"; do
+            name=$(basename "$f" .tar.gz)
+            if [ "$name" = "root" ]; then target="."; else target="${name//__//}"; fi
+            mkdir -p "$target"
+            tar -xzf "$f" -C "$target" --no-same-owner --exclude='.github' --exclude='./.github' --exclude='.git' --exclude='./.git'
+            if [ -f "$target/.deletions" ]; then
+              while IFS= read -r p; do
+                [ -n "$p" ] && git rm -r -q --ignore-unmatch "$target/$p" || true
+              done < "$target/.deletions"
+              rm -f "$target/.deletions"
+            fi
+            git rm -q "$f"
+            echo "✓ $f → $target"
+          done
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Rien à valider."; exit 0; fi
+          git commit -m "Import d'archive ($(date -u +%Y-%m-%d\ %H:%M) UTC)"
+          git push
+
+      - name: Relance de la publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
