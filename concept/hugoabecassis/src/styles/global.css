@@ -295,12 +295,21 @@ a:hover { color: var(--accent); }
   background: var(--surface);
   aspect-ratio: var(--ratio, 4 / 5);
 }
+.photo__frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .photo__frame img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: var(--focus, 50% 50%);
 }
+/* Photos d'archive (provisoires) : légère harmonisation avec la palette */
+.photo--archive .photo__frame img { filter: saturate(0.84) contrast(1.03); }
+
 .photo__caption {
   display: flex;
   justify-content: space-between;

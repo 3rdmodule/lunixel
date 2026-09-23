@@ -19,6 +19,15 @@ Lumière naturelle latérale, ombres assumées, peu de profondeur de champ, grai
 
 Les photos des créations d'Hugo publiées sur le site de son employeur (Physalis, LA Jazz, Pinarbox, atelier) peuvent être récupérées avec le workflow manuel **Actions › Import des photos** du dépôt `lunixel`. Elles arrivent dans `photos-sources/<groupe>/`. Pour en utiliser une, indiquer son chemin dans `src/data/photos.ts` (ex. `file: 'physalis/14--1-__5071.jpg'`) : seules les photos référencées sont optimisées et publiées. **Droits d'usage et crédits à confirmer avec Hugo.**
 
+## Photos provisoires utilisées dans le concept
+
+Importées depuis le site du magasin (photos des créations et de l'atelier d'Hugo, **droits d'usage à confirmer**), en attendant le reportage :
+volute en cours (accueil), guitare à l'établi (Entretien), guitare au vernis écaillé (Restauration), guitare jazz en blanc (Fabrication), Physalis, LA Jazz, Pinarbox, et 5 chapitres + 7 détails de la page Atelier.
+Leur définition est faible (600 à 1000 px) : elles tiennent dans les petits formats, pas en pleine largeur. Le hero, le portrait et le plan large de l'atelier restent donc des cadres de prise de vue.
+Elles reçoivent une légère désaturation (classe `photo--archive`) pour s'accorder à la palette.
+
+**Non utilisées** : les photos signées d'un photographe (`hugo__2479.jpg`, `artisanat-luthier*.jpg`, `luthier10533*.jpg`). Elles sont de bonne qualité mais demandent l'accord et le crédit de leur auteur.
+
 ## Emplacements
 
 | Clé | Fichier attendu | Ratio | Prise de vue |

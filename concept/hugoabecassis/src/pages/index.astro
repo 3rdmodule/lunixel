@@ -108,7 +108,7 @@ const milestones = [
         {
           side.map((c) => (
             <a class="work" href={url(`/savoir-faire/fabrication/#${c.slug}`)}>
-              <Photo id={c.photo} sizes="(min-width: 900px) 30vw, 100vw" ratio={c.slug === 'pinarbox' ? 1 : 4 / 5} />
+              <Photo id={c.photo} sizes="(min-width: 900px) 30vw, 100vw" ratio={4 / 5} />
               <span class="work__caption">
                 <span class="work__name serif">{c.name}</span>
                 <span class="label">{c.type}</span>

@@ -40,7 +40,9 @@ const loaders = {
   ...import.meta.glob<{ default: ImageMetadata }>('/src/assets/photos/**/*.{jpg,jpeg,png,webp,avif,JPG,JPEG}'),
   ...import.meta.glob<{ default: ImageMetadata }>('/photos-sources/**/*.{jpg,jpeg,png,webp,JPG,JPEG}'),
 };
-const loader = slot.file ? loaders[`/src/assets/photos/${slot.file}`] ?? loaders[`/photos-sources/${slot.file}`] : undefined;
+const local = slot.file ? loaders[`/src/assets/photos/${slot.file}`] : undefined;
+const archive = !local && slot.file ? loaders[`/photos-sources/${slot.file}`] : undefined;
+const loader = local ?? archive;
 const image = loader ? (await loader()).default : undefined;
 
 const r = ratio ?? slot.ratio;
@@ -52,7 +54,7 @@ if (image && (widths.length === 0 || widths[widths.length - 1] < image.width)) w
 const style = `--ratio: ${r}; ${focus ? `--focus: ${focus};` : ''}`;
 ---
 
-<figure class:list={['photo', { 'photo--fill': fill }, className]} data-reveal style={style}>
+<figure class:list={['photo', { 'photo--fill': fill, 'photo--archive': !!archive }, className]} data-reveal style={style}>
   <div class="photo__frame">
     {
       image ? (
