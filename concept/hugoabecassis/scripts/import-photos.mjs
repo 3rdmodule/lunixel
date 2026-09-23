@@ -25,4 +25,28 @@ for (const [group, files] of Object.entries(groups)) {
     await new Promise((r) => setTimeout(r, 250));
   }
 }
+
+// Photos d'illustration (Unsplash), liste : photos-sources/illustrations.json
+try {
+  const ill = JSON.parse(await readFile(join(root, 'illustrations.json'), 'utf8'));
+  const dir = join(root, ill.dir);
+  await mkdir(dir, { recursive: true });
+  for (const p of ill.photos) {
+    const dest = join(dir, p.file);
+    try { await access(dest); skipped++; continue; } catch {}
+    try {
+      const res = await fetch(p.url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await writeFile(dest, Buffer.from(await res.arrayBuffer()));
+      ok++;
+      console.log(`✓ ${ill.dir}/${p.file} (${p.author})`);
+    } catch (e) {
+      failed++;
+      console.warn(`✗ ${ill.dir}/${p.file} : ${e.message}`);
+    }
+  }
+} catch (e) {
+  if (e.code !== 'ENOENT') throw e;
+}
+
 console.log(`Terminé : ${ok} importées, ${skipped} déjà présentes, ${failed} échecs.`);
