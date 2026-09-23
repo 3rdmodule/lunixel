@@ -1,0 +1,38 @@
+# Import des photos existantes d'un concept (liste : concept/<nom>/photos-sources/sources.json).
+# Lancement manuel : Actions › Import des photos › Run workflow.
+name: Import des photos
+
+on:
+  workflow_dispatch:
+    inputs:
+      concept:
+        description: 'Dossier du concept'
+        default: 'hugoabecassis'
+        required: true
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Téléchargement
+        run: node "concept/${{ inputs.concept }}/scripts/import-photos.mjs"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "concept/${{ inputs.concept }}/photos-sources"
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Photos : import des sources (${{ inputs.concept }})"
+          git push
+      - name: Relance de la publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
