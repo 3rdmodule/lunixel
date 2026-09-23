@@ -102,15 +102,18 @@ La garance, pigment rouge tiré d'une racine, entre dans la composition des vern
 
 ### 2.3 Typographie
 
+Choix validé par Lunixel (23/09/2026) après comparaison sur planche : **option A**.
+
 | Option | Titres | Texte | Intention |
 |---|---|---|---|
-| **A (retenue)** | **Instrument Serif** | **Instrument Sans** (variable) + **IBM Plex Mono** pour les légendes | Serif condensée contemporaine, très élégante en grand corps, économe en largeur sur mobile. Les deux familles ont été dessinées ensemble. Le nom est un clin d'œil. La mono donne la voix des « notes d'atelier » (dimensions, essences, dates). |
-| B | Newsreader | Inter | Plus littéraire et journalistique, très lisible, moins singulière. |
-| C | Cormorant Garamond | Manrope | Classique, luxueuse. Risque de « faire‑part », fragile en petit corps à l'écran. |
+| **A (retenue)** | **Bricolage Grotesque** (variable, graisse ~620–650, approche serrée) | **Inter** (variable) + **IBM Plex Mono** pour les libellés et légendes | Contemporaine, un peu brute, chaleureuse : une typo d'atelier plutôt que de maison de luxe. Très lisible sur mobile. |
+| B | Fraunces | Inter | Serif douce et ronde, artisanale. |
+| C | Schibsted Grotesk (famille unique) | Schibsted Grotesk | Directe et solide, la plus neutre. |
+| — | Instrument Serif + Instrument Sans | | Première proposition, écartée : trop « chic » pour le ton voulu. |
 
-Toutes sont libres (OFL) et hébergées localement : pas d'appel à Google Fonts, meilleur pour le RGPD et la performance.
+Toutes sont libres (OFL) et hébergées localement : pas d'appel à Google Fonts, meilleur pour le RGPD et la performance. Pas d'italique : la hiérarchie se fait par la graisse et la taille.
 
-**Échelle (fluide, `clamp`)** : Display 56→128 px · H1 40→80 · H2 30→52 · H3 22→30 · Corps 17→19 · Petit 15 · Légende mono 12 (capitales espacées 0,08em).
+**Échelle (fluide, `clamp`)** : Display 43→104 px · H1 35→68 · H2 28→46 · H3 21→27 · Corps 16→18 · Petit 15 · Légende mono 12 (capitales espacées 0,08em).
 
 ### 2.4 Principes UI
 
@@ -183,7 +186,7 @@ Mobile : barre haute fixe (signature + « Menu » + « Rendez‑vous »), menu p
 
 | # | Section | Hauteur | Contenu |
 |---|---|---|---|
-| 1 | Hero | 100 svh (min 640 px) | Photo pleine page (portrait à l'établi). Bas gauche : sur‑titre mono « Luthier · Normandie », H1 display sur 2 lignes, puis 2 liens : « Découvrir l'atelier → » (principal) et « Prendre rendez‑vous » (secondaire). Légende photo en bas à droite. |
+| 1 | Hero | 100 svh (min 640 px) | Photo pleine page (portrait à l'établi). Bas gauche : H1 « Hugo Abecassis, luthier » (une ligne sur ordinateur, deux sur mobile), sous-titre d'une phrase, puis 2 liens : « Découvrir l'atelier → » (principal) et « Prendre rendez‑vous » (secondaire). |
 | 2 | Introduction | ~70 vh | 12 col. : numéro `01` (col. 1), phrase d'accroche en serif 40 px (col. 3‑10), paragraphe de 3 lignes (col. 6‑11), lien « Le parcours → ». |
 | 3 | Savoir‑faire | ~110 vh | Titre H2. 3 colonnes (desktop) / pile (mobile) : photo 4:5, numéro, titre H3 serif, 2 lignes, lien. Décalage vertical de 64 px entre colonnes pour casser la grille. |
 | 4 | Réalisations | ~130 vh | Composition asymétrique : 1 grande image (col. 1‑7, 4:5), 2 images (col. 9‑12, empilées), légendes mono (nom, type, année). Lien « Voir les créations → ». |
@@ -223,14 +226,9 @@ Les textes complets sont dans le prototype (fichiers `src/data/*.ts` et pages).
 - un peu d'humour quand il vient tout seul (la page 404 « s'est désaccordée ») ;
 - aucun superlatif ; le savoir-faire se montre par les instruments, le parcours et la presse.
 
-**Accroche du hero, trois propositions**
-1. *« Du violon à la guitare en caisse de vin. »* (retenue : concrète, un peu drôle, elle montre l'étendue du métier, du quatuor aux Pinarbox)
-2. *« Régler, réparer, fabriquer. »*
-3. *« Des instruments à cordes, faits et réparés à la main. »*
+**Titre de l'accueil (validé)** : *« Hugo Abecassis, luthier »*, en grand, avec en dessous : « Entretien, restauration et fabrication d'instruments à cordes, en Normandie. » C'est aussi le H1 de la page.
 
-L'ancienne proposition, « Des gestes anciens, des instruments vivants. », est écartée : trop littéraire pour le ton voulu.
-
-**Balise H1 de l'accueil** : « Hugo Abecassis, luthier en Normandie » (sur-titre), suivie de l'accroche.
+Pistes écartées : « Du violon à la guitare en caisse de vin. », « Régler, réparer, fabriquer. », « Des instruments à cordes, faits et réparés à la main. », « Des gestes anciens, des instruments vivants. ».
 
 ---
 

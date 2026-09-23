@@ -7,3 +7,6 @@ dist/
 .env.*
 !.env.example
 /screenshots/
+
+# Généré avant chaque build (scripts/og.mjs)
+public/og.jpg

@@ -33,7 +33,7 @@ import { chapters, quote } from '../data/parcours';
               <div class="story__aside">
                 <span class="num">{c.number}</span>
                 <span class="label">{c.place}</span>
-                {c.when && <span class="story__when serif">{c.when}</span>}
+                {c.when && <span class="story__when f-display">{c.when}</span>}
               </div>
               <div class="story__body" data-reveal-text>
                 <h2 class="story__title">{c.title}</h2>
@@ -50,7 +50,7 @@ import { chapters, quote } from '../data/parcours';
   <section class="section--tight container quote-wrap" aria-label="Citation">
     <span class="ame-divider" aria-hidden="true"></span>
     <blockquote class="quote">
-      <p class="serif">« {quote.text} »</p>
+      <p class="f-display">« {quote.text} »</p>
       <footer class="label">{quote.author}</footer>
     </blockquote>
   </section>
@@ -80,17 +80,18 @@ import { chapters, quote } from '../data/parcours';
   .story { list-style: none; }
   .story__chapter { display: grid; gap: 20px; padding-block: clamp(48px, 7vw, 96px); border-top: 1px solid var(--line); }
   .story__aside { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
-  .story__when { font-size: clamp(2.4rem, 1.6rem + 3vw, 4.5rem); line-height: 1; color: var(--muted); flex-basis: 100%; margin-top: 8px; }
+  .story__when { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.6rem); line-height: 1; color: var(--muted); flex-basis: 100%; margin-top: 8px; }
   .story__body { max-width: 42ch; }
   .story__title { font-size: var(--fs-h2); margin-bottom: 24px; }
   .story__body p { color: var(--muted); font-size: calc(var(--fs-body) * 1.06); }
   @media (min-width: 900px) {
     .story__chapter { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
-    .story__aside { grid-column: 1 / 5; flex-direction: column; }
+    .story__aside { grid-column: 1 / 5; flex-direction: column; align-items: flex-start; }
+    .story__when { flex-basis: auto; }
     .story__body { grid-column: 6 / 12; }
   }
 
   .quote-wrap { display: grid; justify-items: center; gap: var(--space-m); text-align: center; }
   .quote { margin: 0; display: grid; gap: 24px; justify-items: center; }
-  .quote p { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.6rem); line-height: 1.12; font-style: italic; max-width: 24ch; }
+  .quote p { font-size: clamp(1.6rem, 1.1rem + 2vw, 2.8rem); line-height: 1.12; max-width: 26ch; }
 </style>

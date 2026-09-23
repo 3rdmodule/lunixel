@@ -102,7 +102,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     color: inherit;
   }
   .signature:hover { color: inherit; }
-  .signature__name { font-family: var(--font-serif), Georgia, serif; font-size: 1.5rem; line-height: 1; letter-spacing: -0.005em; }
+  .signature__name { font-family: var(--font-display), sans-serif; font-weight: 650; font-size: 1.25rem; line-height: 1; letter-spacing: -0.03em; }
   .signature .ame { height: 0.95em; margin-inline: 0.6em; }
   .signature__role { font-size: 0.6875rem; }
 
@@ -149,7 +149,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 
   @media (max-width: 420px) {
     .signature__role, .signature .ame { display: none; }
-    .signature__name { font-size: 1.35rem; }
+    .signature__name { font-size: 1.15rem; }
   }
   @media (min-width: 1080px) {
     .site-nav { display: block; }
@@ -181,8 +181,10 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     min-height: 64px;
     padding-block: 12px;
     border-bottom: 1px solid var(--filet);
-    font-family: var(--font-serif), Georgia, serif;
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-family: var(--font-display), sans-serif;
+    font-weight: 620;
+    letter-spacing: -0.03em;
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
     line-height: 1.1;
     text-decoration: none;
   }

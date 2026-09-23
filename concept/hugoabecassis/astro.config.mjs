@@ -30,24 +30,23 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.local(),
-      name: 'Instrument Serif',
-      cssVariable: '--font-serif',
-      fallbacks: ['Georgia', 'serif'],
+      name: 'Bricolage Grotesque',
+      cssVariable: '--font-display',
+      fallbacks: ['Helvetica Neue', 'Arial', 'sans-serif'],
       options: {
         variants: [
-          { src: [fontsource('@fontsource/instrument-serif', 'instrument-serif-latin-400-normal.woff2')], weight: 400, style: 'normal' },
-          { src: [fontsource('@fontsource/instrument-serif', 'instrument-serif-latin-400-italic.woff2')], weight: 400, style: 'italic' },
+          { src: [fontsource('@fontsource-variable/bricolage-grotesque', 'bricolage-grotesque-latin-standard-normal.woff2')], weight: '200 800', style: 'normal' },
         ],
       },
     },
     {
       provider: fontProviders.local(),
-      name: 'Instrument Sans',
+      name: 'Inter',
       cssVariable: '--font-sans',
       fallbacks: ['Helvetica Neue', 'Arial', 'sans-serif'],
       options: {
         variants: [
-          { src: [fontsource('@fontsource-variable/instrument-sans', 'instrument-sans-latin-wght-normal.woff2')], weight: '400 700', style: 'normal' },
+          { src: [fontsource('@fontsource-variable/inter', 'inter-latin-wght-normal.woff2')], weight: '100 900', style: 'normal' },
         ],
       },
     },

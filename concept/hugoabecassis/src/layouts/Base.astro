@@ -100,7 +100,7 @@ const structured = [person, website, ...(crumbs ? [crumbs] : []), ...jsonLd];
     <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
     <link rel="sitemap" href={url('/sitemap-index.xml')} />
 
-    <Font cssVariable="--font-serif" preload={[{ style: 'normal' }]} />
+    <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-sans" preload />
     <Font cssVariable="--font-mono" />
 
@@ -119,7 +119,7 @@ const structured = [person, website, ...(crumbs ? [crumbs] : []), ...jsonLd];
       <button class="lightbox__close" type="button" data-lightbox-close>Fermer</button>
       <figure class="lightbox__figure">
         <img alt="" data-lightbox-img hidden />
-        <p class="lightbox__brief serif italic" data-lightbox-brief hidden></p>
+        <p class="lightbox__brief f-display" data-lightbox-brief hidden></p>
         <figcaption class="label" data-lightbox-caption></figcaption>
       </figure>
       <div class="lightbox__nav">

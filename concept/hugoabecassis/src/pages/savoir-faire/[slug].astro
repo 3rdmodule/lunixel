@@ -180,7 +180,7 @@ const next = () => String(++n).padStart(2, '0');
           <li>
             <a href={url(`/savoir-faire/${o.slug}/`)}>
               <span class="num">{o.number}</span>
-              <span class="serif others__title">{o.title}</span>
+              <span class="f-display others__title">{o.title}</span>
               <span class="arrow" aria-hidden="true">→</span>
             </a>
           </li>
@@ -227,7 +227,7 @@ const next = () => String(++n).padStart(2, '0');
 
   .others { list-style: none; border-top: 1px solid var(--line); margin-top: 16px; }
   .others a { display: flex; align-items: baseline; gap: 18px; padding-block: 18px; border-bottom: 1px solid var(--line); text-decoration: none; }
-  .others__title { font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem); line-height: 1; flex: 1; }
+  .others__title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.2rem); line-height: 1; flex: 1; }
   .others .arrow { transition: transform 300ms var(--ease); }
   .others a:hover .arrow { transform: translateX(6px); }
 </style>

@@ -10,9 +10,9 @@ const { email, phone, city, area, instagram } = site.contact;
   <div class="container">
     <div class="site-footer__top">
       <a href={url('/')} class="site-footer__sig">
-        <span class="serif">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="mono">Luthier</span>
+        <span class="f-display">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="mono">Luthier</span>
       </a>
-      <p class="site-footer__line serif italic">Entretien, restauration et fabrication d'instruments à cordes.</p>
+      <p class="site-footer__line f-display">Entretien, restauration et fabrication d'instruments à cordes.</p>
     </div>
 
     <div class="site-footer__cols">
@@ -55,9 +55,9 @@ const { email, phone, city, area, instagram } = site.contact;
   .site-footer a { text-decoration: none; }
   .site-footer a:hover { color: var(--accent); }
   .site-footer__top { display: grid; gap: 16px; padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
-  .site-footer__sig { display: inline-flex; align-items: baseline; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem); line-height: 1; }
+  .site-footer__sig { display: inline-flex; align-items: baseline; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.8rem); line-height: 1; }
   .site-footer__sig .mono { font-size: 0.75rem; }
-  .site-footer__line { color: var(--muted); font-size: 1.25rem; }
+  .site-footer__line { color: var(--muted); font-size: 1.1rem; font-weight: 480; }
   .site-footer__cols { display: grid; gap: 40px; padding-block: 48px; }
   .site-footer__cols ul { list-style: none; display: grid; gap: 10px; margin-top: 16px; }
   .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8125rem; }

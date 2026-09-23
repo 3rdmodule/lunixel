@@ -41,12 +41,12 @@ const H = headingLevel;
   .press { list-style: none; border-top: 1px solid var(--line); }
   .press__item { display: grid; gap: 10px; padding-block: clamp(22px, 3vw, 36px); border-bottom: 1px solid var(--line); }
   .press__meta { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .press__title { font-size: clamp(1.45rem, 1.2rem + 1vw, 2.1rem); font-style: italic; line-height: 1.15; max-width: 28ch; }
+  .press__title { font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem); line-height: 1.18; max-width: 30ch; }
   .press__title a { text-decoration: none; }
   .press__title a:hover { color: var(--accent); }
   .press__summary { color: var(--muted); max-width: 58ch; }
   .press__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-  .press--compact .press__title { font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.7rem); }
+  .press--compact .press__title { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.45rem); }
   @media (min-width: 900px) {
     .press:not(.press--compact) .press__item { grid-template-columns: 220px 1fr; column-gap: 40px; }
     .press:not(.press--compact) .press__meta { flex-direction: column; grid-row: span 3; }
