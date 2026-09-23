@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../config.js';
 const l = site.legal;
-const missing = !l.publisher || !l.siret || !l.address;
+const missing = !l.publisher || !l.siret;
 ---
 <Base title="Mentions légales · Lunixel" description="Mentions légales du site lunixel.fr : éditeur, hébergeur, propriété intellectuelle.">
   <section class="page-hero theme-nuit">
@@ -14,12 +14,13 @@ const missing = !l.publisher || !l.siret || !l.address;
   <section class="section theme-jour">
     <div class="container prose">
       <h2>Éditeur du site</h2>
-      <p>Le site lunixel.fr est édité par {l.publisher || 'Lunixel, studio web indépendant'}{l.status ? `, ${l.status}` : ''}.</p>
+      <p>Le site lunixel.fr est édité par {l.publisher || 'Lunixel, studio web indépendant'}{l.status ? `, ${l.status}` : ''}{l.publisher && l.publisher !== site.name ? `, qui exerce sous le nom commercial ${site.name}` : ''}.</p>
       {l.siret && <p>SIRET : {l.siret}</p>}
       {l.address && <p>Adresse : {l.address}</p>}
       {l.phone && <p>Téléphone : {l.phone}</p>}
       <p>Contact : <a href={`mailto:${site.email}`}>{site.email}</a></p>
       {l.director && <p>Directeur de la publication : {l.director}</p>}
+      {!missing && (!l.address || !l.phone) && <p>Adresse postale et téléphone communiqués sur simple demande à l’adresse ci-dessus.</p>}
       {missing && <p>Les informations d’immatriculation de l’éditeur sont en cours de mise à jour et seront publiées sur cette page très prochainement. Elles peuvent être obtenues sur simple demande à l’adresse ci-dessus.</p>}
 
       <h2>Hébergement</h2>
@@ -28,7 +29,7 @@ const missing = !l.publisher || !l.siret || !l.address;
 
       <h2>Propriété intellectuelle</h2>
       <p>L’ensemble des contenus de ce site (textes, logo, identité graphique, mise en page, code) est la propriété de Lunixel, sauf mention contraire. Toute reproduction, même partielle, nécessite une autorisation préalable.</p>
-      <p>Les captures d’écran des projets présentés appartiennent à leurs propriétaires respectifs et sont montrées à titre de références. Les concepts présentés sont des explorations créatives réalisées sans commande des entreprises concernées ; ils ne constituent pas leurs sites officiels.</p>
+      <p>Les captures d’écran des projets présentés appartiennent à leurs propriétaires respectifs et sont montrées à titre de références. Les concepts présentés sont des explorations créatives réalisées sans commande des entreprises concernées et présentées avec leur accord ; ils ne constituent pas leurs sites officiels.</p>
 
       <h2>Données personnelles</h2>
       <p>Pour savoir comment sont traitées les informations envoyées par le formulaire de contact, consultez la page <a href="/confidentialite/">Confidentialité</a>.</p>

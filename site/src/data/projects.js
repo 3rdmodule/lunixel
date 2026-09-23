@@ -79,6 +79,7 @@ export const projects = [
   {
     slug: 'le-domaine-musical',
     kind: 'concept',
+    accord: true, // L'entreprise a donné son accord pour être présentée
     name: 'Le Domaine Musical',
     business: 'Pianos et lutherie Lechevallier',
     place: 'Saint-Lô',
@@ -103,6 +104,7 @@ export const projects = [
   {
     slug: 'fabienne-hiot',
     kind: 'concept',
+    accord: true, // L'entreprise a donné son accord pour être présentée
     name: 'Fabienne Hiot',
     business: 'Naturopathe',
     place: 'Agay, Saint-Raphaël',

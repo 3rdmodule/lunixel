@@ -38,7 +38,7 @@ const jsonld = [
     <div class="container">
       <div class="page-hero__inner">
         <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/concepts/">Concepts</a></li><li aria-current="page">{p.name}</li></ol></nav>
-        <div class="concept-banner"><Status kind="concept" /><span><strong>Concept imaginé par Lunixel.</strong> Ce site n’a pas été commandé par {p.name} et n’est pas son site officiel.</span></div>
+        <div class="concept-banner"><Status kind="concept" /><span><strong>Concept imaginé par Lunixel.</strong> Ce site n’a pas été commandé par {p.name} et n’est pas son site officiel{p.accord ? ' ; il est présenté avec son accord' : ''}.</span></div>
         <h1 class="h-1 display">{p.question}</h1>
         <p class="lead">{p.name} · {p.business}, {p.place}</p>
       </div>

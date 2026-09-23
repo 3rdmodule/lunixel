@@ -8,25 +8,25 @@ export const site = {
     'Lunixel conçoit, construit et entretient des sites sur mesure pour les artisans, commerçants, indépendants et TPE. Un seul interlocuteur, des prix clairs.',
   responseTime: '48 h',
 
-  // Formulaire : clé gratuite à créer sur https://web3forms.com avec l'adresse contact@lunixel.fr.
+  // Formulaire : clé Web3Forms (liée à contact@lunixel.fr), à coller entre les guillemets.
   // Tant qu'elle est vide, le formulaire prépare un e-mail dans la messagerie du visiteur.
   web3formsKey: '',
 
-  // Mentions légales (obligatoires) : à compléter.
+  // Mentions légales. Les champs vides ne s'affichent pas.
   legal: {
-    publisher: '', // Nom de l'éditeur (personne ou société)
-    status: '', // Ex. : Entrepreneur individuel (micro-entreprise)
-    siret: '',
+    publisher: '3rd', // Nom de l'éditeur (personne ou société)
+    status: 'entrepreneur individuel (micro-entreprise)',
+    siret: '892 917 733 00032', // Établissement actif (siège depuis le 18/05/2026)
     address: '',
     phone: '',
     director: '', // Directeur de la publication
   },
 
-  // Prix « à partir de » (ex. : '900 €'). Vide = « Sur devis ».
+  // Prix « à partir de ». Vide = « Sur devis ». Repris aussi dans la FAQ.
   prices: {
-    presence: '',
-    vitrine: '',
-    surMesure: '',
-    serenite: '',
+    presence: '200 €', // Site d'une page
+    vitrine: '600 €', // Site de plusieurs pages
+    surMesure: '', // Outils et fonctionnalités sur mesure : sur devis
+    serenite: '30 €', // Par mois
   },
 };

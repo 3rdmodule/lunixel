@@ -1,3 +1,7 @@
+import { site } from '../config.js';
+
+const { presence, vitrine, serenite } = site.prices;
+
 // Textes réutilisés sur plusieurs pages.
 
 export const situations = [
@@ -91,7 +95,7 @@ export const formules = [
   {
     key: 'presence',
     name: 'Présence',
-    pitch: 'Un site d’une à trois pages, clair et soigné, pour exister en ligne et être trouvé.',
+    pitch: 'Une seule page, claire et soignée, pour exister en ligne et être trouvé.',
     items: ['Design sur mesure', 'Parfait sur téléphone', 'Référencement de base', 'Formulaire de contact', 'Mise en ligne'],
   },
   {
@@ -112,7 +116,10 @@ export const formules = [
 export const faq = [
   {
     q: 'Combien coûte un site ?',
-    a: 'Cela dépend de ce dont vous avez besoin : une page de présentation ne demande pas le même travail qu’un catalogue en ligne. Après un premier échange gratuit, vous recevez un devis clair et détaillé. Le prix annoncé est le prix payé.',
+    a:
+      presence && vitrine
+        ? `Un site d’une seule page démarre à ${presence}, un site de plusieurs pages à ${vitrine}. Les outils sur mesure (réservation, catalogue, espace client…) sont sur devis. Après un premier échange gratuit, vous recevez un devis clair et détaillé. Le prix annoncé est le prix payé.`
+        : 'Cela dépend de ce dont vous avez besoin : une page de présentation ne demande pas le même travail qu’un catalogue en ligne. Après un premier échange gratuit, vous recevez un devis clair et détaillé. Le prix annoncé est le prix payé.',
   },
   {
     q: 'Combien de temps faut-il ?',
@@ -132,7 +139,7 @@ export const faq = [
   },
   {
     q: 'Vous occupez-vous de l’hébergement ?',
-    a: 'Oui. On met votre site en ligne, on le garde en ligne, et on veille à sa sécurité et à ses mises à jour dans le cadre de l’accompagnement mensuel.',
+    a: `Oui. On met votre site en ligne, on le garde en ligne, et on veille à sa sécurité et à ses mises à jour dans le cadre de l’accompagnement mensuel Sérénité${serenite ? `, à partir de ${serenite} par mois` : ''}.`,
   },
 ];
 
