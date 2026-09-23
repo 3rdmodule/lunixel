@@ -25,7 +25,7 @@ export const site = {
   // Prix « à partir de ». Vide = « Sur devis ». Repris aussi dans la FAQ.
   prices: {
     presence: '200 €', // Site d'une page
-    vitrine: '600 €', // Site de plusieurs pages
+    vitrine: '400 €', // Site de plusieurs pages
     surMesure: '', // Outils et fonctionnalités sur mesure : sur devis
     serenite: '30 €', // Par mois
   },
