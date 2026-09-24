@@ -3,6 +3,19 @@ import Base from '../layouts/Base.astro';
 import Moon from '../components/Moon.astro';
 ---
 <Base title="Page introuvable · Lunixel" description="Cette page est restée dans l’ombre. Retrouvez les réalisations, les tarifs ou demandez votre démo gratuite sur lunixel.fr." mobileCta={false} noindex>
+  <script is:inline>
+    // GitHub Pages ne sert que ce 404 racine : sous /concept/<nom>/, on affiche le 404 propre au concept.
+    (function () {
+      var m = location.pathname.match(/^\/concept\/([^\/]+)\//);
+      if (!m) return;
+      var root = document.documentElement;
+      root.style.visibility = 'hidden';
+      fetch('/concept/' + m[1] + '/404.html')
+        .then(function (r) { if (!r.ok) throw r.status; return r.text(); })
+        .then(function (html) { document.open(); document.write(html); document.close(); })
+        .catch(function () { root.style.visibility = ''; });
+    })();
+  </script>
   <section class="lost theme-nuit">
     <div class="lost__inner">
       <Moon assemble />
