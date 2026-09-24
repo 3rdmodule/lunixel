@@ -12,15 +12,17 @@ interface Props {
   event?: string;
   variant?: 'btn' | 'line' | 'link';
   label?: string;
+  /** 'lg' : gros bouton (accueil). */
+  size?: 'md' | 'lg';
   class?: string;
 }
-const { event, variant = 'btn', label = 'Prendre rendez-vous', class: className } = Astro.props;
+const { event, variant = 'btn', label = 'Prendre rendez-vous', size = 'md', class: className } = Astro.props;
 const { username } = site.booking;
 const calLink = username ? (event ? `${username}/${event}` : username) : '';
 const href = calLink ? `https://cal.com/${calLink}` : url('/contact/#rendez-vous');
 const cls = { btn: 'btn', line: 'btn btn--line', link: 'link' }[variant];
 ---
 
-<a href={href} class:list={[cls, className]} data-booking={calLink} rel={calLink ? 'noopener' : undefined}>
+<a href={href} class:list={[cls, { 'btn--lg': size === 'lg' }, className]} data-booking={calLink} rel={calLink ? 'noopener' : undefined}>
   <span>{label}</span><span class="arrow" aria-hidden="true">→</span>
 </a>

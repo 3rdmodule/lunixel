@@ -177,6 +177,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .btn--line { background: transparent; color: var(--fg); }
 .btn--line:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .btn[disabled] { opacity: 0.6; cursor: progress; }
+.btn--lg { min-height: 64px; padding: 18px 30px; gap: 16px; font-size: 1.12rem; }
+.btn--accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn--accent:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+@media (max-width: 599px) { .btn--lg { width: 100%; justify-content: space-between; } }
 
 .link {
   display: inline-flex; align-items: baseline; gap: 8px;
