@@ -1,19 +1,19 @@
 ---
 import Vitrine from './Vitrine.astro';
 import Status from './Status.astro';
-import { projectPath } from '../data/projects.js';
+import { projectPath, linkLabel as labelFor } from '../data/projects.js';
 interface Props { project: any; headingLevel?: 'h2' | 'h3' }
 const { project, headingLevel = 'h3' } = Astro.props;
 const H = headingLevel;
 const href = projectPath(project);
-const linkLabel = project.kind === 'concept' ? 'Voir le concept' : 'Voir l’étude de cas';
+const linkLabel = labelFor(project);
 ---
 <article class="work" data-reveal>
   <a class="work__media lightable" href={href} tabindex="-1" aria-hidden="true" data-light>
     <Vitrine project={project} vt={`shot-${project.slug}`} />
   </a>
   <div class="work__body">
-    <Status kind={project.kind} />
+    <Status kind={project.kind} state={project.status} />
     <p class="work__meta">{project.business} · {project.place}</p>
     <H class="work__title display"><a href={href}>{project.name}</a></H>
     <p class="work__tagline">{project.tagline}</p>

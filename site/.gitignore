@@ -3,5 +3,7 @@ dist/
 .astro/
 public/generated/
 public/favicon.svg
+public/favicon.ico
+public/site.webmanifest
 package-lock.json
 .DS_Store

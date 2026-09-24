@@ -6,7 +6,7 @@ import WorkItem from '../components/WorkItem.astro';
 import ConceptCard from '../components/ConceptCard.astro';
 import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
-import { projects, realisations, concepts } from '../data/projects.js';
+import { projects, realisations, concepts, enLigne, isWip } from '../data/projects.js';
 import { outcomes, gains, demoSteps } from '../data/content.js';
 import { metiers, metierPath } from '../data/metiers.js';
 import { site } from '../config.js';
@@ -19,8 +19,9 @@ const heroShots = [
   { p: bySlug['le-domaine-musical'], variant: 'phone' },
 ];
 const name = site.founder?.name;
-// Fabienne Hiot en premier, puis Le Domaine Musical : l’ordre suit projects.js.
-const [leadConcept, ...otherConcepts] = concepts;
+// Ordre des travaux : le site en cours (Fabienne Hiot) en grand, puis les concepts
+// (Le Domaine Musical, Hugo Abecassis), puis les sites déjà en ligne.
+const enCours = realisations.filter(isWip);
 ---
 <Base
   title="Site internet pour salons, instituts et boutiques · Lunixel"
@@ -49,13 +50,13 @@ const [leadConcept, ...otherConcepts] = concepts;
         <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette de votre page d’accueil offerte</span><span>Sans engagement</span></p>
       </div>
       <div class="hero__visual">
-        <div class="vitrines" aria-label="Quelques travaux du studio">
+        <div class="vitrines" role="region" aria-label="Quelques travaux du studio" tabindex="0">
           {heroShots.map(({ p, variant }, i) => (
             <figure class:list={['lightable', { 'is-phone': variant === 'phone' }]} data-hero-light>
               <a href={`/${p.kind === 'realisation' ? 'realisations' : 'concepts'}/${p.slug}/`} tabindex="-1" aria-hidden="true">
-                <Vitrine project={p} variant={variant} eager={i === 1} barLabel={p.name} barKind={p.kind} sizes={variant === 'phone' ? '(min-width: 64rem) 12rem, 46vw' : '(min-width: 64rem) 42vw, 80vw'} />
+                <Vitrine project={p} variant={variant} eager={i === 1} barLabel={p.name} barKind={p.kind} barState={p.status} sizes={variant === 'phone' ? '(min-width: 64rem) 12rem, 46vw' : '(min-width: 64rem) 42vw, 80vw'} />
               </a>
-              <figcaption><span>{p.name}</span><Status kind={p.kind} short /></figcaption>
+              <figcaption><span>{p.name}</span><Status kind={p.kind} state={p.status} short /></figcaption>
             </figure>
           ))}
         </div>
@@ -128,25 +129,30 @@ const [leadConcept, ...otherConcepts] = concepts;
         <div class="section-head" style="margin:0">
           <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Travaux</p>
           <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent</h2>
-          <p class="lead">Pour montrer ce qu’un commerce pourrait avoir en ligne, j’imagine parfois son site avant qu’on me le demande. <strong>C’est exactement ce que vous recevez avec la démo gratuite.</strong></p>
+          <p class="lead">Chaque site commence par une maquette, <strong>comme celle que vous recevez avec la démo gratuite.</strong> Aucun ne ressemble aux autres, parce qu’aucun client ne ressemble aux autres.</p>
         </div>
         <div class="legend">
           <Status kind="realisation" />
+          <Status kind="realisation" state="en-cours" />
           <Status kind="concept" />
         </div>
       </div>
       <div class="work-list">
-        <WorkItem project={leadConcept} />
+        {enCours.map((p) => <WorkItem project={p} />)}
       </div>
       <div class="concept-grid concept-grid--duo">
-        {otherConcepts.map((p) => <ConceptCard project={p} />)}
+        <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
+          <h3 class="h-3">Imaginés pour de vrais commerces</h3>
+          <p class="soft" style="max-width:52ch">Des concepts faits sans commande, pour montrer ce qu’un magasin ou un artisan pourrait avoir en ligne.</p>
+        </div>
+        {concepts.map((p) => <ConceptCard project={p} />)}
       </div>
       <div class="concept-grid concept-grid--duo">
         <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
           <h3 class="h-3">Et déjà en ligne</h3>
-          <p class="soft" style="max-width:52ch">Deux sites livrés, que vous pouvez visiter aujourd’hui.</p>
+          <p class="soft" style="max-width:52ch">Des sites livrés, que vous pouvez visiter aujourd’hui.</p>
         </div>
-        {realisations.map((p) => <ConceptCard project={p} />)}
+        {enLigne.map((p) => <ConceptCard project={p} />)}
       </div>
       <div class="cta-row" style="margin-top:var(--s-6)">
         <a class="arrow-link" href="/realisations/">Toutes les réalisations</a>

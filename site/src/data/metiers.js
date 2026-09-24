@@ -17,7 +17,7 @@ export const metiers = [
       ['Vos avis Google', 'Vos meilleurs avis mis en avant, et votre fiche Google alignée avec votre site.'],
     ],
     exemple: 'fabienne-hiot',
-    exempleTexte: 'Un exemple : le concept imaginé pour une praticienne, avec ses soins et ses tarifs dès l’accueil, et un bouton « Rendez-vous » toujours sous le pouce.',
+    exempleTexte: 'Un exemple : le site en cours d’une praticienne, avec ses soins et ses tarifs dès l’accueil, et un bouton « Rendez-vous » toujours sous le pouce.',
     faq: [
       ['Je poste déjà tout sur Instagram, pourquoi un site ?', 'Instagram montre votre travail, mais Google ne l’affiche presque pas. Le site vous fait trouver par les personnes qui cherchent « onglerie » près de chez elles, et il leur permet de réserver directement.'],
       ['J’utilise déjà Planity ou Treatwell.', 'Vous pouvez garder votre outil : je mets votre lien sur le site. Ou passer à une réservation directement sur votre site, sans commission.'],
@@ -50,7 +50,7 @@ export const metiers = [
     slug: 'sante-bien-etre',
     activite: 'massage-bien-etre',
     label: 'Bien-être et santé naturelle',
-    title: 'Site internet pour masseuse, naturopathe et praticien bien-être · Lunixel',
+    title: 'Site internet pour masseuse, naturopathe et bien-être · Lunixel',
     description: 'Un site pour masseuse, naturopathe ou praticienne bien-être : rassurer, afficher vos séances et vos tarifs, et prendre rendez-vous en ligne.',
     h1: 'Un site qui rassure avant la première séance',
     lead: 'Avant de réserver un massage ou une consultation, on veut savoir qui vous êtes, comment se passe une séance et combien ça coûte. Votre site répond à tout, simplement, et donne envie de franchir le pas.',
@@ -61,7 +61,7 @@ export const metiers = [
       ['Des mots justes', 'Des textes clairs et prudents, sans promesse de résultat. Je vous aide à les écrire.'],
     ],
     exemple: 'fabienne-hiot',
-    exempleTexte: 'Un exemple : le concept imaginé pour une naturopathe, avec ses soins et ses tarifs dès l’accueil, et le premier contact gratuit mis en avant.',
+    exempleTexte: 'Un exemple : le site en cours d’une naturopathe, avec ses soins et ses tarifs dès l’accueil, et le premier contact gratuit mis en avant.',
     faq: [
       ['J’utilise déjà un agenda en ligne.', 'Je le relie au site : vos clientes prennent rendez-vous sans le quitter, et vous gardez votre agenda habituel.'],
       ['Que puis-je écrire sur mes pratiques ?', 'Ce que vous proposez, comment se passe une séance, votre formation. On évite les promesses de guérison : c’est plus honnête, et plus rassurant.'],

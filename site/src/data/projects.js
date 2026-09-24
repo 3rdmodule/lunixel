@@ -1,7 +1,34 @@
-// Les travaux de Lunixel. « realisation » = site livré et en ligne ; « concept » = site imaginé sans commande.
+// Les travaux de Lunixel. « realisation » = site commandé par le client (status 'en-cours' tant qu'il n'est pas en ligne) ;
+// « concept » = site imaginé sans commande. L'ordre du tableau est l'ordre d'affichage.
 // Les captures sont générées automatiquement au déploiement (scripts/prebuild.mjs) à partir de captureUrl.
 
 export const projects = [
+  {
+    slug: 'fabienne-hiot',
+    kind: 'realisation',
+    status: 'en-cours', // Commande en cours : pas encore en ligne, la maquette est visible
+    accord: true, // La cliente a donné son accord pour être présentée
+    name: 'Fabienne Hiot',
+    business: 'Naturopathe',
+    place: 'Agay, Saint-Raphaël',
+    prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
+    captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
+    question: 'Et si prendre rendez-vous prenait dix secondes ?',
+    metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay, en cours de réalisation : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes.',
+    tagline: 'Rassurer avant le premier rendez-vous.',
+    summary:
+      'Le site d’une naturopathe à Agay, en cours de réalisation : qui elle est, ce qu’elle propose, combien ça coûte et comment la joindre, le tout sous le pouce.',
+    observation:
+      'Avant un premier rendez-vous, on a besoin d’être rassuré : qui est la praticienne, ce qu’elle propose, combien ça coûte, et comment la joindre. Sur un téléphone, tout cela doit tenir sous le pouce.',
+    choices: [
+      ['Sous le pouce', 'Une barre fixe « Appeler / Rendez-vous » en bas de l’écran du téléphone.'],
+      ['Les prix, tout de suite', 'Les soins et leurs tarifs sont visibles dès l’accueil.'],
+      ['Le premier pas', 'Le premier contact gratuit de 15 minutes est mis en avant.'],
+      ['La confiance', 'Le parcours, les diplômes et les avis sont à un geste.'],
+    ],
+    style: 'Vert sauge, crème et lumière de l’Estérel ; Fraunces, Figtree et une écriture manuscrite pour la signature.',
+    palette: { bg: '#FBF7F3', fg: '#2F3B2F', accent: '#3F6B4A' },
+  },
   {
     slug: '3rd-records',
     kind: 'realisation',
@@ -79,31 +106,6 @@ export const projects = [
     palette: { bg: '#0B0712', fg: '#F5EEF8', accent: '#D946A8' },
   },
   {
-    slug: 'fabienne-hiot',
-    kind: 'concept',
-    accord: true, // L'entreprise a donné son accord pour être présentée
-    name: 'Fabienne Hiot',
-    business: 'Naturopathe',
-    place: 'Agay, Saint-Raphaël',
-    prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
-    captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
-    question: 'Et si prendre rendez-vous prenait dix secondes ?',
-    metaDescription: 'Concept de site pour Fabienne Hiot, naturopathe à Agay : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes.',
-    tagline: 'Rassurer avant le premier rendez-vous.',
-    summary:
-      'Un concept pour une naturopathe : qui elle est, ce qu’elle propose, combien ça coûte et comment la joindre, le tout sous le pouce.',
-    observation:
-      'Avant un premier rendez-vous, on a besoin d’être rassuré : qui est la praticienne, ce qu’elle propose, combien ça coûte, et comment la joindre. Sur un téléphone, tout cela doit tenir sous le pouce.',
-    choices: [
-      ['Sous le pouce', 'Une barre fixe « Appeler / Rendez-vous » en bas de l’écran du téléphone.'],
-      ['Les prix, tout de suite', 'Les soins et leurs tarifs sont visibles dès l’accueil.'],
-      ['Le premier pas', 'Le premier contact gratuit de 15 minutes est mis en avant.'],
-      ['La confiance', 'Le parcours, les diplômes et les avis sont à un geste.'],
-    ],
-    style: 'Vert sauge, crème et lumière de l’Estérel ; Fraunces, Figtree et une écriture manuscrite pour la signature.',
-    palette: { bg: '#FBF7F3', fg: '#2F3B2F', accent: '#3F6B4A' },
-  },
-  {
     slug: 'le-domaine-musical',
     kind: 'concept',
     accord: true, // L'entreprise a donné son accord pour être présentée
@@ -158,5 +160,8 @@ export const projects = [
 ];
 
 export const realisations = projects.filter((p) => p.kind === 'realisation');
+export const isWip = (p) => p.status === 'en-cours';
+export const enLigne = realisations.filter((p) => !isWip(p));
+export const linkLabel = (p) => (p.kind === 'concept' ? 'Voir le concept' : isWip(p) ? 'Voir le projet' : 'Voir l’étude de cas');
 export const concepts = projects.filter((p) => p.kind === 'concept');
 export const projectPath = (p) => `/${p.kind === 'realisation' ? 'realisations' : 'concepts'}/${p.slug}/`;

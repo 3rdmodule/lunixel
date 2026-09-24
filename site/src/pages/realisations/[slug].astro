@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Vitrine from '../../components/Vitrine.astro';
 import Status from '../../components/Status.astro';
 import FinalCta from '../../components/FinalCta.astro';
-import { realisations, projectPath } from '../../data/projects.js';
+import { realisations, projectPath, isWip } from '../../data/projects.js';
 import { getCaptures } from '../../lib/captures.js';
 import { site } from '../../config.js';
 
@@ -11,6 +11,12 @@ export function getStaticPaths() {
   return realisations.map((p, i) => ({ params: { slug: p.slug }, props: { project: p, next: realisations[(i + 1) % realisations.length] } }));
 }
 const { project: p, next } = Astro.props;
+// Un projet en cours n'a pas encore de site en ligne : on montre la maquette et les choix faits.
+const wip = isWip(p);
+const need = p.need ?? p.observation;
+const decisions = p.decisions ?? (p.choices || []).map(([title, text]) => ({ title, text }));
+const facts = p.facts ?? [['Ambiance', p.style]].filter(([, v]) => v);
+const pageTitle = wip ? `${p.name} · Site en cours de réalisation · Lunixel` : `${p.name} · Réalisation Lunixel`;
 const caps = getCaptures(p.slug);
 const phones = [0, 1, 2];
 const url = `${site.url}${projectPath(p)}`;
@@ -23,6 +29,7 @@ const jsonld = [
     creator: { '@id': `${site.url}/#studio` },
     inLanguage: 'fr-FR',
     sameAs: p.url,
+    creativeWorkStatus: wip ? 'En cours' : 'Publié',
   },
   {
     '@type': 'BreadcrumbList',
@@ -35,12 +42,12 @@ const jsonld = [
 ];
 const extras = p.extraCaptures || [];
 ---
-<Base title={`${p.name} · Réalisation Lunixel`} description={p.metaDescription ?? `${p.tagline} ${p.summary}`} jsonld={jsonld}>
+<Base title={pageTitle} description={p.metaDescription ?? `${p.tagline} ${p.summary}`} jsonld={jsonld}>
   <section class="page-hero theme-nuit" style="padding-bottom:0">
     <div class="container">
       <div class="page-hero__inner">
         <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/realisations/">Réalisations</a></li><li aria-current="page">{p.name}</li></ol></nav>
-        <Status kind="realisation" />
+        <Status kind="realisation" state={p.status} />
         <h1 class="h-1 display">{p.name}</h1>
         <p class="lead" style="max-width:44ch">{p.tagline}</p>
       </div>
@@ -54,16 +61,19 @@ const extras = p.extraCaptures || [];
     <div class="container case-intro">
       <div class="prose" data-reveal>
         <h2 id="besoin-title" class="h-3" style="margin-bottom:var(--s-3)">Le besoin</h2>
-        <p class="lead" style="max-width:52ch;color:var(--fg)">{p.need}</p>
+        <p class="lead" style="max-width:52ch;color:var(--fg)">{need}</p>
         <p class="soft">{p.summary}</p>
         {p.note && <p class="soft"><em>{p.note}</em></p>}
       </div>
       <dl class="fiche" data-reveal>
         <div><dt>Client</dt><dd>{p.name}</dd></div>
         <div><dt>Activité</dt><dd>{p.business}</dd></div>
-        <div><dt>Prestations</dt><dd>{p.services.join(', ')}</dd></div>
-        <div><dt>Technique</dt><dd>{p.tech.join(', ')}</dd></div>
-        <div><dt>En ligne</dt><dd><a href={p.url} rel="noopener" target="_blank">{p.url.replace(/^https:\/\/|\/$/g, '')}<span class="sr-only"> (nouvel onglet)</span></a></dd></div>
+        {p.place && <div><dt>Lieu</dt><dd>{p.place}</dd></div>}
+        {p.services && <div><dt>Prestations</dt><dd>{p.services.join(', ')}</dd></div>}
+        {p.tech && <div><dt>Technique</dt><dd>{p.tech.join(', ')}</dd></div>}
+        {wip && <div><dt>Statut</dt><dd>Commande en cours, mise en ligne prochainement</dd></div>}
+        {p.url && <div><dt>En ligne</dt><dd><a href={p.url} rel="noopener" target="_blank">{p.url.replace(/^https:\/\/|\/$/g, '')}<span class="sr-only"> (nouvel onglet)</span></a></dd></div>}
+        {wip && p.prototypeUrl && <div><dt>Maquette</dt><dd><a href={p.prototypeUrl} rel="noopener" target="_blank">Voir la maquette<span class="sr-only"> (nouvel onglet)</span></a></dd></div>}
       </dl>
     </div>
   </section>
@@ -71,11 +81,11 @@ const extras = p.extraCaptures || [];
   <section class="section theme-jour" aria-labelledby="decisions-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ce que j’ai fait</p>
-        <h2 id="decisions-title" class="h-2">Les trois choix qui ont compté</h2>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>{wip ? 'Ce que je construis' : 'Ce que j’ai fait'}</p>
+        <h2 id="decisions-title" class="h-2">{wip ? 'Les choix de la maquette' : 'Les trois choix qui ont compté'}</h2>
       </div>
       <div class="decisions">
-        {p.decisions.map((d, i) => (
+        {decisions.map((d, i) => (
           <div class="decision" data-reveal>
             <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
             <h3>{d.title}</h3>
@@ -110,14 +120,17 @@ const extras = p.extraCaptures || [];
   <section class="section theme-nuit" aria-labelledby="resultat-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Le résultat</p>
-        <h2 id="resultat-title" class="h-2">Le site aujourd’hui</h2>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>{wip ? 'Où en est le projet' : 'Le résultat'}</p>
+        <h2 id="resultat-title" class="h-2">{wip ? 'Bientôt en ligne' : 'Le site aujourd’hui'}</h2>
+        {wip && <p class="lead">Le site est en cours de réalisation. La maquette montre déjà la direction choisie avec {p.name}.</p>}
       </div>
       <dl class="facts" data-reveal>
-        {p.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+        {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
       </dl>
       <div class="cta-row" style="margin-top:var(--s-5)">
-        <a class="btn btn--ghost" href={p.url} rel="noopener" target="_blank">Visiter le site<span class="sr-only"> (nouvel onglet)</span></a>
+        {wip
+          ? p.prototypeUrl && <a class="btn btn--ghost" href={p.prototypeUrl} rel="noopener" target="_blank">Voir la maquette<span class="sr-only"> (nouvel onglet)</span></a>
+          : <a class="btn btn--ghost" href={p.url} rel="noopener" target="_blank">Visiter le site<span class="sr-only"> (nouvel onglet)</span></a>}
       </div>
       <hr class="rule" style="margin-block:var(--s-7) var(--s-5)" />
       <a class="next-project" href={projectPath(next)}>

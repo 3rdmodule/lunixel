@@ -17,6 +17,7 @@ const pages = [
   '/contact/',
   '/mentions-legales/',
   '/confidentialite/',
+  '/conditions/',
 ];
 
 export function GET() {

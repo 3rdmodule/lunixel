@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../config.js';
 ---
-<Base title="Confidentialité · Lunixel" description="Comment Lunixel traite les informations envoyées depuis le site lunixel.fr. Pas de cookies, pas de pistage.">
+<Base title="Confidentialité et cookies · Lunixel" description="Comment Lunixel traite les informations envoyées depuis lunixel.fr : données collectées, finalités, durée, vos droits. Aucun cookie, aucun pistage.">
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Confidentialité</li></ol></nav>
@@ -12,18 +12,69 @@ import { site } from '../config.js';
   </section>
   <section class="section theme-jour">
     <div class="container prose">
+      <h2>Qui traite vos données</h2>
+      <p>Le responsable du traitement est l’éditeur du site, dont les coordonnées figurent dans les <a href="/mentions-legales/">mentions légales</a>. Pour toute question : <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
       <h2>Ce que je collecte</h2>
-      <p>Uniquement ce que vous choisissez de m’envoyer via le formulaire de contact ou par e-mail : votre prénom, le nom de votre entreprise, votre activité, votre projet, votre message, et votre e-mail ou votre téléphone.</p>
-      <h2>Pourquoi</h2>
-      <p>Pour répondre à votre demande et, si vous le souhaitez, préparer un devis. La base légale est votre demande elle-même (mesures précontractuelles). Vos informations ne sont jamais vendues ni utilisées pour de la prospection sans votre accord.</p>
+      <p>Uniquement ce que vous choisissez de m’envoyer :</p>
+      <ul>
+        <li><strong>Formulaire « démo gratuite »</strong> : votre prénom, votre activité et le type de projet (obligatoires), votre e-mail ou votre téléphone (l’un des deux, pour vous répondre), et si vous le souhaitez le nom de votre entreprise, le lien de votre site ou de votre Instagram, votre message, votre délai et votre budget indicatif.</li>
+        <li><strong>E-mail</strong> : ce que vous m’écrivez directement à {site.email}.</li>
+        {site.bookingUrl && <li><strong>Réservation d’un appel</strong> : votre nom, votre e-mail et le créneau choisi, saisis sur Cal.com.</li>}
+      </ul>
+      <p>Chaque champ du formulaire a une raison d’être : me permettre de préparer votre maquette et de vous recontacter. Aucun autre renseignement n’est demandé.</p>
+
+      <h2>Pourquoi, et sur quelle base</h2>
+      <p>Pour répondre à votre demande, préparer votre maquette et, si vous le souhaitez, un devis. La base légale est l’exécution de mesures précontractuelles prises à votre demande (article 6.1.b du RGPD). Vos informations ne sont jamais vendues, ni utilisées pour de la prospection sans votre accord.</p>
+
       <h2>Combien de temps</h2>
-      <p>Le temps nécessaire pour vous répondre et, le cas échéant, pour notre collaboration. Sans suite de votre part, vos informations sont supprimées au plus tard trois ans après notre dernier échange.</p>
+      <p>Le temps nécessaire pour vous répondre et, le cas échéant, pour notre collaboration. Sans suite de votre part, vos informations sont supprimées au plus tard trois ans après notre dernier échange. Si nous travaillons ensemble, les factures sont conservées dix ans, comme l’exige la loi.</p>
+
       <h2>Qui y a accès</h2>
-      <p>Seulement moi. Les messages transitent par ma messagerie professionnelle (OVH){site.web3formsKey ? ', par le service d’envoi de formulaires Web3Forms' : ''}{site.bookingUrl ? ' et, si vous réservez un appel, par Cal.com' : ''}, qui agissent pour mon compte.</p>
-      <h2>Cookies et mesure d’audience</h2>
-      <p>Ce site ne dépose aucun cookie et n’utilise aucun outil de pistage publicitaire. Les polices de caractères sont hébergées sur le site lui-même : aucune donnée n’est transmise à un tiers quand vous le consultez.</p>
+      <p>Seulement moi. Pour fonctionner, le site s’appuie sur quelques prestataires qui agissent pour mon compte :</p>
+      <ul>
+        <li><strong>OVH</strong> (France) : ma messagerie professionnelle.</li>
+        {site.web3formsKey && <li><strong>Web3Forms</strong> (serveurs aux États-Unis) : transmet le formulaire jusqu’à ma messagerie, sans conserver votre message. <a href="https://web3forms.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
+        {site.bookingUrl && <li><strong>Cal.com</strong> : gère les réservations d’appel, sur son propre site. <a href="https://cal.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
+        <li><strong>GitHub</strong> (hébergeur du site, service GitHub Pages) : quand vous consultez le site, votre adresse IP est enregistrée par GitHub à des fins de sécurité. <a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener">Ce qu’en dit GitHub</a> et <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">sa déclaration de confidentialité</a>.</li>
+      </ul>
+      <p>Certains de ces prestataires sont situés hors de l’Union européenne, notamment aux États-Unis. Leurs politiques, liées ci-dessus, décrivent les garanties qu’ils appliquent.</p>
+
+      <h2 id="cookies">Cookies</h2>
+      <p><strong>Ce site ne dépose aucun cookie</strong> et n’utilise aucun traceur : pas de mesure d’audience, pas de publicité, pas de pixel de réseau social, pas de contenu tiers intégré. Les polices de caractères et les images sont hébergées sur le site lui-même. C’est pourquoi aucun bandeau de consentement ne s’affiche.</p>
+      <table class="cookie-table">
+        <thead><tr><th scope="col">Cookie</th><th scope="col">Finalité</th><th scope="col">Durée</th></tr></thead>
+        <tbody><tr><td>Aucun</td><td>–</td><td>–</td></tr></tbody>
+      </table>
+      {site.bookingUrl && <p>Si vous cliquez sur « Réserver un appel », vous quittez lunixel.fr pour cal.com, qui applique sa propre politique de cookies.</p>}
+
       <h2>Vos droits</h2>
-      <p>Vous pouvez à tout moment demander l’accès, la rectification ou la suppression de vos informations en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>. Vous pouvez aussi adresser une réclamation à la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.</p>
+      <p>Vous pouvez à tout moment demander l’accès à vos informations, leur rectification, leur suppression, leur portabilité, la limitation de leur traitement ou vous y opposer, en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>. Je vous réponds dans un délai d’un mois au plus. Vous pouvez aussi adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.</p>
+
+      <p class="soft">Dernière mise à jour : 24 septembre 2026.</p>
     </div>
   </section>
 </Base>
+
+<style>
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .cookie-table th,
+  .cookie-table td {
+    text-align: left;
+    padding: 0.6rem 1rem 0.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .cookie-table th {
+    font-family: var(--f-label);
+    font-size: var(--step--2);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-soft);
+    border-top: 0;
+  }
+</style>

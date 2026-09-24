@@ -1,9 +1,16 @@
 ---
-interface Props { kind: 'realisation' | 'concept'; short?: boolean }
-const { kind, short = false } = Astro.props;
+// Statut d'un projet : pixel allumé = en ligne, à moitié = en cours, éteint = concept.
+interface Props { kind: 'realisation' | 'concept'; state?: string; short?: boolean }
+const { kind, state, short = false } = Astro.props;
 const live = kind === 'realisation';
+const wip = live && state === 'en-cours';
+const label = wip
+  ? (short ? 'En cours' : 'Réalisation · en cours')
+  : live
+    ? (short ? 'Réalisation' : 'Réalisation · en ligne')
+    : (short ? 'Concept' : 'Concept · sans commande');
 ---
-<span class:list={['status', live ? 'status--live' : 'status--concept']}>
-  <i class:list={['px', { 'px--off': !live }]} aria-hidden="true"></i>
-  {live ? (short ? 'Réalisation' : 'Réalisation · en ligne') : (short ? 'Concept' : 'Concept · sans commande')}
+<span class:list={['status', wip ? 'status--wip' : live ? 'status--live' : 'status--concept']}>
+  <i class:list={['px', { 'px--off': !live, 'px--half': wip }]} aria-hidden="true"></i>
+  {label}
 </span>

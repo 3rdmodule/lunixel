@@ -315,6 +315,15 @@ dd {
 .theme-jour .px:not(.px--off) {
   background: var(--ambre);
 }
+/* À moitié allumé : projet en cours */
+.px--half {
+  background: linear-gradient(90deg, var(--or) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--or);
+}
+.theme-jour .px--half {
+  background: linear-gradient(90deg, var(--ambre) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--ambre);
+}
 
 /* ---------- Mise en page ---------- */
 .container {
@@ -708,6 +717,10 @@ dd {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  /* Écran éteint : visible le temps que la capture arrive */
+  background-color: #14162e;
+  background-image: radial-gradient(circle at center, rgba(167, 170, 203, 0.14) 0 1.6px, transparent 2px);
+  background-size: 12px 12px;
 }
 .vitrine--phone {
   border-radius: 1.6rem;
@@ -2223,16 +2236,31 @@ dd {
   }
 }
 
-/* ---------- Apparitions ---------- */
-@media (prefers-reduced-motion: no-preference) {
-  .js [data-reveal] {
-    opacity: 0;
-    transform: translateY(1.25rem);
-    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-  }
-  .js [data-reveal].is-in {
-    opacity: 1;
-    transform: none;
+/* ---------- Chargement ----------
+   Pas d'apparition au scroll sur chaque bloc : seules les vitrines s'allument.
+   Pendant le chargement, deux signaux discrets et fidèles à l'identité :
+   l'écran « éteint » en pixels derrière chaque capture, et un filet d'or en haut
+   de page quand une page tarde à s'ouvrir. */
+.nav-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 3px;
+  background: var(--or);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  pointer-events: none;
+}
+.is-navigating .nav-progress {
+  opacity: 1;
+  transform: scaleX(0.85);
+  transition: transform 2.4s cubic-bezier(0.1, 0.6, 0.2, 1), opacity 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-navigating .nav-progress {
+    transform: scaleX(0.6);
+    transition: opacity 0.2s ease;
   }
 }
 

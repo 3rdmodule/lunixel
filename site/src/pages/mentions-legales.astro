@@ -4,7 +4,7 @@ import { site } from '../config.js';
 const l = site.legal;
 const missing = !l.publisher || !l.siret;
 ---
-<Base title="Mentions légales · Lunixel" description="Mentions légales du site lunixel.fr : éditeur, hébergeur, propriété intellectuelle.">
+<Base title="Mentions légales · Lunixel" description="Mentions légales du site lunixel.fr : éditeur, directeur de la publication, hébergeur, propriété intellectuelle.">
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Mentions légales</li></ol></nav>
@@ -19,20 +19,23 @@ const missing = !l.publisher || !l.siret;
       {l.address && <p>Adresse : {l.address}</p>}
       {l.phone && <p>Téléphone : {l.phone}</p>}
       <p>Contact : <a href={`mailto:${site.email}`}>{site.email}</a></p>
-      {l.director && <p>Directeur de la publication : {l.director}</p>}
+      <p>Directeur de la publication : {l.director || 'l’entrepreneur individuel éditeur du site'}.</p>
+      {l.vat && <p>{l.vat}</p>}
       {!missing && (!l.address || !l.phone) && <p>Adresse postale et téléphone communiqués sur simple demande à l’adresse ci-dessus.</p>}
       {missing && <p>Les informations d’immatriculation de l’éditeur sont en cours de mise à jour et seront publiées sur cette page très prochainement. Elles peuvent être obtenues sur simple demande à l’adresse ci-dessus.</p>}
 
       <h2>Hébergement</h2>
-      <p>Le site est hébergé par GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Site : <a href="https://github.com" rel="noopener">github.com</a>.</p>
+      <p>Le site est hébergé par GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Téléphone : +1 877 448 4820. Site : <a href="https://github.com" rel="noopener">github.com</a>.</p>
       <p>Le nom de domaine lunixel.fr est géré par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 
       <h2>Propriété intellectuelle</h2>
       <p>L’ensemble des contenus de ce site (textes, logo, identité graphique, mise en page, code) est la propriété de Lunixel, sauf mention contraire. Toute reproduction, même partielle, nécessite une autorisation préalable.</p>
       <p>Les captures d’écran des projets présentés appartiennent à leurs propriétaires respectifs et sont montrées à titre de références. Les concepts présentés sont des explorations créatives réalisées sans commande des entreprises concernées ; ils ne constituent pas leurs sites officiels.</p>
 
-      <h2>Données personnelles</h2>
-      <p>Pour savoir comment sont traitées les informations envoyées par le formulaire de contact, consultez la page <a href="/confidentialite/">Confidentialité</a>.</p>
+      <p>Les polices, images et autres éléments utilisés, avec leur licence, sont listés dans les <a href="/conditions/#licences">conditions d’utilisation</a>.</p>
+
+      <h2>Données personnelles et cookies</h2>
+      <p>Pour savoir comment sont traitées les informations envoyées par le formulaire, et pourquoi ce site ne dépose aucun cookie, consultez la page <a href="/confidentialite/">Confidentialité</a>.</p>
     </div>
   </section>
 </Base>

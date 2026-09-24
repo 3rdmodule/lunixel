@@ -40,12 +40,13 @@ export const site = {
 
   // Mentions légales. Les champs vides ne s'affichent pas.
   legal: {
-    publisher: '3rd', // Nom de l'éditeur (personne ou société)
+    publisher: '3rd', // [À COMPLÉTER] Pour un entrepreneur individuel : nom et prénom tels qu'inscrits au répertoire SIRENE
     status: 'entrepreneur individuel (micro-entreprise)',
     siret: '892 917 733 00032', // Établissement actif (siège depuis le 18/05/2026)
-    address: '',
-    phone: '',
-    director: '', // Directeur de la publication
+    address: '', // [À COMPLÉTER] Obligatoire pour un site pro (domicile ou adresse de domiciliation)
+    phone: '', // [À COMPLÉTER] Obligatoire pour un site pro
+    director: '', // [À COMPLÉTER] Directeur de la publication : nom et prénom de l'entrepreneur
+    vat: '', // [À COMPLÉTER] Ex. 'TVA non applicable, article 293 B du CGI' si franchise en base de TVA
   },
 
   // Prix « à partir de » (page Tarifs uniquement). Vide = « Sur devis ».

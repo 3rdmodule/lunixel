@@ -12,8 +12,10 @@ interface Props {
   vt?: string;
   barLabel?: string;
   barKind?: 'realisation' | 'concept';
+  barState?: string;
 }
-const { project, variant = 'desktop', index = 0, eager = false, sizes, lightable = false, alt, vt, barLabel, barKind } = Astro.props;
+const { project, variant = 'desktop', index = 0, eager = false, sizes, lightable = false, alt, vt, barLabel, barKind, barState } = Astro.props;
+const barWip = barKind === 'realisation' && barState === 'en-cours';
 const cap = getCaptures(project.slug);
 const phone = variant === 'phone';
 let entry, name;
@@ -30,7 +32,7 @@ const style = `--a-bg:${p.bg};--a-fg:${p.fg};--a-accent:${p.accent}`;
   {!phone && (
     <div class="vitrine__bar" aria-hidden="true">
       <i></i><i></i><i></i>
-      {barLabel && <span class="vitrine__label">{barLabel}<b class:list={['px', { 'px--off': barKind === 'concept' }]}></b>{barKind === 'concept' ? 'Concept' : 'Réalisation'}</span>}
+      {barLabel && <span class="vitrine__label">{barLabel}<b class:list={['px', { 'px--off': barKind === 'concept', 'px--half': barWip }]}></b>{barKind === 'concept' ? 'Concept' : barWip ? 'En cours' : 'Réalisation'}</span>}
     </div>
   )}
   <div class="vitrine__screen" style={vt ? `view-transition-name:${vt}` : undefined}>

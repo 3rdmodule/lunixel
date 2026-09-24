@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config.js';
+
+// Licences de tout ce qui n'a pas été créé de zéro pour ce site.
+const licences = [
+  {
+    item: 'Police Gabarito (titres)',
+    source: 'The Gabarito Project Authors',
+    href: 'https://github.com/naipefoundry/gabarito',
+    licence: 'SIL Open Font License 1.1',
+    licenceHref: 'https://openfontlicense.org',
+  },
+  {
+    item: 'Police Hanken Grotesk (texte)',
+    source: 'The Hanken Grotesk Project Authors',
+    href: 'https://github.com/marcologous/hanken-grotesk',
+    licence: 'SIL Open Font License 1.1',
+    licenceHref: 'https://openfontlicense.org',
+  },
+  {
+    item: 'Framework du site',
+    source: 'Astro',
+    href: 'https://astro.build',
+    licence: 'Licence MIT',
+    licenceHref: 'https://github.com/withastro/astro/blob/main/LICENSE',
+  },
+  {
+    item: 'Logo, identité graphique, icônes et images de partage',
+    source: 'Lunixel',
+    licence: 'Tous droits réservés',
+  },
+  {
+    item: 'Captures des réalisations (Fabienne Hiot, 3rd Records, Nube Games)',
+    source: 'Sites conçus par Lunixel, montrés avec l’accord de leurs propriétaires',
+    licence: 'Droits de leurs propriétaires respectifs',
+  },
+  {
+    item: 'Captures des concepts',
+    source: 'Maquettes conçues par Lunixel',
+    licence: 'Tous droits réservés ; les photographies qu’elles contiennent appartiennent à leurs auteurs',
+  },
+];
+---
+<Base
+  title="Conditions d’utilisation · Lunixel"
+  description="Conditions d’utilisation du site lunixel.fr : accès, contenus et prix indicatifs, propriété intellectuelle, liens, licences des polices et des images."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Conditions d’utilisation</li></ol></nav>
+      <h1 class="h-1 display">Conditions d’utilisation</h1>
+      <p class="lead">Les règles du site lunixel.fr, en clair.</p>
+    </div>
+  </section>
+  <section class="section theme-jour">
+    <div class="container prose">
+      <h2>Objet</h2>
+      <p>Ces conditions encadrent l’accès au site lunixel.fr et son utilisation. En le consultant, vous les acceptez. L’éditeur du site est présenté dans les <a href="/mentions-legales/">mentions légales</a>.</p>
+
+      <h2>Accès au site</h2>
+      <p>Le site est gratuit, sans compte ni inscription. Je fais en sorte qu’il soit disponible en permanence, mais il peut être momentanément interrompu pour une maintenance ou une panne de l’hébergeur.</p>
+
+      <h2>Contenus, prix et démo gratuite</h2>
+      <p>Les informations du site sont données à titre indicatif. Les prix affichés sont des prix de départ : <strong>seul le devis écrit que vous acceptez engage les deux parties</strong>. La maquette offerte (démo gratuite) ne crée aucune obligation d’achat.</p>
+      <p>Les concepts présentés sont des explorations réalisées sans commande des entreprises concernées. Ils ne sont pas leurs sites officiels.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>Les textes, le logo, l’identité graphique, la mise en page et le code du site appartiennent à Lunixel, sauf mention contraire. Toute reproduction, même partielle, demande une autorisation préalable.</p>
+
+      <h2>Liens vers d’autres sites</h2>
+      <p>Le site renvoie vers des sites extérieurs (réalisations, sources des chiffres, réservation d’appel sur Cal.com). Je ne contrôle pas leur contenu et ne peux pas en être tenu responsable.</p>
+
+      <h2>Données personnelles et cookies</h2>
+      <p>Aucun cookie n’est déposé. Le traitement des informations envoyées par le formulaire est décrit sur la page <a href="/confidentialite/">Confidentialité</a>.</p>
+
+      <h2 id="licences">Polices, images et licences</h2>
+      <div class="licence-wrap">
+        <table class="licence-table">
+          <thead><tr><th scope="col">Élément</th><th scope="col">Source</th><th scope="col">Licence</th></tr></thead>
+          <tbody>
+            {licences.map((l) => (
+              <tr>
+                <th scope="row">{l.item}</th>
+                <td>{l.href ? <a href={l.href} rel="noopener">{l.source}</a> : l.source}</td>
+                <td>{l.licenceHref ? <a href={l.licenceHref} rel="noopener">{l.licence}</a> : l.licence}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>Les polices et les images sont hébergées sur lunixel.fr : aucune n’est chargée depuis un service tiers.</p>
+
+      <h2>Droit applicable</h2>
+      <p>Ces conditions sont régies par le droit français. Une question ou un désaccord ? Écrivez-moi d’abord à <a href={`mailto:${site.email}`}>{site.email}</a> : on trouve presque toujours une solution à l’amiable.</p>
+
+      <p class="soft">Dernière mise à jour : 24 septembre 2026.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .licence-wrap {
+    overflow-x: auto;
+  }
+  .licence-table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .licence-table th,
+  .licence-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.7rem 1rem 0.7rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .licence-table thead th {
+    font-family: var(--f-label);
+    font-size: var(--step--2);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-soft);
+    border-top: 0;
+  }
+  .licence-table tbody th {
+    font-weight: 600;
+  }
+</style>

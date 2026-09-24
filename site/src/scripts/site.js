@@ -73,7 +73,28 @@ const io = new IntersectionObserver(
   },
   { rootMargin: '0px 0px -12% 0px', threshold: 0.15 }
 );
-$$('[data-reveal], [data-light]').forEach((el) => io.observe(el));
+$$('[data-light]').forEach((el) => io.observe(el));
+
+/* Filet de chargement : n'apparaît que si la page suivante tarde (plus de 250 ms) */
+const progress = document.createElement('div');
+progress.className = 'nav-progress';
+progress.setAttribute('aria-hidden', 'true');
+document.body.prepend(progress);
+let navTimer;
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  if (a.target && a.target !== '_self') return;
+  if (a.hasAttribute('download')) return;
+  const url = new URL(a.href, location.href);
+  if (url.origin !== location.origin || (url.pathname === location.pathname && url.hash)) return;
+  clearTimeout(navTimer);
+  navTimer = setTimeout(() => document.documentElement.classList.add('is-navigating'), 250);
+});
+window.addEventListener('pageshow', () => {
+  clearTimeout(navTimer);
+  document.documentElement.classList.remove('is-navigating');
+});
 
 /* Ouverture : les vitrines s'allument l'une après l'autre, comme à la tombée du jour */
 const heroLights = $$('[data-hero-light]');

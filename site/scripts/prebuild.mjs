@@ -26,6 +26,47 @@ const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-21 -10 313 31
 await fs.writeFile(path.join(root, 'public/favicon.svg'), favicon);
 await sharp(Buffer.from(iconSvg(180, '#1B1E3C'))).png().toFile(path.join(dirs.icons, 'apple-touch-icon.png'));
 await sharp(Buffer.from(iconSvg(32))).png().toFile(path.join(dirs.icons, 'favicon-32.png'));
+const iconPng = (size, bg) => sharp(Buffer.from(iconSvg(size, bg))).png().toBuffer();
+await fs.writeFile(path.join(dirs.icons, 'favicon-16.png'), await iconPng(16));
+await fs.writeFile(path.join(dirs.icons, 'icon-192.png'), await iconPng(192, '#1B1E3C'));
+await fs.writeFile(path.join(dirs.icons, 'icon-512.png'), await iconPng(512, '#1B1E3C'));
+// favicon.ico : 16, 32 et 48 px (PNG embarqués), pour les navigateurs et robots qui le demandent à la racine.
+const icoImgs = await Promise.all([16, 32, 48].map(async (s) => [s, await iconPng(s)]));
+const icoHead = Buffer.alloc(6);
+icoHead.writeUInt16LE(0, 0);
+icoHead.writeUInt16LE(1, 2);
+icoHead.writeUInt16LE(icoImgs.length, 4);
+let icoOffset = 6 + 16 * icoImgs.length;
+const icoDir = icoImgs.map(([s, buf]) => {
+  const e = Buffer.alloc(16);
+  e.writeUInt8(s, 0);
+  e.writeUInt8(s, 1);
+  e.writeUInt16LE(1, 4);
+  e.writeUInt16LE(32, 6);
+  e.writeUInt32LE(buf.length, 8);
+  e.writeUInt32LE(icoOffset, 12);
+  icoOffset += buf.length;
+  return e;
+});
+await fs.writeFile(path.join(root, 'public/favicon.ico'), Buffer.concat([icoHead, ...icoDir, ...icoImgs.map(([, b]) => b)]));
+await fs.writeFile(
+  path.join(root, 'public/site.webmanifest'),
+  JSON.stringify(
+    {
+      name: 'Lunixel',
+      short_name: 'Lunixel',
+      icons: [
+        { src: '/generated/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/generated/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+      ],
+      theme_color: '#1B1E3C',
+      background_color: '#1B1E3C',
+      display: 'browser',
+    },
+    null,
+    2,
+  ),
+);
 log('icônes ok');
 
 /* ---------- Navigateur ---------- */
@@ -112,11 +153,13 @@ const ogPages = {
   contact: ['Votre démo <em>gratuite</em>.', 'La maquette de votre page d’accueil, offerte'],
   'mentions-legales': ['Mentions légales', 'lunixel.fr'],
   confidentialite: ['Pas de cookies, pas de pistage.', 'Confidentialité'],
+  conditions: ['Les règles du site, en clair.', 'Conditions d’utilisation'],
 };
 for (const m of metiers) ogPages[`metiers-${m.slug}`] = [m.h1 + '.', m.label];
 for (const p of projects) {
   const key = `${p.kind === 'realisation' ? 'realisations' : 'concepts'}-${p.slug}`;
-  ogPages[key] = p.kind === 'realisation' ? [p.tagline, `Réalisation · ${p.name}`] : [p.question, `Concept · ${p.name}`];
+  const wip = p.status === 'en-cours';
+  ogPages[key] = p.kind === 'realisation' ? [p.tagline, `${wip ? 'Réalisation en cours' : 'Réalisation'} · ${p.name}`] : [p.question, `Concept · ${p.name}`];
 }
 const logoSvg = `<svg viewBox="85 75 1419 302" xmlns="http://www.w3.org/2000/svg" style="height:56px;width:auto;align-self:flex-start">${MOON_CELLS.map(([c, r, k]) => `<rect x="${85 + c * 21}" y="${85 + r * 21}" width="19" height="19" rx="2.6" fill="${MOON_COLORS[k]}"/>`).join('')}<path fill="#F6F2EA" d="${WORDMARK_D}"/><rect x="1010" y="83" width="38" height="38" rx="5.2" fill="#F6B940"/></svg>`;
 const ogHtml = (title, label) => `<!doctype html><html><head><meta charset="utf-8"><style>

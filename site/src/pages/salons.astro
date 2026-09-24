@@ -4,7 +4,7 @@ import Vitrine from '../components/Vitrine.astro';
 import Status from '../components/Status.astro';
 import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
-import { projects, projectPath } from '../data/projects.js';
+import { projects, projectPath, linkLabel } from '../data/projects.js';
 import { metiers, metierPath } from '../data/metiers.js';
 import { site } from '../config.js';
 
@@ -82,13 +82,13 @@ const jsonld = [
   <section class="section theme-nuit" aria-labelledby="exemple-title">
     <div class="container work">
       <a class="work__media lightable" href={projectPath(exemple)} tabindex="-1" aria-hidden="true" data-light>
-        <Vitrine project={exemple} alt={`Aperçu du concept ${exemple.name}`} />
+        <Vitrine project={exemple} alt={`Aperçu du site ${exemple.name}`} />
       </a>
       <div class="work__body" data-reveal>
-        <Status kind={exemple.kind} />
+        <Status kind={exemple.kind} state={exemple.status} />
         <h2 id="exemple-title" class="h-3">Un exemple : {exemple.name}, {exemple.business.toLowerCase()}</h2>
         <p class="soft">Les soins et leurs tarifs dès l’accueil, le premier contact gratuit mis en avant, et un bouton « Rendez-vous » toujours sous le pouce.</p>
-        <a class="arrow-link" href={projectPath(exemple)}>Voir le concept<span class="sr-only"> : {exemple.name}</span></a>
+        <a class="arrow-link" href={projectPath(exemple)}>{linkLabel(exemple)}<span class="sr-only"> : {exemple.name}</span></a>
       </div>
     </div>
   </section>
