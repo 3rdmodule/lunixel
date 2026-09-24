@@ -1,6 +1,6 @@
 # Hugo Abecassis, luthier — Concept de site
 
-**Lunixel** · Proposition de concept v0.1 · 23 septembre 2026
+**Lunixel** · Proposition de concept v2 · 24 septembre 2026 (refonte complète après la v1 du 23 septembre)
 Prototype : `lunixel.fr/concept/hugoabecassis` (chemin configurable, voir `DEPLOY.md`)
 
 > Règle de contenu : rien n'est inventé. Chaque fait sur Hugo est sourcé ci‑dessous. Ce qui manque est marqué `[À CONFIRMER]`, dans ce document comme dans le prototype.
@@ -65,204 +65,132 @@ Six références analysées (structure, navigation, typographie, photo, ton, CTA
 
 ---
 
-## 2. Direction artistique
+## 2. Direction artistique (v2)
 
-### 2.1 Concept : « L'âme »
+### 2.1 Concept : « l'étiquette de luthier »
 
-Dans un violon, l'âme est une petite baguette d'épicéa, invisible, coincée entre la table et le fond. Elle ne se voit pas, mais c'est elle qui transmet la vibration et fait sonner l'instrument. Hugo en a même placé une dans une guitare jazz.
+Dans chaque instrument, par l'ouïe, on aperçoit une petite étiquette imprimée : le nom du luthier, l'instrument, le lieu, l'année. C'est la signature du métier, un détail que seuls les connaisseurs regardent.
 
-Le concept dit l'essentiel du métier : **le meilleur travail du luthier est celui qu'on ne voit pas**. Une restauration réussie « se fond dans le pré‑existant » ; un réglage juste ne se remarque qu'à l'oreille.
+Le site en fait son identité :
+- **la signature** du site (en‑tête, pied de page) est une petite étiquette à double filet ;
+- **le titre de l'accueil** est une grande étiquette posée sur la photo d'Hugo à l'établi ;
+- **chaque instrument** est présenté avec son étiquette (nom, type, année), et les instruments sans photo sont montrés par leur seule étiquette plutôt que par un cadre vide.
 
-Traduction graphique :
-- **Le signe** : un fin trait vertical, l'âme, entre le nom et le métier dans la signature, et comme séparateur de sections. Aucun violon détouré, aucun ornement.
-- **Le vide** : beaucoup de marge, peu d'éléments, un rythme lent. Le silence avant la note.
-- **Le détail** : photos rapprochées (fibres, vernis, filets, copeaux) et légendes précises en caractères techniques, comme des notes d'atelier.
+Le reste s'efface : papier ivoire, encre, filets, des photos réelles. Pas de violon détouré, pas de texture bois, pas d'animation au défilement.
 
-Deux autres pistes, écartées pour l'instant :
-- **« Cordes sympathiques »** (d'après le violon d'amour Physalis) : les cordes qui résonnent sans être jouées. Très poétique, mais la métaphore demande une explication.
-- **« Les bases, puis l'invention »** (d'après la citation d'Hugo) : plus directe, mais plus proche d'un slogan.
-
-**Mood** : carnet d'atelier plutôt que boutique, lumière du nord, calme, précis, tactile. Soigné dans la forme, simple dans les mots.
+La v1 (concept « l'âme », sections numérotées, étiquettes mono, cartes décalées, fondus au scroll, photos de banque) a été abandonnée : trop « template », trop de texte, pas assez de photos réelles.
 
 ### 2.2 Palette
 
 | Nom | HEX | Rôle | Contraste |
 |---|---|---|---|
 | Ivoire | `#F3F0E8` | Fond principal | — |
-| Papier | `#E9E4D9` | Fonds secondaires, cadres photo | — |
-| Encre | `#1B1A17` | Texte, titres, boutons | 15,3:1 sur Ivoire |
+| Papier | `#E9E4D9` | Pied de page, cadres photo | — |
+| Étiquette | `#FAF7EF` | Fond des étiquettes et des champs | — |
+| Encre | `#1B1A17` | Texte, titres, filets forts, boutons | 15,3:1 sur Ivoire |
 | Graphite | `#5C574F` | Texte secondaire, légendes | 6,3:1 sur Ivoire |
-| Pierre | `#8A8378` | Décor, libellés sur fond sombre | 4,9:1 sur Nuit |
-| Filet | `#CFC8BB` | Lignes, bordures | décoratif |
-| Nuit | `#151412` | Sections sombres, footer | — |
-| **Garance** | `#9A3B26` | Accent rare : signe de l'âme, liens actifs, numéros | 6,1:1 sur Ivoire |
-| Garance clair | `#D7866D` | Accent sur fond Nuit | 6,6:1 sur Nuit |
+| Filet | `#CFC8BB` | Lignes fines | décoratif |
+| **Garance** | `#9A3B26` | Accent rare : survol, lien actif, dates, mentions [À CONFIRMER] | 6,1:1 sur Ivoire |
 
-La garance, pigment rouge tiré d'une racine, entre dans la composition des vernis anciens. C'est une couleur de métier, pas une couleur « bois ». Elle couvre moins de 2 % de la surface.
+La garance est un pigment rouge des vernis anciens. Plus de section noire : seul le bandeau « concept » en haut de page est foncé.
 
 ### 2.3 Typographie
 
-Choix validé par Lunixel (23/09/2026) après comparaison sur planche : **option A**.
+| Rôle | Police | Pourquoi |
+|---|---|---|
+| Titres | **Bricolage Grotesque** (620–650) | Choisie par Lunixel le 23/09 : contemporaine, un peu brute. |
+| Texte, interface | **IBM Plex Sans** | Remplace Inter, que la checklist Lunixel classe parmi les polices « IA ». Plex a un dessin technique, précis, qui colle au métier. |
+| Étiquettes, légendes, dates | **Libre Caslon Text** (romain et italique) | Le Caslon est le caractère d'imprimerie du XVIIIe siècle, celui des étiquettes collées dans les violons. |
 
-| Option | Titres | Texte | Intention |
-|---|---|---|---|
-| **A (retenue)** | **Bricolage Grotesque** (variable, graisse ~620–650, approche serrée) | **Inter** (variable) + **IBM Plex Mono** pour les libellés et légendes | Contemporaine, un peu brute, chaleureuse : une typo d'atelier plutôt que de maison de luxe. Très lisible sur mobile. |
-| B | Fraunces | Inter | Serif douce et ronde, artisanale. |
-| C | Schibsted Grotesk (famille unique) | Schibsted Grotesk | Directe et solide, la plus neutre. |
-| — | Instrument Serif + Instrument Sans | | Première proposition, écartée : trop « chic » pour le ton voulu. |
+Toutes sous licence SIL OFL, hébergées sur le site (aucun appel à Google Fonts).
 
-Toutes sont libres (OFL) et hébergées localement : pas d'appel à Google Fonts, meilleur pour le RGPD et la performance. Pas d'italique : la hiérarchie se fait par la graisse et la taille.
+### 2.4 Principes de mise en page
 
-**Échelle (fluide, `clamp`)** : Display 43→104 px · H1 35→68 · H2 28→46 · H3 21→27 · Corps 16→18 · Petit 15 · Légende mono 12 (capitales espacées 0,08em).
+- Grille 12 colonnes. Chaque section est un **index de catalogue** : un filet noir, le titre à gauche, le contenu à droite. Pas de numéros de section, pas de cartes.
+- Listes à filets fins (services, étapes, coordonnées) plutôt que blocs d'icônes.
+- Boutons rectangulaires, sans arrondi ni ombre.
+- Les mentions [À CONFIRMER] sont petites, en italique garance, sans encadré ; un bandeau en haut de page explique leur sens.
 
-### 2.4 Principes UI
+### 2.5 Photos
 
-- Grille de 12 colonnes, marge extérieure 20 px (mobile) → 64 px (desktop), largeur max 1440 px, texte limité à 60 caractères.
-- Images traitées comme des pages de livre : pleine largeur, ou décentrées en composition asymétrique, jamais en vignettes régulières.
-- Un seul CTA fort par écran. Boutons : texte + flèche, filet fin, pas d'arrondis ni d'ombres.
-- Numérotation discrète des sections (`01`, `02`) en mono, comme un relevé.
-- Légendes courtes sous les photos : ce qu'on voit, l'essence, l'étape. Pas de numéros de planches façon catalogue d'exposition.
-
-### 2.5 Direction photographique
-
-Lumière naturelle latérale (fenêtre nord), ombres assumées, peu de profondeur de champ, grain léger ; tons neutres, blancs cassés. Pas de mise en scène, pas de fond blanc studio, pas d'instrument détouré.
-
-Liste de prises à réaliser (reportage d'une demi‑journée) :
-1. Portrait d'Hugo à l'établi, regard sur le travail (hero).
-2. Mains : gouge sur une volute, rabot sur une table, pinceau de vernis.
-3. Copeaux d'épicéa, sciure, bois refendu (matière).
-4. Pose de l'âme (outil pose‑âme par l'ouïe) : l'image signature du concept.
-5. Outils rangés, vus de haut, en lumière rasante.
-6. Stock de bois : planches d'épicéa et d'érable ondé, marquages au crayon.
-7. Restauration : avant / pendant / après (fracture, pièce, retouche de vernis).
-8. Instruments terminés en contre‑jour : Physalis, Ramino, LA Jazz, Pinarbox.
-9. Musiciens partenaires qui jouent un instrument d'Hugo `[À CONFIRMER]`.
-10. L'atelier en plan large, lieu et lumière (quand l'atelier indépendant existera).
-
-En attendant, le prototype affiche des **cadres de prise de vue** : chaque emplacement décrit la photo attendue. Les photos existantes des instruments d'Hugo peuvent être importées (droits `[À CONFIRMER]`).
+Uniquement des photos réelles (voir `docs/PHOTOS.md`) : Hugo à l'établi (Ouest‑France 2026, Aurélie Augé), ses instruments, les étapes d'une fabrication (2015‑2016), une restauration de guitare Carmencita. Le bleu du drapé et du mur de l'atelier est neutralisé automatiquement. Un vrai reportage reste à prévoir pour les formats larges.
 
 ### 2.6 Animations
 
-- Apparition des images : fondu + léger recadrage (échelle 1,04 → 1), 900 ms, une seule fois.
-- Transitions entre pages : fondu croisé natif (View Transitions CSS), 250 ms.
-- Survol : soulignement qui se trace, flèche qui avance de 4 px, image qui s'éclaircit à peine.
-- Aucune animation au scroll continu (parallaxe, compteurs, textes qui volent).
-- `prefers-reduced-motion` : tout est désactivé.
+Aucune apparition au défilement. Seuls mouvements : la flèche des liens qui avance de 3 px au survol, et un **filet garance qui se tend en haut de l'écran** (comme une corde) si la page suivante tarde à charger.
 
 ---
 
 ## 3. Architecture
 
 ```
-/                         Accueil
-/atelier/                 L'atelier
-/savoir-faire/            Savoir-faire (vue d'ensemble)
-  /savoir-faire/entretien/
-  /savoir-faire/restauration/
-  /savoir-faire/fabrication/   (+ créations)
-/parcours/                Parcours + Dans la presse
-/partenaires/             Partenaires
-/contact/                 Contact + demande de rendez-vous
-/mentions-legales/
+/                         Accueil (5 blocs)
+/atelier/                 L'établi, étapes de fabrication, détails (galerie)
+/savoir-faire/            Entretien · Restauration · Fabrication · Instruments (une seule page, ancres)
+/parcours/                5 étapes + Dans la presse
+/partenaires/             Son maître (Gauthier Louppe) + musiciens à venir
+/contact/                 Rendez-vous (Cal.com) + formulaire
+/mentions-legales/  /confidentialite/  /conditions/
 ```
 
-**Navigation** : `Hugo | Abecassis — Luthier` (signature, retour accueil) · Atelier · Savoir‑faire · Parcours · Partenaires · Contact · **[Prendre rendez‑vous]** (toujours visible).
-Mobile : barre haute fixe (signature + « Menu » + « Rendez‑vous »), menu plein écran en grand serif, liens de 56 px de haut.
+Les anciennes adresses `/savoir-faire/entretien/` etc. redirigent vers les ancres de la page unique.
 
-**Parcours utilisateurs**
-
-| Visiteur | Question | Chemin |
-|---|---|---|
-| Musicien, instrument à régler | « Peut‑il s'occuper de mon violon, et quand ? » | Accueil → Savoir‑faire › Entretien → Rendez‑vous (motif pré‑rempli) |
-| Particulier, instrument hérité | « Est‑ce que ça vaut la peine de le restaurer ? » | Accueil → Restauration (diagnostic, conservation) → Contact (photos, estimation) |
-| Musicien, projet d'instrument | « Qu'a‑t‑il déjà fabriqué ? » | Accueil › Réalisations → Fabrication (créations, fiches) → Parcours → Rendez‑vous « premier échange » |
-| Professionnel, institution | « Est‑il sérieux et expérimenté ? » | Parcours (formation, presse) → Partenaires → Contact |
+**Navigation** : étiquette « Hugo Abecassis, luthier » · Atelier · Savoir‑faire · Parcours · Partenaires · Contact · **[Prendre rendez‑vous]**. Mobile : étiquette + bouton « Menu », menu plein écran.
 
 ---
 
-## 4. Wireframes
+## 4. Wireframes (v2)
 
-### Accueil (6 sections, environ 5,5 écrans sur desktop)
+**Accueil** (environ 3 écrans sur ordinateur)
+1. *En‑tête* : photo d'Hugo à l'établi (8 colonnes, 4:3) ; grande étiquette « Hugo Abecassis, luthier · Normandie » posée à cheval sur son bord droit ; une phrase ; « Prendre rendez‑vous » + « Voir l'atelier ».
+2. *Ce qu'il fait* : index de 3 lignes (vignette réelle, titre, une phrase, flèche) vers les ancres de Savoir‑faire.
+3. *Ses instruments* : Physalis, LA Jazz, Pinarbox, chacun avec son étiquette.
+4. *Parcours* : 2 phrases + 2 articles Ouest‑France.
+5. *Rendez‑vous* : « Un instrument à régler, à réparer, à faire faire ? »
 
-| # | Section | Hauteur | Contenu |
-|---|---|---|---|
-| 1 | Hero | 100 svh (min 640 px) | Photo pleine page (portrait à l'établi). Bas gauche : H1 « Hugo Abecassis, luthier » (une ligne sur ordinateur, deux sur mobile), sous-titre d'une phrase, puis 2 liens : « Découvrir l'atelier → » (principal) et « Prendre rendez‑vous » (secondaire). |
-| 2 | Introduction | ~70 vh | 12 col. : numéro `01` (col. 1), phrase d'accroche en serif 40 px (col. 3‑10), paragraphe de 3 lignes (col. 6‑11), lien « Le parcours → ». |
-| 3 | Savoir‑faire | ~110 vh | Titre H2. 3 colonnes (desktop) / pile (mobile) : photo 4:5, numéro, titre H3 serif, 2 lignes, lien. Décalage vertical de 64 px entre colonnes pour casser la grille. |
-| 4 | Réalisations | ~130 vh | Composition asymétrique : 1 grande image (col. 1‑7, 4:5), 2 images (col. 9‑12, empilées), légendes mono (nom, type, année). Lien « Voir les créations → ». |
-| 5 | Parcours et presse | ~70 vh | Fond Papier. Gauche : 4 jalons (Belgique, Avranches, Saint‑Lô 2015, 2027 `[À CONFIRMER]`). Droite : 2 extraits de presse (média, titre, date). |
-| 6 | Appel final | ~60 vh | Fond Nuit. « Parlons de votre instrument. » (display), phrase courte, bouton ivoire « Prendre rendez‑vous », lien e‑mail. |
-| — | Footer | ~40 vh | Signature, navigation, coordonnées, mentions, « Site réalisé par Lunixel » (petit, Pierre). |
+**Atelier** : titre + phrase → l'établi (grand) et Hugo au travail → *Étapes de fabrication* (8 photos numérotées, juillet 2015 → janvier 2016) → *De près* (8 détails, agrandissement au clic) → « Passer à l'atelier ».
 
-**Rythme vertical** : espacement de section 96 px (mobile) → 200 px (desktop) ; 3 niveaux de titres visibles par écran au plus.
+**Savoir‑faire** : titre + raccourcis → *Entretien* (phrase, texte, liste, photo, bouton « Rendez‑vous pour un réglage ») → *Restauration* (liste + la restauration d'une guitare Carmencita en 6 photos) → *Fabrication* (liste « ce qui se décide ensemble ») → *Instruments* (3 avec photo et étiquette, 6 en étiquettes seules).
 
-### Atelier
-Hero typographique (« L'atelier » + phrase) → grande image → **Chapitres** numérotés, chacun composé d'une grande photo, d'une légende et de 2 à 4 lignes : *Le lieu · La matière · Les outils · Les gestes · Le temps* → **Les étapes** d'une fabrication (7 étapes, frise horizontale défilable sur mobile) → mur de détails (galerie masonry, 9 images, agrandissement plein écran au clic) → CTA « Visiter l'atelier sur rendez‑vous ».
+**Parcours** : titre, citation d'Hugo, portrait → 5 étapes (date en Caslon garance, lieu, 2 lignes) → presse (4 références) → bouton.
 
-### Savoir‑faire (vue d'ensemble)
-Introduction → 3 grands blocs alternés (image 7 col. / texte 5 col.) → bandeau « Instruments suivis » (famille par famille) → CTA.
+**Partenaires** : son maître (étiquette + lien L'Avenir) → musiciens et groupes : ce que contiendra chaque fiche, en attendant les accords.
 
-### Page service (Entretien, Restauration, Fabrication)
-Hero (titre, chapô, photo) → « Ce que cela comprend » (liste définie, 5‑8 opérations expliquées simplement) → « Comment ça se passe » (3‑4 étapes) → exemples (réalisations liées) → questions fréquentes (3 max, `details`) → CTA avec motif pré‑rempli.
-
-### Parcours
-Hero (portrait + phrase) → **Chapitres** narratifs (pas une frise froide) : *Apprendre (Belgique)* · *S'installer (Avranches)* · *Saint‑Lô (2015)* · *Inventer (Ramino, Physalis, Pinarbox)* · *Et maintenant (atelier indépendant)* → citation d'Hugo → **Dans la presse** (liste éditoriale) → CTA.
-
-### Partenaires
-Introduction (la relation plutôt que le logo) → fiches en format « portrait » (photo 4:5, nom, discipline, nature de la collaboration, instrument, lien) → section « Transmission » (maître : Gauthier Louppe) → invitation aux musiciens.
-
-### Contact
-Deux colonnes : coordonnées, modalités, horaires `[À CONFIRMER]` / formulaire (nom, e‑mail, téléphone facultatif, instrument, type de demande, message, consentement). Encadré « Rendez‑vous ».
+**Contact** : colonne gauche « Prendre rendez‑vous » (Cal.com) et coordonnées ; colonne droite formulaire (nom, e‑mail, instrument, demande, message, téléphone facultatif), sans case à cocher : une phrase renvoie à la politique de confidentialité.
 
 ---
 
 ## 5. Rédaction
 
-Les textes complets sont dans le prototype (fichiers `src/data/*.ts` et pages).
+**Ton : simple, direct.** Phrases courtes, mots de tous les jours, vocabulaire du métier expliqué en une ligne, aucun superlatif. Les textes sont dans `src/data/*.ts` et les pages. La v2 a divisé la longueur des textes environ par deux.
 
-**Ton : simple, direct, chaleureux. Pas « léché », pas « aristo ».** Le design peut être soigné, les mots restent ceux de l'atelier :
-- phrases courtes, mots de tous les jours, vocabulaire du métier expliqué en une ligne ;
-- du concret (un bois, un outil, une caisse de vin) plutôt que des formules (« l'excellence », « sublimer », « l'âme du bois ») ;
-- un peu d'humour quand il vient tout seul (la page 404 « s'est désaccordée ») ;
-- aucun superlatif ; le savoir-faire se montre par les instruments, le parcours et la presse.
-
-**Titre de l'accueil (validé)** : *« Hugo Abecassis, luthier »*, en grand, avec en dessous : « Entretien, restauration et fabrication d'instruments à cordes, en Normandie. » C'est aussi le H1 de la page.
-
-Pistes écartées : « Du violon à la guitare en caisse de vin. », « Régler, réparer, fabriquer. », « Des instruments à cordes, faits et réparés à la main. », « Des gestes anciens, des instruments vivants. ».
+**H1 de l'accueil (validé)** : « Hugo Abecassis, luthier ».
 
 ---
 
-## 6. Composants UI
+## 6. Composants
 
 | Composant | Spécification |
 |---|---|
-| **Bouton principal** | Fond Encre, texte Ivoire, 52 px de haut, padding 0 28 px, sans‑serif 15 px 500, flèche →. Survol : fond Garance. Focus : anneau 2 px Garance décalé de 3 px. |
-| **Bouton secondaire** | Texte Encre + filet bas 1 px ; survol : filet qui se trace en Garance. |
-| **Lien éditorial** | Soulignement 1 px, décalage 0,2em ; survol : Garance. |
-| **Navigation** | Barre transparente sur le hero, puis Ivoire translucide (flou) au scroll ; lien actif marqué par l'âme (trait vertical Garance). |
-| **Carte savoir‑faire** | Image 4:5 + numéro mono + H3 serif + 2 lignes + lien ; toute la carte cliquable. |
-| **Figure** | Image + légende courte en mono (Graphite, 12 px, capitales). |
-| **Galerie** | Grille masonry CSS (colonnes), agrandissement dans `<dialog>` natif, navigation clavier, sans librairie. |
-| **Fiche instrument** | Titre serif, année, puis bandeau de caractéristiques en colonnes (Type · Essences · Particularité · Statut). |
-| **Bloc presse** | Média (mono) · titre en serif italique · date · résumé 2 lignes · « Lire l'article ↗ ». Séparés par des filets. |
-| **Fiche partenaire** | Photo 4:5, nom (serif), discipline, collaboration, lien. |
-| **Formulaire** | Champs à filet bas uniquement, libellés au‑dessus toujours visibles, 48 px min., erreurs en texte (pas seulement en couleur). |
-| **Marqueur `[À CONFIRMER]`** | Pastille mono Garance sur fond Garance 8 % : visible pendant la phase concept, à supprimer avant publication. |
-| **Footer** | Fond Nuit, 3 colonnes, crédit Lunixel en Pierre 12 px. |
+| **Étiquette** (`Etiquette.astro`) | Fond Étiquette, filet Encre 1 px + filet intérieur à 55 %, texte centré : petites capitales Caslon (luthier), titre Bricolage, type en Caslon italique, lieu/année en petites capitales. Tailles sm / md / lg. |
+| **Bouton** | Encre, texte Ivoire, 48 px, rectangle ; survol Garance. Variante « filet » : contour Encre. |
+| **Lien** | Souligné, flèche qui avance au survol. |
+| **Index de section** | Filet Encre en haut, titre à gauche (4 col.), contenu à droite (8 col.). |
+| **Photo** | AVIF/WebP, légende en Caslon italique, crédit du photographe en petit. Agrandissement plein écran (`<dialog>`) sur l'atelier et les restaurations. |
+| **Presse** | Média et date en petites capitales, titre en Bricolage, résumé court, lien ↗ vers l'article d'origine. |
+| **Formulaire** | Champs à fond Étiquette et filet, libellés visibles, honeypot anti‑spam, message d'état lisible. |
+| **Mention [À CONFIRMER]** | Caslon italique Garance, sans encadré. |
+| **Bandeau concept** | Fine barre Encre en haut : « Concept réalisé par Lunixel… ». Disparaît avec `conceptMode: false`. |
 
 ---
 
-## 7. Rendez‑vous : Cal.com ou demande simple ?
+## 7. Rendez‑vous : Cal.com
 
-| | **Phase 1, maintenant → 2027 : demande de rendez‑vous** | **Phase 2, atelier indépendant : Cal.com** |
-|---|---|---|
-| Principe | Formulaire court : motif, instrument, disponibilités. Hugo répond et fixe le créneau. | Réservation directe de créneaux définis par Hugo. |
-| Pourquoi | Hugo est salarié : pas de créneaux publics à ouvrir. Un luthier doit souvent voir des photos avant de fixer un rendez‑vous. | L'agenda devient le sien. Moins d'allers‑retours. |
-| Types | — | « Diagnostic à l'atelier » 30 min · « Dépôt / retrait d'instrument » 15 min · « Premier échange, fabrication » 45 min (atelier ou visio) |
-| Intégration | Page Contact, motif pré‑rempli depuis chaque page. | Bouton « Prendre rendez‑vous » → fenêtre Cal.com en **pop‑up** aux couleurs du site (police, Encre, Garance). Le script Cal.com n'est chargé qu'au premier clic (performance, RGPD). |
-| Coût | Service de formulaire (Formspree, Web3Forms…) ou mailto. | Cal.com : offre gratuite suffisante pour un indépendant. |
+Tous les boutons « Prendre rendez‑vous » ouvrent **Cal.com en fenêtre**, par‑dessus le site, aux couleurs du site (garance). Le script n'est chargé qu'au clic : aucun cookie avant.
 
-Le prototype gère les deux modes : `booking.mode = "request" | "cal"` dans `src/config/site.ts`.
+Types de rendez‑vous : « Premier rendez‑vous : diagnostic, devis » (30 min) · « Réglage ou entretien » (45 min) · « Dépôt ou retrait d'un instrument » (15 min). Chaque bouton contextuel ouvre le bon type.
+
+Le compte est à créer par Hugo : marche à suivre dans **`docs/CALCOM.md`**. Tant qu'il n'existe pas, le bouton ouvre une fenêtre qui présente ces 3 types et renvoie vers le formulaire. Il suffit ensuite de renseigner `booking.username` dans `src/config/site.ts`.
 
 ---
 
@@ -275,9 +203,6 @@ Le prototype gère les deux modes : `booking.mode = "request" | "cal"` dans `src
 | Accueil | Hugo Abecassis, luthier en Normandie | Entretien, restauration et fabrication d'instruments à cordes : violon, alto, violoncelle, contrebasse, guitare. Travail à la main, sur rendez‑vous. |
 | Atelier | L'atelier · Hugo Abecassis, luthier | Le lieu, les outils, les bois et les gestes d'un luthier qui travaille à la main, selon les techniques des XVIIe et XVIIIe siècles. |
 | Savoir‑faire | Entretien, restauration, fabrication · Hugo Abecassis | Réglage, réparation, restauration et fabrication sur mesure d'instruments du quatuor, de guitares et d'instruments anciens. |
-| Entretien | Entretien et réglage d'instruments à cordes · Hugo Abecassis | Réglage de l'âme et du chevalet, cordes, touche, sillets, suivi saisonnier : garder un instrument juste et confortable. |
-| Restauration | Restauration d'instruments à cordes · Hugo Abecassis | Diagnostic, réparation de fractures, décollages, retouches de vernis : restaurer sans effacer l'histoire de l'instrument. |
-| Fabrication | Fabrication d'instruments sur mesure · Hugo Abecassis | Violons, violes, guitares et instruments contemporains conçus avec le musicien, du choix des bois au vernis. |
 | Parcours | Parcours et presse · Hugo Abecassis, luthier | Formé en Belgique auprès de Gauthier Louppe, installé en Normandie : le parcours d'Hugo Abecassis et ce qu'en dit la presse. |
 | Partenaires | Musiciens et partenaires · Hugo Abecassis | Les musiciens, groupes et professionnels qui travaillent avec Hugo Abecassis. |
 | Contact | Contact et rendez‑vous · Hugo Abecassis, luthier | Écrire à Hugo Abecassis ou demander un rendez‑vous pour l'entretien, la restauration ou la fabrication d'un instrument. |
@@ -290,10 +215,10 @@ Le prototype gère les deux modes : `booking.mode = "request" | "cal"` dans `src
 
 ## 9. Technique
 
-- **Astro 7** en génération statique, compatible GitHub Pages, sans serveur. Zéro framework JS côté client ; environ 3 Ko de JS (menu, apparition des images, galerie, formulaire).
+- **Astro 7** en génération statique, compatible GitHub Pages, sans serveur. Zéro framework JS côté client ; environ 3 Ko de JS (menu, filet de chargement, galerie, Cal.com au clic, formulaire).
 - **Chemin de base configurable** (`BASE_PATH`) : `/concept/hugoabecassis` aujourd'hui, `/` sur le futur domaine. Aucun lien écrit en dur.
 - **Images** : pipeline `astro:assets` (AVIF + WebP, `srcset`, lazy loading, dimensions fixées).
-- **Polices** : 3 fichiers woff2 auto‑hébergés, sous‑ensemble latin, `font-display: swap`, polices de repli ajustées (anti‑CLS), préchargement de la serif.
+- **Polices** : fichiers woff2 auto‑hébergés (Bricolage, Plex Sans, Libre Caslon), sous‑ensemble latin, `font-display: swap`, polices de repli ajustées (anti‑CLS).
 - **Accessibilité** : HTML sémantique, lien d'évitement, focus visibles, contrastes AA, navigation clavier du menu et de la galerie, `prefers-reduced-motion`.
 - **Contenu** séparé de la mise en page (`src/data/`), pour que Lunixel ou Hugo modifient les textes sans toucher au design.
 
@@ -301,10 +226,10 @@ Le prototype gère les deux modes : `booking.mode = "request" | "cal"` dans `src
 
 ## 10. À valider avec Hugo
 
-1. Le concept « L'âme », l'accroche, la palette et l'option typographique A.
+1. Le concept « l'étiquette de luthier », la palette et les polices.
 2. La mention publique de 2027 et sa formulation.
 3. Les coordonnées professionnelles, la zone géographique et le futur lieu.
 4. La liste des partenaires et leur accord.
 5. L'usage des photos existantes, puis la date du reportage photo.
-6. Le mode de rendez‑vous en phase 1 et le service de formulaire.
+6. La création du compte Cal.com (docs/CALCOM.md) et le service d'envoi du formulaire.
 7. Le nom de domaine définitif (ex. `hugoabecassis.fr`, disponibilité à vérifier).

@@ -23,7 +23,7 @@ export const press: PressItem[] = [
     dateLabel: '15 janvier 2022',
     author: 'Yann Halopeau',
     kind: 'Reportage vidéo',
-    summary: "Reportage consacré aux Pinarbox, les guitares qu'Hugo fabrique à partir d'anciennes caisses de vin.",
+    summary: "Reportage vidéo sur les Pinarbox, les guitares qu'Hugo fabrique dans d'anciennes caisses de vin.",
     url: 'https://www.ouest-france.fr/normandie/saint-lo-50000/video-a-saint-lo-hugo-prete-vie-aux-guitares-pinarbox-363f9770-7204-11ec-ae7c-d05dab244f47',
   },
   {
@@ -32,7 +32,7 @@ export const press: PressItem[] = [
     date: '2015-07-02',
     dateLabel: '2 juillet 2015',
     kind: 'Portrait',
-    summary: "Portrait publié quelques semaines après son arrivée à Saint-Lô : un luthier qui crée et restaure.",
+    summary: 'Portrait publié à son arrivée à Saint-Lô.',
     url: 'https://www.ouest-france.fr/normandie/saint-lo-50000/le-jeune-luthier-cree-et-restaure-3535740',
   },
   {
@@ -40,7 +40,7 @@ export const press: PressItem[] = [
     title: 'Hugo Abecassis',
     kind: 'Encyclopédie',
     dateLabel: 'Notice biographique',
-    summary: "La notice de l'encyclopédie collaborative de la Manche : formation en Belgique auprès de Gauthier Louppe, spécialités, parcours.",
+    summary: "La notice de l'encyclopédie de la Manche : formation, spécialités, parcours.",
     url: 'https://www.wikimanche.fr/Hugo_Abecassis',
   },
   {
@@ -49,7 +49,7 @@ export const press: PressItem[] = [
     date: '2014-05',
     dateLabel: 'Mai et juin 2014',
     kind: 'Presse locale',
-    summary: "Deux articles de presse locale, relayés sur le blog de l'atelier au printemps 2014.",
+    summary: "Deux articles de presse locale, relayés par le blog de l'atelier.",
     url: 'https://lalutherieabecassis.blogspot.com/2014/',
     tbc: 'titres exacts et liens directs',
   },

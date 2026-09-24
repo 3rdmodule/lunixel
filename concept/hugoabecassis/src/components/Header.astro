@@ -3,16 +3,15 @@ import { nav } from '../config/site';
 import { url, stripBase } from '../lib/url';
 import BookingLink from './BookingLink.astro';
 
-interface Props { overlay?: boolean }
-const { overlay = false } = Astro.props;
 const current = stripBase(Astro.url.pathname);
 const isActive = (href: string) => current === href || (href !== '/' && current.startsWith(href));
 ---
 
-<header class:list={['site-header', { 'site-header--overlay': overlay }]} data-header>
+<header class="site-header" data-header>
   <div class="container site-header__inner">
-    <a href={url('/')} class="signature" aria-label="Hugo Abecassis, luthier — accueil">
-      <span class="signature__name">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="signature__role mono">Luthier</span>
+    <a href={url('/')} class="mark" aria-label="Hugo Abecassis, luthier : accueil">
+      <span class="mark__name">Hugo Abecassis</span>
+      <span class="mark__role">luthier</span>
     </a>
 
     <nav class="site-nav" aria-label="Navigation principale">
@@ -30,11 +29,8 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     </nav>
 
     <div class="site-header__actions">
-      <BookingLink variant="small" class="site-header__cta" label="Prendre rendez-vous" />
-      <BookingLink variant="small" class="site-header__cta-short" label="Rendez-vous" />
-      <button class="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>
-        <span>Menu</span>
-      </button>
+      <BookingLink class="site-header__cta" label="Prendre rendez-vous" />
+      <button class="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false" data-menu-open>Menu</button>
     </div>
   </div>
 </header>
@@ -42,157 +38,98 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 <dialog id="menu" class="menu" aria-label="Menu" data-menu>
   <div class="container menu__inner">
     <div class="menu__top">
-      <a href={url('/')} class="signature"><span class="signature__name">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="signature__role mono">Luthier</span></a>
-      <button class="menu-toggle" type="button" data-menu-close><span>Fermer</span></button>
+      <a href={url('/')} class="mark"><span class="mark__name">Hugo Abecassis</span><span class="mark__role">luthier</span></a>
+      <button class="menu-toggle" type="button" data-menu-close>Fermer</button>
     </div>
     <nav aria-label="Navigation mobile">
-      <ol class="menu__list">
-        <li><a href={url('/')} aria-current={current === '/' ? 'page' : undefined}><span class="num">00</span>Accueil</a></li>
+      <ul class="menu__list">
+        <li><a href={url('/')} aria-current={current === '/' ? 'page' : undefined}>Accueil</a></li>
         {
-          nav.map((item, i) => (
+          nav.map((item) => (
             <li>
               <a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
-                <span class="num">{String(i + 1).padStart(2, '0')}</span>
                 {item.label}
               </a>
             </li>
           ))
         }
-      </ol>
+      </ul>
     </nav>
     <div class="menu__bottom">
-      <BookingLink />
+      <BookingLink label="Prendre rendez-vous" />
     </div>
   </div>
 </dialog>
 
 <style>
   .site-header {
-    position: fixed;
+    position: absolute;
     inset: 0 0 auto;
     z-index: 50;
     height: var(--header-h);
-    color: var(--encre);
-    transition: background-color 400ms var(--ease), color 400ms var(--ease), box-shadow 400ms var(--ease);
   }
-  .site-header--overlay { color: var(--ivoire); --fg: var(--ivoire); --bg: var(--encre); --accent: var(--garance-clair); }
-  .site-header.is-solid {
-    color: var(--encre);
-    --fg: var(--encre);
-    --bg: var(--ivoire);
-    --accent: var(--garance);
-    background: color-mix(in srgb, var(--ivoire) 88%, transparent);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    backdrop-filter: blur(14px) saturate(1.2);
-    box-shadow: 0 1px 0 color-mix(in srgb, var(--encre) 9%, transparent);
-  }
-  .site-header__inner {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
+  .site-header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
-  .signature {
-    display: inline-flex;
-    align-items: baseline;
+  /* Signature : une petite étiquette de luthier */
+  .mark {
+    display: inline-grid;
+    justify-items: center;
+    padding: 5px 12px 6px;
+    border: 1px solid var(--encre);
+    outline: 1px solid color-mix(in srgb, var(--encre) 55%, transparent);
+    outline-offset: -4px;
+    background: var(--etiquette);
+    color: var(--encre);
     text-decoration: none;
-    white-space: nowrap;
-    color: inherit;
+    line-height: 1;
   }
-  .signature:hover { color: inherit; }
-  .signature__name { font-family: var(--font-display), sans-serif; font-weight: 650; font-size: 1.25rem; line-height: 1; letter-spacing: -0.03em; }
-  .signature .ame { height: 0.95em; margin-inline: 0.6em; }
-  .signature__role { font-size: 0.6875rem; }
+  .mark:hover { color: var(--encre); background: #fff; }
+  .mark__name { font-family: var(--font-display), sans-serif; font-weight: 650; font-size: 1.02rem; letter-spacing: -0.025em; padding-top: 3px; }
+  .mark__role { font-family: var(--font-label), Georgia, serif; font-style: italic; font-size: 0.8rem; margin-top: 2px; color: var(--graphite); }
 
   .site-nav { display: none; }
-  .site-nav ul { list-style: none; display: flex; gap: clamp(18px, 2.4vw, 40px); }
-  .site-nav a {
-    position: relative;
-    text-decoration: none;
-    font-size: 0.9375rem;
-    padding-block: 8px;
-  }
-  .site-nav a::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    width: 1px;
-    height: 0;
-    background: var(--accent);
-    transform: translateY(-50%);
-    transition: height 300ms var(--ease);
-  }
-  .site-nav a[aria-current='page']::before,
-  .site-nav a:hover::before { height: 1em; }
-  .site-nav a:hover { color: inherit; }
+  .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(18px, 2.2vw, 36px); }
+  .site-nav a { display: inline-block; padding-block: 10px; font-size: 0.95rem; text-decoration: none; }
+  .site-nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--garance); text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
 
   .site-header__actions { display: flex; align-items: center; gap: 12px; }
   .site-header :global(.site-header__cta) { display: none; }
-  .site-header :global(.site-header__cta-short) { min-height: 36px; padding: 0 14px; font-size: 0.8125rem; }
-  .site-header :global(.site-header__cta-short .arrow) { display: none; }
 
   .menu-toggle {
-    border: 0;
-    background: none;
-    padding: 10px 0 10px 8px;
     min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid var(--encre);
+    background: transparent;
+    color: var(--encre);
+    font: 500 0.9rem/1 var(--font-sans), sans-serif;
     cursor: pointer;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.3em;
   }
+  .menu-toggle:hover { background: var(--encre); color: var(--ivoire); }
 
-  @media (max-width: 420px) {
-    .signature__role, .signature .ame { display: none; }
-    .signature__name { font-size: 1.15rem; }
-  }
   @media (min-width: 1080px) {
     .site-nav { display: block; }
     .menu-toggle { display: none; }
-    .site-header :global(.site-header__cta) { display: inline-flex; }
-    .site-header :global(.site-header__cta-short) { display: none; }
+    .site-header :global(.site-header__cta) { display: inline-flex; min-height: 42px; padding: 10px 18px; }
   }
 
-  /* Menu plein écran (mobile / tablette) */
-  .menu {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    max-height: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: var(--ivoire);
-    color: var(--encre);
-  }
+  /* Menu plein écran */
+  .menu { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ivoire); color: var(--encre); }
   .menu::backdrop { background: var(--ivoire); }
   .menu__inner { min-height: 100%; display: flex; flex-direction: column; }
   .menu__top { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
-  .menu__list { list-style: none; margin-top: clamp(24px, 6vh, 64px); border-top: 1px solid var(--filet); }
+  .menu__list { list-style: none; margin: clamp(24px, 6vh, 56px) 0 0; padding: 0; border-top: 1px solid var(--encre); }
   .menu__list a {
-    display: flex;
-    align-items: baseline;
-    gap: 18px;
-    min-height: 64px;
-    padding-block: 12px;
+    display: block;
+    padding: 14px 0;
     border-bottom: 1px solid var(--filet);
     font-family: var(--font-display), sans-serif;
     font-weight: 620;
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
     letter-spacing: -0.03em;
-    font-size: clamp(1.8rem, 7vw, 2.6rem);
     line-height: 1.1;
     text-decoration: none;
   }
   .menu__list a[aria-current='page'] { color: var(--garance); }
-  .menu__bottom { margin-top: auto; padding-block: 32px 40px; }
-  .menu__bottom :global(.btn) { width: 100%; }
-  @media (prefers-reduced-motion: no-preference) {
-    .menu[open] { animation: menu-in 420ms var(--ease); }
-    @keyframes menu-in { from { opacity: 0; } to { opacity: 1; } }
-  }
+  .menu__bottom { margin-top: auto; padding-block: 28px 36px; }
+  .menu__bottom :global(.btn) { width: 100%; justify-content: center; }
 </style>

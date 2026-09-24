@@ -1,85 +1,56 @@
 ---
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
-import SectionHead from '../components/SectionHead.astro';
+import Etiquette from '../components/Etiquette.astro';
 import BookingLink from '../components/BookingLink.astro';
 import PressList from '../components/PressList.astro';
-import CtaBand from '../components/CtaBand.astro';
-import Tbc from '../components/Tbc.astro';
 import { services } from '../data/services';
 import { creations } from '../data/creations';
 import { press } from '../data/press';
 import { url } from '../lib/url';
+import type { PhotoId } from '../data/photos';
 
-const featured = creations.filter((c) => c.featured);
-const [main, ...side] = featured;
-const milestones = [
-  { place: 'Belgique', text: 'Formation auprès du luthier Gauthier Louppe.' },
-  { place: 'Avranches', text: 'Un atelier dans le sud de la Manche.' },
-  { place: 'Saint-Lô, 2015', text: 'Instruments du quatuor, guitares, créations.' },
-  { place: 'Demain', text: 'Un atelier à son nom.', tbc: true },
-];
+const thumbs: Record<string, PhotoId> = { entretien: 'laJazzTete', restauration: 'rPresses', fabrication: 'e4' };
+const shown = creations.filter((c) => c.photo).slice(0, 3);
 ---
 
 <Base
   rawTitle
-  title="Hugo Abecassis, luthier en Normandie · Entretien, restauration, fabrication"
-  description="Entretien, restauration et fabrication d'instruments à cordes : violon, alto, violoncelle, contrebasse, guitare. Un travail à la main, selon les techniques des XVIIe et XVIIIe siècles."
-  overlayHeader
+  title="Hugo Abecassis, luthier en Normandie · entretien, restauration, fabrication"
+  description="Hugo Abecassis, luthier en Normandie : entretien, restauration et fabrication de violons, altos, violoncelles, contrebasses et guitares. Travail à la main, sur rendez-vous."
 >
-  <!-- 1 · Hero -->
-  <section class="hero tone-nuit" aria-labelledby="hero-title">
-    <Photo id="hero" fill eager sizes="100vw" />
-    <div class="hero__shade" aria-hidden="true"></div>
-    <div class="container hero__content">
-      <h1 id="hero-title" class="display hero__display"><span class="hero__name">Hugo Abecassis,</span> luthier</h1>
-      <p class="hero__sub">Entretien, restauration et fabrication d'instruments à cordes, en Normandie.</p>
-      <div class="row hero__actions">
-        <a class="btn hero__btn" href={url('/atelier/')}>Découvrir l'atelier <span class="arrow" aria-hidden="true">→</span></a>
-        <BookingLink variant="link" />
+  <section class="container hero" aria-labelledby="hero-title">
+    <div class="hero__photo">
+      <Photo id="hero" eager sizes="(min-width: 900px) 64vw, 100vw" creditInside />
+    </div>
+    <div class="hero__text">
+      <Etiquette size="lg" maker={false} meta="Normandie" class="hero__label">
+        <h1 id="hero-title" class="etq__title">Hugo Abecassis,<span class="etq__kind">luthier</span></h1>
+      </Etiquette>
+      <p class="hero__sub">Il règle, répare et fabrique des instruments à cordes : violons, altos, violoncelles, contrebasses, guitares.</p>
+      <div class="actions">
+        <BookingLink />
+        <a class="link" href={url('/atelier/')}>Voir l'atelier <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- 2 · Introduction -->
-  <section class="section intro" aria-labelledby="intro-title">
-    <div class="container grid">
-      <div class="intro__num"><span class="num">01</span></div>
-      <h2 id="intro-title" class="lead intro__lead" data-reveal-text>
-        Hugo Abecassis est luthier. Il règle, répare et fabrique des instruments à cordes : violons, altos, violoncelles, contrebasses, guitares.
-      </h2>
-      <div class="intro__text">
-        <p>
-          Formé en Belgique auprès du luthier Gauthier Louppe, il travaille surtout à la main, avec les techniques des anciens luthiers
-          italiens et français. Et il aime inventer : un violon d'amour, un quinton de forme nouvelle, des guitares faites avec des caisses de vin.
-        </p>
-        <a class="link mt-s" href={url('/parcours/')}>Son parcours <span class="arrow" aria-hidden="true">→</span></a>
+  <section class="section container" aria-labelledby="sf-title">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="sf-title" class="index__title">Ce qu'il fait</h2>
       </div>
-      <div class="intro__photo">
-        <Photo id="mains" sizes="(min-width: 900px) 30vw, 70vw" caption plate="Pl. 01" />
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 · Savoir-faire -->
-  <section class="section" aria-labelledby="sf-title">
-    <div class="container">
-      <SectionHead number="02" label="Savoir-faire" title="Ce qu'il fait à l'atelier" id="sf-title" />
-      <ul class="services">
+      <ul class="index__body jobs">
         {
-          services.map((s, i) => (
-            <li class="service">
-              <a href={url(`/savoir-faire/${s.slug}/`)} class="service__link">
-                <Photo id={s.photo} sizes="(min-width: 900px) 30vw, 100vw" plate={`Pl. 0${i + 2}`} />
-                <span class="service__meta">
-                  <span class="num">{s.number}</span>
-                  <span class="label">{s.kicker}</span>
+          services.map((s) => (
+            <li>
+              <a class="job" href={url(`/savoir-faire/#${s.slug}`)}>
+                <span class="job__thumb"><Photo id={thumbs[s.slug]} ratio={4 / 3} sizes="160px" /></span>
+                <span class="job__text">
+                  <span class="job__title">{s.title}</span>
+                  <span class="job__short">{s.short}</span>
                 </span>
-                <h3 class="service__title">{s.title}</h3>
-                <p class="service__text">{s.short}</p>
-                <span class="link service__more">
-                  Découvrir <span class="arrow" aria-hidden="true">→</span>
-                </span>
+                <span class="job__arrow" aria-hidden="true">→</span>
               </a>
             </li>
           ))
@@ -88,146 +59,100 @@ const milestones = [
     </div>
   </section>
 
-  <!-- 4 · Réalisations -->
-  <section class="section works" aria-labelledby="works-title">
-    <div class="container">
-      <SectionHead number="03" label="Réalisations" title="Quelques instruments" id="works-title">
-        <p>Des classiques, et quelques idées bien à lui.</p>
-      </SectionHead>
-      <div class="works__grid">
-        <a class="work work--main" href={url(`/savoir-faire/fabrication/#${main.slug}`)}>
-          <Photo id={main.photo} sizes="(min-width: 900px) 55vw, 100vw" />
-          <span class="work__caption">
-            <span class="work__name f-display">{main.name}</span>
-            <span class="label">{main.type}{main.year && ` · ${main.year}`}</span>
-          </span>
-        </a>
+  <section class="section container" aria-labelledby="works-title">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="works-title" class="index__title">Ses instruments</h2>
+        <p class="index__intro">Quelques instruments sortis de son établi, des classiques et des idées à lui.</p>
+        <a class="link mt" href={url('/savoir-faire/#instruments')}>Tous les instruments <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <ul class="index__body works">
         {
-          side.map((c) => (
-            <a class="work" href={url(`/savoir-faire/fabrication/#${c.slug}`)}>
-              <Photo id={c.photo} sizes="(min-width: 900px) 30vw, 100vw" ratio={4 / 5} />
-              <span class="work__caption">
-                <span class="work__name f-display">{c.name}</span>
-                <span class="label">{c.type}</span>
-              </span>
-            </a>
+          shown.map((c) => (
+            <li class="work">
+              <Photo id={c.photo!} sizes="(min-width: 900px) 22vw, 50vw" />
+              <Etiquette title={c.name} kind={c.type} meta={c.year} size="sm" as="h3" class="work__label" />
+            </li>
           ))
         }
-      </div>
-      <p class="mt-l"><a class="link" href={url('/savoir-faire/fabrication/#creations')}>Toutes les créations <span class="arrow" aria-hidden="true">→</span></a></p>
+      </ul>
     </div>
   </section>
 
-  <!-- 5 · Parcours & presse -->
-  <section class="section tone-papier" aria-labelledby="trust-title">
-    <div class="container grid trust">
-      <div class="trust__left">
-        <SectionHead number="04" label="Parcours" title="De la Belgique à la Normandie" id="trust-title" />
-        <ol class="milestones">
-          {
-            milestones.map((m) => (
-              <li>
-                <span class="label">{m.place}</span>
-                <span class="milestones__text">
-                  {m.text} {m.tbc && <Tbc note="calendrier et lieu" />}
-                </span>
-              </li>
-            ))
-          }
-        </ol>
-        <a class="link mt-m" href={url('/parcours/')}>Lire le parcours <span class="arrow" aria-hidden="true">→</span></a>
+  <section class="section container" aria-labelledby="trust-title">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="trust-title" class="index__title">Parcours</h2>
       </div>
-      <div class="trust__right">
-        <p class="label">Dans la presse</p>
-        <PressList items={press.slice(0, 2)} compact />
-        <a class="link mt-m" href={url('/parcours/#presse')}>Toutes les parutions <span class="arrow" aria-hidden="true">→</span></a>
+      <div class="index__body trust">
+        <div class="trust__text">
+          <p class="lead">Formé en Belgique auprès du luthier Gauthier Louppe. Un premier atelier à Avranches en 2014, puis Saint-Lô depuis 2015.</p>
+          <a class="link" href={url('/parcours/')}>Son parcours <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <div class="trust__press">
+          <p class="smallcaps muted">Dans la presse</p>
+          <PressList items={press.slice(0, 2)} summaries={false} />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 6 · Appel final -->
-  <CtaBand />
+  <section class="section container" aria-labelledby="rdv-title">
+    <div class="rdv">
+      <h2 id="rdv-title">Un instrument à régler, à réparer, à faire faire&nbsp;?</h2>
+      <div class="actions">
+        <BookingLink />
+        <a class="link" href={url('/contact/#formulaire')}>Écrire à Hugo <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
-  /* Hero */
-  .hero {
-    position: relative;
-    min-height: max(640px, 100svh);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero :global(.photo--fill) { z-index: -2; }
-  .hero__shade {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, rgba(21, 20, 18, 0.55) 0%, rgba(21, 20, 18, 0) 22%, rgba(21, 20, 18, 0) 45%, rgba(21, 20, 18, 0.72) 100%);
-  }
-  .hero__content { padding-bottom: clamp(88px, 12vh, 140px); }
-  .hero__sub { margin-top: clamp(16px, 2vw, 24px); max-width: 34ch; font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); color: #d8d2c6; }
-  .hero__display { color: var(--ivoire); font-size: clamp(2.9rem, 1.1rem + 6.2vw, 7.25rem); letter-spacing: -0.035em; }
-  @media (min-width: 700px) { .hero__name { white-space: nowrap; } }
-  .hero__actions { margin-top: clamp(28px, 4vw, 48px); }
-  .hero__btn { background: var(--ivoire); color: var(--encre); border-color: var(--ivoire); }
-  .hero__btn:hover { background: var(--garance-clair); border-color: var(--garance-clair); color: var(--nuit); }
+  .mt { margin-top: 20px; }
 
-  /* Intro */
-  .intro__num { grid-column: 1 / -1; margin-bottom: var(--space-m); }
-  .intro__lead { grid-column: 1 / -1; font-size: var(--fs-lead); max-width: 26ch; }
-  .intro__text { grid-column: 1 / -1; margin-top: var(--space-m); max-width: 40ch; color: var(--muted); }
-  .intro__text .link { color: var(--fg); }
-  .intro__photo { grid-column: 3 / -1; margin-top: var(--space-l); }
+  /* En-tête : la photo, et l'étiquette posée dessus */
+  .hero { padding-top: calc(var(--header-h) + 12px); display: grid; }
+  .hero__photo { grid-area: 1 / 1; }
+  .hero__text { display: grid; justify-items: start; gap: 20px; margin-top: -48px; position: relative; padding-inline: 12px; }
+  .hero__sub { max-width: 34ch; font-size: var(--fs-lead); line-height: 1.4; }
   @media (min-width: 900px) {
-    .intro__num { grid-column: 1 / 2; margin: 0; padding-top: 0.6em; }
-    .intro__lead { grid-column: 2 / 10; font-size: clamp(1.7rem, 1.1rem + 1.5vw, 2.6rem); }
-    .intro__text { grid-column: 6 / 10; }
-    .intro__photo { grid-column: 10 / 13; grid-row: 1 / span 2; margin-top: 0; align-self: end; }
+    .hero { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: end; }
+    .hero__photo { grid-column: 1 / 9; grid-row: 1; }
+    .hero__text { grid-column: 8 / 13; grid-row: 1; margin: 0 0 clamp(24px, 4vw, 56px); padding: 0; }
   }
 
-  /* Services */
-  .services { list-style: none; display: grid; gap: clamp(56px, 8vw, 96px) var(--col-gap); }
-  .service__link { display: grid; gap: 14px; text-decoration: none; color: inherit; }
-  .service__link:hover { color: inherit; }
-  .service__meta { display: flex; gap: 14px; align-items: baseline; margin-top: 8px; }
-  .service__title { font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.5rem); }
-  .service__text { color: var(--muted); max-width: 34ch; margin: 0; }
-  .service__more { justify-self: start; }
-  .service__link:hover .service__more { color: var(--accent); }
-  .service__link:hover .service__more :global(.arrow) { transform: translateX(4px); }
+  /* Ce qu'il fait : un index, pas des cartes */
+  .jobs { border-top: 1px solid var(--filet); }
+  .job {
+    display: grid; grid-template-columns: 96px 1fr auto; gap: 18px; align-items: center;
+    padding: 18px 0; border-bottom: 1px solid var(--filet); text-decoration: none; color: inherit;
+  }
+  .job:hover { color: inherit; background: color-mix(in srgb, var(--papier) 55%, transparent); }
+  .job__text { display: grid; gap: 4px; }
+  .job__title { font-family: var(--font-display), sans-serif; font-weight: 640; font-size: clamp(1.4rem, 1.15rem + 1vw, 2rem); letter-spacing: -0.03em; line-height: 1.05; }
+  .job__short { color: var(--muted); max-width: 46ch; }
+  .job__arrow { font-size: 1.3rem; padding-right: 6px; transition: transform 200ms var(--ease); }
+  .job:hover .job__arrow { transform: translateX(4px); color: var(--garance); }
+  @media (min-width: 700px) { .job { grid-template-columns: 150px 1fr auto; gap: 28px; } }
+
+  /* Instruments : photo + étiquette */
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--col-gap); }
+  .work { position: relative; padding-bottom: 28px; }
+  .work:first-child { grid-column: 1 / -1; }
+  .work :global(.work__label) { position: absolute; left: 12px; bottom: 0; max-width: calc(100% - 24px); }
   @media (min-width: 900px) {
-    .services { grid-template-columns: repeat(3, 1fr); }
-    .service:nth-child(2) { margin-top: clamp(64px, 8vw, 128px); }
-    .service:nth-child(3) { margin-top: clamp(32px, 4vw, 64px); }
+    .works { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .work:first-child { grid-column: auto; }
   }
 
-  /* Réalisations */
-  .works__grid { display: grid; gap: clamp(40px, 6vw, 72px) var(--col-gap); }
-  .work { display: grid; gap: 14px; text-decoration: none; color: inherit; }
-  .work:hover { color: inherit; }
-  .work__caption { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-  .work__name { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.95rem); line-height: 1; transition: color 300ms var(--ease); }
-  .work:hover .work__name { color: var(--accent); }
-  @media (min-width: 900px) {
-    .works__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; }
-    .work--main { grid-column: 1 / 8; grid-row: 1 / span 2; }
-    .work:nth-child(2) { grid-column: 9 / 13; }
-    .work:nth-child(3) { grid-column: 9 / 13; }
-  }
+  /* Parcours et presse */
+  .trust { display: grid; gap: 40px var(--col-gap); }
+  .trust__text { display: grid; gap: 18px; justify-items: start; }
+  .trust__press { display: grid; gap: 12px; }
+  @media (min-width: 900px) { .trust { grid-template-columns: 1fr 1fr; } }
 
-  /* Parcours & presse */
-  .trust { row-gap: var(--space-l); }
-  .trust__left, .trust__right { grid-column: 1 / -1; display: grid; align-content: start; justify-items: start; }
-  .trust__right .label { margin-bottom: 20px; }
-  .trust__right :global(.press) { width: 100%; }
-  .milestones { list-style: none; width: 100%; border-top: 1px solid var(--line); }
-  .milestones li { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-  .milestones__text { font-family: var(--font-display), sans-serif; font-weight: 500; letter-spacing: -0.015em; font-size: 1.15rem; line-height: 1.25; }
-  @media (min-width: 900px) {
-    .trust__left { grid-column: 1 / 7; }
-    .trust__right { grid-column: 8 / 13; padding-top: clamp(40px, 6vw, 88px); }
-  }
+  /* Rendez-vous */
+  .rdv { display: grid; gap: 24px; padding: clamp(28px, 5vw, 56px) 0 0; border-top: 1px solid var(--encre); }
+  .rdv h2 { font-size: var(--fs-h1); max-width: 18ch; }
 </style>

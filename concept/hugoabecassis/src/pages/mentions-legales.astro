@@ -2,46 +2,46 @@
 import Base from '../layouts/Base.astro';
 import Tbc from '../components/Tbc.astro';
 import { site } from '../config/site';
+import { photographerCredits } from '../data/photos';
+import { url } from '../lib/url';
 ---
 
-<Base title="Mentions légales" description="Mentions légales du site de Hugo Abecassis, luthier." breadcrumbs={[{ name: 'Mentions légales', path: '/mentions-legales/' }]}>
-  <section class="page-intro container">
-    <div class="page-intro__meta"><span class="num">—</span><span class="label">Informations</span></div>
+<Base title="Mentions légales" description="Mentions légales du site d'Hugo Abecassis, luthier : éditeur, hébergement, crédits des photos et des polices." breadcrumbs={[{ name: 'Mentions légales', path: '/mentions-legales/' }]}>
+  <header class="container page-head">
     <h1>Mentions légales</h1>
-  </section>
+  </header>
 
-  <section class="section--tight container legal">
-    <h2>Éditeur</h2>
-    <p>Hugo Abecassis, luthier. <Tbc note="statut, SIRET, adresse, contact" /></p>
-
-    <h2>Conception et réalisation</h2>
-    <p><a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a>. Le site est actuellement présenté sous forme de concept.</p>
+  <article class="container legal">
+    <h2>Éditeur du site</h2>
+    <p><strong>Hugo Abecassis</strong>, luthier. <Tbc note="forme de l'entreprise, SIRET, adresse, téléphone, e-mail" /></p>
+    <p>Directeur de la publication : Hugo Abecassis.</p>
+    <p>Pendant la phase de concept, le site est présenté par <a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a> à l'adresse lunixel.fr/concept/hugoabecassis (voir les <a href="https://lunixel.fr/mentions-legales/" rel="noopener">mentions légales de Lunixel</a>).</p>
 
     <h2>Hébergement</h2>
-    <p>GitHub Pages, GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis. <Tbc note="à mettre à jour si l'hébergement change" /></p>
+    <p>GitHub Pages, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
 
-    <h2>Photographies et contenus</h2>
-    <p>Les textes et photographies sont la propriété de leurs auteurs. <Tbc note="crédits photographiques" /> Les articles de presse cités restent la propriété de leurs éditeurs ; ils sont signalés par un lien vers leur source.</p>
+    <h2>Conception</h2>
+    <p><a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a> : conception, design et développement.</p>
 
-    <h2>Données personnelles</h2>
-    <p>
-      Les informations transmises par le formulaire de contact servent uniquement à répondre à votre demande. Elles ne sont ni revendues ni
-      utilisées à d'autres fins. Vous pouvez demander leur consultation, leur rectification ou leur suppression en écrivant à Hugo Abecassis.
-      <Tbc note="adresse de contact, durée de conservation, service d'envoi" />
-    </p>
+    <h2>Photos</h2>
+    <ul>
+      <li>Instruments, étapes de fabrication et restaurations : photos d'Hugo Abecassis, déjà publiées en ligne. Le bleu du fond (tissu, mur) a été neutralisé ; rien d'autre n'est modifié.</li>
+      <li>Hugo et son atelier : {photographerCredits.map((c, i) => <>{i > 0 && ', '}<a href={c.url} rel="noopener">{c.name}</a></>)}. <Tbc note="autorisation des auteurs" /></li>
+    </ul>
+    <p>Les photos restent la propriété de leurs auteurs. Toute reproduction demande leur accord.</p>
 
-    <h2>Cookies et mesure d'audience</h2>
-    <p>Ce site ne dépose aucun cookie de mesure d'audience ni de publicité. Le module de réservation, lorsqu'il est activé, n'est chargé que si vous cliquez sur « Prendre rendez-vous ».</p>
+    <h2>Polices de caractères</h2>
+    <p>Hébergées sur ce site (aucun appel à un service extérieur), sous licence <a href="https://openfontlicense.org" rel="noopener">SIL Open Font License 1.1</a> :</p>
+    <ul>
+      <li>Bricolage Grotesque, de Mathieu Triay</li>
+      <li>IBM Plex Sans, de Mike Abbink et Bold Monday pour IBM</li>
+      <li>Libre Caslon Text, de Pablo Impallari et Rodrigo Fuenzalida</li>
+    </ul>
 
-    <h2>Typographies</h2>
-    <p>Bricolage Grotesque, Inter et IBM Plex Mono, sous licence SIL Open Font License, hébergées sur ce site.</p>
-  </section>
+    <h2>Presse</h2>
+    <p>Les articles cités restent la propriété de leurs éditeurs. Le site renvoie vers les pages d'origine et n'en reproduit pas le contenu.</p>
+
+    <h2>Voir aussi</h2>
+    <p><a href={url('/confidentialite/')}>Confidentialité et cookies</a> · <a href={url('/conditions/')}>Conditions d'utilisation</a></p>
+  </article>
 </Base>
-
-<style>
-  .legal { max-width: 52rem; margin-left: 0; padding-bottom: var(--space-section); }
-  .legal h2 { font-size: var(--fs-h3); margin: 48px 0 12px; }
-  .legal h2:first-child { margin-top: 0; }
-  .legal p { color: var(--muted); }
-  @media (min-width: 1440px) { .legal { margin-left: auto; margin-right: auto; max-width: var(--maxw); } .legal > * { max-width: 52rem; } }
-</style>

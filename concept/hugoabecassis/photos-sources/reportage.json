@@ -1,0 +1,30 @@
+{
+  "note": "Photos de Hugo et de son atelier publiées par des tiers (photographe, presse). Droits d'usage à confirmer auprès des auteurs avant la mise en ligne définitive ; crédit affiché sous chaque photo et dans les mentions légales.",
+  "dir": "reportage",
+  "photos": [
+    {
+      "file": "hanamatsuri-etabli.jpg",
+      "url": "https://hanamatsuri.fr/clients/1751/fichiers/photos/5bdae37d7d2cf.jpg",
+      "author": "Aurélie Augé (Hanamatsuri)",
+      "page": "https://hanamatsuri.fr/en/hugo-abecassis-luthier"
+    },
+    {
+      "file": "hanamatsuri-travail.jpg",
+      "url": "https://hanamatsuri.fr/clients/1751/fichiers/photos/5bdae33c4bcdc.jpg",
+      "author": "Aurélie Augé (Hanamatsuri)",
+      "page": "https://hanamatsuri.fr/en/hugo-abecassis-luthier"
+    },
+    {
+      "file": "hanamatsuri-detail.jpg",
+      "url": "https://hanamatsuri.fr/clients/1751/fichiers/photos/5bdae31333bbd.jpg",
+      "author": "Aurélie Augé (Hanamatsuri)",
+      "page": "https://hanamatsuri.fr/en/hugo-abecassis-luthier"
+    },
+    {
+      "file": "ouest-france-2026.jpg",
+      "url": "https://www.maville.com/photosmvi/2026/08/21/P36087647D7447446G.jpg",
+      "author": "Ouest-France",
+      "page": "https://www.maville.com/photosmvi/2026/08/21/P36087647D7447446G.jpg"
+    }
+  ]
+}

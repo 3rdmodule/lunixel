@@ -1,70 +1,69 @@
 ---
 import { site, nav } from '../config/site';
 import { url } from '../lib/url';
+import Etiquette from './Etiquette.astro';
 import Tbc from './Tbc.astro';
-const year = new Date().getFullYear();
-const { email, phone, city, area, instagram } = site.contact;
+const { email, phone, city, area } = site.contact;
+const hasContact = email || phone;
 ---
 
-<footer class="site-footer tone-nuit">
-  <div class="container">
-    <div class="site-footer__top">
-      <a href={url('/')} class="site-footer__sig">
-        <span class="f-display">Hugo Abecassis</span><span class="ame" aria-hidden="true"></span><span class="mono">Luthier</span>
-      </a>
-      <p class="site-footer__line f-display">Entretien, restauration et fabrication d'instruments à cordes.</p>
+<footer class="site-footer tone-papier">
+  <div class="container site-footer__grid">
+    <div class="site-footer__sig">
+      <Etiquette title="Hugo Abecassis" kind="luthier" maker={false} meta={city ? `${city} · ${area}` : area} size="sm" />
+      <p class="small muted">Entretien, restauration et fabrication d'instruments à cordes.</p>
     </div>
 
-    <div class="site-footer__cols">
-      <nav aria-label="Pied de page">
-        <p class="label">Le site</p>
-        <ul>
-          <li><a href={url('/')}>Accueil</a></li>
-          {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
-        </ul>
-      </nav>
-      <div>
-        <p class="label">Savoir-faire</p>
-        <ul>
-          <li><a href={url('/savoir-faire/entretien/')}>Entretien</a></li>
-          <li><a href={url('/savoir-faire/restauration/')}>Restauration</a></li>
-          <li><a href={url('/savoir-faire/fabrication/')}>Fabrication</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="label">Contact</p>
-        <ul>
-          <li>{email ? <a href={`mailto:${email}`}>{email}</a> : <>E-mail <Tbc /></>}</li>
-          <li>{phone ? <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a> : <>Téléphone <Tbc /></>}</li>
-          <li>{city ? `${city}, ${area}` : <>{area} <Tbc note="lieu de l'atelier" /></>}</li>
-          {instagram && <li><a href={instagram} rel="me noopener" target="_blank">Instagram ↗</a></li>}
-          <li><a href={url('/contact/#rendez-vous')}>Prendre rendez-vous</a></li>
-        </ul>
-      </div>
-    </div>
+    <nav class="site-footer__nav" aria-label="Pied de page">
+      <ul>
+        <li><a href={url('/')}>Accueil</a></li>
+        {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+      </ul>
+    </nav>
 
-    <div class="site-footer__bottom">
-      <p>© {year} Hugo Abecassis · <a href={url('/mentions-legales/')}>Mentions légales</a></p>
-      <p class="site-footer__credit">Site réalisé par <a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a></p>
+    <div class="site-footer__contact">
+      {
+        hasContact ? (
+          <ul>
+            {email && <li><a href={`mailto:${email}`}>{email}</a></li>}
+            {phone && <li><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></li>}
+          </ul>
+        ) : (
+          <p class="small">Coordonnées de l'atelier <Tbc /></p>
+        )
+      }
+      <a class="link small" href={url('/contact/#rendez-vous')}>Prendre rendez-vous <span class="arrow" aria-hidden="true">→</span></a>
     </div>
+  </div>
+
+  <div class="container site-footer__legal small">
+    <ul>
+      <li><a href={url('/mentions-legales/')}>Mentions légales</a></li>
+      <li><a href={url('/confidentialite/')}>Confidentialité et cookies</a></li>
+      <li><a href={url('/conditions/')}>Conditions d'utilisation</a></li>
+    </ul>
+    <p class="muted">Site conçu par <a href={site.credits.agencyUrl} rel="noopener">{site.credits.agency}</a></p>
   </div>
 </footer>
 
 <style>
-  .site-footer { padding-block: clamp(72px, 10vw, 128px) 32px; font-size: var(--fs-small); }
-  .site-footer a { text-decoration: none; }
-  .site-footer a:hover { color: var(--accent); }
-  .site-footer__top { display: grid; gap: 16px; padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
-  .site-footer__sig { display: inline-flex; align-items: baseline; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.8rem); line-height: 1; }
-  .site-footer__sig .mono { font-size: 0.75rem; }
-  .site-footer__line { color: var(--muted); font-size: 1.1rem; font-weight: 480; }
-  .site-footer__cols { display: grid; gap: 40px; padding-block: 48px; }
-  .site-footer__cols ul { list-style: none; display: grid; gap: 10px; margin-top: 16px; }
-  .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8125rem; }
-  .site-footer__credit { color: var(--pierre); }
-  @media (min-width: 800px) {
-    .site-footer__top { grid-template-columns: 1fr 1fr; align-items: end; }
-    .site-footer__line { justify-self: end; text-align: right; max-width: 22ch; }
-    .site-footer__cols { grid-template-columns: repeat(3, 1fr); }
+  .site-footer { padding-block: clamp(48px, 7vw, 88px) 28px; }
+  .site-footer__grid { display: grid; gap: 36px var(--col-gap); }
+  .site-footer__sig { display: grid; gap: 14px; justify-items: start; }
+  .site-footer__sig p { max-width: 28ch; }
+  .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .site-footer__nav a, .site-footer__contact a:not(.link) { text-decoration: none; }
+  .site-footer__nav a:hover { text-decoration: underline; }
+  .site-footer__contact { display: grid; gap: 14px; align-content: start; justify-items: start; }
+  .site-footer__legal {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px;
+    margin-top: clamp(40px, 6vw, 72px); padding-top: 20px; border-top: 1px solid var(--filet);
+  }
+  .site-footer__legal ul { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  @media (min-width: 900px) {
+    .site-footer__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .site-footer__sig { grid-column: 1 / 5; }
+    .site-footer__nav { grid-column: 6 / 9; }
+    .site-footer__contact { grid-column: 9 / 13; }
   }
 </style>

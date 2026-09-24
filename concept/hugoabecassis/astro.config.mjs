@@ -23,8 +23,12 @@ export default defineConfig({
   build: { format: 'directory' },
   compressHTML: true,
   prefetch: { prefetchAll: false, defaultStrategy: 'hover' },
+  // Anciennes adresses (une page par savoir-faire) : redirigées vers la page unique
+  redirects: Object.fromEntries(
+    ['entretien', 'restauration', 'fabrication'].map((s) => [`/savoir-faire/${s}/`, `${BASE_PATH === '/' ? '' : BASE_PATH}/savoir-faire/#${s}`]),
+  ),
   integrations: [
-    sitemap({ filter: (page) => !page.includes('/mentions-legales/') }),
+    sitemap({ filter: (page) => !/\/(mentions-legales|confidentialite|conditions)\//.test(page) }),
     frenchTypography(),
   ],
   fonts: [
@@ -41,23 +45,25 @@ export default defineConfig({
     },
     {
       provider: fontProviders.local(),
-      name: 'Inter',
+      name: 'IBM Plex Sans',
       cssVariable: '--font-sans',
       fallbacks: ['Helvetica Neue', 'Arial', 'sans-serif'],
       options: {
         variants: [
-          { src: [fontsource('@fontsource-variable/inter', 'inter-latin-wght-normal.woff2')], weight: '100 900', style: 'normal' },
+          { src: [fontsource('@fontsource-variable/ibm-plex-sans', 'ibm-plex-sans-latin-wght-normal.woff2')], weight: '100 700', style: 'normal' },
+          { src: [fontsource('@fontsource-variable/ibm-plex-sans', 'ibm-plex-sans-latin-wght-italic.woff2')], weight: '100 700', style: 'italic' },
         ],
       },
     },
     {
       provider: fontProviders.local(),
-      name: 'IBM Plex Mono',
-      cssVariable: '--font-mono',
-      fallbacks: ['ui-monospace', 'monospace'],
+      name: 'Libre Caslon Text',
+      cssVariable: '--font-label',
+      fallbacks: ['Georgia', 'serif'],
       options: {
         variants: [
-          { src: [fontsource('@fontsource/ibm-plex-mono', 'ibm-plex-mono-latin-400-normal.woff2')], weight: 400, style: 'normal' },
+          { src: [fontsource('@fontsource/libre-caslon-text', 'libre-caslon-text-latin-400-normal.woff2')], weight: 400, style: 'normal' },
+          { src: [fontsource('@fontsource/libre-caslon-text', 'libre-caslon-text-latin-400-italic.woff2')], weight: 400, style: 'italic' },
         ],
       },
     },

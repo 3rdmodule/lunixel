@@ -10,3 +10,6 @@ dist/
 
 # Généré avant chaque build (scripts/og.mjs)
 public/og.jpg
+
+# Généré avant chaque build (scripts/retouche-fonds.mjs)
+src/assets/photos/realisations/

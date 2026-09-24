@@ -26,27 +26,27 @@ for (const [group, files] of Object.entries(groups)) {
   }
 }
 
-// Photos d'illustration (Unsplash), liste : photos-sources/illustrations.json
-try {
-  const ill = JSON.parse(await readFile(join(root, 'illustrations.json'), 'utf8'));
-  const dir = join(root, ill.dir);
+// Photos d'autres sources (URL complètes) :
+// reportage.json (photographe, presse)
+for (const manifest of ['reportage.json']) {
+  let list;
+  try { list = JSON.parse(await readFile(join(root, manifest), 'utf8')); } catch (e) { if (e.code === 'ENOENT') continue; throw e; }
+  const dir = join(root, list.dir);
   await mkdir(dir, { recursive: true });
-  for (const p of ill.photos) {
+  for (const p of list.photos) {
     const dest = join(dir, p.file);
     try { await access(dest); skipped++; continue; } catch {}
     try {
-      const res = await fetch(p.url);
+      const res = await fetch(p.url, { headers: { 'User-Agent': 'Mozilla/5.0 (Lunixel photo import)' } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       await writeFile(dest, Buffer.from(await res.arrayBuffer()));
       ok++;
-      console.log(`✓ ${ill.dir}/${p.file} (${p.author})`);
+      console.log(`✓ ${list.dir}/${p.file} (${p.author})`);
     } catch (e) {
       failed++;
-      console.warn(`✗ ${ill.dir}/${p.file} : ${e.message}`);
+      console.warn(`✗ ${list.dir}/${p.file} : ${e.message}`);
     }
   }
-} catch (e) {
-  if (e.code !== 'ENOENT') throw e;
 }
 
 console.log(`Terminé : ${ok} importées, ${skipped} déjà présentes, ${failed} échecs.`);

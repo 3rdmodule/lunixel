@@ -1,87 +1,168 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Photo from '../../components/Photo.astro';
-import CtaBand from '../../components/CtaBand.astro';
-import SectionHead from '../../components/SectionHead.astro';
+import Etiquette from '../../components/Etiquette.astro';
+import BookingLink from '../../components/BookingLink.astro';
+import Tbc from '../../components/Tbc.astro';
 import { services } from '../../data/services';
+import { creations } from '../../data/creations';
 import { url } from '../../lib/url';
 
-const families = [
-  { name: 'Cordes frottées', items: 'Violon, alto, violoncelle, contrebasse' },
-  { name: 'Cordes pincées', items: 'Guitare classique, folk, jazz, électrique ; luth, mandoline' },
-  { name: 'Instruments anciens ou rares', items: 'Violes, oud, saz, koto, tres…' },
-];
+const withPhoto = creations.filter((c) => c.photo);
+const others = creations.filter((c) => !c.photo);
+const [entretien, restauration, fabrication] = services;
 ---
 
 <Base
   title="Savoir-faire : entretien, restauration, fabrication"
-  description="Réglage, réparation, restauration et fabrication sur mesure d'instruments du quatuor, de guitares et d'instruments anciens ou rares."
+  description="Réglage et entretien, restauration, fabrication sur mesure : ce que fait Hugo Abecassis, luthier en Normandie, pour les violons, altos, violoncelles, contrebasses et guitares."
   breadcrumbs={[{ name: 'Savoir-faire', path: '/savoir-faire/' }]}
 >
-  <section class="page-intro container">
-    <div class="page-intro__meta"><span class="num">—</span><span class="label">Savoir-faire</span></div>
-    <h1>Entretenir, restaurer, fabriquer</h1>
-    <p class="lead">Trois façons de s'occuper d'un instrument, avec le même but : qu'il sonne bien et qu'il dure.</p>
-  </section>
+  <header class="container page-head">
+    <h1>Savoir-faire</h1>
+    <p class="lead">Entretenir, restaurer, fabriquer. Trois façons de s'occuper d'un instrument.</p>
+    <nav class="jump" aria-label="Sur cette page">
+      {services.map((s) => <a href={`#${s.slug}`}>{s.title}</a>)}
+      <a href="#instruments">Instruments</a>
+    </nav>
+  </header>
 
-  <section class="section sf-list" aria-label="Les trois savoir-faire">
-    <div class="container">
-      {
-        services.map((s, i) => (
-          <article class:list={['sf', { 'sf--alt': i % 2 === 1 }]} id={s.slug}>
-            <a class="sf__photo" href={url(`/savoir-faire/${s.slug}/`)} tabindex="-1" aria-hidden="true">
-              <Photo id={s.photo} sizes="(min-width: 900px) 55vw, 100vw" plate={`Pl. ${s.number}`} />
-            </a>
-            <div class="sf__body" data-reveal-text>
-              <div class="section-head__meta">
-                <span class="num">{s.number}</span>
-                <span class="label">{s.kicker}</span>
-              </div>
-              <h2>
-                <a href={url(`/savoir-faire/${s.slug}/`)}>{s.title}</a>
-              </h2>
-              <p class="sf__lead">{s.lead}</p>
-              <a class="link" href={url(`/savoir-faire/${s.slug}/`)}>
-                En savoir plus sur {s.title.toLowerCase()} <span class="arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-        ))
-      }
+  {/* Entretien */}
+  <section class="section container" id="entretien" aria-labelledby="t-entretien">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="t-entretien" class="index__title">{entretien.title}</h2>
+      </div>
+      <div class="index__body sf">
+        <div class="sf__text">
+          <p class="lead">{entretien.short}</p>
+          <p class="muted">{entretien.text}</p>
+          <ul class="sf__items">{entretien.items.map((i) => <li>{i}</li>)}</ul>
+          {entretien.validate && <p class="small"><Tbc note="liste à valider avec Hugo" /></p>}
+          <BookingLink event={entretien.event} label="Rendez-vous pour un réglage" variant="line" />
+        </div>
+        <div class="sf__photo"><Photo id={entretien.photos[0]} sizes="(min-width: 900px) 26vw, 100vw" caption /></div>
+      </div>
     </div>
   </section>
 
-  <section class="section tone-papier" aria-labelledby="families-title">
-    <div class="container">
-      <SectionHead label="Les instruments" title="Les instruments suivis à l'atelier" id="families-title" />
-      <ul class="def-list">
-        {
-          families.map((f) => (
-            <li>
-              <span class="def-list__title">{f.name}</span>
-              <span class="def-list__text">{f.items}</span>
-            </li>
-          ))
-        }
-      </ul>
+  {/* Restauration */}
+  <section class="section container" id="restauration" aria-labelledby="t-restauration">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="t-restauration" class="index__title">{restauration.title}</h2>
+      </div>
+      <div class="index__body">
+        <div class="sf__text">
+          <p class="lead">{restauration.short}</p>
+          <p class="muted">{restauration.text}</p>
+          <ul class="sf__items">{restauration.items.map((i) => <li>{i}</li>)}</ul>
+          {restauration.validate && <p class="small"><Tbc note="liste à valider avec Hugo" /></p>}
+        </div>
+        <figure class="story">
+          <figcaption class="story__head">
+            <span class="smallcaps">Une restauration</span>
+            <span class="caption">Une guitare Carmencita, de Mirecourt, à l'établi.</span>
+          </figcaption>
+          <ol class="story__photos">
+            {restauration.photos.map((id) => <li><Photo id={id} ratio={1} sizes="(min-width: 900px) 18vw, 50vw" caption lightbox /></li>)}
+          </ol>
+        </figure>
+        <BookingLink event={restauration.event} label="Montrer un instrument à restaurer" variant="line" />
+      </div>
     </div>
   </section>
 
-  <CtaBand />
+  {/* Fabrication */}
+  <section class="section container" id="fabrication" aria-labelledby="t-fabrication">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="t-fabrication" class="index__title">{fabrication.title}</h2>
+      </div>
+      <div class="index__body sf">
+        <div class="sf__text">
+          <p class="lead">{fabrication.short}</p>
+          <p class="muted">{fabrication.text}</p>
+          <p class="sf__sub">Ce qui se décide ensemble</p>
+          <ul class="sf__items">{fabrication.items.map((i) => <li>{i}</li>)}</ul>
+          <a class="link" href={url('/atelier/')}>Les étapes, en photos, à l'atelier <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <div class="sf__photo"><Photo id="physalisFond" sizes="(min-width: 900px) 26vw, 100vw" caption /></div>
+      </div>
+    </div>
+  </section>
+
+  {/* Instruments */}
+  <section class="section container" id="instruments" aria-labelledby="t-instruments">
+    <div class="index">
+      <div class="index__head">
+        <h2 id="t-instruments" class="index__title">Instruments</h2>
+        <p class="index__intro">Ceux qu'Hugo a créés. Les photos des autres sont à venir.</p>
+      </div>
+      <div class="index__body">
+        <ul class="works">
+          {
+            withPhoto.map((c) => (
+              <li class="work" id={c.slug}>
+                <Photo id={c.photo!} sizes="(min-width: 900px) 22vw, 100vw" />
+                <Etiquette title={c.name} kind={c.type} meta={c.year} size="sm" as="h3" class="work__label" />
+                <p class="work__text">{c.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="labels" aria-label="Autres instruments">
+          {
+            others.map((c) => (
+              <li id={c.slug}>
+                <Etiquette title={c.name} kind={c.type} meta={c.year} size="sm" as="h3" />
+                <p class="small muted">{c.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="actions mt">
+          <BookingLink event={fabrication.event} label="Parler d'un instrument sur mesure" />
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .sf-list .container { display: grid; gap: clamp(96px, 12vw, 176px); }
-  .sf { display: grid; gap: var(--space-m); align-items: center; }
-  .sf__body { display: grid; gap: 20px; justify-items: start; }
-  .sf__body h2 { font-size: var(--fs-h1); }
-  .sf__body h2 a { text-decoration: none; }
-  .sf__lead { font-family: var(--font-display), sans-serif; font-weight: 480; letter-spacing: -0.015em; font-size: 1.3rem; line-height: 1.3; color: var(--muted); max-width: 30ch; }
-  @media (min-width: 900px) {
-    .sf { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); }
-    .sf__photo { grid-column: 1 / 7; }
-    .sf__body { grid-column: 8 / 13; }
-    .sf--alt .sf__photo { grid-column: 7 / 13; grid-row: 1; }
-    .sf--alt .sf__body { grid-column: 1 / 6; grid-row: 1; }
+  .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .jump a { padding: 8px 14px; border: 1px solid var(--encre); text-decoration: none; font-size: 0.92rem; }
+  .jump a:hover { background: var(--encre); color: var(--ivoire); }
+
+  .sf { display: grid; gap: 32px var(--col-gap); }
+  .sf__text { display: grid; gap: 16px; justify-items: start; max-width: 60ch; }
+  .sf__sub { font-weight: 500; margin-top: 8px; }
+  .sf__items { list-style: none; margin: 0; padding: 0; width: 100%; border-top: 1px solid var(--filet); }
+  .sf__items li { padding: 9px 0 9px 22px; border-bottom: 1px solid var(--filet); position: relative; }
+  .sf__items li::before { content: ''; position: absolute; left: 2px; top: 1.05em; width: 10px; height: 1px; background: var(--garance); }
+  .sf__photo { max-width: 300px; }
+  @media (min-width: 1100px) {
+    .sf { grid-template-columns: 3fr 2fr; align-items: start; }
+    .sf__photo { max-width: none; }
   }
+
+  .index__body > * + * { margin-top: 36px; }
+
+  .story { display: grid; gap: 14px; }
+  .story__head { display: grid; gap: 4px; }
+  .story__photos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px var(--col-gap); }
+  @media (min-width: 900px) { .story__photos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .works { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px var(--col-gap); }
+  .works .work:first-child { grid-column: 1 / -1; }
+  .work { position: relative; display: grid; }
+  .work :global(.photo) { margin-bottom: 0; }
+  .work :global(.work__label) { justify-self: start; margin: -28px 0 0 12px; position: relative; }
+  .work__text { margin-top: 12px; color: var(--muted); max-width: 40ch; }
+  @media (min-width: 700px) { .works { grid-template-columns: repeat(3, minmax(0, 1fr)); } .works .work:first-child { grid-column: auto; } }
+  @media (max-width: 699px) { .work__text { font-size: 0.92rem; } }
+
+  .labels { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 28px var(--col-gap); }
+  .labels li { display: grid; gap: 10px; justify-items: start; align-content: start; }
+  .mt { margin-top: 40px; }
 </style>

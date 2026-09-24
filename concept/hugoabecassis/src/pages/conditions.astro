@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Tbc from '../components/Tbc.astro';
+import { url } from '../lib/url';
+---
+
+<Base title="Conditions d'utilisation" description="Conditions d'utilisation du site d'Hugo Abecassis, luthier." breadcrumbs={[{ name: "Conditions d'utilisation", path: '/conditions/' }]}>
+  <header class="container page-head">
+    <h1>Conditions d'utilisation</h1>
+  </header>
+
+  <article class="container legal">
+    <h2>Le site</h2>
+    <p>Ce site présente le travail d'Hugo Abecassis, luthier : entretien, restauration et fabrication d'instruments à cordes. Il est gratuit et accessible à tous. Rien n'y est vendu en ligne.</p>
+
+    <h2>Rendez-vous et devis</h2>
+    <p>Une réservation en ligne ou un message est une demande de rendez-vous, pas une commande. Hugo peut proposer un autre créneau ou décliner. Chaque intervention fait l'objet d'un devis, accepté avant le début du travail. <Tbc note="conditions de devis, d'annulation et de dépôt des instruments" /></p>
+
+    <h2>Contenus</h2>
+    <p>Textes, photos et visuels sont protégés par le droit d'auteur. Pour les reproduire, il faut l'accord de leur auteur (voir les <a href={url('/mentions-legales/')}>mentions légales</a>).</p>
+
+    <h2>Liens vers d'autres sites</h2>
+    <p>Le site renvoie vers des articles de presse et des sites extérieurs. Hugo Abecassis n'est pas responsable de leur contenu.</p>
+
+    <h2>Disponibilité</h2>
+    <p>Le site peut être interrompu pour maintenance. Les informations sont données de bonne foi et peuvent évoluer.</p>
+
+    <h2>Données personnelles</h2>
+    <p>Voir la page <a href={url('/confidentialite/')}>confidentialité et cookies</a>.</p>
+
+    <h2>Droit applicable</h2>
+    <p>Ces conditions relèvent du droit français. En cas de litige, une solution amiable est recherchée en premier.</p>
+
+    <p class="updated muted">Mise à jour : septembre 2026.</p>
+  </article>
+</Base>

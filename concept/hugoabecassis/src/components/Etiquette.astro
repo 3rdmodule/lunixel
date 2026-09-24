@@ -1,0 +1,104 @@
+---
+/**
+ * Étiquette de luthier : le petit papier imprimé collé à l'intérieur d'un
+ * instrument, visible par l'ouïe (nom du luthier, instrument, lieu, année).
+ * Sert de signature au site, de titre à l'accueil et de fiche aux instruments.
+ */
+interface Props {
+  /** Ligne principale (nom de l'instrument, ou du luthier). */
+  title?: string;
+  /** Ligne en italique (type d'instrument, métier). */
+  kind?: string;
+  /** Petites capitales au-dessus (par défaut : le luthier). */
+  maker?: string | false;
+  /** Petites capitales en pied (lieu, année). */
+  meta?: string;
+  size?: 'sm' | 'md' | 'lg';
+  /** Balise du titre (h1 à l'accueil). */
+  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+  class?: string;
+}
+const { title, kind, maker = 'Hugo Abecassis', meta, size = 'md', as: Tag = 'p', class: className } = Astro.props;
+const hasSlot = Astro.slots.has('default');
+---
+
+<div class:list={['etq', `etq--${size}`, className]}>
+  <div class="etq__inner">
+    {maker && <span class="etq__maker">{maker}</span>}
+    {
+      hasSlot ? (
+        <slot />
+      ) : (
+        title && (
+          <Tag class="etq__title">
+            {title}
+            {kind && (
+              <>
+                <span class="sr-only">, </span>
+                <span class="etq__kind">{kind}</span>
+              </>
+            )}
+          </Tag>
+        )
+      )
+    }
+    {meta && <span class="etq__meta">{meta}</span>}
+  </div>
+</div>
+
+<style>
+  .etq {
+    position: relative;
+    display: inline-block;
+    background: var(--etiquette);
+    color: var(--encre);
+    border: 1px solid var(--encre);
+    padding: 4px;
+  }
+  .etq__inner {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 12px 18px 13px;
+    border: 1px solid color-mix(in srgb, var(--encre) 55%, transparent);
+    text-align: center;
+  }
+  .etq__maker, .etq__meta {
+    font-family: var(--font-label), Georgia, serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .etq__meta { color: var(--graphite); }
+  .etq__title, .etq :global(.etq__title) {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    margin: 0;
+    font-family: var(--font-display), sans-serif;
+    font-weight: 640;
+    font-size: 1.35rem;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .etq__kind, .etq :global(.etq__kind) {
+    font-family: var(--font-label), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    color: var(--graphite);
+  }
+
+  .etq--sm .etq__inner { padding: 6px 12px 7px; gap: 2px; }
+  .etq--sm .etq__title { font-size: 1.02rem; }
+  .etq--sm .etq__kind { font-size: 0.85rem; }
+  @media (max-width: 699px) { .etq--sm .etq__maker { display: none; } }
+
+  .etq--lg { padding: 6px; }
+  .etq--lg .etq__inner { padding: clamp(18px, 3vw, 34px) clamp(20px, 4vw, 48px) clamp(20px, 3vw, 34px); gap: 12px; }
+  .etq--lg .etq__maker, .etq--lg .etq__meta { font-size: 0.72rem; }
+  .etq--lg :global(.etq__title) { font-size: clamp(2.4rem, 1.2rem + 4.2vw, 5rem); line-height: 0.98; letter-spacing: -0.035em; }
+  .etq--lg :global(.etq__kind) { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem); color: var(--encre); }
+</style>

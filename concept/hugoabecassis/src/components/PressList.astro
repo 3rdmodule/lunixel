@@ -1,54 +1,31 @@
 ---
-import { press, type PressItem } from '../data/press';
+import type { PressItem } from '../data/press';
 import Tbc from './Tbc.astro';
-interface Props { items?: PressItem[]; compact?: boolean; headingLevel?: 'h3' | 'h4' }
-const { items = press, compact = false, headingLevel = 'h3' } = Astro.props;
-const H = headingLevel;
+interface Props { items: PressItem[]; summaries?: boolean }
+const { items, summaries = true } = Astro.props;
 ---
 
-<ul class:list={['press', { 'press--compact': compact }]}>
+<ul class="press">
   {
-    items.map((item) => (
+    items.map((p) => (
       <li class="press__item">
-        <div class="press__meta">
-          <span class="label">{item.media}</span>
-          {item.date ? <time class="label" datetime={item.date}>{item.dateLabel}</time> : <span class="label">{item.dateLabel}</span>}
-        </div>
-        <H class="press__title">
-          <a href={item.url} target="_blank" rel="noopener">
-            « {item.title} »<span class="sr-only"> (nouvel onglet)</span>
-          </a>
-        </H>
-        {!compact && (
-          <p class="press__summary">
-            {item.summary} {item.tbc && <Tbc note={item.tbc} />}
-          </p>
-        )}
-        {!compact && (
-          <p class="press__foot small">
-            {item.kind && <span class="muted">{item.kind}{item.author ? ` · ${item.author}` : ''}</span>}
-            <a class="link" href={item.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-              Lire la source <span class="arrow">↗</span>
-            </a>
-          </p>
-        )}
+        <p class="smallcaps press__meta">
+          {p.media} · {p.date ? <time datetime={p.date}>{p.dateLabel}</time> : p.dateLabel}
+        </p>
+        <a class="press__title" href={p.url} rel="noopener" target="_blank">
+          {p.title}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span>
+        </a>
+        {summaries && <p class="press__summary">{p.summary} {p.tbc && <Tbc note={p.tbc} />}</p>}
       </li>
     ))
   }
 </ul>
 
 <style>
-  .press { list-style: none; border-top: 1px solid var(--line); }
-  .press__item { display: grid; gap: 10px; padding-block: clamp(22px, 3vw, 36px); border-bottom: 1px solid var(--line); }
-  .press__meta { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .press__title { font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem); line-height: 1.18; max-width: 30ch; }
-  .press__title a { text-decoration: none; }
-  .press__title a:hover { color: var(--accent); }
-  .press__summary { color: var(--muted); max-width: 58ch; }
-  .press__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-  .press--compact .press__title { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.45rem); }
-  @media (min-width: 900px) {
-    .press:not(.press--compact) .press__item { grid-template-columns: 220px 1fr; column-gap: 40px; }
-    .press:not(.press--compact) .press__meta { flex-direction: column; grid-row: span 3; }
-  }
+  .press { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--filet); }
+  .press__item { display: grid; gap: 6px; padding: 18px 0 20px; border-bottom: 1px solid var(--filet); }
+  .press__meta { color: var(--muted); }
+  .press__title { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: 1.2rem; line-height: 1.2; letter-spacing: -0.015em; text-decoration: none; max-width: 36ch; }
+  .press__title:hover { text-decoration: underline; }
+  .press__summary { color: var(--muted); font-size: 0.95rem; max-width: 52ch; }
 </style>

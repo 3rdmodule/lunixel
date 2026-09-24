@@ -13,7 +13,7 @@ export function frenchText(text) {
     .replace(/[  ]+([;:!?»])/g, `${NNBSP}$1`)
     .replace(/([«])[  ]+/g, `$1${NNBSP}`)
     .replace(/(\d)\s(€|%)/g, `$1${NNBSP}$2`)
-    .replace(/([A-Za-zÀ-ÿ])'([A-Za-zÀ-ÿ])/g, '$1’$2');
+    .replace(/([A-Za-zÀ-ÿ])(?:'|&#39;|&#x27;)([A-Za-zÀ-ÿ])/g, '$1’$2');
 }
 
 export function processHtml(html) {

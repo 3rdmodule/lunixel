@@ -1,29 +1,26 @@
 ---
 /**
- * Bouton « Prendre rendez-vous ».
- * - mode "request" : lien vers le formulaire (motif pré-rempli).
- * - mode "cal"     : même lien (repli sans JS) ; le script ouvre Cal.com en fenêtre modale.
+ * « Prendre rendez-vous » : ouvre Cal.com en fenêtre (script chargé au clic).
+ * `event` cible un type de rendez-vous précis (ex. 'reglage').
+ * Sans JavaScript : lien direct vers la page Cal.com d'Hugo.
+ * Tant que le compte Cal.com n'existe pas : fenêtre d'explication (concept).
  */
 import { site } from '../config/site';
 import { url } from '../lib/url';
 
 interface Props {
-  motif?: string;
-  variant?: 'btn' | 'ghost' | 'link' | 'small';
+  event?: string;
+  variant?: 'btn' | 'line' | 'link';
   label?: string;
   class?: string;
 }
-const { motif, variant = 'btn', label = 'Prendre rendez-vous', class: className } = Astro.props;
-const href = url(`/contact/${motif ? `?motif=${encodeURIComponent(motif)}` : ''}#rendez-vous`);
-const cls = {
-  btn: 'btn',
-  ghost: 'btn btn--ghost',
-  small: 'btn btn--small',
-  link: 'link',
-}[variant];
-const calLink = site.booking.mode === 'cal' && site.booking.calLink ? site.booking.calLink : undefined;
+const { event, variant = 'btn', label = 'Prendre rendez-vous', class: className } = Astro.props;
+const { username } = site.booking;
+const calLink = username ? (event ? `${username}/${event}` : username) : '';
+const href = calLink ? `https://cal.com/${calLink}` : url('/contact/#rendez-vous');
+const cls = { btn: 'btn', line: 'btn btn--line', link: 'link' }[variant];
 ---
 
-<a href={href} class:list={[cls, className]} data-booking={calLink ? '' : undefined} data-cal-link={calLink}>
+<a href={href} class:list={[cls, className]} data-booking={calLink} rel={calLink ? 'noopener' : undefined}>
   <span>{label}</span><span class="arrow" aria-hidden="true">→</span>
 </a>

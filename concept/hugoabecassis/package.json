@@ -6,7 +6,7 @@
   "description": "Site vitrine de Hugo Abecassis, luthier — concept Lunixel",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/og.mjs",
+    "prebuild": "node scripts/og.mjs && node scripts/retouche-fonds.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check:links": "node scripts/check-links.mjs",
@@ -15,13 +15,14 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "@fontsource-variable/inter": "^5.3.0",
-    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource/libre-caslon-text": "^5.3.0",
     "astro": "^7.3.4",
     "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@fontsource/bricolage-grotesque": "^5.3.0",
-    "opentype.js": "^2.0.0"
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "fontkit": "^2.0.4"
   }
 }
