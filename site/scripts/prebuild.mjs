@@ -120,12 +120,12 @@ for (const p of projects) {
 }
 const logoSvg = `<svg viewBox="85 75 1419 302" xmlns="http://www.w3.org/2000/svg" style="height:56px;width:auto;align-self:flex-start">${MOON_CELLS.map(([c, r, k]) => `<rect x="${85 + c * 21}" y="${85 + r * 21}" width="19" height="19" rx="2.6" fill="${MOON_COLORS[k]}"/>`).join('')}<path fill="#F6F2EA" d="${WORDMARK_D}"/><rect x="1010" y="83" width="38" height="38" rx="5.2" fill="#F6B940"/></svg>`;
 const ogHtml = (title, label) => `<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{font-family:B;src:url(${fontUrl('@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-opsz-normal.woff2')}) format('woff2');font-weight:200 800}
-@font-face{font-family:S;src:url(${fontUrl('@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2')}) format('woff2');font-style:italic}
-*{margin:0;box-sizing:border-box}body{width:1200px;height:630px;background:#1B1E3C;color:#F6F2EA;font-family:B,sans-serif;padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+@font-face{font-family:D;src:url(${fontUrl('@fontsource-variable/gabarito/files/gabarito-latin-wght-normal.woff2')}) format('woff2');font-weight:400 900}
+@font-face{font-family:T;src:url(${fontUrl('@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2')}) format('woff2');font-weight:100 900}
+*{margin:0;box-sizing:border-box}body{width:1200px;height:630px;background:#1B1E3C;color:#F6F2EA;font-family:T,sans-serif;padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
 .halo{position:absolute;right:-260px;top:-220px;width:900px;height:900px;background:radial-gradient(closest-side,rgba(246,185,64,.2),rgba(246,185,64,.05) 55%,transparent)}
-h1{font-size:${title.length > 60 ? 60 : 72}px;line-height:1.02;letter-spacing:-.035em;font-weight:640;font-variation-settings:'opsz' 96;max-width:980px;position:relative}
-em{font-family:S;font-style:italic;font-weight:400;color:#FFE08A;letter-spacing:-.01em}
+h1{font-family:D,sans-serif;font-size:${title.length > 60 ? 60 : 72}px;line-height:1.02;letter-spacing:-.028em;font-weight:700;max-width:980px;position:relative}
+em{font-style:normal;color:#FFE08A}
 .foot{display:flex;justify-content:space-between;align-items:center;font-size:24px;color:#A7AACB;position:relative}
 .foot b{display:inline-flex;align-items:center;gap:14px;font-weight:500}.px{width:14px;height:14px;border-radius:3px;background:#F6B940;display:inline-block}
 </style></head><body><div class="halo"></div>${logoSvg}<h1>${title}</h1><div class="foot"><b><i class="px"></i>${label}</b><span>lunixel.fr</span></div></body></html>`;

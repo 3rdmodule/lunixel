@@ -3,12 +3,21 @@
    Tokens → base → typographie → mise en page → composants → pages
    ========================================================================== */
 
+/* Polices de secours calées sur Gabarito et Hanken Grotesk : la page ne bouge pas au chargement. */
 @font-face {
-  font-family: 'Bricolage Fallback';
+  font-family: 'Gabarito Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Helvetica');
-  size-adjust: 105%;
-  ascent-override: 88.6%;
-  descent-override: 25.7%;
+  size-adjust: 99.8%;
+  ascent-override: 94.2%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Helvetica');
+  size-adjust: 101.7%;
+  ascent-override: 98.3%;
+  descent-override: 29.8%;
   line-gap-override: 0%;
 }
 
@@ -28,9 +37,10 @@
   --alerte-clair: #b3362c;
   --alerte-nuit: #ff7a70;
 
-  --f-sans: 'Bricolage Grotesque Variable', 'Bricolage Fallback', system-ui, sans-serif;
-  --f-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --f-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* Titres : Gabarito (rond, proche du logo). Texte et étiquettes : Hanken Grotesk. */
+  --f-display: 'Gabarito Variable', 'Gabarito Fallback', system-ui, sans-serif;
+  --f-sans: 'Hanken Grotesk Variable', 'Hanken Fallback', system-ui, sans-serif;
+  --f-label: var(--f-sans);
 
   /* Échelle fluide (téléphone → grand écran) */
   --step--2: clamp(0.75rem, 0.73rem + 0.08vw, 0.8125rem);
@@ -210,11 +220,11 @@ h1,
 h2,
 h3,
 .display {
-  font-weight: 640;
+  font-family: var(--f-display);
+  font-weight: 700;
   line-height: 1.02;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.026em;
   text-wrap: balance;
-  font-variation-settings: 'opsz' 96;
 }
 .h-hero {
   font-size: var(--step-4);
@@ -232,8 +242,8 @@ h3,
 .h-3 {
   font-size: var(--step-2);
   line-height: 1.15;
-  letter-spacing: -0.015em;
-  font-weight: 620;
+  letter-spacing: -0.012em;
+  font-weight: 650;
 }
 p,
 li,
@@ -271,26 +281,21 @@ dd {
 }
 /* Les mots du client reçoivent la lumière */
 .lumiere {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
   color: var(--em);
-  font-variation-settings: normal;
 }
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  font-weight: 500;
-  letter-spacing: 0.09em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-soft);
 }
 .mono {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
 }
 
 /* ---------- Le pixel ---------- */
@@ -643,12 +648,13 @@ dd {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
   white-space: nowrap;
+  font-weight: 600;
 }
 .status--live .px {
   box-shadow: 0 0 0.7rem rgb(246 185 64 / 0.55);
@@ -681,7 +687,7 @@ dd {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: 0.6875rem;
   letter-spacing: 0.04em;
   color: var(--brume);
@@ -749,11 +755,12 @@ dd {
   overflow: hidden;
 }
 .apercu__kicker {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: 0.7em;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--a-accent);
+  font-weight: 600;
 }
 .apercu__title {
   font-size: 2.6em;
@@ -978,7 +985,7 @@ dd {
   border-bottom: 1px solid var(--line);
 }
 .situation q {
-  font-family: var(--f-serif);
+  font-family: var(--f-display);
   font-style: italic;
   font-size: clamp(1.6rem, 1.1rem + 2vw, 2.75rem);
   line-height: 1.12;
@@ -1020,8 +1027,10 @@ dd {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--fg-soft);
   letter-spacing: 0.08em;
 }
@@ -1059,11 +1068,12 @@ dd {
   align-content: start;
 }
 .work__meta {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
+  font-weight: 600;
 }
 .work__title {
   font-size: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
@@ -1194,15 +1204,16 @@ dd {
   display: none;
 }
 .clair summary .tag {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   padding: 0.15rem 0.45rem;
   border-radius: 3px;
   background: var(--surface);
   color: var(--fg);
+  font-weight: 600;
 }
 .clair[open] summary .tag {
   background: var(--or);
@@ -1244,12 +1255,13 @@ dd {
   max-width: 46ch;
 }
 .etape__phase {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--em);
   margin-top: 0.6rem;
+  font-weight: 600;
 }
 .moon-phase {
   width: 3.5rem;
@@ -1399,12 +1411,12 @@ dd {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--1);
   color: var(--fg-soft);
 }
 .formule__price strong {
-  font-family: var(--f-sans);
+  font-family: var(--f-display);
   font-size: var(--step-2);
   font-weight: 640;
   color: inherit;
@@ -1585,10 +1597,10 @@ dd {
   gap: var(--s-4);
 }
 .footer-cols h2 {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
   margin-bottom: var(--s-2);
@@ -1616,7 +1628,7 @@ dd {
   margin-top: var(--s-6);
   padding-top: var(--s-3);
   border-top: 1px solid var(--line);
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
   color: var(--fg-soft);
 }
@@ -1650,11 +1662,12 @@ dd {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
+  font-weight: 600;
 }
 .breadcrumb li + li::before {
   content: '/';
@@ -1686,12 +1699,13 @@ dd {
   border-bottom: 1px solid var(--line);
 }
 .fiche dt {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
   padding-top: 0.2rem;
+  font-weight: 600;
 }
 .fiche dd a {
   color: var(--link);
@@ -1765,11 +1779,12 @@ dd {
   border-top: 1px solid var(--line);
 }
 .facts dt {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
+  font-weight: 600;
 }
 .facts dd {
   font-size: var(--step-1);
@@ -1885,7 +1900,7 @@ dd {
 }
 .next-steps li::before {
   content: counter(ns, decimal-leading-zero);
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
   color: var(--fg-soft);
   padding-top: 0.25rem;
@@ -1909,11 +1924,12 @@ dd {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
+  font-weight: 600;
 }
 .form__progress ol {
   display: flex;
@@ -2244,7 +2260,7 @@ dd {
   border-top: 1px solid var(--line);
 }
 .outcomes b {
-  font-family: var(--f-sans);
+  font-family: var(--f-display);
   font-size: var(--step-2);
   font-weight: 650;
   letter-spacing: -0.02em;
@@ -2274,6 +2290,7 @@ dd {
   border-top: 1px solid var(--line);
 }
 .stats dt {
+  font-family: var(--f-display);
   font-size: var(--step-3);
   font-weight: 650;
   letter-spacing: -0.035em;
@@ -2285,7 +2302,7 @@ dd {
   max-width: 30ch;
 }
 .stats .source {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
   letter-spacing: 0.02em;
 }
@@ -2347,10 +2364,10 @@ dd {
   border-top: 1px solid var(--line);
 }
 .compare thead th {
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-soft);
   border-top: 0;
@@ -2369,7 +2386,7 @@ dd {
 .compare sup a {
   color: inherit;
   text-decoration: none;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: 0.75em;
   padding-left: 0.15em;
 }
@@ -2379,7 +2396,7 @@ dd {
   margin: var(--s-3) 0 0;
   display: grid;
   gap: 0.3rem;
-  font-family: var(--f-mono);
+  font-family: var(--f-label);
   font-size: var(--step--2);
   color: var(--fg-soft);
 }
@@ -2438,7 +2455,7 @@ dd {
   transition: padding 0.3s var(--ease, ease), color 0.2s ease;
 }
 .metier-list__name {
-  font-family: var(--f-sans);
+  font-family: var(--f-display);
   font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
   font-weight: 600;
   line-height: 1.1;

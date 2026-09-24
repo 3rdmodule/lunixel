@@ -20,7 +20,7 @@ export const site = {
   founder: { name: '', photo: '' },
 
   // Lien Cal.com pour réserver un appel (ex. 'https://cal.com/lunixel/30min'). Vide = bouton masqué.
-  bookingUrl: '',
+  bookingUrl: 'https://cal.com/lunixel/30min',
 
   // Délai type et séries de corrections incluses.
   delay: '2 semaines',
