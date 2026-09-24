@@ -22,6 +22,12 @@ export const site = {
   // Lien Cal.com pour réserver un appel (ex. 'https://cal.com/lunixel/30min'). Vide = bouton masqué.
   bookingUrl: 'https://cal.com/lunixel/30min',
 
+  // Réseaux sociaux officiels. Vide = lien masqué.
+  social: {
+    instagram: 'https://www.instagram.com/lunixel.fr/',
+    facebook: 'https://www.facebook.com/profile.php?id=61594670464461',
+  },
+
   // Délai type et séries de corrections incluses.
   delay: '2 semaines',
   revisions: { standard: 2, surMesure: 3 },
@@ -58,3 +64,9 @@ export const site = {
     entretienMax: '50 €', // Entretien mensuel en option, prix haut (site plus complet). Petites modifications comprises.
   },
 };
+
+// Liste prête à afficher des réseaux renseignés.
+export const socials = [
+  ['Instagram', site.social?.instagram],
+  ['Facebook', site.social?.facebook],
+].filter(([, url]) => url).map(([name, url]) => ({ name, url }));

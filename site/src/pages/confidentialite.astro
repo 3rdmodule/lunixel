@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../config.js';
+import { site, socials } from '../config.js';
 ---
 <Base title="Confidentialité et cookies · Lunixel" description="Comment Lunixel traite les informations envoyées depuis lunixel.fr : données collectées, finalités, durée, vos droits. Aucun cookie, aucun pistage.">
   <section class="page-hero theme-nuit">
@@ -21,6 +21,7 @@ import { site } from '../config.js';
         <li><strong>Formulaire « démo gratuite »</strong> : votre prénom, votre activité et le type de projet (obligatoires), votre e-mail ou votre téléphone (l’un des deux, pour vous répondre), et si vous le souhaitez le nom de votre entreprise, le lien de votre site ou de votre Instagram, votre message, votre délai et votre budget indicatif.</li>
         <li><strong>E-mail</strong> : ce que vous m’écrivez directement à {site.email}.</li>
         {site.bookingUrl && <li><strong>Réservation d’un appel</strong> : votre nom, votre e-mail et le créneau choisi, saisis sur Cal.com.</li>}
+        {socials.length > 0 && <li><strong>Messages sur Instagram ou Facebook</strong> : ce que vous m’y écrivez, depuis votre propre compte.</li>}
       </ul>
       <p>Chaque champ du formulaire a une raison d’être : me permettre de préparer votre maquette et de vous recontacter. Aucun autre renseignement n’est demandé.</p>
 
@@ -36,12 +37,13 @@ import { site } from '../config.js';
         <li><strong>OVH</strong> (France) : ma messagerie professionnelle.</li>
         {site.web3formsKey && <li><strong>Web3Forms</strong> (serveurs aux États-Unis) : transmet le formulaire jusqu’à ma messagerie, sans conserver votre message. <a href="https://web3forms.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
         {site.bookingUrl && <li><strong>Cal.com</strong> : gère les réservations d’appel, sur son propre site. <a href="https://cal.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
+        {socials.length > 0 && <li><strong>Meta</strong> (Instagram et Facebook) : si vous m’écrivez sur ces réseaux, vos messages passent par ses services. <a href="https://privacycenter.instagram.com/policy/" rel="noopener">Sa politique de confidentialité</a>.</li>}
         <li><strong>GitHub</strong> (hébergeur du site, service GitHub Pages) : quand vous consultez le site, votre adresse IP est enregistrée par GitHub à des fins de sécurité. <a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener">Ce qu’en dit GitHub</a> et <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">sa déclaration de confidentialité</a>.</li>
       </ul>
       <p>Certains de ces prestataires sont situés hors de l’Union européenne, notamment aux États-Unis. Leurs politiques, liées ci-dessus, décrivent les garanties qu’ils appliquent.</p>
 
       <h2 id="cookies">Cookies</h2>
-      <p><strong>Ce site ne dépose aucun cookie</strong> et n’utilise aucun traceur : pas de mesure d’audience, pas de publicité, pas de pixel de réseau social, pas de contenu tiers intégré. Les polices de caractères et les images sont hébergées sur le site lui-même. C’est pourquoi aucun bandeau de consentement ne s’affiche.</p>
+      <p><strong>Ce site ne dépose aucun cookie</strong> et n’utilise aucun traceur : pas de mesure d’audience, pas de publicité, pas de pixel de réseau social, pas de contenu tiers intégré. Les polices de caractères et les images sont hébergées sur le site lui-même. Les liens vers Instagram et Facebook sont de simples liens : rien n’est chargé depuis ces réseaux tant que vous ne cliquez pas. C’est pourquoi aucun bandeau de consentement ne s’affiche.</p>
       <table class="cookie-table">
         <thead><tr><th scope="col">Cookie</th><th scope="col">Finalité</th><th scope="col">Durée</th></tr></thead>
         <tbody><tr><td>Aucun</td><td>–</td><td>–</td></tr></tbody>

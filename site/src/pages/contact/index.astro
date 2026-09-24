@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { site } from '../../config.js';
+import { site, socials } from '../../config.js';
 import { activites, projetTypes, budgets } from '../../data/content.js';
 const delais = [['vite', 'Dès que possible'], ['3-mois', 'Dans les 3 mois'], ['pas-presse', 'Pas pressé']];
 const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:${site.email}`;
@@ -30,7 +30,7 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
             <a class="btn btn--ghost" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel de 30 min<span class="sr-only"> (nouvel onglet)</span></a>
           </div>
         )}
-        <p class="soft">Vous préférez écrire directement ?<br /><a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p class="soft">Vous préférez écrire directement ?<br /><a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>{socials.length > 0 && <>, ou en message sur {socials.map((s, i) => <>{i > 0 && (i === socials.length - 1 ? ' ou ' : ', ')}<a class="text-link" href={s.url} rel="noopener me" target="_blank">{s.name}<span class="sr-only"> (nouvel onglet)</span></a></>)}</>}.</p>
       </div>
 
       <form class="form" action={action} method="post" enctype={site.web3formsKey ? undefined : 'text/plain'} data-contact-form data-key={site.web3formsKey || undefined} data-to={site.email} novalidate>

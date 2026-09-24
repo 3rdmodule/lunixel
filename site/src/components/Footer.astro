@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { site } from '../config.js';
+import { site, socials } from '../config.js';
 import { metiers, metierPath } from '../data/metiers.js';
 const year = new Date().getFullYear();
 ---
@@ -37,6 +37,7 @@ const year = new Date().getFullYear();
             <li><a href="/contact/">{site.cta}</a></li>
             <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             {site.bookingUrl && <li><a href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a></li>}
+            {socials.map((s) => <li><a href={s.url} rel="noopener me" target="_blank">{s.name}<span class="sr-only"> (nouvel onglet)</span></a></li>)}
           </ul>
         </div>
         <div>
