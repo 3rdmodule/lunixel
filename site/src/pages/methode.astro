@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Methode from '../components/Methode.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { site } from '../config.js';
+const { standard, surMesure } = site.revisions;
+---
+<Base
+  title="Méthode · Comment se passe la création de votre site · Lunixel"
+  description={`De la démo gratuite à la mise en ligne en ${site.delay} environ : maquette offerte, devis écrit, ${standard} séries de corrections, puis un suivi ${site.support}.`}
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Méthode</li></ol></nav>
+      <h1 class="h-1 display">Comment ça se passe</h1>
+      <p class="lead">Cinq étapes, sans jargon et sans surprise. <strong>En général, votre site est en ligne {site.delay} après notre premier appel.</strong></p>
+    </div>
+  </section>
+  <Methode id="methode" title="De la démo à la mise en ligne" lead={`${standard} séries de corrections comprises, ${surMesure} pour un projet sur mesure. Vous validez chaque étape.`} />
+  <FinalCta title="On commence par votre maquette ?" />
+</Base>

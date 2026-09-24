@@ -6,19 +6,24 @@ interface Props { project: any; headingLevel?: 'h2' | 'h3' }
 const { project, headingLevel = 'h3' } = Astro.props;
 const H = headingLevel;
 const href = projectPath(project);
+const isConcept = project.kind === 'concept';
+const heading = isConcept ? project.question : project.tagline;
 ---
 <article class="concept-card lightable" data-light data-reveal>
   <Vitrine project={project} vt={`shot-${project.slug}`} sizes="(min-width: 48rem) 45vw, 92vw" />
-  <Status kind="concept" />
-  <H class="display"><a href={href}>{project.question}</a></H>
+  <Status kind={project.kind} />
+  <H class="display"><a href={href}>{heading}</a></H>
   <p class="soft">{project.name} · {project.business}, {project.place}</p>
-  <a class="arrow-link" href={href}>Voir le concept<span class="sr-only"> : {project.name}</span></a>
+  <a class="arrow-link" href={href}>{isConcept ? 'Voir le concept' : 'Voir l’étude de cas'}<span class="sr-only"> : {project.name}</span></a>
 </article>
 
 <style is:global>
   @media (min-width: 64rem) {
     .concept-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+    .concept-grid--duo {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

@@ -4,6 +4,7 @@ import WorkItem from '../../components/WorkItem.astro';
 import Status from '../../components/Status.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import { realisations } from '../../data/projects.js';
+import { site } from '../../config.js';
 ---
 <Base
   title="Réalisations · Sites créés par Lunixel"
@@ -27,7 +28,7 @@ import { realisations } from '../../data/projects.js';
         <h2 class="h-2">Votre site pourrait être le prochain ici</h2>
         <p class="lead">Dites-moi ce que vous faites, je vous dis simplement ce que je ferais.</p>
         <div class="cta-row">
-          <a class="btn" href="/contact/">Parler de mon projet</a>
+          <a class="btn" href="/contact/">{site.cta}</a>
           <a class="arrow-link" href="/concepts/">Voir aussi mes concepts</a>
         </div>
       </div>

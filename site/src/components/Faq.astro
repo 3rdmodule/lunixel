@@ -1,9 +1,9 @@
 ---
-import { faq, faqPlus } from '../data/content.js';
+import { faq } from '../data/content.js';
 import { site } from '../config.js';
 interface Props { full?: boolean; id?: string; title?: string }
-const { full = false, id = 'questions', title = 'Vos questions avant de vous lancer' } = Astro.props;
-const items = full ? [...faq, ...faqPlus] : faq;
+const { id = 'questions', title = 'Vos questions avant de vous lancer' } = Astro.props;
+const items = faq;
 ---
 <section class="section theme-jour" id={id} aria-labelledby={`${id}-title`}>
   <div class="container faq">
@@ -16,7 +16,7 @@ const items = full ? [...faq, ...faqPlus] : faq;
       {items.map((it) => (
         <details>
           <summary>{it.q}</summary>
-          <p>{it.a}</p>
+          <p>{it.a}{it.href && <> <a class="text-link" href={it.href}>Voir les tarifs</a></>}</p>
         </details>
       ))}
     </div>

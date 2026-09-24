@@ -101,12 +101,15 @@ await fs.writeFile(path.join(out, 'manifest.json'), JSON.stringify(manifest, nul
 /* ---------- Images de partage (1200 × 630) ---------- */
 const fontUrl = (p) => pathToFileURL(path.join(root, 'node_modules', p)).href;
 const ogPages = {
-  accueil: ['Vous avez un <em>métier</em>.<br>Je m’occupe du web.', 'Création de sites pour artisans, commerçants et TPE'],
+  accueil: ['Vous avez un <em>métier</em>.<br>Je m’occupe du web.', 'Sites pour salons, instituts et boutiques'],
+  salons: ['Un site qui remplit votre agenda, <em>sans commission</em>.', 'Salons et instituts'],
+  tarifs: ['Des prix clairs, <em>sans abonnement</em>.', 'Tarifs'],
+  methode: ['De la démo gratuite à la mise en ligne.', 'Méthode'],
+  'a-propos': ['Qui est derrière Lunixel.', 'À propos'],
+  faq: ['Vos questions, mes réponses.', 'Questions fréquentes'],
   realisations: ['Des sites qui ressemblent à ceux qui les tiennent.', 'Réalisations'],
   concepts: ['Avant de construire, j’imagine.', 'Concepts'],
-  services: ['Création de sites internet, et tout ce qui va avec.', 'Services'],
-  studio: ['Qui est derrière Lunixel.', 'Le studio'],
-  contact: ['Parlons de votre <em>projet</em>.', 'Contact'],
+  contact: ['Votre démo <em>gratuite</em>.', 'La maquette de votre page d’accueil, offerte'],
   'mentions-legales': ['Mentions légales', 'lunixel.fr'],
   confidentialite: ['Pas de cookies, pas de pistage.', 'Confidentialité'],
 };

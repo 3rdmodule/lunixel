@@ -6,22 +6,22 @@ const delais = [['vite', 'Dès que possible'], ['3-mois', 'Dans les 3 mois'], ['
 const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:${site.email}`;
 ---
 <Base
-  title="Parler de mon projet · Lunixel"
-  description={`Quatre questions pour démarrer. Premier échange gratuit, réponse sous 48 h. Basé à ${site.location.city}, je travaille partout en France.`}
+  title="Démo gratuite · La maquette de votre site offerte · Lunixel"
+  description={`Quatre questions, deux minutes : je vous prépare la maquette de votre page d’accueil, offerte et sans engagement. Réponse sous ${site.responseTime}.`}
   mobileCta={false}
 >
   <section class="page-hero theme-nuit" style="padding-bottom:var(--section)">
     <div class="container contact-layout">
       <div class="contact-aside">
         <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Contact</li></ol></nav>
-        <h1 class="h-1 display">Parlons de votre <span class="lumiere">projet</span>.</h1>
-        <p class="lead">Quatre questions, deux minutes. Pas besoin de savoir exactement ce que vous voulez : c’est à ça que sert le premier échange.</p>
+        <h1 class="h-1 display">Votre démo <span class="lumiere">gratuite</span>.</h1>
+        <p class="lead">Quatre questions, deux minutes. Je vous prépare la maquette de votre page d’accueil, <strong>offerte et sans engagement.</strong></p>
         <div>
           <p class="eyebrow" style="margin-bottom:var(--s-2)"><i class="px" aria-hidden="true"></i>Et ensuite ?</p>
           <ol class="next-steps" role="list">
-            <li><span>Je lis votre message moi-même.</span></li>
-            <li><span>Je vous réponds sous {site.responseTime}, par e-mail ou par téléphone.</span></li>
-            <li><span>On se cale un premier appel de 30 minutes, gratuit et sans engagement.</span></li>
+            <li><span>Je lis votre demande moi-même et je vous réponds sous {site.responseTime}.</span></li>
+            <li><span>Je prépare la maquette de votre page d’accueil, à vos couleurs.</span></li>
+            <li><span>Elle vous plaît ? On en parle. Sinon, vous ne me devez rien.</span></li>
           </ol>
         </div>
         {site.bookingUrl && (
@@ -37,7 +37,7 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
         {site.web3formsKey && (<>
           <input type="hidden" name="access_key" value={site.web3formsKey} />
           <input type="hidden" name="redirect" value="https://lunixel.fr/contact/merci/" />
-          <input type="hidden" name="subject" value="Nouveau projet depuis lunixel.fr" />
+          <input type="hidden" name="subject" value="Demande de démo depuis lunixel.fr" />
         </>)}
         <div class="form__progress" aria-hidden="true">
           <ol data-progress><li></li><li></li><li></li><li></li></ol>
@@ -46,7 +46,7 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
         <p class="sr-only" aria-live="polite" data-counter-live></p>
 
         <fieldset data-step="activite" class="is-current">
-          <legend>Vous êtes…<small>Choisissez ce qui vous ressemble le plus.</small></legend>
+          <legend>Votre activité<small>Choisissez ce qui vous ressemble le plus.</small></legend>
           <div class="choice-list">
             {activites.map(([v, l]) => (
               <label class="choice"><input type="radio" name="activite" value={v} data-label={l} required /><span>{l}</span></label>
@@ -68,8 +68,12 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
         <fieldset data-step="details">
           <legend>En quelques mots<small>Tout est facultatif ici.</small></legend>
           <div class="field">
-            <label for="message">Votre activité, votre idée, vos questions</label>
-            <textarea id="message" name="message" rows="5" placeholder="Ex. : Je suis fleuriste à Roubaix, j’aimerais que mes clients puissent voir mes bouquets et commander pour les fêtes."></textarea>
+            <label for="lien">Votre site actuel, votre Instagram ou votre fiche Google</label>
+            <input id="lien" name="lien" type="text" inputmode="url" autocomplete="url" placeholder="Ex. : instagram.com/votre-institut" />
+          </div>
+          <div class="field">
+            <label for="message">Votre activité, vos envies, vos questions</label>
+            <textarea id="message" name="message" rows="5" placeholder="Ex. : J’ai une onglerie à Roubaix, j’aimerais que mes clientes voient mes poses et réservent en ligne sans passer par une plateforme."></textarea>
           </div>
           <div class="field">
             <span class="label" id="delai-l">Quand aimeriez-vous être en ligne ?</span>
@@ -117,7 +121,7 @@ const action = site.web3formsKey ? 'https://api.web3forms.com/submit' : `mailto:
         <div class="form__nav">
           <button class="btn" type="button" data-prev hidden>← Retour</button>
           <button class="btn" type="button" data-next>Continuer</button>
-          <button class="btn" type="submit" data-submit><span class="label">Envoyer ma demande</span><span class="loader" aria-hidden="true"><i></i><i></i><i></i></span></button>
+          <button class="btn" type="submit" data-submit><span class="label">Recevoir ma démo</span><span class="loader" aria-hidden="true"><i></i><i></i><i></i></span></button>
         </div>
         <p class="form__status" data-status role="status" aria-live="polite"></p>
       </form>

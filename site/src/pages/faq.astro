@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { faq } from '../data/content.js';
+const jsonld = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base
+  title="Questions fréquentes · Lunixel"
+  description="Démo gratuite, prix, abonnement, délais, corrections, réservation en ligne, propriété du site : les réponses aux questions qu’on me pose avant de se lancer."
+  jsonld={jsonld}
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Questions fréquentes</li></ol></nav>
+      <h1 class="h-1 display">Questions fréquentes</h1>
+      <p class="lead">Tout ce qu’on me demande avant de se lancer. Il vous manque une réponse ? Écrivez-moi.</p>
+    </div>
+  </section>
+  <Faq title="Vos questions, mes réponses" />
+  <FinalCta />
+</Base>

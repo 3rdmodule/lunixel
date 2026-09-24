@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import Formules from '../components/Formules.astro';
+import Comparatif from '../components/Comparatif.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { site } from '../config.js';
+
+const presence = parseInt(site.prices.presence, 10);
+const prestation = 40;
+const rdv = presence ? Math.ceil(presence / prestation) : null;
+const jsonld = [
+  {
+    '@type': 'OfferCatalog',
+    name: 'Tarifs Lunixel',
+    url: `${site.url}/tarifs/`,
+    itemListElement: [
+      site.prices.presence && { '@type': 'Offer', name: 'Présence : site d’une page', priceCurrency: 'EUR', price: parseInt(site.prices.presence, 10), priceSpecification: { '@type': 'PriceSpecification', minPrice: parseInt(site.prices.presence, 10), priceCurrency: 'EUR' } },
+      site.prices.vitrine && { '@type': 'Offer', name: 'Vitrine : site de plusieurs pages', priceCurrency: 'EUR', price: parseInt(site.prices.vitrine, 10), priceSpecification: { '@type': 'PriceSpecification', minPrice: parseInt(site.prices.vitrine, 10), priceCurrency: 'EUR' } },
+    ].filter(Boolean),
+  },
+];
+---
+<Base
+  title="Tarifs · Création de site internet sans abonnement · Lunixel"
+  description={`Site d’une page dès ${site.prices.presence}, site complet dès ${site.prices.vitrine}. Sans abonnement ni commission, le site est à vous. Maquette offerte.`}
+  jsonld={jsonld}
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Tarifs</li></ol></nav>
+      <h1 class="h-1 display">Des prix clairs, sans abonnement</h1>
+      <p class="lead">Vous payez votre site une fois. Pas d’abonnement, pas de commission, et le site est à vous. <strong>La maquette de votre page d’accueil est offerte.</strong></p>
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="formules-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Formules</p>
+        <h2 id="formules-title" class="h-2">Les prix de départ</h2>
+        <p class="lead">Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
+      </div>
+      <Formules />
+      <div class="duo">
+        {rdv && (
+          <div class="note-box" data-reveal>
+            <p class="eyebrow"><i class="px" aria-hidden="true"></i>Rentable vite</p>
+            <p class="big">Un site d’une page à {site.prices.presence}, c’est {rdv} prestations à {prestation} €.</p>
+            <p class="soft">Au-delà, chaque cliente qui vous trouve ou réserve en ligne, c’est pour vous.</p>
+          </div>
+        )}
+        <div class="note-box" data-reveal>
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>Après la mise en ligne</p>
+          <p class="big">Aucun abonnement.</p>
+          <p class="soft">L’hébergement est compris. Vous payez seulement votre nom de domaine, {site.domainCost}, à votre nom. Un souci ? Je réponds {site.support}. Une retouche ? Le prix est annoncé avant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" id="comparatif" aria-labelledby="comparatif-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Comparer</p>
+        <h2 id="comparatif-title" class="h-2">Ce que vous payez ailleurs</h2>
+        <p class="lead">Les chiffres des autres options viennent de sources publiques, citées sous le tableau.</p>
+      </div>
+      <Comparatif />
+      <p class="links-row"><a class="arrow-link" href="/faq/">Toutes les questions fréquentes</a><a class="arrow-link" href="/methode/">Comment ça se passe</a></p>
+    </div>
+  </section>
+
+  <FinalCta title="Commencez par la démo gratuite." lead="Vous voyez la maquette de votre page d’accueil avant de décider quoi que ce soit." />
+</Base>

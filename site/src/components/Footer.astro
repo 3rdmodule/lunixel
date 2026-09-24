@@ -18,20 +18,23 @@ const year = new Date().getFullYear();
           <ul>
             <li><a href="/realisations/">Réalisations</a></li>
             <li><a href="/concepts/">Concepts</a></li>
-            <li><a href="/services/">Services</a></li>
-            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/tarifs/">Tarifs</a></li>
+            <li><a href="/methode/">Méthode</a></li>
+            <li><a href="/a-propos/">À propos</a></li>
+            <li><a href="/faq/">Questions fréquentes</a></li>
           </ul>
         </div>
         <div>
           <p class="footer-title">Pour qui</p>
           <ul>
+            <li><a href="/salons/">Salons et instituts</a></li>
             {metiers.map((m) => <li><a href={metierPath(m)}>{m.label}</a></li>)}
           </ul>
         </div>
         <div>
           <p class="footer-title">Contact</p>
           <ul>
-            <li><a href="/contact/">Parler de mon projet</a></li>
+            <li><a href="/contact/">{site.cta}</a></li>
             <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             {site.bookingUrl && <li><a href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a></li>}
           </ul>

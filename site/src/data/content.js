@@ -1,138 +1,172 @@
 import { site } from '../config.js';
 
-const { presence, vitrine, serenite } = site.prices;
 const { standard, surMesure } = site.revisions;
 
-// Textes réutilisés sur plusieurs pages. Voix : « je », concret, sans jargon.
+// Textes réutilisés sur plusieurs pages. Voix : « je », concret, orienté résultat.
 
-export const situations = [
-  { quote: 'Je n’ai pas de site, et je sens que ça me coûte des clients.', answer: 'On part de zéro. Une page suffit souvent pour commencer.' },
-  { quote: 'J’ai un site, mais il ne me ressemble plus.', answer: 'Je le refais à votre image, en gardant ce qui marche.' },
-  { quote: 'Mon site existe, mais plus personne ne s’en occupe.', answer: 'Je le reprends en main, et je m’en occupe ensuite.' },
+// Sources des chiffres affichés (toujours citées sous les chiffres).
+export const sources = {
+  fevad: {
+    label: 'Toluna Harris Interactive pour la Fevad, 2024',
+    url: 'https://www.ecommercemag.fr/Thematique/retail-1220/barometre-etude-2168/Diaporamas/72-des-Fran-ais-achetent-sur-le-site-de-l-458040/fran-ais-renseignent-avant-effectuer-leurs-458041.htm',
+  },
+  treatwellHoraires: {
+    label: 'Treatwell, estimation',
+    url: 'https://www.treatwell.fr/partenaires/ressources/blog/facebook-treatwell-digitalisation-beaute/',
+  },
+  treatwellTarifs: {
+    label: 'Treatwell, tarifs partenaires',
+    url: 'https://www.treatwell.fr/partenaires/tarifs/',
+  },
+  prixAgence: {
+    label: 'Fenxi, prix d’un site vitrine en 2026',
+    url: 'https://fenxi.fr/blog/combien-coute-site-internet-2026-prix-delais/',
+  },
+  prixMaintenance: {
+    label: 'Ipaoo, prix d’un site vitrine, mai 2026',
+    url: 'https://www.ipaoo.fr/creer-un-site-vitrine/prix/',
+  },
+};
+
+// Sous le titre de l'accueil : ce que la cliente y gagne, en un coup d'œil.
+export const outcomes = [
+  { value: '24 h/24', text: 'Vos clientes réservent en ligne, même quand vous êtes fermée.' },
+  { value: '0 €', text: 'd’abonnement et de commission chaque mois.' },
+  { value: '5 RDV', text: 'à 40 € suffisent à rembourser un site d’une page.', href: '/tarifs/' },
 ];
 
+// Le constat : des chiffres sourcés.
+export const stats = [
+  { value: '83 %', text: 'des Français se renseignent avant d’acheter, le plus souvent en ligne.', source: sources.fevad },
+  { value: '1 sur 2', text: 'Environ une réservation sur deux se fait en dehors des heures d’ouverture.', source: sources.treatwellHoraires },
+  { value: '25 %', text: 'C’est la commission d’une grande plateforme de réservation sur chaque nouvelle cliente.', source: sources.treatwellTarifs },
+];
+
+// Ce que la cliente y gagne (ses désirs principaux).
+export const gains = [
+  { title: 'Plus de rendez-vous', text: 'Vos clientes réservent en deux clics depuis leur téléphone, à toute heure. Elles reçoivent un rappel, vous recevez la réservation.' },
+  { title: 'Moins de frais', text: 'Pas d’abonnement, pas de commission sur vos clientes. Vous payez votre site une fois, et il est à vous.' },
+  { title: 'Un site qui vous ressemble', text: 'Vos couleurs, vos photos, vos mots. Pas un modèle tout fait rempli avec votre logo.' },
+  { title: 'Quelqu’un qui répond', text: `Un souci sur votre site ? Vous m’écrivez, je réponds ${site.support}.` },
+];
+
+// La démo gratuite, en trois étapes.
+export const demoSteps = [
+  { title: 'Vous me dites qui vous êtes', text: 'Quatre questions, deux minutes. Ajoutez votre Instagram ou votre site actuel si vous en avez un.' },
+  { title: 'Je prépare votre maquette', text: 'La page d’accueil de votre futur site, à vos couleurs, avec vos prestations. Offerte.' },
+  { title: 'Vous décidez', text: 'Elle vous plaît ? On continue ensemble. Sinon, vous ne me devez rien.' },
+];
+
+// Méthode complète (page Méthode).
+export const etapes = [
+  {
+    title: 'La démo gratuite',
+    text: 'Vous remplissez le formulaire, je vous envoie une maquette de votre page d’accueil. Vous ne payez rien à ce stade.',
+    phase: 'Fin croissant',
+  },
+  {
+    title: 'On en parle',
+    text: '30 minutes au téléphone ou en visio : vos prestations, vos clientes, ce que vous voulez changer.',
+    phase: 'Premier quartier',
+  },
+  {
+    title: 'Le devis',
+    text: 'Un prix écrit, un délai et ce qui est compris. Vous validez, je commence.',
+    phase: 'Lune gibbeuse',
+  },
+  {
+    title: 'Je construis',
+    text: `Vous suivez le chantier sur un lien privé et vous me dites ce qui ne va pas. ${standard} séries de corrections sont comprises, ${surMesure} pour un projet sur mesure.`,
+    phase: 'Pleine lune',
+  },
+  {
+    title: 'En ligne',
+    text: `Je publie le site, je le déclare à Google et je vous montre comment il marche. Ensuite, un souci ? Je réponds ${site.support}.`,
+    phase: 'Chaque nuit',
+  },
+];
+
+// Page À propos.
 export const piliers = [
   {
     title: 'Sur mesure',
-    text: 'Je ne pars pas d’un thème acheté. Je regarde comment vos clients vous cherchent et ce qu’ils veulent savoir, puis je dessine le site autour.',
+    text: 'Je ne pars pas d’un thème acheté. Je regarde comment vos clientes vous cherchent et ce qu’elles veulent savoir, puis je dessine le site autour.',
   },
   {
     title: 'En clair',
     text: 'Je vous explique mes choix sans jargon. Vous avez le prix par écrit avant que je commence.',
   },
   {
-    title: 'Dans la durée',
-    text: 'Une fois le site en ligne, je ne disparais pas. Un horaire ou une photo à changer ? Un message suffit.',
-  },
-];
-
-export const besoins = [
-  {
-    title: 'Être trouvé',
-    text: 'Un site rapide et bien construit, pour que vos clients vous trouvent sur Google, surtout depuis leur téléphone.',
-    more: 'Je soigne ce que Google regarde vraiment : la structure des pages, des textes qui répondent aux questions de vos clients, votre fiche Google et la vitesse.',
-    term: 'Référencement local',
-    clair: 'apparaître quand quelqu’un cherche « fleuriste à Lille » ou « plombier près de chez moi » sur son téléphone.',
-  },
-  {
-    title: 'Donner envie',
-    text: 'Des pages et des textes qui ressemblent à votre activité, et qui donnent envie de vous appeler.',
-    more: 'Je regarde votre site comme une vitrine : ce qu’on voit en premier, ce qui rassure, ce qui décide à vous contacter.',
-    term: 'Design sur mesure',
-    clair: 'un site dessiné pour vous, pas un modèle tout fait rempli avec votre logo.',
-  },
-  {
-    title: 'Ne plus s’en soucier',
-    text: 'Je garde votre site en ligne, sécurisé et à jour, et je vérifie chaque semaine que tout va bien.',
-    more: 'Un horaire à changer, une photo à remplacer ? Vous m’écrivez, je m’en occupe.',
-    term: 'Maintenance',
-    clair: 'je m’occupe de tout ce qui fait qu’un site continue de bien marcher. Vous n’y pensez plus.',
-  },
-  {
-    title: 'Gagner du temps',
-    text: 'Prise de rendez-vous, catalogue, demandes de devis : le site peut faire une partie du travail à votre place.',
-    more: 'Et quand il faut aller plus loin, je développe de vraies applications web, comme le jeu en ligne Fields of Fire.',
-    term: 'Automatisation',
-    clair: 'les tâches répétitives, faites toutes seules : confirmations, rappels, demandes de devis triées.',
-  },
-];
-
-export const etapes = [
-  {
-    title: 'On fait connaissance',
-    text: '30 minutes au téléphone ou en visio. Vous me parlez de votre métier, de vos clients, et de ce qui vous gêne dans votre site actuel si vous en avez un.',
-    phase: 'Fin croissant',
-  },
-  {
-    title: 'Je vous fais une proposition',
-    text: 'Un devis écrit et une première idée du rendu. Vous savez ce que vous aurez, quand, et pour combien.',
-    phase: 'Premier quartier',
-  },
-  {
-    title: 'Je construis',
-    text: `Vous suivez le chantier sur un lien privé et vous me dites ce qui ne va pas. ${standard} séries de corrections sont comprises, ${surMesure} pour un projet sur mesure.`,
-    phase: 'Lune gibbeuse',
-  },
-  {
-    title: 'Mise en ligne',
-    text: `Je publie le site, je le déclare à Google et je vous montre comment il marche. En général, ${site.delay} après notre premier appel.`,
-    phase: 'Pleine lune',
-  },
-  {
-    title: 'Et après',
-    text: 'Je m’occupe de l’hébergement et des mises à jour, et je vérifie le site chaque semaine. Vous m’écrivez quand quelque chose change chez vous.',
-    phase: 'Chaque nuit',
+    title: 'Disponible',
+    text: `Une fois le site en ligne, je reste joignable. Un souci ? Je réponds ${site.support}.`,
   },
 ];
 
 export const engagements = [
   { title: 'Un seul interlocuteur', text: 'La personne qui vous répond est celle qui fait votre site. Pas de commercial, pas d’intermédiaire.' },
   { title: 'Le prix écrit avant de commencer', text: 'Un devis détaillé, et c’est ce prix-là que vous payez.' },
+  { title: 'Aucun abonnement', text: `L’hébergement est compris. Vous payez seulement votre nom de domaine, ${site.domainCost}.` },
   { title: 'Tout est à votre nom', text: 'Le nom de domaine, le site, les textes et les accès sont à vous. Si un jour vous partez, vous partez avec.' },
-  { title: 'Zéro jargon', text: 'Je vous explique chaque choix avec des mots simples. Aucune question n’est bête.' },
 ];
 
+// Page Tarifs.
 export const formules = [
   {
     key: 'presence',
     name: 'Présence',
-    pitch: 'Une page qui dit qui vous êtes, ce que vous faites et comment vous joindre. Souvent suffisant pour démarrer.',
-    items: ['Une page à votre image', 'Parfaite sur téléphone', 'Référencement de base', 'Formulaire de contact', `En ligne en ${site.delay} environ`, `${standard} séries de corrections`],
+    pitch: 'Une page qui dit qui vous êtes, ce que vous proposez et comment réserver.',
+    items: ['Une page à votre image', 'Réservation en ligne', 'Parfaite sur téléphone', 'Visible sur Google', `En ligne en ${site.delay} environ`, `${standard} séries de corrections`],
   },
   {
     key: 'vitrine',
     name: 'Vitrine',
     featured: true,
-    pitch: 'Plusieurs pages pour montrer vos services, vos réalisations et vos tarifs. Je vous aide à écrire les textes.',
+    pitch: 'Plusieurs pages pour vos prestations, vos tarifs, vos photos et vos avis. Je vous aide à écrire les textes.',
     items: ['Tout ce qu’offre Présence', 'Plusieurs pages', 'Aide à l’écriture des textes', 'Référencement local', 'Statistiques de visite', `${standard} séries de corrections`],
   },
   {
     key: 'surMesure',
     name: 'Sur mesure',
-    pitch: 'Réservation en ligne, catalogue, espace client, outil interne, application web : on en parle, je chiffre.',
+    pitch: 'Boutique en ligne, espace client, outil interne, application : on en parle, je chiffre.',
     items: ['Étude de votre besoin', 'Fonctionnalités sur mesure', 'Automatisations', 'Applications web', `${surMesure} séries de corrections`],
   },
 ];
 
-// Ce que couvre l'accompagnement mensuel (affiché sous les formules et dans la FAQ).
-export const sereniteInclus = [
-  'Hébergement et nom de domaine',
-  'Une vérification chaque semaine : le site est en ligne et sécurisé',
-  'Sauvegardes et mises à jour',
-  'Jusqu’à 30 minutes de petites modifications par mois (un horaire, une photo, un texte)',
-];
+// Comparatif (page Tarifs) : chiffres des autres options toujours sourcés.
+export const comparatif = {
+  columns: ['Agence web', 'Plateforme de réservation', 'Lunixel'],
+  rows: [
+    { label: 'Votre site', cells: [['2 000 à 6 000 €', 'prixAgence'], ['Une fiche sur leur site, pas le vôtre'], [`Dès ${site.prices.presence}, payé une fois`]] },
+    { label: 'Chaque mois', cells: [['30 à 200 € d’entretien', 'prixMaintenance'], ['Abonnement, ou 25 % par nouvelle cliente', 'treatwellTarifs'], ['0 €']] },
+    { label: 'À qui appartient-il', cells: [['À vous, selon le contrat'], ['Votre fiche reste sur leur plateforme, à côté de vos concurrents'], ['À vous, avec tous les accès']] },
+  ],
+};
 
 export const faq = [
   {
+    q: 'La démo est-elle vraiment gratuite ?',
+    a: 'Oui. Je vous prépare la maquette de votre page d’accueil. Si elle ne vous plaît pas, vous ne me devez rien.',
+  },
+  {
     q: 'Combien coûte un site ?',
-    a:
-      presence && vitrine
-        ? `Un site d’une seule page démarre à ${presence}, un site de plusieurs pages à ${vitrine}. Les outils sur mesure (réservation, catalogue, espace client…) sont sur devis. Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.`
-        : 'Cela dépend de ce dont vous avez besoin : une page de présentation ne demande pas le même travail qu’un catalogue en ligne. Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.',
+    a: 'Les prix de départ sont sur la page Tarifs. Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.',
+    href: '/tarifs/',
+  },
+  {
+    q: 'Y a-t-il un abonnement ?',
+    a: `Non. L’hébergement est compris. Vous payez seulement votre nom de domaine, ${site.domainCost}, directement à votre nom.`,
+  },
+  {
+    q: 'Et si j’ai un souci sur mon site ?',
+    a: `Vous m’écrivez, je réponds ${site.support}.`,
+  },
+  {
+    q: 'Je suis déjà sur Planity ou Treatwell. Je peux garder ?',
+    a: 'Oui. Je mets votre lien de réservation actuel sur le site. Et si vous voulez arrêter de payer une commission, on peut passer à une réservation en ligne directement sur votre site, à votre rythme.',
   },
   {
     q: 'Combien de temps faut-il ?',
-    a: `En général ${site.delay} entre notre premier appel et la mise en ligne, si vous avez vos textes et vos photos. Pour un site plus complet ou un outil sur mesure, on fixe la date ensemble au départ.`,
+    a: `En général ${site.delay} entre notre premier appel et la mise en ligne, si vous avez vos textes et vos photos. Pour un projet sur mesure, on fixe la date ensemble au départ.`,
   },
   {
     q: 'Combien de corrections sont comprises ?',
@@ -144,26 +178,15 @@ export const faq = [
   },
   {
     q: 'Est-ce que je pourrai modifier mon site ?',
-    a: 'Si vous le souhaitez, je vous donne la main sur ce qui change souvent (horaires, actualités, tarifs). Et si vous préférez ne pas y toucher, un message suffit : je m’en occupe.',
+    a: 'Si vous le souhaitez, je vous donne la main sur ce qui change souvent (horaires, prestations, prix). Sinon, vous m’envoyez un message : les petites retouches sont chiffrées avant, sans abonnement.',
   },
   {
     q: 'À qui appartient le site ?',
     a: 'À vous. Le nom de domaine est à votre nom, et vous gardez l’accès à tout. Si un jour vous changez de prestataire, vous repartez avec l’ensemble.',
   },
   {
-    q: 'Que comprend l’accompagnement mensuel ?',
-    a: `${serenite ? `À partir de ${serenite} par mois : ` : ''}l’hébergement et le nom de domaine, une vérification chaque semaine que le site est en ligne et sécurisé, les sauvegardes, les mises à jour, et jusqu’à 30 minutes de petites modifications par mois.`,
-  },
-];
-
-export const faqPlus = [
-  {
     q: 'Vous travaillez seulement autour de Lille ?',
     a: `Non. Je suis basé à ${site.location.city}, ${site.location.near}, et je travaille avec des clients partout en France. Tout se fait très bien par téléphone et en visio.`,
-  },
-  {
-    q: 'Et si je ne sais pas exactement ce dont j’ai besoin ?',
-    a: 'C’est très courant, et c’est à ça que sert le premier appel. Vous me parlez de votre activité et de vos clients ; je vous propose la solution la plus simple qui répond à votre besoin.',
   },
   {
     q: 'Pouvez-vous reprendre un site existant ?',
@@ -172,19 +195,19 @@ export const faqPlus = [
 ];
 
 export const activites = [
-  ['artisan', 'Artisan'],
-  ['commerce', 'Commerce'],
-  ['restaurant', 'Restaurant'],
-  ['sante-bien-etre', 'Santé et bien-être'],
-  ['profession-liberale', 'Profession libérale'],
-  ['culture-association', 'Culture et association'],
+  ['institut-beaute', 'Institut de beauté'],
+  ['onglerie', 'Onglerie'],
+  ['coiffure', 'Coiffure'],
+  ['massage-bien-etre', 'Massage et bien-être'],
+  ['sante-naturelle', 'Naturopathie et santé naturelle'],
+  ['boutique', 'Boutique'],
   ['autre', 'Autre'],
 ];
 
 export const projetTypes = [
-  ['creer', 'Créer un site'],
+  ['creer', 'Créer mon site'],
   ['refaire', 'Refaire mon site'],
-  ['outil', 'Un outil ou une fonctionnalité'],
+  ['reservation', 'Ajouter la réservation en ligne'],
   ['je-ne-sais-pas', 'Je ne sais pas encore, et c’est normal'],
 ];
 

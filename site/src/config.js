@@ -26,6 +26,14 @@ export const site = {
   delay: '2 semaines',
   revisions: { standard: 2, surMesure: 3 },
 
+  // Appel à l'action principal (l'offre d'entrée : la maquette de la page d'accueil, offerte).
+  cta: 'Obtenir ma démo gratuite',
+  ctaShort: 'Démo gratuite',
+
+  // Disponibilité en cas de souci sur un site livré, et coût du nom de domaine pour le client.
+  support: '7 j/7',
+  domainCost: 'moins de 15 € par an',
+
   // Formulaire : clé Web3Forms (liée à contact@lunixel.fr), à coller entre les guillemets.
   // Tant qu'elle est vide, le formulaire prépare un e-mail dans la messagerie du visiteur.
   web3formsKey: '05625749-b303-402a-827b-75f3eebc4fa1',
@@ -40,11 +48,10 @@ export const site = {
     director: '', // Directeur de la publication
   },
 
-  // Prix « à partir de ». Vide = « Sur devis ». Repris aussi dans la FAQ.
+  // Prix « à partir de » (page Tarifs uniquement). Vide = « Sur devis ».
   prices: {
     presence: '200 €', // Site d'une page
     vitrine: '400 €', // Site de plusieurs pages
     surMesure: '', // Outils et fonctionnalités sur mesure : sur devis
-    serenite: '30 €', // Par mois
   },
 };

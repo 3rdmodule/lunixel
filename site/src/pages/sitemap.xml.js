@@ -4,13 +4,16 @@ import { metiers, metierPath } from '../data/metiers.js';
 
 const pages = [
   '/',
-  '/services/',
+  '/salons/',
   ...metiers.map(metierPath),
+  '/tarifs/',
   '/realisations/',
   ...projects.filter((p) => p.kind === 'realisation').map(projectPath),
   '/concepts/',
   ...projects.filter((p) => p.kind === 'concept').map(projectPath),
-  '/studio/',
+  '/methode/',
+  '/a-propos/',
+  '/faq/',
   '/contact/',
   '/mentions-legales/',
   '/confidentialite/',

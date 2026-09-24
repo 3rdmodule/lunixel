@@ -1,4 +1,4 @@
-// Formulaire « Parler de mon projet » : une question par écran, erreurs humaines, envoi sans rechargement.
+// Formulaire « Démo gratuite » : une question par écran, erreurs humaines, envoi sans rechargement.
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -95,6 +95,7 @@ export function initForm(form) {
       entreprise: (d.get('entreprise') || '').toString().trim(),
       email: (d.get('email') || '').toString().trim(),
       telephone: (d.get('telephone') || '').toString().trim(),
+      lien: (d.get('lien') || '').toString().trim(),
       activite: label('activite'),
       projet: label('projet'),
       delai: label('delai'),
@@ -109,6 +110,7 @@ export function initForm(form) {
       ['Prénom', s.prenom],
       ['Entreprise', s.entreprise],
       ['Activité', s.activite],
+      ['Site, Instagram ou fiche Google', s.lien],
       ['Projet', s.projet],
       ['Délai', s.delai],
       ['Budget', s.budget],
@@ -130,7 +132,7 @@ export function initForm(form) {
     }
     if (form.botcheck?.checked) return;
     const s = summary();
-    const subject = `Nouveau projet : ${s.activite} · ${s.prenom}${s.entreprise ? ` (${s.entreprise})` : ''}`;
+    const subject = `Demande de démo : ${s.activite} · ${s.prenom}${s.entreprise ? ` (${s.entreprise})` : ''}`;
     status.textContent = '';
 
     if (!key) {

@@ -1,0 +1,15 @@
+---
+import { stats } from '../data/content.js';
+interface Props { only?: number[] }
+const { only } = Astro.props;
+const items = only ? only.map((i) => stats[i]) : stats;
+---
+<dl class="stats">
+  {items.map((s) => (
+    <div data-reveal>
+      <dt>{s.value}</dt>
+      <dd>{s.text}</dd>
+      <dd class="source">Source : <a href={s.source.url} rel="noopener" target="_blank">{s.source.label}<span class="sr-only"> (nouvel onglet)</span></a></dd>
+    </div>
+  ))}
+</dl>

@@ -4,11 +4,12 @@ interface Props { path: string; assemble?: boolean }
 const { path, assemble = false } = Astro.props;
 const items = [
   { href: '/realisations/', label: 'Réalisations' },
-  { href: '/concepts/', label: 'Concepts' },
-  { href: '/services/', label: 'Services' },
-  { href: '/studio/', label: 'Le studio' },
+  { href: '/salons/', label: 'Salons et instituts' },
+  { href: '/tarifs/', label: 'Tarifs' },
+  { href: '/methode/', label: 'Méthode' },
+  { href: '/a-propos/', label: 'À propos' },
 ];
-const current = (href) => (path.startsWith(href) ? 'page' : undefined);
+const current = (href) => (path.startsWith(href) || (href === '/realisations/' && path.startsWith('/concepts/')) ? 'page' : undefined);
 import { site } from '../config.js';
 ---
 <header class="site-header theme-nuit" data-header>
@@ -22,7 +23,7 @@ import { site } from '../config.js';
       </ul>
     </nav>
     <div class="header-cta">
-      <a class="btn" href="/contact/"><span class="long">Parler de mon projet</span><span class="short">Parlons-en</span></a>
+      <a class="btn" href="/contact/"><span class="long">{site.cta}</span><span class="short">{site.ctaShort}</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
         <span class="sr-only">Ouvrir le menu</span>
         <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="5" width="16" height="2" rx="1" fill="currentColor"/><rect x="2" y="13" width="11" height="2" rx="1" fill="currentColor"/><rect x="15" y="13" width="3" height="2" rx="0.6" fill="#F6B940"/></svg>
@@ -42,10 +43,11 @@ import { site } from '../config.js';
     <ul>
       <li><a href="/" aria-current={path === '/' ? 'page' : undefined}><i class="px" aria-hidden="true"></i>Accueil</a></li>
       {items.map((i) => <li><a href={i.href} aria-current={current(i.href)}><i class="px" aria-hidden="true"></i>{i.label}</a></li>)}
+      <li><a href="/faq/" aria-current={current('/faq/')}><i class="px" aria-hidden="true"></i>Questions fréquentes</a></li>
     </ul>
   </nav>
   <div class="mobile-menu__foot">
-    <a class="btn btn--block" href="/contact/">Parler de mon projet</a>
+    <a class="btn btn--block" href="/contact/">{site.cta}</a>
     <p class="soft">Ou écrivez-moi : <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
   </div>
 </div>

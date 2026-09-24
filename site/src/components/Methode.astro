@@ -5,8 +5,8 @@ import { site } from '../config.js';
 interface Props { id?: string; title?: string; lead?: string }
 const {
   id = 'methode',
-  title = 'Comment ça se passe, concrètement',
-  lead = `En général, ${site.delay} entre notre premier appel et la mise en ligne.`,
+  title = 'Comment ça se passe',
+  lead = `De la démo gratuite à la mise en ligne : en général ${site.delay} après notre premier appel.`,
 } = Astro.props;
 ---
 <section class="section theme-nuit" id={id} aria-labelledby={`${id}-title`}>
@@ -36,8 +36,8 @@ const {
       </ol>
     </div>
     <div class="cta-row" style="margin-top:var(--s-5)">
-      <a class="btn" href="/contact/">Parler de mon projet</a>
-      <span class="soft">Le premier échange est gratuit.</span>
+      <a class="btn" href="/contact/">{site.cta}</a>
+      <span class="soft">Maquette offerte, sans engagement.</span>
     </div>
   </div>
 </section>

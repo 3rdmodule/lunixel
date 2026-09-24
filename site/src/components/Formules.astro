@@ -1,5 +1,5 @@
 ---
-import { formules, sereniteInclus } from '../data/content.js';
+import { formules } from '../data/content.js';
 import { site } from '../config.js';
 const price = (k) => site.prices[k];
 ---
@@ -15,42 +15,3 @@ const price = (k) => site.prices[k];
     </article>
   ))}
 </div>
-<div class="serenite" data-reveal>
-  <div>
-    <p class="eyebrow"><i class="px" aria-hidden="true"></i>Chaque mois</p>
-    <h3 class="h-3" style="margin-top:0.5rem">Sérénité</h3>
-  </div>
-  <div class="serenite__body">
-    <p class="soft">Je garde votre site en ligne, à jour et sauvegardé. Quand quelque chose change chez vous, vous m’écrivez et je m’en occupe.</p>
-    <ul role="list" class="serenite__list">
-      {sereniteInclus.map((it) => <li><i class="px" aria-hidden="true"></i>{it}</li>)}
-    </ul>
-  </div>
-  <p class="formule__price">{price('serenite') ? (<>À partir de <strong>{price('serenite')}</strong>/mois</>) : (<strong>Sur devis</strong>)}</p>
-</div>
-
-<style>
-  .serenite__body {
-    display: grid;
-    gap: var(--s-2);
-  }
-  .serenite__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.4rem;
-    font-size: var(--step--1);
-  }
-  .serenite__list li {
-    display: flex;
-    gap: 0.6rem;
-    align-items: baseline;
-  }
-  .serenite__list .px {
-    flex: none;
-    width: 0.4rem;
-    height: 0.4rem;
-    transform: translateY(-0.1em);
-  }
-</style>

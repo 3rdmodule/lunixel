@@ -6,6 +6,7 @@ interface Props { project: any; headingLevel?: 'h2' | 'h3' }
 const { project, headingLevel = 'h3' } = Astro.props;
 const H = headingLevel;
 const href = projectPath(project);
+const linkLabel = project.kind === 'concept' ? 'Voir le concept' : 'Voir l’étude de cas';
 ---
 <article class="work" data-reveal>
   <a class="work__media lightable" href={href} tabindex="-1" aria-hidden="true" data-light>
@@ -18,7 +19,7 @@ const href = projectPath(project);
     <p class="work__tagline">{project.tagline}</p>
     <p class="work__summary">{project.summary}</p>
     <div class="cta-row">
-      <a class="arrow-link" href={href}>Voir l’étude de cas<span class="sr-only"> : {project.name}</span></a>
+      <a class="arrow-link" href={href}>{linkLabel}<span class="sr-only"> : {project.name}</span></a>
     </div>
   </div>
 </article>

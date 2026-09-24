@@ -2,7 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import Vitrine from '../../components/Vitrine.astro';
 import Status from '../../components/Status.astro';
-import Formules from '../../components/Formules.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import { metiers, metierPath } from '../../data/metiers.js';
 import { projects, projectPath } from '../../data/projects.js';
@@ -25,7 +24,6 @@ const jsonld = [
     url,
     provider: { '@id': `${site.url}/#studio` },
     areaServed: { '@type': 'Country', name: 'France' },
-    offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: parseInt(site.prices.presence, 10) || undefined },
   },
   {
     '@type': 'BreadcrumbList',
@@ -40,10 +38,10 @@ const jsonld = [
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">{m.label}</li></ol></nav>
-      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Création de site internet · {m.label}</p>
+      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Site internet · {m.label}</p>
       <h1 class="h-1 display">{m.h1}</h1>
       <p class="lead">{m.lead}</p>
-      <div class="cta-row"><a class="btn" href={contact}>Parler de mon projet</a><a class="arrow-link" href="#prix">Voir les prix</a></div>
+      <div class="cta-row"><a class="btn" href={contact}>{site.cta}</a><a class="arrow-link" href="/tarifs/">Voir les tarifs</a></div>
     </div>
   </section>
 
@@ -81,23 +79,12 @@ const jsonld = [
     </section>
   )}
 
-  <section class="section theme-jour" id="prix" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="prix-title">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Combien ça coûte</p>
-        <h2 id="prix-title" class="h-2">Les prix de départ</h2>
-        <p class="lead">Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
-      </div>
-      <Formules />
-    </div>
-  </section>
-
   <section class="section theme-jour" aria-labelledby="questions-title">
     <div class="container faq">
       <div class="section-head">
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Questions</p>
         <h2 id="questions-title" class="h-2">Vos questions</h2>
-        <p class="lead">Une autre question ? <a class="text-link" href={contact}>Écrivez-moi</a>, je réponds sous {site.responseTime}.</p>
+        <p class="lead">Une autre question ? <a class="text-link" href="/faq/">Toutes les questions fréquentes</a>.</p>
       </div>
       <div class="faq__list">
         {m.faq.map(([q, a]) => (
@@ -111,11 +98,12 @@ const jsonld = [
     <div class="container">
       <p class="soft autres">Vous êtes plutôt :
         {autres.map((x, i) => (<>{i > 0 && ' · '}<a class="text-link" href={metierPath(x)}>{x.label}</a></>))}
+        · <a class="text-link" href="/salons/">Salons et instituts</a>
       </p>
     </div>
   </section>
 
-  <FinalCta title={m.final} lead="Dites-moi ce que vous faites. Je vous réponds sous 48 h, et le premier échange est gratuit." />
+  <FinalCta title={m.final} />
 </Base>
 
 <style>

@@ -1,0 +1,28 @@
+---
+import { comparatif, sources } from '../data/content.js';
+// Numérote les sources dans l'ordre où elles apparaissent.
+const used = [];
+for (const r of comparatif.rows) for (const [, key] of r.cells) if (key && !used.includes(key)) used.push(key);
+const n = (key) => used.indexOf(key) + 1;
+const last = comparatif.columns.length - 1;
+---
+<div class="compare-wrap">
+  <table class="compare">
+    <thead>
+      <tr><th scope="col"><span class="sr-only">Critère</span></th>{comparatif.columns.map((c) => <th scope="col">{c}</th>)}</tr>
+    </thead>
+    <tbody>
+      {comparatif.rows.map((r) => (
+        <tr>
+          <th scope="row">{r.label}</th>
+          {r.cells.map(([text, key], i) => (
+            <td class:list={{ 'is-us': i === last }}>{text}{key && <sup><a href={`#source-${n(key)}`} aria-label={`Source ${n(key)}`}>{n(key)}</a></sup>}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<ol class="sources">
+  {used.map((key, i) => <li id={`source-${i + 1}`}>{i + 1}. <a href={sources[key].url} rel="noopener" target="_blank">{sources[key].label}<span class="sr-only"> (nouvel onglet)</span></a></li>)}
+</ol>

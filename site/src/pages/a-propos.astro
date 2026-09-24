@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import StudioBlock from '../components/StudioBlock.astro';
+import Engagements from '../components/Engagements.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { piliers } from '../data/content.js';
+import { site } from '../config.js';
+const { name, photo } = site.founder || {};
+---
+<Base
+  title="À propos · Qui est derrière Lunixel, studio web indépendant"
+  description={`Lunixel est un studio web d’une seule personne, basé à ${site.location.city}. Des sites soignés, à un prix juste, sans abonnement, qui vous appartiennent.`}
+>
+  <section class="page-hero theme-nuit">
+    <div class:list={['container', { 'studio-hero': photo }]}>
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">À propos</li></ol></nav>
+        <h1 class="h-1 display">Qui est derrière Lunixel</h1>
+        <p class="lead">Une seule personne : moi{name && `, ${name}`}. Je conçois, j’écris et je code chaque site, et c’est moi qui vous réponds. <strong>Je suis basé à {site.location.city}, {site.location.near}, et je travaille avec des clients partout en France.</strong></p>
+      </div>
+      {photo && <img class="studio-photo" src={photo} alt={name ? `${name}, Lunixel` : 'Le fondateur de Lunixel'} width="640" height="800" loading="eager" />}
+    </div>
+  </section>
+
+  <section class="section theme-jour" aria-labelledby="pourquoi-title">
+    <div class="container studio">
+      <div class="section-head" style="margin:0" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Pourquoi Lunixel</p>
+        <h2 id="pourquoi-title" class="h-2">Parce que trop de commerçants paient cher pour un site qui ne rapporte rien</h2>
+        <p class="lead">Des milliers d’euros au départ, un abonnement chaque mois, une commission sur chaque cliente. J’ai créé Lunixel pour faire l’inverse : des sites soignés, à un prix juste, qui vous appartiennent et qui vous amènent des clientes.</p>
+      </div>
+      <StudioBlock />
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="padding-top:0" aria-labelledby="facon-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ma façon de travailler</p>
+        <h2 id="facon-title" class="h-2">Un petit studio, pour de bonnes raisons</h2>
+        <p class="lead">Pas de commercial, pas d’intermédiaire. La personne qui vous répond est celle qui fait votre site.</p>
+      </div>
+      <div class="piliers">
+        {piliers.map((p, i) => (
+          <div class="pilier" data-reveal>
+            <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="background:var(--papier-ombre)" aria-labelledby="engagements-title">
+    <div class="container studio">
+      <div class="section-head" style="margin:0" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Mes engagements</p>
+        <h2 id="engagements-title" class="h-2">Quatre règles que je m’impose</h2>
+        <p class="lead">Vous pouvez me les rappeler si je ne les tiens pas.</p>
+      </div>
+      <Engagements />
+    </div>
+  </section>
+
+  <FinalCta title="On en parle ?" lead="Commencez par la maquette gratuite de votre page d’accueil : vous verrez tout de suite si on est faits pour travailler ensemble." />
+</Base>
+
+<style>
+  .studio-hero {
+    display: grid;
+    gap: var(--s-5);
+    align-items: end;
+  }
+  .studio-photo {
+    width: min(100%, 22rem);
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+  @media (min-width: 64rem) {
+    .studio-hero {
+      grid-template-columns: 1fr auto;
+    }
+  }
+</style>

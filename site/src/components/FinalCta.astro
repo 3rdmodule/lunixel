@@ -3,15 +3,15 @@ import { site } from '../config.js';
 import { activites } from '../data/content.js';
 interface Props { title?: string; lead?: string }
 const {
-  title = 'La boutique est fermée. Votre site, lui, est encore ouvert.',
-  lead = 'Dites-moi simplement ce que vous faites. Je m’occupe de la suite.',
+  title = 'Voyons à quoi pourrait ressembler votre site.',
+  lead = 'Dites-moi ce que vous faites : je vous prépare la maquette de votre page d’accueil, offerte et sans engagement.',
 } = Astro.props;
 ---
 <section class="final theme-profonde" aria-labelledby="final-title" data-final>
   <div class="final__glow" aria-hidden="true"></div>
   <div class="container">
     <div class="final__inner" data-reveal>
-      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Parler de votre projet</p>
+      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Démo gratuite</p>
       <h2 id="final-title" class="display">{title}</h2>
       <p class="lead">{lead}</p>
       <div>
@@ -21,10 +21,10 @@ const {
         </ul>
       </div>
       <div class="cta-row">
-        <a class="btn" href="/contact/">Parler de mon projet</a>
-        <a class="arrow-link" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="btn" href="/contact/">{site.cta}</a>
+        {site.bookingUrl ? <a class="arrow-link" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a> : <a class="arrow-link" href={`mailto:${site.email}`}>{site.email}</a>}
       </div>
-      <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit, sans engagement</span><span>Réponse sous {site.responseTime}</span></p>
+      <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette offerte, sans engagement</span><span>Réponse sous {site.responseTime}</span><span>Aucun abonnement</span></p>
     </div>
   </div>
 </section>

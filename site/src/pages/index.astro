@@ -4,29 +4,27 @@ import Vitrine from '../components/Vitrine.astro';
 import Status from '../components/Status.astro';
 import WorkItem from '../components/WorkItem.astro';
 import ConceptCard from '../components/ConceptCard.astro';
-import Besoins from '../components/Besoins.astro';
-import Methode from '../components/Methode.astro';
-import StudioBlock from '../components/StudioBlock.astro';
-import Engagements from '../components/Engagements.astro';
-import Formules from '../components/Formules.astro';
-import Faq from '../components/Faq.astro';
+import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { projects, realisations, concepts } from '../data/projects.js';
-import { situations, piliers } from '../data/content.js';
+import { outcomes, gains, demoSteps } from '../data/content.js';
 import { metiers, metierPath } from '../data/metiers.js';
 import { site } from '../config.js';
 
 const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+// Ordre d'affichage : la première est au fond, la deuxième au premier plan, la troisième sur téléphone.
 const heroShots = [
   { p: bySlug['3rd-records'], variant: 'desktop' },
-  { p: bySlug['nube-games'], variant: 'desktop' },
+  { p: bySlug['fabienne-hiot'], variant: 'desktop' },
   { p: bySlug['le-domaine-musical'], variant: 'phone' },
 ];
 const name = site.founder?.name;
+// Fabienne Hiot en premier, puis Le Domaine Musical : l’ordre suit projects.js.
+const [leadConcept, ...otherConcepts] = concepts;
 ---
 <Base
-  title="Création de site internet pour artisans et TPE · Lunixel"
-  description="Sites internet sur mesure pour artisans, commerçants et indépendants, dès 200 €. Un seul interlocuteur, un prix écrit avant de commencer, un suivi après."
+  title="Site internet pour salons, instituts et boutiques · Lunixel"
+  description="Des sites sur mesure qui prennent vos rendez-vous et vous amènent des clientes. Sans abonnement, sans commission. Maquette de votre page d’accueil offerte."
   assembleLogo
 >
   <!-- 1. Ouverture -->
@@ -34,23 +32,28 @@ const name = site.founder?.name;
     <div class="hero__halo" aria-hidden="true"></div>
     <div class="container grid hero__grid">
       <div class="hero__head">
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Création de sites internet · Artisans, commerçants, indépendants</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Sites internet pour salons, instituts et boutiques</p>
         <h1 id="hero-title" class="h-hero display">Vous avez un <span class="lumiere">métier</span>.<br />Je m’occupe du web.</h1>
       </div>
       <div class="hero__sub">
-        <p class="lead">{name && `Je m’appelle ${name}. `}Je crée des sites pour des artisans, des boutiques, des thérapeutes, et je continue de m’en occuper une fois qu’ils sont en ligne. <strong>Vous m’expliquez votre métier, je fais le reste.</strong></p>
+        <p class="lead">{name && `Je m’appelle ${name}. `}Un site à votre image, qui prend vos rendez-vous et vous amène des clientes. <strong>Sans abonnement.</strong></p>
+        <ul class="outcomes" role="list" aria-label="Ce que vous y gagnez">
+          {outcomes.map((o) => (
+            <li><b>{o.value}</b><span>{o.href ? <a href={o.href}>{o.text}</a> : o.text}</span></li>
+          ))}
+        </ul>
         <div class="cta-row">
-          <a class="btn" href="/contact/">Parler de mon projet</a>
-          <a class="arrow-link" href="#travaux">Voir mes travaux</a>
+          <a class="btn" href="/contact/">{site.cta}</a>
+          <a class="arrow-link" href="#travaux">Voir des exemples</a>
         </div>
-        <p class="reassure"><span><i class="px" aria-hidden="true"></i>Premier échange gratuit</span><span>Réponse sous {site.responseTime}</span><span>{site.location.city} · partout en France</span></p>
+        <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette de votre page d’accueil offerte</span><span>Sans engagement</span></p>
       </div>
       <div class="hero__visual">
         <div class="vitrines" aria-label="Quelques travaux du studio">
           {heroShots.map(({ p, variant }, i) => (
             <figure class:list={['lightable', { 'is-phone': variant === 'phone' }]} data-hero-light>
               <a href={`/${p.kind === 'realisation' ? 'realisations' : 'concepts'}/${p.slug}/`} tabindex="-1" aria-hidden="true">
-                <Vitrine project={p} variant={variant} eager={i === 0} barLabel={p.name} barKind={p.kind} sizes={variant === 'phone' ? '(min-width: 64rem) 12rem, 46vw' : '(min-width: 64rem) 42vw, 80vw'} />
+                <Vitrine project={p} variant={variant} eager={i === 1} barLabel={p.name} barKind={p.kind} sizes={variant === 'phone' ? '(min-width: 64rem) 12rem, 46vw' : '(min-width: 64rem) 42vw, 80vw'} />
               </a>
               <figcaption><span>{p.name}</span><Status kind={p.kind} short /></figcaption>
             </figure>
@@ -62,56 +65,70 @@ const name = site.founder?.name;
 
   <div class="daybreak" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
-  <!-- 2. Pour qui -->
-  <section class="section theme-jour" aria-labelledby="pour-qui-title" style="padding-top:clamp(3rem,2rem + 4vw,6rem)">
+  <!-- 2. Le constat -->
+  <section class="section theme-jour" aria-labelledby="constat-title" style="padding-top:clamp(3rem,2rem + 4vw,6rem)">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>01 · Pour qui</p>
-        <h2 id="pour-qui-title" class="h-2">Vous avez sûrement mieux à faire que de vous battre avec un site internet</h2>
-        <p class="lead">En général, c’est l’une de ces trois situations.</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>01 · Le constat</p>
+        <h2 id="constat-title" class="h-2">Vos clientes vous cherchent en ligne. Beaucoup de sites coûtent cher et ne rapportent rien.</h2>
+        <p class="lead">Des milliers d’euros pour un site, un abonnement chaque mois, une commission sur chaque nouvelle cliente : ce n’est pas une fatalité.</p>
       </div>
-      <ul class="situations" role="list">
-        {situations.map((s) => (
-          <li class="situation" data-reveal>
-            <q>{s.quote}</q>
-            <p><i class="px" aria-hidden="true"></i>{s.answer}</p>
-          </li>
-        ))}
-      </ul>
-      <p class="metiers-links" data-reveal>
-        <span class="soft">Voir ce que je fais pour :</span>
-        {metiers.map((m) => <a class="arrow-link" href={metierPath(m)}>{m.label}</a>)}
-      </p>
+      <Stats />
+      <p class="links-row" data-reveal><a class="arrow-link" href="/tarifs/#comparatif">Comparer avec une agence ou une plateforme</a></p>
     </div>
   </section>
 
-  <!-- 3. L'approche -->
-  <section class="section theme-jour" aria-labelledby="approche-title" style="padding-top:0">
+  <!-- 3. Ce que vous y gagnez -->
+  <section class="section theme-jour" aria-labelledby="gains-title" style="padding-top:0">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · L’approche</p>
-        <h2 id="approche-title" class="h-2">Vous aurez affaire à moi, du premier appel jusqu’aux mises à jour</h2>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · Ce que ça change</p>
+        <h2 id="gains-title" class="h-2">Ce que votre site fait pour vous</h2>
       </div>
-      <div class="piliers">
-        {piliers.map((p, i) => (
+      <div class="gains">
+        {gains.map((g, i) => (
           <div class="pilier" data-reveal>
             <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
+            <h3>{g.title}</h3>
+            <p>{g.text}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- 4. Travaux -->
+  <!-- 4. La démo gratuite -->
+  <section class="section theme-jour" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="demo-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>03 · La démo gratuite</p>
+        <h2 id="demo-title" class="h-2">Voyez votre site avant de payer quoi que ce soit</h2>
+        <p class="lead">Je vous offre la maquette de votre page d’accueil. Vous jugez sur pièce.</p>
+      </div>
+      <ol class="demo-steps" role="list">
+        {demoSteps.map((d, i) => (
+          <li class="pilier" data-reveal>
+            <p class="pilier__n"><i class="px" aria-hidden="true"></i>0{i + 1}</p>
+            <h3>{d.title}</h3>
+            <p>{d.text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="cta-row" style="margin-top:var(--s-5)">
+        <a class="btn btn--dark" href="/contact/">{site.cta}</a>
+        <a class="arrow-link" href="/methode/">Et ensuite ? La méthode</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Travaux -->
   <section class="section theme-nuit" id="travaux" aria-labelledby="travaux-title">
     <div class="container">
       <div class="work-head" data-reveal>
         <div class="section-head" style="margin:0">
-          <p class="eyebrow"><i class="px" aria-hidden="true"></i>03 · Travaux</p>
+          <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Travaux</p>
           <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent</h2>
-          <p class="lead">Deux sites en ligne et {concepts.length} concepts. Aucun ne ressemble aux autres, parce qu’aucun client ne ressemble aux autres.</p>
+          <p class="lead">Pour montrer ce qu’un commerce pourrait avoir en ligne, j’imagine parfois son site avant qu’on me le demande. <strong>C’est exactement ce que vous recevez avec la démo gratuite.</strong></p>
         </div>
         <div class="legend">
           <Status kind="realisation" />
@@ -119,14 +136,17 @@ const name = site.founder?.name;
         </div>
       </div>
       <div class="work-list">
-        {realisations.map((p) => <WorkItem project={p} />)}
+        <WorkItem project={leadConcept} />
       </div>
-      <div class="concept-grid">
+      <div class="concept-grid concept-grid--duo">
+        {otherConcepts.map((p) => <ConceptCard project={p} />)}
+      </div>
+      <div class="concept-grid concept-grid--duo">
         <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
-          <h3 class="h-3">Et parfois, j’imagine un site avant qu’on me le demande</h3>
-          <p class="soft" style="max-width:52ch">Mes concepts sont des sites pensés pour de vrais commerces et artisans, sans commande, pour explorer ce que leur métier pourrait devenir en ligne.</p>
+          <h3 class="h-3">Et déjà en ligne</h3>
+          <p class="soft" style="max-width:52ch">Deux sites livrés, que vous pouvez visiter aujourd’hui.</p>
         </div>
-        {concepts.map((p) => <ConceptCard project={p} />)}
+        {realisations.map((p) => <ConceptCard project={p} />)}
       </div>
       <div class="cta-row" style="margin-top:var(--s-6)">
         <a class="arrow-link" href="/realisations/">Toutes les réalisations</a>
@@ -135,65 +155,28 @@ const name = site.founder?.name;
     </div>
   </section>
 
-  <!-- 5. Ce que je prends en charge -->
-  <section class="section theme-jour" aria-labelledby="services-title">
+  <!-- 6. Pour qui -->
+  <section class="section theme-jour" aria-labelledby="pour-qui-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Services</p>
-        <h2 id="services-title" class="h-2">Ce que je prends en charge</h2>
-        <p class="lead">Si un mot vous paraît technique, touchez « En clair ».</p>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>05 · Pour qui</p>
+        <h2 id="pour-qui-title" class="h-2">Pour les métiers où tout commence par un rendez-vous</h2>
+        <p class="lead">Instituts, ongleries, coiffeuses, masseuses, naturopathes, et les boutiques du quartier.</p>
       </div>
-      <Besoins />
-      <div class="cta-row" style="margin-top:var(--s-6)">
-        <a class="arrow-link" href="/services/">Le détail des services</a>
-      </div>
+      <ul class="metier-list" role="list">
+        {metiers.map((m) => (
+          <li data-reveal>
+            <a href={metierPath(m)}>
+              <span class="metier-list__name">{m.label}</span>
+              <span class="metier-list__text">{m.h1}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="links-row" data-reveal><a class="arrow-link" href="/salons/">Vous travaillez sur rendez-vous ? La réservation en ligne, sans commission</a></p>
     </div>
   </section>
 
-  <!-- 6. Comment ça se passe -->
-  <Methode />
-
-  <!-- 7. Le studio -->
-  <section class="section theme-jour" aria-labelledby="studio-title">
-    <div class="container studio">
-      <div class="section-head" style="margin:0" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>05 · Le studio</p>
-        <h2 id="studio-title" class="h-2">{name ? `Derrière Lunixel, il y a ${name}` : 'Derrière Lunixel, une seule personne'}</h2>
-        <p class="lead">Lunixel, c’est moi. Je conçois, j’écris et je code chaque site, et c’est moi que vous avez au téléphone. Je suis basé à {site.location.city}, {site.location.near}, et je travaille avec des clients partout en France.</p>
-        <div><a class="arrow-link" href="/studio/">Qui est derrière Lunixel</a></div>
-      </div>
-      <div style="display:grid;gap:var(--s-5)">
-        <StudioBlock />
-        <Engagements />
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. Combien ça coûte -->
-  <section class="section theme-jour" style="background:var(--papier-ombre);--surface:var(--papier)" aria-labelledby="prix-title">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>06 · Prix</p>
-        <h2 id="prix-title" class="h-2">Combien ça coûte</h2>
-        <p class="lead">Voici les prix de départ. Après notre appel, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
-      </div>
-      <Formules />
-    </div>
-  </section>
-
-  <!-- 9. Questions -->
-  <Faq />
-
-  <!-- 10. Appel final -->
+  <!-- 7. Appel final -->
   <FinalCta />
 </Base>
-
-<style>
-  .metiers-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--s-1) var(--s-3);
-    margin-top: var(--s-5);
-  }
-</style>
