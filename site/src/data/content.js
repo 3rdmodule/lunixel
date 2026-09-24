@@ -125,21 +125,17 @@ export const formules = [
   },
 ];
 
-// Entretien mensuel, en option (page Tarifs).
-export const entretien = [
-  {
-    key: 'entretien',
-    name: 'Entretien',
-    pitch: 'Pour un site toujours en ligne et à jour.',
-    items: ['Vérification chaque semaine que le site est en ligne', 'Failles de sécurité surveillées et corrigées', 'Mises à jour techniques faites pour vous'],
-  },
-  {
-    key: 'entretienPlus',
-    name: 'Entretien et modifications',
-    pitch: 'La même chose, plus vos petites demandes du mois.',
-    items: ['Tout l’entretien', 'Vos petites modifications : horaires, prix, photos, textes'],
-  },
-];
+// Entretien mensuel, en option (page Tarifs) : une seule formule, prix selon la taille du site.
+export const entretien = {
+  name: 'Entretien',
+  items: [
+    'Vérification chaque semaine que le site est en ligne',
+    'Failles de sécurité surveillées et corrigées',
+    'Mises à jour techniques',
+    'Vos petites modifications : horaires, prix, photos, textes',
+  ],
+  note: `${site.prices.entretien} par mois pour un site simple, jusqu’à ${site.prices.entretienMax} pour un site plus complet. Le prix exact est fixé dans le devis.`,
+};
 
 // Comparatif (page Tarifs) : chiffres des autres options toujours sourcés.
 export const comparatif = {
@@ -163,7 +159,7 @@ export const faq = [
   },
   {
     q: 'Y a-t-il un abonnement ?',
-    a: `Rien d’obligatoire. L’hébergement est compris et vous payez seulement votre nom de domaine, ${site.domainCost}. Si vous voulez que je veille sur le site chaque semaine, l’entretien est proposé en option à ${site.prices.entretien} ou ${site.prices.entretienPlus} par mois.`,
+    a: `Rien d’obligatoire. L’hébergement est compris et vous payez seulement votre nom de domaine, ${site.domainCost}. Si vous voulez que je veille sur le site et que je fasse vos petites modifications, l’entretien est proposé en option, de ${site.prices.entretien} à ${site.prices.entretienMax} par mois selon la taille du site.`,
   },
   {
     q: 'À qui appartient le site ?',
@@ -195,7 +191,7 @@ export const faq = [
   },
   {
     q: 'Est-ce que je pourrai modifier mon site ?',
-    a: `Si vous le souhaitez, je vous donne la main sur ce qui change souvent (horaires, services, prix). Sinon, vous m’envoyez un message : les petites modifications sont comprises dans l’entretien à ${site.prices.entretienPlus} par mois, ou chiffrées à l’avance.`,
+    a: `Si vous le souhaitez, je vous donne la main sur ce qui change souvent (horaires, services, prix). Sinon, vous m’envoyez un message : les petites modifications sont comprises dans l’entretien, ou chiffrées à l’avance si vous ne l’avez pas pris.`,
   },
   {
     q: 'Vous travaillez seulement autour de Lille ?',

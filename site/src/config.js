@@ -54,7 +54,7 @@ export const site = {
     presence: '200 €', // Site d'une page
     vitrine: '400 €', // Site de plusieurs pages
     surMesure: '', // Outils et fonctionnalités sur mesure : sur devis
-    entretien: '30 €', // Par mois, en option : vérification chaque semaine et sécurité
-    entretienPlus: '50 €', // Par mois, en option : la même chose plus les petites modifications
+    entretien: '25 €', // Entretien mensuel en option, prix bas (site simple)
+    entretienMax: '50 €', // Entretien mensuel en option, prix haut (site plus complet). Petites modifications comprises.
   },
 };

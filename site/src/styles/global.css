@@ -1463,10 +1463,6 @@ dd {
   .formules {
     grid-template-columns: repeat(3, 1fr);
   }
-  .formules--duo {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 52rem;
-  }
 }
 
 /* ---------- FAQ ---------- */

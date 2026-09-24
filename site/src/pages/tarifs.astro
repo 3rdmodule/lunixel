@@ -61,24 +61,20 @@ const jsonld = [
   </section>
 
   <section class="section theme-jour" id="entretien" aria-labelledby="entretien-title">
-    <div class="container">
-      <div class="section-head" data-reveal>
+    <div class="container duo" style="margin-top:0;align-items:start">
+      <div class="section-head" style="margin:0" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>En option</p>
         <h2 id="entretien-title" class="h-2">L’entretien, si vous le souhaitez</h2>
-        <p class="lead">Pour ne plus vous occuper de rien : je vérifie votre site chaque semaine et je m’occupe de la sécurité.</p>
+        <p class="lead">Je veille sur votre site chaque semaine et je fais vos petites modifications, pour que vous n’ayez plus à y penser.</p>
       </div>
-      <div class="formules formules--duo">
-        {entretien.map((f) => (
-          <article class="formule" data-reveal>
-            <h3>{f.name}</h3>
-            <p>{f.pitch}</p>
-            <p class="formule__price"><strong>{site.prices[f.key]}</strong> par mois</p>
-            <ul role="list">
-              {f.items.map((it) => <li><i class="px" aria-hidden="true"></i>{it}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
+      <article class="formule" data-reveal>
+        <h3>{entretien.name}</h3>
+        <p class="formule__price">De <strong>{site.prices.entretien}</strong> à <strong>{site.prices.entretienMax}</strong> par mois</p>
+        <ul role="list">
+          {entretien.items.map((it) => <li><i class="px" aria-hidden="true"></i>{it}</li>)}
+        </ul>
+        <p>{entretien.note}</p>
+      </article>
     </div>
   </section>
 
