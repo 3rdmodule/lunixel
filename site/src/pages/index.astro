@@ -6,7 +6,6 @@ import WorkItem from '../components/WorkItem.astro';
 import ConceptCard from '../components/ConceptCard.astro';
 import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
-import Plateformes from '../components/Plateformes.astro';
 import { projects, realisations, concepts, enLigne, isWip } from '../data/projects.js';
 import { outcomes, gains, demoSteps } from '../data/content.js';
 import { metiers, metierPath } from '../data/metiers.js';
@@ -75,13 +74,12 @@ const enCours = realisations.filter(isWip);
         <p class="lead">Des milliers d’euros pour un site, un abonnement chaque mois, une commission sur chaque nouveau client : on peut faire autrement.</p>
       </div>
       <Stats />
+      <p class="links-row" data-reveal><a class="arrow-link" href="/tarifs/#comparatif">Comparer avec une agence ou une plateforme</a></p>
     </div>
   </section>
 
-  <Plateformes />
-
   <!-- 3. Ce que vous y gagnez -->
-  <section class="section theme-jour" aria-labelledby="gains-title">
+  <section class="section theme-jour" aria-labelledby="gains-title" style="padding-top:0">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · Ce que ça change</p>
