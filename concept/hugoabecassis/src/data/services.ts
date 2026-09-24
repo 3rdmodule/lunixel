@@ -26,7 +26,7 @@ export const services: Service[] = [
     slug: 'entretien',
     title: 'Entretien',
     short: 'Réglages, cordes, chevalet, âme : un instrument juste et agréable à jouer.',
-    text: "Le bois bouge avec les saisons et avec le jeu. Hugo règle et entretient les instruments à cordes frottées (violon, alto, violoncelle, contrebasse) et pincées (guitare, luth, mandoline), et aussi des instruments plus rares : violes, oud, saz, koto, tres.",
+    text: "Le bois bouge avec les saisons et avec le jeu. Réglage et entretien des instruments à cordes frottées (violon, alto, violoncelle, contrebasse) et pincées (guitare, luth, mandoline), mais aussi d'instruments plus rares : violes, oud, saz, koto, tres.",
     items: [
       "L'âme : sa position change l'équilibre entre graves et aigus",
       'Le chevalet : hauteur, courbure, épaisseur',
@@ -43,8 +43,8 @@ export const services: Service[] = [
   {
     slug: 'restauration',
     title: 'Restauration',
-    short: "Cassures, décollages, vernis : réparer sans effacer l'histoire de l'instrument.",
-    text: "Un instrument fendu, décollé, abîmé : Hugo le répare avec un bois de même essence et raccorde les teintes du vernis, pour que la réparation se fonde dans l'existant. On décide ensemble de ce qui est nécessaire, et de ce qui peut attendre.",
+    short: "Cassures, décollages, vernis : une réparation qui respecte l'histoire de l'instrument.",
+    text: "Instrument fendu, décollé, abîmé : réparation avec un bois de même essence, raccord des teintes du vernis, pour une intervention qui se fond dans l'existant. Ce qui est nécessaire, et ce qui peut attendre, se décide ensemble.",
     items: [
       'Diagnostic et devis',
       'Fractures et fentes',
@@ -59,8 +59,8 @@ export const services: Service[] = [
   {
     slug: 'fabrication',
     title: 'Fabrication',
-    short: 'Des instruments sur mesure, du violon à la guitare.',
-    text: "Des copies d'instruments anciens ou des modèles nouveaux. Hugo travaille surtout avec des outils à main, selon les techniques des luthiers italiens et français des XVIIe et XVIIIe siècles, et cherche aussi des formes nouvelles, dans la lignée de son maître Gauthier Louppe.",
+    short: 'Instruments sur mesure, du violon à la guitare.',
+    text: "Copies d'instruments anciens ou modèles nouveaux. Travail surtout aux outils à main, selon les techniques des luthiers italiens et français des XVIIe et XVIIIe siècles, et recherche de formes nouvelles, dans la lignée de Gauthier Louppe.",
     items: [
       'Le bois : essences, veinage',
       'Le modèle : historique ou nouveau',

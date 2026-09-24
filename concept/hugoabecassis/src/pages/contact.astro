@@ -18,15 +18,15 @@ const instruments = ['Violon', 'Alto', 'Violoncelle', 'Contrebasse', 'Guitare', 
 
 <Base
   title="Contact et rendez-vous"
-  description="Prendre rendez-vous avec Hugo Abecassis, luthier en Normandie, ou lui écrire pour l'entretien, la restauration ou la fabrication d'un instrument à cordes."
+  description="Rendez-vous et contact : Hugo Abecassis, luthier en Normandie. Entretien, restauration ou fabrication d'un instrument à cordes."
   breadcrumbs={[{ name: 'Contact', path: '/contact/' }]}
 >
   <header class="container page-head">
     <h1>Contact</h1>
-    <p class="lead">Dites de quel instrument il s'agit et ce qui ne va pas. Hugo vous répond.</p>
+    <p class="lead">L'instrument, ce qui ne va pas, vos disponibilités : quelques lignes suffisent.</p>
   </header>
 
-  <section class="container contact">
+  <section class="section container contact">
     <div class="contact__side">
       <div class="block" id="rendez-vous">
         <h2>Prendre rendez-vous</h2>
@@ -47,7 +47,7 @@ const instruments = ['Violon', 'Alto', 'Violoncelle', 'Contrebasse', 'Guitare', 
     </div>
 
     <form class="form" id="formulaire" data-contact-form data-endpoint={site.form.endpoint} action={site.form.endpoint || undefined} method="post" novalidate>
-      <h2>Écrire à Hugo</h2>
+      <h2>Écrire un message</h2>
       <div class="form__row">
         <div class="field">
           <label for="f-nom">Nom</label>
@@ -96,21 +96,21 @@ const instruments = ['Violon', 'Alto', 'Violoncelle', 'Contrebasse', 'Guitare', 
 </Base>
 
 <style>
-  .contact { display: grid; gap: 56px var(--col-gap); padding-bottom: var(--space-section); }
+  .contact { display: grid; gap: 56px var(--col-gap); padding-top: 0; }
   .contact__side { display: grid; gap: 40px; align-content: start; }
-  .block { display: grid; gap: 14px; justify-items: start; padding-top: 18px; border-top: 1px solid var(--encre); }
+  .block { display: grid; gap: 14px; justify-items: start; padding-top: 18px; border-top: 1px solid var(--fg); }
   .block h2, .form h2 { font-size: var(--fs-h3); }
-  .coords { display: grid; gap: 0; width: 100%; margin: 4px 0 0; border-top: 1px solid var(--filet); }
-  .coords > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--filet); }
+  .coords { display: grid; gap: 0; width: 100%; margin: 4px 0 0; border-top: 1px solid var(--line); }
+  .coords > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
   .coords dt { color: var(--muted); }
   .coords dd { margin: 0; }
 
-  .form { display: grid; gap: 22px; padding-top: 18px; border-top: 1px solid var(--encre); position: relative; }
+  .form { display: grid; gap: 22px; padding-top: 18px; border-top: 1px solid var(--fg); position: relative; }
   .form__row { display: grid; gap: 22px; }
   @media (min-width: 640px) { .form__row { grid-template-columns: 1fr 1fr; } }
   .form__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
   .form__status:empty { display: none; }
-  .form__status[data-kind='error'] { color: var(--garance); }
+  .form__status[data-kind='error'] { color: var(--accent); }
 
   @media (min-width: 960px) {
     .contact { grid-template-columns: repeat(12, minmax(0, 1fr)); }

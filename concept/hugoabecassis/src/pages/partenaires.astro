@@ -8,18 +8,18 @@ import { url } from '../lib/url';
 
 <Base
   title="Partenaires"
-  description="Les rencontres qui comptent dans le travail d'Hugo Abecassis, luthier : son maître Gauthier Louppe, et les musiciens qu'il accompagne."
+  description="Les rencontres qui comptent dans le travail d'Hugo Abecassis, luthier : Gauthier Louppe, luthier formateur, et les musiciens accompagnés."
   breadcrumbs={[{ name: 'Partenaires', path: '/partenaires/' }]}
 >
   <header class="container page-head">
     <h1>Partenaires</h1>
-    <p class="lead">Un luthier ne travaille jamais seul : il y a ceux qui l'ont formé, et les musiciens qui jouent ses instruments.</p>
+    <p class="lead">Un métier qui se transmet et se partage : un maître d'apprentissage, des musiciens qui jouent les instruments.</p>
   </header>
 
-  <section class="section container" aria-labelledby="mentor-title">
+  <section class="section container tone-sable" aria-labelledby="mentor-title">
     <div class="index">
       <div class="index__head">
-        <h2 id="mentor-title" class="index__title">Son maître</h2>
+        <h2 id="mentor-title" class="index__title">Formation</h2>
       </div>
       <div class="index__body mentor">
         <Etiquette title={mentor.name} kind={mentor.role} maker={false} size="md" />
@@ -37,10 +37,10 @@ import { url } from '../lib/url';
         <h2 id="musicians-title" class="index__title">Musiciens et groupes</h2>
       </div>
       <div class="index__body">
-        <p class="lead">Les musiciens, groupes et structures qui confient leurs instruments à Hugo auront chacun leur fiche ici. <Tbc note="liste et accords à obtenir" /></p>
+        <p class="lead">Une fiche par musicien, groupe ou structure qui confie ses instruments à l'atelier. <Tbc note="liste et accords à obtenir" /></p>
         <p class="muted mt">Pour chacun :</p>
         <ul class="fields">{partnerFields.map((f) => <li>{f}</li>)}</ul>
-        <p class="mt">Vous jouez sur un instrument réglé ou fait par Hugo ? <a href={url('/contact/#formulaire')}>Écrivez-lui</a>.</p>
+        <p class="mt">Un instrument passé par l'atelier ? <a href={url('/contact/#formulaire')}>Écrire un message</a>.</p>
       </div>
     </div>
   </section>
@@ -50,7 +50,7 @@ import { url } from '../lib/url';
   .mentor { display: grid; gap: 28px var(--col-gap); align-items: start; justify-items: start; }
   .mentor__text { display: grid; gap: 16px; justify-items: start; max-width: 52ch; }
   @media (min-width: 900px) { .mentor { grid-template-columns: auto 1fr; } }
-  .fields { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px solid var(--filet); max-width: 52ch; }
-  .fields li { padding: 9px 0; border-bottom: 1px solid var(--filet); }
+  .fields { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px solid var(--line); max-width: 52ch; }
+  .fields li { padding: 9px 0; border-bottom: 1px solid var(--line); }
   .mt { margin-top: 20px; }
 </style>

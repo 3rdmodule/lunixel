@@ -12,7 +12,7 @@ const italic = font('@fontsource/libre-caslon-text', 'libre-caslon-text-latin-40
 const roman = font('@fontsource/libre-caslon-text', 'libre-caslon-text-latin-400-normal.woff');
 
 const W = 1200, H = 630;
-const ivory = '#f3f0e8', paper = '#faf7ef', ink = '#1b1a17', graphite = '#5c574f', madder = '#9a3b26';
+const ivory = '#ebe3d3', paper = '#faf7ef', ink = '#1b1a17', graphite = '#5c574f', madder = '#9a3b26';
 
 // Texte centré, mis en forme par fontkit (crénage), converti en tracés
 function centered(f, str, y, size, fill, tracking = 0) {

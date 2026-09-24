@@ -23,7 +23,7 @@ const details: PhotoId[] = ['physalisChevillier', 'volute2015', 'etabliDetail', 
     <div class="opening__side"><Photo id="portrait" sizes="(min-width: 900px) 30vw, 100vw" caption lightbox /></div>
   </section>
 
-  <section class="section container" aria-labelledby="steps-title">
+  <section class="section container tone-sable" aria-labelledby="steps-title">
     <div class="index">
       <div class="index__head">
         <h2 id="steps-title" class="index__title">Étapes de fabrication</h2>
@@ -54,7 +54,7 @@ const details: PhotoId[] = ['physalisChevillier', 'volute2015', 'etabliDetail', 
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="visit-title">
+  <section class="section container tone-garance" aria-labelledby="visit-title">
     <div class="visit">
       <h2 id="visit-title">Passer à l'atelier</h2>
       <p class="muted">Sur rendez-vous, avec votre instrument.</p>
@@ -74,7 +74,7 @@ const details: PhotoId[] = ['physalisChevillier', 'volute2015', 'etabliDetail', 
   .step__num {
     position: absolute; z-index: 1; top: 8px; left: 8px;
     min-width: 28px; height: 28px; display: grid; place-items: center;
-    background: var(--etiquette); border: 1px solid var(--encre);
+    background: var(--etiquette); color: var(--encre); border: 1px solid var(--encre);
     font-family: var(--font-label), Georgia, serif; font-size: 0.85rem;
   }
   @media (min-width: 700px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -83,6 +83,6 @@ const details: PhotoId[] = ['physalisChevillier', 'volute2015', 'etabliDetail', 
   .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px var(--col-gap); list-style: none; padding: 0; margin: 0; }
   @media (min-width: 900px) { .details { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-  .visit { display: grid; gap: 16px; justify-items: start; padding-top: clamp(28px, 5vw, 56px); border-top: 1px solid var(--encre); }
+  .visit { display: grid; gap: 16px; justify-items: start; }
   .visit h2 { font-size: var(--fs-h1); }
 </style>

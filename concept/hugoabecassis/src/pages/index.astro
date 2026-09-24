@@ -27,7 +27,7 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
       <Etiquette size="lg" maker={false} meta="Normandie" class="hero__label">
         <h1 id="hero-title" class="etq__title">Hugo Abecassis,<span class="etq__kind">luthier</span></h1>
       </Etiquette>
-      <p class="hero__sub">Il règle, répare et fabrique des instruments à cordes : violons, altos, violoncelles, contrebasses, guitares.</p>
+      <p class="hero__sub">Réglage, réparation et fabrication d'instruments à cordes : violons, altos, violoncelles, contrebasses, guitares.</p>
       <div class="actions">
         <BookingLink />
         <a class="link" href={url('/atelier/')}>Voir l'atelier <span class="arrow" aria-hidden="true">→</span></a>
@@ -35,10 +35,10 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="sf-title">
+  <section class="section container tone-sable" aria-labelledby="sf-title">
     <div class="index">
       <div class="index__head">
-        <h2 id="sf-title" class="index__title">Ce qu'il fait</h2>
+        <h2 id="sf-title" class="index__title">Savoir-faire</h2>
       </div>
       <ul class="index__body jobs">
         {
@@ -59,11 +59,11 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="works-title">
+  <section class="section container tone-ebene" aria-labelledby="works-title">
     <div class="index">
       <div class="index__head">
-        <h2 id="works-title" class="index__title">Ses instruments</h2>
-        <p class="index__intro">Quelques instruments sortis de son établi, des classiques et des idées à lui.</p>
+        <h2 id="works-title" class="index__title">Instruments</h2>
+        <p class="index__intro">Sortis de l'établi : modèles classiques et formes nouvelles.</p>
         <a class="link mt" href={url('/savoir-faire/#instruments')}>Tous les instruments <span class="arrow" aria-hidden="true">→</span></a>
       </div>
       <ul class="index__body works">
@@ -86,8 +86,8 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
       </div>
       <div class="index__body trust">
         <div class="trust__text">
-          <p class="lead">Formé en Belgique auprès du luthier Gauthier Louppe. Un premier atelier à Avranches en 2014, puis Saint-Lô depuis 2015.</p>
-          <a class="link" href={url('/parcours/')}>Son parcours <span class="arrow" aria-hidden="true">→</span></a>
+          <p class="lead">Formation en Belgique auprès du luthier Gauthier Louppe. Premier atelier à Avranches en 2014, à Saint-Lô depuis 2015.</p>
+          <a class="link" href={url('/parcours/')}>Le parcours <span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <div class="trust__press">
           <p class="smallcaps muted">Dans la presse</p>
@@ -97,12 +97,12 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
     </div>
   </section>
 
-  <section class="section container" aria-labelledby="rdv-title">
+  <section class="section container tone-garance" aria-labelledby="rdv-title">
     <div class="rdv">
       <h2 id="rdv-title">Un instrument à régler, à réparer, à faire faire&nbsp;?</h2>
       <div class="actions">
         <BookingLink />
-        <a class="link" href={url('/contact/#formulaire')}>Écrire à Hugo <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="link" href={url('/contact/#formulaire')}>Écrire un message <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -112,7 +112,7 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
   .mt { margin-top: 20px; }
 
   /* En-tête : la photo, et l'étiquette posée dessus */
-  .hero { padding-top: calc(var(--header-h) + 12px); display: grid; }
+  .hero { padding-top: calc(var(--header-h) + 12px); padding-bottom: var(--space-section); display: grid; }
   .hero__photo { grid-area: 1 / 1; }
   .hero__text { display: grid; justify-items: start; gap: 20px; margin-top: -32px; position: relative; padding-inline: 12px; }
   .hero__sub { max-width: 34ch; font-size: var(--fs-lead); line-height: 1.4; }
@@ -135,18 +135,18 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
     .hero__text :global(.hero__label) { margin-left: calc(-1 * ((100% - 3 * var(--col-gap)) / 4 + var(--col-gap))); }
   }
 
-  /* Ce qu'il fait : un index, pas des cartes */
-  .jobs { border-top: 1px solid var(--filet); }
+  /* Savoir-faire : un index, pas des cartes */
+  .jobs { border-top: 1px solid var(--line); }
   .job {
     display: grid; grid-template-columns: 96px 1fr auto; gap: 18px; align-items: center;
-    padding: 18px 0; border-bottom: 1px solid var(--filet); text-decoration: none; color: inherit;
+    padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
   }
-  .job:hover { color: inherit; background: color-mix(in srgb, var(--papier) 55%, transparent); }
+  .job:hover { color: inherit; background: color-mix(in srgb, var(--fg) 5%, transparent); }
   .job__text { display: grid; gap: 4px; }
   .job__title { font-family: var(--font-display), sans-serif; font-weight: 640; font-size: clamp(1.4rem, 1.15rem + 1vw, 2rem); letter-spacing: -0.03em; line-height: 1.05; }
   .job__short { color: var(--muted); max-width: 46ch; }
   .job__arrow { font-size: 1.3rem; padding-right: 6px; transition: transform 200ms var(--ease); }
-  .job:hover .job__arrow { transform: translateX(4px); color: var(--garance); }
+  .job:hover .job__arrow { transform: translateX(4px); color: var(--accent); }
   @media (min-width: 700px) { .job { grid-template-columns: 150px 1fr auto; gap: 28px; } }
 
   /* Instruments : photo + étiquette */
@@ -166,6 +166,6 @@ const shown = creations.filter((c) => c.photo).slice(0, 3);
   @media (min-width: 900px) { .trust { grid-template-columns: 1fr 1fr; } }
 
   /* Rendez-vous */
-  .rdv { display: grid; gap: 24px; padding: clamp(28px, 5vw, 56px) 0 0; border-top: 1px solid var(--encre); }
+  .rdv { display: grid; gap: 24px; }
   .rdv h2 { font-size: var(--fs-h1); max-width: 18ch; }
 </style>

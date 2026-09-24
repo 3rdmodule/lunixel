@@ -25,7 +25,7 @@ import { press } from '../data/press';
     <div class="intro__photo"><Photo id="portrait" eager sizes="(min-width: 900px) 34vw, 100vw" caption /></div>
   </header>
 
-  <section class="section container" aria-label="Étapes">
+  <section class="section container tone-sable" aria-label="Étapes">
     <ol class="steps">
       {
         steps.map((s) => (
@@ -53,8 +53,9 @@ import { press } from '../data/press';
     </div>
   </section>
 
-  <section class="section container" aria-label="Rendez-vous">
+  <section class="section container tone-garance" aria-labelledby="end-title">
     <div class="end">
+      <h2 id="end-title">Un instrument à faire voir&nbsp;?</h2>
       <BookingLink />
     </div>
   </section>
@@ -63,7 +64,7 @@ import { press } from '../data/press';
 <style>
   .intro { display: grid; gap: 32px var(--col-gap); }
   .intro__text { display: grid; gap: 18px; align-content: start; }
-  .quote { margin: 18px 0 0; padding-left: 18px; border-left: 2px solid var(--garance); max-width: 40ch; }
+  .quote { margin: 18px 0 0; padding-left: 18px; border-left: 2px solid var(--accent); max-width: 40ch; }
   .quote p { font-family: var(--font-label), Georgia, serif; font-style: italic; font-size: 1.2rem; line-height: 1.45; }
   .quote footer { margin-top: 8px; font-style: normal; }
   @media (min-width: 900px) {
@@ -72,9 +73,9 @@ import { press } from '../data/press';
     .intro__photo { grid-column: 8 / 13; }
   }
 
-  .steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--encre); }
-  .step { display: grid; gap: 8px var(--col-gap); padding: 22px 0 26px; border-bottom: 1px solid var(--filet); }
-  .step__when { font-family: var(--font-label), Georgia, serif; font-size: 1.05rem; color: var(--garance); }
+  .steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--fg); }
+  .step { display: grid; gap: 8px var(--col-gap); padding: 22px 0 26px; border-bottom: 1px solid var(--line); }
+  .step__when { font-family: var(--font-label), Georgia, serif; font-size: 1.05rem; color: var(--accent); }
   .step__place { font-size: var(--fs-h3); margin-bottom: 8px; }
   .step__body p { max-width: 58ch; }
   @media (min-width: 900px) {
@@ -82,5 +83,6 @@ import { press } from '../data/press';
     .step__when { grid-column: 1 / 4; }
     .step__body { grid-column: 4 / 11; }
   }
-  .end { padding-top: 8px; }
+  .end { display: grid; gap: 24px; justify-items: start; }
+  .end h2 { font-size: var(--fs-h1); max-width: 18ch; }
 </style>

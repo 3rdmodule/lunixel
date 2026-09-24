@@ -7,7 +7,7 @@ const { email, phone, city, area } = site.contact;
 const hasContact = email || phone;
 ---
 
-<footer class="site-footer tone-papier">
+<footer class="site-footer tone-sable">
   <div class="container site-footer__grid">
     <div class="site-footer__sig">
       <Etiquette title="Hugo Abecassis" kind="luthier" maker={false} meta={city ? `${city} · ${area}` : area} size="sm" />
@@ -57,7 +57,7 @@ const hasContact = email || phone;
   .site-footer__contact { display: grid; gap: 14px; align-content: start; justify-items: start; }
   .site-footer__legal {
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px;
-    margin-top: clamp(40px, 6vw, 72px); padding-top: 20px; border-top: 1px solid var(--filet);
+    margin-top: clamp(40px, 6vw, 72px); padding-top: 20px; border-top: 1px solid var(--line);
   }
   .site-footer__legal ul { display: flex; flex-wrap: wrap; gap: 8px 24px; }
   @media (min-width: 900px) {

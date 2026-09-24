@@ -5,7 +5,7 @@
 export const mentor = {
   name: 'Gauthier Louppe',
   role: 'luthier, Belgique',
-  relation: "Le luthier auprès duquel Hugo s'est formé. Hugo poursuit ses recherches vers une lutherie contemporaine.",
+  relation: "Luthier formateur d'Hugo. Dans son sillage, des recherches vers une lutherie contemporaine.",
   link: {
     label: "« Gauthier Louppe : itinéraire d'un luthier passionné », L'Avenir, 2024",
     url: 'https://www.lavenir.net/regions/luxembourg/marche-en-famenne/2024/04/03/gauthier-louppe-itineraire-dun-luthier-passionne-6A2WMDWTMNHU3OY6GBVKR7AYVU/',
@@ -13,4 +13,4 @@ export const mentor = {
 };
 
 /** Ce que la page présentera, fiche par fiche, une fois les accords obtenus. */
-export const partnerFields = ['Nom et photo (fournie par l’artiste)', 'Ce qu’il ou elle joue', 'Ce qu’Hugo a fait : suivi, restauration, instrument sur mesure', 'Lien vers son site ou ses réseaux'];
+export const partnerFields = ['Nom et photo (fournie par l’artiste)', 'Instrument et répertoire', 'Travail réalisé : suivi, restauration, instrument sur mesure', 'Lien vers le site ou les réseaux'];

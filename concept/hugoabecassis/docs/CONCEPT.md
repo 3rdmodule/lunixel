@@ -84,15 +84,16 @@ La v1 (concept « l'âme », sections numérotées, étiquettes mono, cartes dé
 
 | Nom | HEX | Rôle | Contraste |
 |---|---|---|---|
-| Ivoire | `#F3F0E8` | Fond principal | — |
-| Papier | `#E9E4D9` | Pied de page, cadres photo | — |
+| Lin | `#EBE3D3` | Fond principal | — |
+| Sable | `#DDD2BD` | Sections en alternance, pied de page | — |
+| **Ébène** | `#26221E` | Galerie des instruments (une seule section sombre par page) | texte `#EFE7D8` : 12,9:1 |
+| **Garance profonde** | `#7A2C1D` | Bandeau d'invitation (rendez‑vous) en fin de page | texte `#F6EFE3` : 8,3:1 |
 | Étiquette | `#FAF7EF` | Fond des étiquettes et des champs | — |
-| Encre | `#1B1A17` | Texte, titres, filets forts, boutons | 15,3:1 sur Ivoire |
-| Graphite | `#5C574F` | Texte secondaire, légendes | 6,3:1 sur Ivoire |
-| Filet | `#CFC8BB` | Lignes fines | décoratif |
-| **Garance** | `#9A3B26` | Accent rare : survol, lien actif, dates, mentions [À CONFIRMER] | 6,1:1 sur Ivoire |
+| Encre | `#1B1A17` | Texte, titres, filets forts, boutons | 13,7:1 sur Lin |
+| Graphite | `#5C574F` | Texte secondaire, légendes | 5,6:1 sur Lin, 4,8:1 sur Sable |
+| Garance | `#9A3B26` | Accent : survol, dates, mentions [À CONFIRMER] | 5,4:1 sur Lin |
 
-La garance est un pigment rouge des vernis anciens. Plus de section noire : seul le bandeau « concept » en haut de page est foncé.
+La garance est un pigment rouge des vernis anciens ; l'ébène, le bois des touches. Plus de blanc : chaque page alterne lin et sable, la galerie des instruments passe sur fond ébène (les vernis ressortent, les fonds des photos s'y fondent), et l'invitation finale sur garance profonde. Les couleurs de chaque section passent par des variables (`--bg`, `--fg`, `--muted`, `--line`, `--accent`) : une classe `tone-sable`, `tone-ebene` ou `tone-garance` suffit.
 
 ### 2.3 Typographie
 
@@ -113,7 +114,7 @@ Toutes sous licence SIL OFL, hébergées sur le site (aucun appel à Google Font
 
 ### 2.5 Photos
 
-Uniquement des photos réelles (voir `docs/PHOTOS.md`) : Hugo à l'établi (Ouest‑France 2026, Aurélie Augé), ses instruments, les étapes d'une fabrication (2015‑2016), une restauration de guitare Carmencita. Le bleu du drapé et du mur de l'atelier est neutralisé automatiquement. Un vrai reportage reste à prévoir pour les formats larges.
+Uniquement des photos réelles (voir `docs/PHOTOS.md`) : Hugo à l'établi (Ouest‑France 2026, Aurélie Augé), ses instruments, les étapes d'une fabrication (2015‑2016), une restauration de guitare Carmencita. Le bleu du drapé et du mur de l'atelier est neutralisé automatiquement, et toutes les photos reçoivent le même étalonnage léger (balance plus chaude, bleus adoucis en bleu ardoise, noirs vers l'ébène, blancs vers l'ivoire) : `scripts/retouche-fonds.mjs`, avant chaque build. Les originaux restent intacts dans `photos-sources/`. Un vrai reportage reste à prévoir pour les formats larges.
 
 ### 2.6 Animations
 
@@ -143,10 +144,10 @@ Les anciennes adresses `/savoir-faire/entretien/` etc. redirigent vers les ancre
 
 **Accueil** (environ 3 écrans sur ordinateur)
 1. *En‑tête* : photo d'Hugo à l'établi (8 colonnes, 4:3) ; grande étiquette « Hugo Abecassis, luthier · Normandie » posée à cheval sur son bord droit ; une phrase ; « Prendre rendez‑vous » + « Voir l'atelier ».
-2. *Ce qu'il fait* : index de 3 lignes (vignette réelle, titre, une phrase, flèche) vers les ancres de Savoir‑faire.
-3. *Ses instruments* : Physalis, LA Jazz, Pinarbox, chacun avec son étiquette.
+2. *Savoir‑faire* (sable) : index de 3 lignes (vignette réelle, titre, une phrase, flèche) vers les ancres de Savoir‑faire.
+3. *Instruments* (ébène) : Physalis, LA Jazz, Pinarbox, chacun avec son étiquette.
 4. *Parcours* : 2 phrases + 2 articles Ouest‑France.
-5. *Rendez‑vous* : « Un instrument à régler, à réparer, à faire faire ? »
+5. *Rendez‑vous* (garance profonde) : « Un instrument à régler, à réparer, à faire faire ? »
 
 **Atelier** : titre + phrase → l'établi (grand) et Hugo au travail → *Étapes de fabrication* (8 photos numérotées, juillet 2015 → janvier 2016) → *De près* (8 détails, agrandissement au clic) → « Passer à l'atelier ».
 
@@ -154,7 +155,7 @@ Les anciennes adresses `/savoir-faire/entretien/` etc. redirigent vers les ancre
 
 **Parcours** : titre, citation d'Hugo, portrait → 5 étapes (date en Caslon garance, lieu, 2 lignes) → presse (4 références) → bouton.
 
-**Partenaires** : son maître (étiquette + lien L'Avenir) → musiciens et groupes : ce que contiendra chaque fiche, en attendant les accords.
+**Partenaires** : formation, Gauthier Louppe (étiquette + lien L'Avenir) → musiciens et groupes : ce que contiendra chaque fiche, en attendant les accords.
 
 **Contact** : colonne gauche « Prendre rendez‑vous » (Cal.com) et coordonnées ; colonne droite formulaire (nom, e‑mail, instrument, demande, message, téléphone facultatif), sans case à cocher : une phrase renvoie à la politique de confidentialité.
 
@@ -162,7 +163,7 @@ Les anciennes adresses `/savoir-faire/entretien/` etc. redirigent vers les ancre
 
 ## 5. Rédaction
 
-**Ton : simple, direct.** Phrases courtes, mots de tous les jours, vocabulaire du métier expliqué en une ligne, aucun superlatif. Les textes sont dans `src/data/*.ts` et les pages. La v2 a divisé la longueur des textes environ par deux.
+**Ton : simple, direct, au nominal.** On décrit le travail, pas la personne : « Réglage, réparation et fabrication d'instruments à cordes » plutôt que « Il règle, répare… ». Phrases courtes, mots de tous les jours, vocabulaire du métier expliqué en une ligne, aucun superlatif. Les textes sont dans `src/data/*.ts` et les pages. La v2 a divisé la longueur des textes environ par deux.
 
 **H1 de l'accueil (validé)** : « Hugo Abecassis, luthier ».
 

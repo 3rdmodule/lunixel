@@ -23,7 +23,7 @@ export const press: PressItem[] = [
     dateLabel: '15 janvier 2022',
     author: 'Yann Halopeau',
     kind: 'Reportage vidéo',
-    summary: "Reportage vidéo sur les Pinarbox, les guitares qu'Hugo fabrique dans d'anciennes caisses de vin.",
+    summary: "Reportage vidéo sur les Pinarbox, des guitares fabriquées dans d'anciennes caisses de vin.",
     url: 'https://www.ouest-france.fr/normandie/saint-lo-50000/video-a-saint-lo-hugo-prete-vie-aux-guitares-pinarbox-363f9770-7204-11ec-ae7c-d05dab244f47',
   },
   {
@@ -32,7 +32,7 @@ export const press: PressItem[] = [
     date: '2015-07-02',
     dateLabel: '2 juillet 2015',
     kind: 'Portrait',
-    summary: 'Portrait publié à son arrivée à Saint-Lô.',
+    summary: "Portrait publié à l'arrivée à Saint-Lô.",
     url: 'https://www.ouest-france.fr/normandie/saint-lo-50000/le-jeune-luthier-cree-et-restaure-3535740',
   },
   {

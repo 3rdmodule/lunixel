@@ -13,3 +13,5 @@ public/og.jpg
 
 # Généré avant chaque build (scripts/retouche-fonds.mjs)
 src/assets/photos/realisations/
+src/assets/photos/reportage/
+src/assets/photos/.version

@@ -15,12 +15,12 @@ const [entretien, restauration, fabrication] = services;
 
 <Base
   title="Savoir-faire : entretien, restauration, fabrication"
-  description="Réglage et entretien, restauration, fabrication sur mesure : ce que fait Hugo Abecassis, luthier en Normandie, pour les violons, altos, violoncelles, contrebasses et guitares."
+  description="Hugo Abecassis, luthier en Normandie : réglage et entretien, restauration, fabrication sur mesure de violons, altos, violoncelles, contrebasses et guitares."
   breadcrumbs={[{ name: 'Savoir-faire', path: '/savoir-faire/' }]}
 >
   <header class="container page-head">
     <h1>Savoir-faire</h1>
-    <p class="lead">Entretenir, restaurer, fabriquer. Trois façons de s'occuper d'un instrument.</p>
+    <p class="lead">Entretien, restauration, fabrication : trois façons de prendre soin d'un instrument.</p>
     <nav class="jump" aria-label="Sur cette page">
       {services.map((s) => <a href={`#${s.slug}`}>{s.title}</a>)}
       <a href="#instruments">Instruments</a>
@@ -47,7 +47,7 @@ const [entretien, restauration, fabrication] = services;
   </section>
 
   {/* Restauration */}
-  <section class="section container" id="restauration" aria-labelledby="t-restauration">
+  <section class="section container tone-sable" id="restauration" aria-labelledby="t-restauration">
     <div class="index">
       <div class="index__head">
         <h2 id="t-restauration" class="index__title">{restauration.title}</h2>
@@ -93,11 +93,11 @@ const [entretien, restauration, fabrication] = services;
   </section>
 
   {/* Instruments */}
-  <section class="section container" id="instruments" aria-labelledby="t-instruments">
+  <section class="section container tone-ebene" id="instruments" aria-labelledby="t-instruments">
     <div class="index">
       <div class="index__head">
         <h2 id="t-instruments" class="index__title">Instruments</h2>
-        <p class="index__intro">Ceux qu'Hugo a créés. Les photos des autres sont à venir.</p>
+        <p class="index__intro">Créations de l'atelier. Photos des autres modèles à venir.</p>
       </div>
       <div class="index__body">
         <ul class="works">
@@ -131,15 +131,15 @@ const [entretien, restauration, fabrication] = services;
 
 <style>
   .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .jump a { padding: 8px 14px; border: 1px solid var(--encre); text-decoration: none; font-size: 0.92rem; }
-  .jump a:hover { background: var(--encre); color: var(--ivoire); }
+  .jump a { padding: 8px 14px; border: 1px solid var(--fg); text-decoration: none; font-size: 0.92rem; }
+  .jump a:hover { background: var(--fg); color: var(--bg); }
 
   .sf { display: grid; gap: 32px var(--col-gap); }
   .sf__text { display: grid; gap: 16px; justify-items: start; max-width: 60ch; }
   .sf__sub { font-weight: 500; margin-top: 8px; }
-  .sf__items { list-style: none; margin: 0; padding: 0; width: 100%; border-top: 1px solid var(--filet); }
-  .sf__items li { padding: 9px 0 9px 22px; border-bottom: 1px solid var(--filet); position: relative; }
-  .sf__items li::before { content: ''; position: absolute; left: 2px; top: 1.05em; width: 10px; height: 1px; background: var(--garance); }
+  .sf__items { list-style: none; margin: 0; padding: 0; width: 100%; border-top: 1px solid var(--line); }
+  .sf__items li { padding: 9px 0 9px 22px; border-bottom: 1px solid var(--line); position: relative; }
+  .sf__items li::before { content: ''; position: absolute; left: 2px; top: 1.05em; width: 10px; height: 1px; background: var(--accent); }
   .sf__photo { max-width: 300px; }
   @media (min-width: 1100px) {
     .sf { grid-template-columns: 3fr 2fr; align-items: start; }

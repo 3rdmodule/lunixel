@@ -170,7 +170,7 @@ if (form) {
       const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
-      setStatus('Merci, votre message est bien parti. Hugo vous répond lui-même.', 'ok');
+      setStatus('Merci, votre message est bien parti.', 'ok');
     } catch {
       setStatus("L'envoi n'a pas marché. Réessayez dans un moment.", 'error');
     } finally {
