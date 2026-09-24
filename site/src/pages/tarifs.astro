@@ -41,6 +41,7 @@ const jsonld = [
         <p class="lead">Après notre premier appel, gratuit, vous recevez un devis écrit, et c’est ce prix-là que vous payez.</p>
       </div>
       <Formules />
+      {site.legal.vat && <p class="soft" style="margin-top:var(--s-3);font-size:var(--step--1)">Prix nets : {site.legal.vat}.</p>}
       <div class="duo">
         {rdv && (
           <div class="note-box" data-reveal>

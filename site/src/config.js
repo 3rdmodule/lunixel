@@ -40,13 +40,13 @@ export const site = {
 
   // Mentions légales. Les champs vides ne s'affichent pas.
   legal: {
-    publisher: '3rd', // [À COMPLÉTER] Pour un entrepreneur individuel : nom et prénom tels qu'inscrits au répertoire SIRENE
+    publisher: 'Awen Vannier', // Entrepreneur individuel
     status: 'entrepreneur individuel (micro-entreprise)',
     siret: '892 917 733 00032', // Établissement actif (siège depuis le 18/05/2026)
-    address: '', // [À COMPLÉTER] Obligatoire pour un site pro (domicile ou adresse de domiciliation)
-    phone: '', // [À COMPLÉTER] Obligatoire pour un site pro
-    director: '', // [À COMPLÉTER] Directeur de la publication : nom et prénom de l'entrepreneur
-    vat: '', // [À COMPLÉTER] Ex. 'TVA non applicable, article 293 B du CGI' si franchise en base de TVA
+    address: '4 rue des Abbesses, 76460 Gueutteville-les-Grès',
+    phone: '', // Vide par choix : « communiqué sur simple demande ». La loi le demande pour un site pro.
+    director: 'Awen Vannier', // Directeur de la publication
+    vat: 'TVA non applicable, article 293 B du CGI',
   },
 
   // Prix « à partir de » (page Tarifs uniquement). Vide = « Sur devis ».

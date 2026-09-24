@@ -21,7 +21,8 @@ const missing = !l.publisher || !l.siret;
       <p>Contact : <a href={`mailto:${site.email}`}>{site.email}</a></p>
       <p>Directeur de la publication : {l.director || 'l’entrepreneur individuel éditeur du site'}.</p>
       {l.vat && <p>{l.vat}</p>}
-      {!missing && (!l.address || !l.phone) && <p>Adresse postale et téléphone communiqués sur simple demande à l’adresse ci-dessus.</p>}
+      {!missing && !l.address && <p>Adresse postale communiquée sur simple demande par e-mail.</p>}
+      {!missing && !l.phone && <p>Téléphone communiqué sur simple demande par e-mail.</p>}
       {missing && <p>Les informations d’immatriculation de l’éditeur sont en cours de mise à jour et seront publiées sur cette page très prochainement. Elles peuvent être obtenues sur simple demande à l’adresse ci-dessus.</p>}
 
       <h2>Hébergement</h2>
