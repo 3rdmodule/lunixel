@@ -16,6 +16,9 @@ const wip = isWip(p);
 const need = p.need ?? p.observation;
 const decisions = p.decisions ?? (p.choices || []).map(([title, text]) => ({ title, text }));
 const facts = p.facts ?? [['Ambiance', p.style]].filter(([, v]) => v);
+// Cliquer sur une capture ouvre le site (ou la maquette s'il n'est pas encore en ligne).
+const siteUrl = wip ? p.prototypeUrl : p.url;
+const siteHint = wip ? 'Ouvrir la maquette' : 'Ouvrir le site';
 const pageTitle = wip ? `${p.name} · Site en cours de réalisation · Lunixel` : `${p.name} · Réalisation Lunixel`;
 const caps = getCaptures(p.slug);
 const phones = [0, 1, 2];
@@ -51,9 +54,10 @@ const extras = p.extraCaptures || [];
         <h1 class="h-1 display">{p.name}</h1>
         <p class="lead" style="max-width:44ch">{p.tagline}</p>
       </div>
-      <div class="case-cover lightable is-lit">
+      <a class="case-cover shot-link lightable is-lit" href={siteUrl} rel="noopener" target="_blank" aria-label={`${siteHint} ${p.name} (nouvel onglet)`}>
         <Vitrine project={p} eager vt={`shot-${p.slug}`} sizes="(min-width: 90rem) 1360px, 94vw" />
-      </div>
+        <span class="shot-link__hint" aria-hidden="true">{siteHint} ↗</span>
+      </a>
     </div>
   </section>
 
@@ -95,7 +99,10 @@ const extras = p.extraCaptures || [];
       </div>
       {extras.filter((x) => caps.extra?.[x.key]).map((x) => (
         <figure style="margin-top:var(--s-6);display:grid;gap:var(--s-2)" data-reveal>
-          <Vitrine project={p} variant={x.key} alt={x.label} sizes="(min-width: 90rem) 1360px, 94vw" />
+          <a class="shot-link" href={x.url} rel="noopener" target="_blank" aria-label={`${x.label} : ouvrir (nouvel onglet)`}>
+            <Vitrine project={p} variant={x.key} alt={x.label} sizes="(min-width: 90rem) 1360px, 94vw" />
+            <span class="shot-link__hint" aria-hidden="true">Ouvrir ↗</span>
+          </a>
           <figcaption class="soft">{x.label}</figcaption>
         </figure>
       ))}
@@ -111,7 +118,11 @@ const extras = p.extraCaptures || [];
           <p class="lead">La plupart des visiteurs arrivent depuis un téléphone. Le site y est aussi soigné que sur grand écran.</p>
         </div>
         <div class="phones">
-          {phones.filter((i) => caps.mobile[i]).map((i) => <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du site ${p.name} sur téléphone`} />)}
+          {phones.filter((i) => caps.mobile[i]).map((i) => (
+            <a class="shot-link" href={siteUrl} rel="noopener" target="_blank" aria-label={`${siteHint} ${p.name}, écran ${i + 1} sur téléphone (nouvel onglet)`}>
+              <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du site ${p.name} sur téléphone`} />
+            </a>
+          ))}
         </div>
       </div>
     </section>

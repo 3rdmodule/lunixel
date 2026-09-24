@@ -42,9 +42,10 @@ const jsonld = [
         <h1 class="h-1 display">{p.question}</h1>
         <p class="lead">{p.name} · {p.business}, {p.place}</p>
       </div>
-      <div class="case-cover lightable is-lit">
+      <a class="case-cover shot-link lightable is-lit" href={p.prototypeUrl} rel="noopener" target="_blank" aria-label={`Ouvrir le prototype ${p.name} (nouvel onglet)`}>
         <Vitrine project={p} eager vt={`shot-${p.slug}`} sizes="(min-width: 90rem) 1360px, 94vw" alt={`Concept de page d’accueil pour ${p.name}`} />
-      </div>
+        <span class="shot-link__hint" aria-hidden="true">Ouvrir le prototype ↗</span>
+      </a>
     </div>
   </section>
 
@@ -79,7 +80,11 @@ const jsonld = [
           <h2 id="mobile-title" class="h-2">Pensé pour le téléphone.</h2>
         </div>
         <div class="phones">
-          {[0, 1, 2].filter((i) => caps.mobile[i]).map((i) => <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du concept ${p.name} sur téléphone`} />)}
+          {[0, 1, 2].filter((i) => caps.mobile[i]).map((i) => (
+            <a class="shot-link" href={p.prototypeUrl} rel="noopener" target="_blank" aria-label={`Ouvrir le prototype ${p.name}, écran ${i + 1} sur téléphone (nouvel onglet)`}>
+              <Vitrine project={p} variant="phone" index={i} alt={`Écran ${i + 1} du concept ${p.name} sur téléphone`} />
+            </a>
+          ))}
         </div>
       </div>
     </section>
