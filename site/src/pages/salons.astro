@@ -4,18 +4,19 @@ import Vitrine from '../components/Vitrine.astro';
 import Status from '../components/Status.astro';
 import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Plateformes from '../components/Plateformes.astro';
 import { projects, projectPath, linkLabel } from '../data/projects.js';
 import { metiers, metierPath } from '../data/metiers.js';
 import { site } from '../config.js';
 
 const exemple = projects.find((p) => p.slug === 'fabienne-hiot');
 const features = [
-  ['Réservation en ligne 24 h/24', 'Un agenda en ligne relié à votre téléphone. Vos clientes choisissent leur créneau, vous recevez la réservation.'],
-  ['Rappels automatiques', 'Un e-mail ou un SMS avant le rendez-vous, pour limiter les oublis.'],
-  ['Prestations et tarifs clairs', 'Vos soins, leur durée et leur prix, lisibles sur téléphone. Plus besoin d’appeler pour savoir.'],
-  ['Vos photos et vos avis', 'Vos réalisations et vos avis Google, là où vos futures clientes les cherchent.'],
-  ['Trouvée sur Google', '« Onglerie à Lille », « massage près de chez moi » : je soigne ce que Google regarde.'],
-  ['Sans commission', 'Pour une praticienne seule, la réservation en ligne ne coûte rien chaque mois. Plusieurs employées ? Je vous indique l’option la moins chère.'],
+  ['Réservation en ligne 24 h/24', 'Un agenda Cal.com intégré à votre site et relié à votre téléphone. Vos clients choisissent leur créneau, vous recevez la réservation.'],
+  ['Confirmation par e-mail', 'Vos clients reçoivent une confirmation automatique. Des rappels par SMS sont possibles en option, avec un petit coût par message.'],
+  ['Services et tarifs clairs', 'Vos services, leur durée et leur prix, lisibles sur téléphone. Plus besoin d’appeler pour savoir.'],
+  ['Vos photos et vos avis', 'Vos réalisations et vos avis Google, là où vos futurs clients les cherchent.'],
+  ['Visible sur Google', 'Votre site est construit pour apparaître quand on cherche « onglerie à Lille » ou « massage près de chez moi ».'],
+  ['Sans commission', 'Pour une personne seule, la réservation en ligne est gratuite. Plusieurs employés ? Je vous indique l’option la moins chère.'],
 ];
 const url = `${site.url}/salons/`;
 const jsonld = [
@@ -38,7 +39,7 @@ const jsonld = [
 ---
 <Base
   title="Site internet pour institut, onglerie, coiffure et bien-être · Lunixel"
-  description="Un site qui remplit votre agenda : prestations, prix, photos et réservation en ligne 24 h/24, sans commission ni abonnement. Démo gratuite."
+  description="Un site qui remplit votre agenda : services, prix, photos et réservation en ligne 24 h/24 avec Cal.com, sans commission. Démo gratuite."
   jsonld={jsonld}
 >
   <section class="page-hero theme-nuit">
@@ -46,8 +47,8 @@ const jsonld = [
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Salons et instituts</li></ol></nav>
       <p class="eyebrow"><i class="px" aria-hidden="true"></i>Instituts · Ongleries · Coiffure · Massage · Bien-être</p>
       <h1 class="h-1 display">Un site qui remplit votre agenda, sans commission</h1>
-      <p class="lead">Vos clientes voient vos prestations, vos prix et vos photos, puis réservent en deux clics, même quand vous êtes fermée. <strong>Et vous ne reversez rien à personne.</strong></p>
-      <div class="cta-row"><a class="btn" href="/contact/?activite=institut-beaute">{site.cta}</a><a class="arrow-link" href="/tarifs/">Voir les tarifs</a></div>
+      <p class="lead">Vos clients voient vos services, vos prix et vos photos, puis réservent en deux clics, même en dehors de vos horaires. <strong>Et vous ne reversez rien à personne.</strong></p>
+      <div class="cta-row"><a class="btn" href="/contact/?activite=beaute">{site.cta}</a><a class="arrow-link" href="/tarifs/">Voir les tarifs</a></div>
     </div>
   </section>
 
@@ -55,17 +56,19 @@ const jsonld = [
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Pourquoi c’est important</p>
-        <h2 id="chiffres-title" class="h-2">Vos clientes réservent quand vous ne pouvez pas répondre</h2>
+        <h2 id="chiffres-title" class="h-2">Vos clients réservent aussi quand vous êtes occupé</h2>
       </div>
       <Stats only={[1, 2]} />
     </div>
   </section>
 
-  <section class="section theme-jour" style="padding-top:0" aria-labelledby="fonctions-title">
+  <Plateformes />
+
+  <section class="section theme-jour" aria-labelledby="fonctions-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Dans votre site</p>
-        <h2 id="fonctions-title" class="h-2">Tout ce qu’il faut pour qu’une cliente passe de « je regarde » à « j’ai réservé »</h2>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Fonctionnalités</p>
+        <h2 id="fonctions-title" class="h-2">Ce que contient votre site</h2>
       </div>
       <div class="besoins">
         {features.map(([t, d], i) => (
@@ -87,25 +90,15 @@ const jsonld = [
       <div class="work__body" data-reveal>
         <Status kind={exemple.kind} state={exemple.status} />
         <h2 id="exemple-title" class="h-3">Un exemple : {exemple.name}, {exemple.business.toLowerCase()}</h2>
-        <p class="soft">Les soins et leurs tarifs dès l’accueil, le premier contact gratuit mis en avant, et un bouton « Rendez-vous » toujours sous le pouce.</p>
+        <p class="soft">Les soins et leurs tarifs dès l’accueil, le premier contact gratuit mis en avant, et un bouton « Rendez-vous » toujours visible.</p>
         <a class="arrow-link" href={projectPath(exemple)}>{linkLabel(exemple)}<span class="sr-only"> : {exemple.name}</span></a>
       </div>
     </div>
   </section>
 
-  <section class="section theme-jour" aria-labelledby="plateformes-title">
-    <div class="container duo" style="margin-top:0">
-      <div class="section-head" style="margin:0" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Déjà équipée ?</p>
-        <h2 id="plateformes-title" class="h-2">Déjà sur Planity ou Treatwell ?</h2>
-      </div>
-      <div class="note-box" data-reveal>
-        <p class="big">Vous pouvez garder votre outil.</p>
-        <p class="soft">Je mets votre lien de réservation actuel sur votre site. Et si vous voulez arrêter de payer une commission, on passe à une réservation directement sur votre site, à votre rythme.</p>
-      </div>
-    </div>
+  <section class="section theme-jour" aria-label="Par métier">
     <div class="container">
-      <p class="links-row" data-reveal>
+      <p class="links-row" style="margin-top:0" data-reveal>
         <span class="soft">Par métier :</span>
         {metiers.map((m) => <a class="arrow-link" href={metierPath(m)}>{m.label}</a>)}
       </p>

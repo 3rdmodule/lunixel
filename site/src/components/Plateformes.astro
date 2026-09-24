@@ -1,0 +1,27 @@
+---
+// Mise en avant : garder Planity ou Treatwell, ou passer à Cal.com sans commission.
+interface Props { headingId?: string }
+const { headingId = 'plateformes-title' } = Astro.props;
+---
+<section class="section theme-nuit plateformes" aria-labelledby={headingId}>
+  <div class="container duo" style="margin-top:0">
+    <div class="section-head" style="margin:0" data-reveal>
+      <p class="eyebrow"><i class="px" aria-hidden="true"></i>Déjà équipé ?</p>
+      <h2 id={headingId} class="h-2">Déjà sur Planity ou Treatwell ?</h2>
+    </div>
+    <div class="note-box" data-reveal>
+      <p class="big">Vous pouvez garder votre outil.</p>
+      <p class="soft">Je mets votre lien de réservation actuel sur votre site. Et si vous voulez arrêter de payer une commission, on passe à une réservation directement sur votre site via Cal.com, à votre rythme.</p>
+      <p><a class="arrow-link" href="/tarifs/#comparatif">Comparer les coûts</a></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .plateformes {
+    --surface: var(--nuit-haute);
+  }
+  .plateformes .note-box {
+    border: 1px solid var(--or);
+  }
+</style>

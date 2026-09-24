@@ -7,21 +7,21 @@ export const projects = [
     slug: 'fabienne-hiot',
     kind: 'realisation',
     status: 'en-cours', // Commande en cours : pas encore en ligne, la maquette est visible
-    accord: true, // La cliente a donné son accord pour être présentée
+    accord: true, // Le client a donné son accord pour être présenté
     name: 'Fabienne Hiot',
     business: 'Naturopathe',
     place: 'Agay, Saint-Raphaël',
     prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
     captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
-    question: 'Et si prendre rendez-vous prenait dix secondes ?',
+    question: 'Prendre rendez-vous en quelques secondes.',
     metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay, en cours de réalisation : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes.',
     tagline: 'Rassurer avant le premier rendez-vous.',
     summary:
-      'Le site d’une naturopathe à Agay, en cours de réalisation : qui elle est, ce qu’elle propose, combien ça coûte et comment la joindre, le tout sous le pouce.',
+      'Le site d’une naturopathe à Agay, en cours de réalisation : qui elle est, ce qu’elle propose, ses tarifs et comment la contacter, facilement depuis un téléphone.',
     observation:
-      'Avant un premier rendez-vous, on a besoin d’être rassuré : qui est la praticienne, ce qu’elle propose, combien ça coûte, et comment la joindre. Sur un téléphone, tout cela doit tenir sous le pouce.',
+      'Avant un premier rendez-vous, on a besoin d’être rassuré : qui est la praticienne, ce qu’elle propose, combien ça coûte, et comment la joindre. Sur un téléphone, tout cela doit se trouver en quelques secondes.',
     choices: [
-      ['Sous le pouce', 'Une barre fixe « Appeler / Rendez-vous » en bas de l’écran du téléphone.'],
+      ['Toujours joignable', 'Une barre fixe « Appeler / Rendez-vous » en bas de l’écran du téléphone.'],
       ['Les prix, tout de suite', 'Les soins et leurs tarifs sont visibles dès l’accueil.'],
       ['Le premier pas', 'Le premier contact gratuit de 15 minutes est mis en avant.'],
       ['La confiance', 'Le parcours, les diplômes et les avis sont à un geste.'],
@@ -37,7 +37,7 @@ export const projects = [
     place: 'France',
     url: 'https://3rdrecords.com/',
     captureUrl: 'https://3rdrecords.com/',
-    tagline: 'Un label qui se visite comme on pose un disque.',
+    tagline: 'Un site de label pour écouter les sorties et découvrir les artistes.',
     metaDescription: 'Le site du label 3rd Records : une platine à faire tourner, un lecteur toujours visible et un catalogue lisible par Google. Étude de cas Lunixel.',
     summary:
       'Le site d’un label pop, lofi et hip-hop : une platine à faire tourner du bout du doigt, un lecteur toujours à portée, et un catalogue que Google comprend.',
@@ -75,7 +75,7 @@ export const projects = [
     url: 'https://nubegames.fr/',
     captureUrl: 'https://nubegames.fr/',
     extraCaptures: [{ key: 'jeu', url: 'https://nubegames.fr/fields-of-fire/', label: 'Le jeu Fields of Fire, jouable dans le navigateur' }],
-    tagline: 'Un jeu de société qui se joue avant même d’être imprimé.',
+    tagline: 'Le site d’un studio de jeux, avec son premier jeu jouable en ligne.',
     metaDescription: 'Le site de Nube Games et son jeu Fields of Fire, jouable gratuitement en ligne de 3 à 6 joueurs. Étude de cas Lunixel.',
     summary:
       'Le site du studio et son premier jeu, Fields of Fire, jouable gratuitement dans le navigateur : de 3 à 6 joueurs, sur un même écran ou à distance avec un code de salon.',
@@ -115,8 +115,8 @@ export const projects = [
     prototypeUrl: 'https://3rdmodule.com/concept/pianoslechevallier',
     captureUrl: 'https://3rdmodule.com/concept/pianoslechevallier',
     captureScheme: 'dark',
-    question: 'Et si les 227 instruments du magasin se visitaient depuis le canapé ?',
-    metaDescription: 'Concept de site pour Le Domaine Musical à Saint-Lô : 227 instruments consultables en ligne, horaires et contact à portée de pouce.',
+    question: 'Les 227 instruments du magasin, consultables depuis chez soi.',
+    metaDescription: 'Concept de site pour Le Domaine Musical à Saint-Lô : 227 instruments consultables en ligne, horaires et contact faciles à trouver.',
     tagline: 'Un magasin spécialisé, un catalogue vivant.',
     summary:
       'Un concept de refonte pour un magasin de pianos et d’instruments à cordes : tout le stock en ligne, les ateliers, l’histoire de la maison et l’envie de venir essayer.',
@@ -124,7 +124,7 @@ export const projects = [
       'Un magasin spécialisé vit de son stock, de ses ateliers et de sa réputation. En ligne, tout cela doit se voir en quelques secondes : ce qu’il y a en magasin, quand on peut venir, et pourquoi on peut faire confiance.',
     choices: [
       ['Le catalogue', '227 instruments rangés par familles (pianos, quatuor à cordes, guitares, créations de l’atelier) et 65 fabricants.'],
-      ['L’envie de venir', '« Ouvert aujourd’hui jusqu’à 19 h » en haut de chaque page, l’adresse et le téléphone à portée de pouce.'],
+      ['L’envie de venir', '« Ouvert aujourd’hui jusqu’à 19 h » en haut de chaque page, l’adresse et le téléphone faciles à trouver.'],
       ['La confiance', 'L’histoire de l’atelier racontée par son fondateur, les services détaillés et les avis Google.'],
       ['Pour tous', 'Français et anglais, thème clair ou sombre, favoris et recherche.'],
     ],
@@ -140,7 +140,7 @@ export const projects = [
     prototypeUrl: 'https://lunixel.fr/concept/hugoabecassis/',
     captureUrl: 'https://lunixel.fr/concept/hugoabecassis/',
     captureScheme: 'dark',
-    question: 'Et si on montrait enfin le travail qui ne se voit pas ?',
+    question: 'Montrer un savoir-faire qui ne se voit pas.',
     metaDescription: 'Concept de site pour Hugo Abecassis, luthier : entretien, restauration et fabrication d’instruments à cordes, montrés comme des notes d’atelier.',
     tagline: 'Le meilleur travail d’un luthier ne se remarque qu’à l’oreille.',
     summary:

@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import StudioBlock from '../components/StudioBlock.astro';
-import Engagements from '../components/Engagements.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { piliers } from '../data/content.js';
 import { site } from '../config.js';
@@ -9,7 +8,7 @@ const { name, photo } = site.founder || {};
 ---
 <Base
   title="À propos · Qui est derrière Lunixel, studio web indépendant"
-  description={`Lunixel est un studio web d’une seule personne, basé à ${site.location.city}. Des sites soignés, à un prix juste, sans abonnement, qui vous appartiennent.`}
+  description={`Lunixel est un studio web d’une seule personne, basé à ${site.location.city}. Des sites soignés, à un prix juste, sans commission, qui vous appartiennent.`}
 >
   <section class="page-hero theme-nuit">
     <div class:list={['container', { 'studio-hero': photo }]}>
@@ -26,8 +25,8 @@ const { name, photo } = site.founder || {};
     <div class="container studio">
       <div class="section-head" style="margin:0" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Pourquoi Lunixel</p>
-        <h2 id="pourquoi-title" class="h-2">Parce que trop de commerçants paient cher pour un site qui ne rapporte rien</h2>
-        <p class="lead">Des milliers d’euros au départ, un abonnement chaque mois, une commission sur chaque cliente. J’ai créé Lunixel pour faire l’inverse : des sites soignés, à un prix juste, qui vous appartiennent et qui vous amènent des clientes.</p>
+        <h2 id="pourquoi-title" class="h-2">Des sites soignés, à un prix juste, qui vous appartiennent</h2>
+        <p class="lead">Beaucoup de commerçants paient des milliers d’euros pour un site qu’ils ne peuvent pas modifier, plus un abonnement chaque mois. J’ai créé Lunixel pour proposer l’inverse.</p>
       </div>
       <StudioBlock />
     </div>
@@ -38,7 +37,6 @@ const { name, photo } = site.founder || {};
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Ma façon de travailler</p>
         <h2 id="facon-title" class="h-2">Un petit studio, pour de bonnes raisons</h2>
-        <p class="lead">Pas de commercial, pas d’intermédiaire. La personne qui vous répond est celle qui fait votre site.</p>
       </div>
       <div class="piliers">
         {piliers.map((p, i) => (
@@ -52,18 +50,7 @@ const { name, photo } = site.founder || {};
     </div>
   </section>
 
-  <section class="section theme-jour" style="background:var(--papier-ombre)" aria-labelledby="engagements-title">
-    <div class="container studio">
-      <div class="section-head" style="margin:0" data-reveal>
-        <p class="eyebrow"><i class="px" aria-hidden="true"></i>Mes engagements</p>
-        <h2 id="engagements-title" class="h-2">Quatre règles que je m’impose</h2>
-        <p class="lead">Vous pouvez me les rappeler si je ne les tiens pas.</p>
-      </div>
-      <Engagements />
-    </div>
-  </section>
-
-  <FinalCta title="On en parle ?" lead="Commencez par la maquette gratuite de votre page d’accueil : vous verrez tout de suite si on est faits pour travailler ensemble." />
+  <FinalCta title="Contactez-moi." lead="Commencez par la maquette gratuite de votre page d’accueil : vous verrez tout de suite si on est faits pour travailler ensemble." />
 </Base>
 
 <style>

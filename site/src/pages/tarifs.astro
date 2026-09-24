@@ -4,6 +4,7 @@ import Formules from '../components/Formules.astro';
 import Comparatif from '../components/Comparatif.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { site } from '../config.js';
+import { entretien } from '../data/content.js';
 
 const presence = parseInt(site.prices.presence, 10);
 const prestation = 40;
@@ -21,15 +22,15 @@ const jsonld = [
 ];
 ---
 <Base
-  title="Tarifs · Création de site internet sans abonnement · Lunixel"
-  description={`Site d’une page dès ${site.prices.presence}, site complet dès ${site.prices.vitrine}. Sans abonnement ni commission, le site est à vous. Maquette offerte.`}
+  title="Tarifs · Site internet payé une fois, sans commission · Lunixel"
+  description={`Site d’une page dès ${site.prices.presence}, site complet dès ${site.prices.vitrine}, payé une fois et à vous. Entretien en option dès ${site.prices.entretien} par mois. Maquette offerte.`}
   jsonld={jsonld}
 >
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Tarifs</li></ol></nav>
-      <h1 class="h-1 display">Des prix clairs, sans abonnement</h1>
-      <p class="lead">Vous payez votre site une fois. Pas d’abonnement, pas de commission, et le site est à vous. <strong>La maquette de votre page d’accueil est offerte.</strong></p>
+      <h1 class="h-1 display">Des prix clairs, payés une fois</h1>
+      <p class="lead">Le site est à vous, sans commission sur vos rendez-vous. <strong>La maquette de votre page d’accueil est offerte.</strong></p>
     </div>
   </section>
 
@@ -45,21 +46,43 @@ const jsonld = [
       <div class="duo">
         {rdv && (
           <div class="note-box" data-reveal>
-            <p class="eyebrow"><i class="px" aria-hidden="true"></i>Rentable vite</p>
-            <p class="big">Un site d’une page à {site.prices.presence}, c’est {rdv} prestations à {prestation} €.</p>
-            <p class="soft">Au-delà, chaque cliente qui vous trouve ou réserve en ligne, c’est pour vous.</p>
+            <p class="eyebrow"><i class="px" aria-hidden="true"></i>Vite remboursé</p>
+            <p class="big">Un site d’une page à {site.prices.presence}, c’est {rdv} rendez-vous à {prestation} €.</p>
+            <p class="soft">Ensuite, chaque client qui vous trouve ou réserve en ligne, c’est du chiffre en plus.</p>
           </div>
         )}
         <div class="note-box" data-reveal>
           <p class="eyebrow"><i class="px" aria-hidden="true"></i>Après la mise en ligne</p>
-          <p class="big">Aucun abonnement.</p>
-          <p class="soft">L’hébergement est compris. Vous payez seulement votre nom de domaine, {site.domainCost}, à votre nom. Un souci ? Je réponds {site.support}. Une retouche ? Le prix est annoncé avant.</p>
+          <p class="big">Rien d’obligatoire à payer chaque mois.</p>
+          <p class="soft">L’hébergement est compris. Seul votre nom de domaine est à renouveler, {site.domainCost} : il est réservé chez OVH, sur un compte à votre nom. Un souci ? Je réponds {site.support}.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section theme-jour" id="comparatif" aria-labelledby="comparatif-title">
+  <section class="section theme-jour" id="entretien" aria-labelledby="entretien-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><i class="px" aria-hidden="true"></i>En option</p>
+        <h2 id="entretien-title" class="h-2">L’entretien, si vous le souhaitez</h2>
+        <p class="lead">Pour ne plus vous occuper de rien : je vérifie votre site chaque semaine et je m’occupe de la sécurité.</p>
+      </div>
+      <div class="formules formules--duo">
+        {entretien.map((f) => (
+          <article class="formule" data-reveal>
+            <h3>{f.name}</h3>
+            <p>{f.pitch}</p>
+            <p class="formule__price"><strong>{site.prices[f.key]}</strong> par mois</p>
+            <ul role="list">
+              {f.items.map((it) => <li><i class="px" aria-hidden="true"></i>{it}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-jour" style="padding-top:0" id="comparatif" aria-labelledby="comparatif-title">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>Comparer</p>

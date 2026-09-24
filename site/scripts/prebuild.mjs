@@ -144,7 +144,7 @@ const fontUrl = (p) => pathToFileURL(path.join(root, 'node_modules', p)).href;
 const ogPages = {
   accueil: ['Vous avez un <em>métier</em>.<br>Je m’occupe du web.', 'Sites pour salons, instituts et boutiques'],
   salons: ['Un site qui remplit votre agenda, <em>sans commission</em>.', 'Salons et instituts'],
-  tarifs: ['Des prix clairs, <em>sans abonnement</em>.', 'Tarifs'],
+  tarifs: ['Des prix clairs, <em>payés une fois</em>.', 'Tarifs'],
   methode: ['De la démo gratuite à la mise en ligne.', 'Méthode'],
   'a-propos': ['Qui est derrière Lunixel.', 'À propos'],
   faq: ['Vos questions, mes réponses.', 'Questions fréquentes'],

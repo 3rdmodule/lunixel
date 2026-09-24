@@ -6,6 +6,7 @@ import WorkItem from '../components/WorkItem.astro';
 import ConceptCard from '../components/ConceptCard.astro';
 import Stats from '../components/Stats.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Plateformes from '../components/Plateformes.astro';
 import { projects, realisations, concepts, enLigne, isWip } from '../data/projects.js';
 import { outcomes, gains, demoSteps } from '../data/content.js';
 import { metiers, metierPath } from '../data/metiers.js';
@@ -18,14 +19,13 @@ const heroShots = [
   { p: bySlug['fabienne-hiot'], variant: 'desktop' },
   { p: bySlug['le-domaine-musical'], variant: 'phone' },
 ];
-const name = site.founder?.name;
 // Ordre des travaux : le site en cours (Fabienne Hiot) en grand, puis les concepts
 // (Le Domaine Musical, Hugo Abecassis), puis les sites déjà en ligne.
 const enCours = realisations.filter(isWip);
 ---
 <Base
   title="Site internet pour salons, instituts et boutiques · Lunixel"
-  description="Des sites sur mesure qui prennent vos rendez-vous et vous amènent des clientes. Sans abonnement, sans commission. Maquette de votre page d’accueil offerte."
+  description="Des sites sur mesure qui prennent vos rendez-vous et vous amènent des clients. Payés une fois, sans commission. Maquette de votre page d’accueil offerte."
   assembleLogo
 >
   <!-- 1. Ouverture -->
@@ -37,7 +37,7 @@ const enCours = realisations.filter(isWip);
         <h1 id="hero-title" class="h-hero display">Vous avez un <span class="lumiere">métier</span>.<br />Je m’occupe du web.</h1>
       </div>
       <div class="hero__sub">
-        <p class="lead">{name && `Je m’appelle ${name}. `}Un site à votre image, qui prend vos rendez-vous et vous amène des clientes. <strong>Sans abonnement.</strong></p>
+        <p class="lead">Un site à votre image, qui prend vos rendez-vous et vous amène des clients. <strong>Payé une fois, et il est à vous.</strong></p>
         <ul class="outcomes" role="list" aria-label="Ce que vous y gagnez">
           {outcomes.map((o) => (
             <li><b>{o.value}</b><span>{o.href ? <a href={o.href}>{o.text}</a> : o.text}</span></li>
@@ -71,20 +71,21 @@ const enCours = realisations.filter(isWip);
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>01 · Le constat</p>
-        <h2 id="constat-title" class="h-2">Vos clientes vous cherchent en ligne. Beaucoup de sites coûtent cher et ne rapportent rien.</h2>
-        <p class="lead">Des milliers d’euros pour un site, un abonnement chaque mois, une commission sur chaque nouvelle cliente : ce n’est pas une fatalité.</p>
+        <h2 id="constat-title" class="h-2">Vos clients vous cherchent en ligne. Beaucoup de sites coûtent cher et ne rapportent rien.</h2>
+        <p class="lead">Des milliers d’euros pour un site, un abonnement chaque mois, une commission sur chaque nouveau client : on peut faire autrement.</p>
       </div>
       <Stats />
-      <p class="links-row" data-reveal><a class="arrow-link" href="/tarifs/#comparatif">Comparer avec une agence ou une plateforme</a></p>
     </div>
   </section>
 
+  <Plateformes />
+
   <!-- 3. Ce que vous y gagnez -->
-  <section class="section theme-jour" aria-labelledby="gains-title" style="padding-top:0">
+  <section class="section theme-jour" aria-labelledby="gains-title">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>02 · Ce que ça change</p>
-        <h2 id="gains-title" class="h-2">Ce que votre site fait pour vous</h2>
+        <h2 id="gains-title" class="h-2">Ce que vous y gagnez</h2>
       </div>
       <div class="gains">
         {gains.map((g, i) => (
@@ -103,8 +104,8 @@ const enCours = realisations.filter(isWip);
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>03 · La démo gratuite</p>
-        <h2 id="demo-title" class="h-2">Voyez votre site avant de payer quoi que ce soit</h2>
-        <p class="lead">Je vous offre la maquette de votre page d’accueil. Vous jugez sur pièce.</p>
+        <h2 id="demo-title" class="h-2">La maquette de votre page d’accueil, offerte</h2>
+        <p class="lead">Vous voyez à quoi ressemblera votre site avant de décider quoi que ce soit.</p>
       </div>
       <ol class="demo-steps" role="list">
         {demoSteps.map((d, i) => (
@@ -129,7 +130,7 @@ const enCours = realisations.filter(isWip);
         <div class="section-head" style="margin:0">
           <p class="eyebrow"><i class="px" aria-hidden="true"></i>04 · Travaux</p>
           <h2 id="travaux-title" class="h-2">Des sites qui ressemblent à ceux qui les tiennent</h2>
-          <p class="lead">Chaque site commence par une maquette, <strong>comme celle que vous recevez avec la démo gratuite.</strong> Aucun ne ressemble aux autres, parce qu’aucun client ne ressemble aux autres.</p>
+          <p class="lead">Chaque site commence par une maquette, comme celle de la démo gratuite.</p>
         </div>
         <div class="legend">
           <Status kind="realisation" />
@@ -167,7 +168,7 @@ const enCours = realisations.filter(isWip);
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>05 · Pour qui</p>
         <h2 id="pour-qui-title" class="h-2">Pour les métiers où tout commence par un rendez-vous</h2>
-        <p class="lead">Instituts, ongleries, coiffeuses, masseuses, naturopathes, et les boutiques du quartier.</p>
+        <p class="lead">Instituts, ongleries, coiffeurs, masseurs, naturopathes et boutiques de quartier.</p>
       </div>
       <ul class="metier-list" role="list">
         {metiers.map((m) => (
@@ -180,6 +181,7 @@ const enCours = realisations.filter(isWip);
         ))}
       </ul>
       <p class="links-row" data-reveal><a class="arrow-link" href="/salons/">Vous travaillez sur rendez-vous ? La réservation en ligne, sans commission</a></p>
+      <p class="soft" style="margin-top:var(--s-3);max-width:60ch" data-reveal>Votre métier n’est pas dans la liste ? Je crée aussi des sites pour les artisans, les indépendants et les petites entreprises : <a class="text-link" href="/contact/">parlons-en</a>.</p>
     </div>
   </section>
 

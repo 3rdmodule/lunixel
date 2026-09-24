@@ -17,7 +17,7 @@ export const site = {
 
   // Qui est derrière Lunixel. Vide = rien n'est affiché.
   // photo : chemin d'une image placée dans public/ (ex. '/photo.jpg').
-  founder: { name: '', photo: '' },
+  founder: { name: 'Awen', photo: '' },
 
   // Lien Cal.com pour réserver un appel (ex. 'https://cal.com/lunixel/30min'). Vide = bouton masqué.
   bookingUrl: 'https://cal.com/lunixel/30min',
@@ -54,5 +54,7 @@ export const site = {
     presence: '200 €', // Site d'une page
     vitrine: '400 €', // Site de plusieurs pages
     surMesure: '', // Outils et fonctionnalités sur mesure : sur devis
+    entretien: '30 €', // Par mois, en option : vérification chaque semaine et sécurité
+    entretienPlus: '50 €', // Par mois, en option : la même chose plus les petites modifications
   },
 };

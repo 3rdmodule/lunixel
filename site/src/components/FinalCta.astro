@@ -1,10 +1,9 @@
 ---
 import { site } from '../config.js';
-import { activites } from '../data/content.js';
 interface Props { title?: string; lead?: string }
 const {
   title = 'Voyons à quoi pourrait ressembler votre site.',
-  lead = 'Dites-moi ce que vous faites : je vous prépare la maquette de votre page d’accueil, offerte et sans engagement.',
+  lead = 'Présentez-moi votre activité : je vous prépare la maquette de votre page d’accueil, offerte et sans engagement.',
 } = Astro.props;
 ---
 <section class="final theme-profonde" aria-labelledby="final-title" data-final>
@@ -14,17 +13,11 @@ const {
       <p class="eyebrow"><i class="px" aria-hidden="true"></i>Démo gratuite</p>
       <h2 id="final-title" class="display">{title}</h2>
       <p class="lead">{lead}</p>
-      <div>
-        <p class="soft" id="final-chips-label" style="margin-bottom:0.9rem">Vous êtes…</p>
-        <ul class="chips" role="list" aria-labelledby="final-chips-label">
-          {activites.map(([v, l]) => <li><a class="chip" href={`/contact/?activite=${v}`}><i class="px" aria-hidden="true"></i>{l}</a></li>)}
-        </ul>
-      </div>
       <div class="cta-row">
         <a class="btn" href="/contact/">{site.cta}</a>
         {site.bookingUrl ? <a class="arrow-link" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a> : <a class="arrow-link" href={`mailto:${site.email}`}>{site.email}</a>}
       </div>
-      <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette offerte, sans engagement</span><span>Réponse sous {site.responseTime}</span><span>Aucun abonnement</span></p>
+      <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette offerte, sans engagement</span><span>Réponse sous {site.responseTime}</span><span>Aucune commission</span></p>
     </div>
   </div>
 </section>
