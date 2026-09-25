@@ -126,12 +126,12 @@ if (bar) {
   const final = $('[data-final]') || $('.site-footer');
   let heroGone = false;
   let finalIn = false;
-  const link = $('a', bar);
+  const links = [...bar.querySelectorAll('a')];
   const update = () => {
     const show = heroGone && !finalIn;
     bar.classList.toggle('is-visible', show);
     bar.setAttribute('aria-hidden', String(!show));
-    link.tabIndex = show ? 0 : -1;
+    links.forEach((a) => { a.tabIndex = show ? 0 : -1; });
   };
   if (hero) new IntersectionObserver(([e]) => { heroGone = !e.isIntersecting; update(); }).observe(hero);
   if (final) new IntersectionObserver(([e]) => { finalIn = e.isIntersecting; update(); }).observe(final);

@@ -1,5 +1,5 @@
 ---
-import { site } from '../config.js';
+import { site, whatsappHref } from '../config.js';
 interface Props { title?: string; lead?: string }
 const {
   title = 'Voyons à quoi pourrait ressembler votre site.',
@@ -16,6 +16,7 @@ const {
       <div class="cta-row">
         <a class="btn" href="/contact/">{site.cta}</a>
         {site.bookingUrl ? <a class="arrow-link" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel<span class="sr-only"> (nouvel onglet)</span></a> : <a class="arrow-link" href={`mailto:${site.email}`}>{site.email}</a>}
+        {whatsappHref && <a class="arrow-link" href={whatsappHref} rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (nouvel onglet)</span></a>}
       </div>
       <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette offerte, sans engagement</span><span>Réponse sous {site.responseTime}</span><span>Aucune commission</span></p>
     </div>

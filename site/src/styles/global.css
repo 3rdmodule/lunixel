@@ -646,6 +646,17 @@ dd {
 .mobile-cta.is-visible {
   transform: none;
 }
+@media (max-width: 63.99rem) {
+  .mobile-cta:has(.mobile-cta__wa) {
+    display: flex;
+    gap: 0.625rem;
+  }
+}
+.mobile-cta__wa {
+  flex: none;
+  width: 3.25rem;
+  padding: 0;
+}
 @media (min-width: 64rem) {
   .mobile-cta {
     display: none;

@@ -6,18 +6,19 @@ export const projects = [
   {
     slug: 'fabienne-hiot',
     kind: 'realisation',
-    status: 'en-cours', // Commande en cours : pas encore en ligne, la maquette est visible
     accord: true, // Le client a donné son accord pour être présenté
     name: 'Fabienne Hiot',
     business: 'Naturopathe',
     place: 'Agay, Saint-Raphaël',
+    url: 'https://fabiennehiot.fr/',
     prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
+    // Captures prises sur la maquette, même design que le site en ligne. Passer à https://fabiennehiot.fr/ une fois le site bien en ligne.
     captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
     question: 'Prendre rendez-vous en quelques secondes.',
-    metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay, en cours de réalisation : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes.',
+    metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes. Réalisation Lunixel.',
     tagline: 'Rassurer avant le premier rendez-vous.',
     summary:
-      'Le site d’une naturopathe à Agay, en cours de réalisation : qui elle est, ce qu’elle propose, ses tarifs et comment la contacter, facilement depuis un téléphone.',
+      'Le site d’une naturopathe à Agay : qui elle est, ce qu’elle propose, ses tarifs et comment la contacter, facilement depuis un téléphone.',
     observation:
       'Avant un premier rendez-vous, on a besoin d’être rassuré : qui est la praticienne, ce qu’elle propose, combien ça coûte, et comment la joindre. Sur un téléphone, tout cela doit se trouver en quelques secondes.',
     choices: [

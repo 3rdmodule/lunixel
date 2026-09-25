@@ -3,6 +3,16 @@ export const site = {
   name: 'Lunixel',
   url: 'https://lunixel.fr',
   email: 'contact@lunixel.fr',
+
+  // Téléphone et WhatsApp du studio (même numéro). Vide = masqué partout.
+  phone: {
+    display: '07 60 68 96 67',
+    intl: '+33760689667',
+  },
+  whatsapp: {
+    number: '33760689667',
+    message: 'Bonjour Lunixel, j’aimerais parler de mon site.',
+  },
   signature: 'Le studio web qui met les petites entreprises en lumière.',
   description:
     'Création de sites internet pour artisans, commerçants, indépendants et TPE, depuis Villeneuve-d’Ascq et partout en France. Un seul interlocuteur, des prix écrits.',
@@ -53,7 +63,7 @@ export const site = {
     status: 'entrepreneur individuel (micro-entreprise)',
     siret: '892 917 733 00032', // Établissement actif (siège depuis le 18/05/2026)
     address: '4 rue des Abbesses, 76460 Gueutteville-les-Grès',
-    phone: '', // Vide par choix : « communiqué sur simple demande ». La loi le demande pour un site pro.
+    phone: '07 60 68 96 67',
     director: 'Awen Vannier', // Directeur de la publication
     vat: 'TVA non applicable, article 293 B du CGI',
   },
@@ -67,6 +77,12 @@ export const site = {
     entretienMax: '50 €', // Entretien mensuel en option, prix haut (site plus complet). Petites modifications comprises.
   },
 };
+
+// Liens prêts à l'emploi pour le téléphone et WhatsApp (null si non renseignés).
+export const telHref = site.phone?.intl ? `tel:${site.phone.intl}` : null;
+export const whatsappHref = site.whatsapp?.number
+  ? `https://wa.me/${site.whatsapp.number}${site.whatsapp.message ? `?text=${encodeURIComponent(site.whatsapp.message)}` : ''}`
+  : null;
 
 // Liste prête à afficher des réseaux renseignés.
 export const socials = [

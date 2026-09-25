@@ -185,7 +185,7 @@ export const guides = [
       },
       {
         h2: 'Prendre rendez-vous en dix secondes',
-        html: `<p>Un bouton « Prendre rendez-vous » visible sur chaque page, qui ouvre votre agenda en ligne. Le client choisit sa séance et son créneau, reçoit une confirmation, et vous n’avez plus à gérer les allers-retours par SMS. C’est le cas du <a href="/realisations/fabienne-hiot/">site de Fabienne Hiot</a>, naturopathe, en cours de réalisation.</p>`,
+        html: `<p>Un bouton « Prendre rendez-vous » visible sur chaque page, qui ouvre votre agenda en ligne. Le client choisit sa séance et son créneau, reçoit une confirmation, et vous n’avez plus à gérer les allers-retours par SMS. C’est le cas du <a href="/realisations/fabienne-hiot/">site de Fabienne Hiot</a>, naturopathe à Agay.</p>`,
       },
       {
         h2: 'Le lieu, l’accès, les horaires',

@@ -3,19 +3,19 @@ import Base from '../../layouts/Base.astro';
 import WorkItem from '../../components/WorkItem.astro';
 import Status from '../../components/Status.astro';
 import FinalCta from '../../components/FinalCta.astro';
-import { realisations } from '../../data/projects.js';
+import { realisations, isWip } from '../../data/projects.js';
 import { site } from '../../config.js';
 ---
 <Base
   title="Réalisations · Sites créés par Lunixel"
-  description="Les sites créés par Lunixel : Fabienne Hiot, naturopathe (en cours), le label 3rd Records et le studio Nube Games. Le besoin, les choix, le résultat."
+  description="Les sites créés par Lunixel : Fabienne Hiot, naturopathe à Agay, le label 3rd Records et le studio Nube Games. Le besoin, les choix, le résultat."
 >
   <section class="page-hero theme-nuit">
     <div class="container page-hero__inner">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Réalisations</li></ol></nav>
       <h1 class="h-1 display">Mes réalisations</h1>
-      <p class="lead">Des sites commandés par de vrais clients, en ligne ou en cours. Pour chacun : le point de départ, les choix que j’ai faits et ce que ça donne.</p>
-      <div class="legend"><Status kind="realisation" /><Status kind="realisation" state="en-cours" /></div>
+      <p class="lead">Des sites commandés par de vrais clients, et en ligne. Pour chacun : le point de départ, les choix que j’ai faits et ce que ça donne.</p>
+      <div class="legend"><Status kind="realisation" />{realisations.some(isWip) && <Status kind="realisation" state="en-cours" />}</div>
     </div>
   </section>
   <section class="section theme-nuit" style="padding-top:0" aria-label="Les réalisations">

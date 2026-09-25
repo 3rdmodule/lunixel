@@ -86,7 +86,7 @@ const extras = p.extraCaptures || [];
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow"><i class="px" aria-hidden="true"></i>{wip ? 'Ce que je construis' : 'Ce que j’ai fait'}</p>
-        <h2 id="decisions-title" class="h-2">{wip ? 'Les choix de la maquette' : 'Les trois choix qui ont compté'}</h2>
+        <h2 id="decisions-title" class="h-2">{wip ? 'Les choix de la maquette' : decisions.length === 3 ? 'Les trois choix qui ont compté' : 'Les choix qui ont compté'}</h2>
       </div>
       <div class="decisions">
         {decisions.map((d, i) => (

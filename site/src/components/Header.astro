@@ -10,7 +10,7 @@ const items = [
   { href: '/a-propos/', label: 'À propos' },
 ];
 const current = (href) => (path.startsWith(href) || (href === '/realisations/' && path.startsWith('/concepts/')) ? 'page' : undefined);
-import { site } from '../config.js';
+import { site, telHref, whatsappHref } from '../config.js';
 ---
 <header class="site-header theme-nuit" data-header>
   <div class="container">
@@ -50,6 +50,6 @@ import { site } from '../config.js';
   </nav>
   <div class="mobile-menu__foot">
     <a class="btn btn--block" href="/contact/">{site.cta}</a>
-    <p class="soft">Ou écrivez-moi : <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>
+    <p class="soft">Ou écrivez-moi : <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>{telHref && <><br />Par téléphone : <a class="text-link" href={telHref}>{site.phone.display}</a></>}{whatsappHref && <>{telHref ? ', ou sur ' : <br />}<a class="text-link" href={whatsappHref} rel="noopener" target="_blank">WhatsApp<span class="sr-only"> (nouvel onglet)</span></a></>}</p>
   </div>
 </div>

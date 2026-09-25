@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, socials } from '../config.js';
+import { site, socials, telHref, whatsappHref } from '../config.js';
 ---
 <Base title="Confidentialité et cookies · Lunixel" description="Comment Lunixel traite les informations envoyées depuis lunixel.fr : données collectées, finalités, durée, vos droits. Aucun cookie, aucun pistage.">
   <section class="page-hero theme-nuit">
@@ -22,6 +22,7 @@ import { site, socials } from '../config.js';
         <li><strong>E-mail</strong> : ce que vous m’écrivez directement à {site.email}.</li>
         {site.bookingUrl && <li><strong>Réservation d’un appel</strong> : votre nom, votre e-mail et le créneau choisi, saisis sur Cal.com.</li>}
         {socials.length > 0 && <li><strong>Messages sur Instagram ou Facebook</strong> : ce que vous m’y écrivez, depuis votre propre compte.</li>}
+        {(telHref || whatsappHref) && <li><strong>Appels, SMS et messages WhatsApp</strong> : votre numéro de téléphone et ce que vous m’envoyez.</li>}
       </ul>
       <p>Chaque champ du formulaire a une raison d’être : me permettre de préparer votre maquette et de vous recontacter. Aucun autre renseignement n’est demandé.</p>
 
@@ -37,7 +38,7 @@ import { site, socials } from '../config.js';
         <li><strong>OVH</strong> (France) : ma messagerie professionnelle.</li>
         {site.web3formsKey && <li><strong>Web3Forms</strong> (serveurs aux États-Unis) : transmet le formulaire jusqu’à ma messagerie, sans conserver votre message. <a href="https://web3forms.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
         {site.bookingUrl && <li><strong>Cal.com</strong> : gère les réservations d’appel, sur son propre site. <a href="https://cal.com/privacy" rel="noopener">Sa politique de confidentialité</a>.</li>}
-        {socials.length > 0 && <li><strong>Meta</strong> (Instagram et Facebook) : si vous m’écrivez sur ces réseaux, vos messages passent par ses services. <a href="https://privacycenter.instagram.com/policy/" rel="noopener">Sa politique de confidentialité</a>.</li>}
+        {(socials.length > 0 || whatsappHref) && <li><strong>Meta</strong> ({[socials.length > 0 && 'Instagram et Facebook', whatsappHref && 'WhatsApp'].filter(Boolean).join(', ')}) : si vous m’écrivez par ces services, vos messages passent par ses serveurs. <a href="https://privacycenter.instagram.com/policy/" rel="noopener">Sa politique de confidentialité</a>.</li>}
         <li><strong>GitHub</strong> (hébergeur du site, service GitHub Pages) : quand vous consultez le site, votre adresse IP est enregistrée par GitHub à des fins de sécurité. <a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener">Ce qu’en dit GitHub</a> et <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">sa déclaration de confidentialité</a>.</li>
       </ul>
       <p>Certains de ces prestataires sont situés hors de l’Union européenne, notamment aux États-Unis. Leurs politiques, liées ci-dessus, décrivent les garanties qu’ils appliquent.</p>

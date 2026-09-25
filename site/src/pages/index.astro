@@ -18,9 +18,10 @@ const heroShots = [
   { p: bySlug['fabienne-hiot'], variant: 'desktop' },
   { p: bySlug['le-domaine-musical'], variant: 'phone' },
 ];
-// Ordre des travaux : le site en cours (Fabienne Hiot) en grand, puis les concepts
-// (Le Domaine Musical, Hugo Abecassis), puis les sites déjà en ligne.
-const enCours = realisations.filter(isWip);
+// Ordre des travaux : le site mis en avant (Fabienne Hiot) et les sites en cours en grand,
+// puis les concepts (Le Domaine Musical, Hugo Abecassis), puis les autres sites déjà en ligne.
+const vedettes = realisations.filter((p) => p.slug === 'fabienne-hiot' || isWip(p));
+const autresEnLigne = enLigne.filter((p) => !vedettes.includes(p));
 ---
 <Base
   title="Lunixel · Création de site internet pour salons et boutiques"
@@ -132,12 +133,12 @@ const enCours = realisations.filter(isWip);
         </div>
         <div class="legend">
           <Status kind="realisation" />
-          <Status kind="realisation" state="en-cours" />
+          {realisations.some(isWip) && <Status kind="realisation" state="en-cours" />}
           <Status kind="concept" />
         </div>
       </div>
       <div class="work-list">
-        {enCours.map((p) => <WorkItem project={p} />)}
+        {vedettes.map((p) => <WorkItem project={p} />)}
       </div>
       <div class="concept-grid concept-grid--duo">
         <div class="section-head" style="grid-column:1/-1;margin-bottom:var(--s-2)" data-reveal>
@@ -151,7 +152,7 @@ const enCours = realisations.filter(isWip);
           <h3 class="h-3">Et déjà en ligne</h3>
           <p class="soft" style="max-width:52ch">Des sites livrés, que vous pouvez visiter aujourd’hui.</p>
         </div>
-        {enLigne.map((p) => <ConceptCard project={p} />)}
+        {autresEnLigne.map((p) => <ConceptCard project={p} />)}
       </div>
       <div class="cta-row" style="margin-top:var(--s-6)">
         <a class="arrow-link" href="/realisations/">Toutes les réalisations</a>
