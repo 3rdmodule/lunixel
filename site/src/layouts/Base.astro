@@ -34,7 +34,7 @@ const graph = [
     email: site.email,
     description: site.description,
     slogan: site.signature,
-    logo: `${site.url}/generated/icons/apple-touch-icon.png`,
+    logo: `${site.url}/generated/icons/icon-512.png`,
     image: `${site.url}/generated/og/accueil.jpg`,
     address: { '@type': 'PostalAddress', addressLocality: site.location.city, addressRegion: site.location.region, addressCountry: 'FR' },
     areaServed: [
@@ -59,7 +59,7 @@ const graph = [
     url: `${site.url}/a-propos/`,
     worksFor: { '@id': `${site.url}/#studio` },
   },
-  { '@type': 'WebSite', '@id': `${site.url}/#site`, url: `${site.url}/`, name: 'Lunixel', inLanguage: 'fr-FR', publisher: { '@id': `${site.url}/#studio` } },
+  { '@type': 'WebSite', '@id': `${site.url}/#site`, url: `${site.url}/`, name: 'Lunixel', alternateName: ['Lunixel studio web', 'lunixel.fr'], inLanguage: 'fr-FR', publisher: { '@id': `${site.url}/#studio` } },
   ...jsonld,
 ];
 ---
@@ -76,6 +76,7 @@ const graph = [
     {site.verification?.bing && <meta name="msvalidate.01" content={site.verification.bing} />}
     <meta name="theme-color" content="#1B1E3C" />
     <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="/generated/icons/icon-192.png" sizes="192x192" type="image/png" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/generated/icons/favicon-32.png" sizes="32x32" type="image/png" />
