@@ -79,6 +79,8 @@ jobs:
               cp -r "$dir/." "$out/"
             fi
           done
+          # Les concepts (maquettes sans commande) ne doivent pas apparaître dans les moteurs de recherche.
+          find _site/concept -name '*.html' -print0 | xargs -0 -r perl -0pi -e 's/<head(\s[^>]*)?>/$&<meta name="robots" content="noindex, nofollow">/i'
           touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
