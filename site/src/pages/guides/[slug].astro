@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { site } from '../../config.js';
+import { guides, guidePath, guideBySlug, author, frDate } from '../../data/guides.js';
+
+export function getStaticPaths() {
+  return guides.map((g) => ({ params: { slug: g.slug } }));
+}
+const g = guideBySlug(Astro.params.slug);
+const url = `${site.url}${guidePath(g)}`;
+const related = (g.related || []).map(guideBySlug).filter(Boolean);
+const ids = g.sections.map((s, i) => `partie-${i + 1}`);
+const jsonld = [
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: g.h1,
+    description: g.description,
+    datePublished: g.published,
+    dateModified: g.updated,
+    inLanguage: 'fr-FR',
+    mainEntityOfPage: url,
+    image: `${site.url}/generated/og/guides-${g.slug}.jpg`,
+    author: { '@type': 'Person', '@id': `${site.url}/#awen`, name: author.name, url: `${site.url}${author.url}` },
+    publisher: { '@id': `${site.url}/#studio` },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${site.url}/guides/` },
+      { '@type': 'ListItem', position: 3, name: g.h1, item: url },
+    ],
+  },
+];
+---
+<Base title={g.title} description={g.description} jsonld={jsonld} ogType="article">
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">{g.kicker}</li></ol></nav>
+      <h1 class="h-1 display guide-title">{g.h1}</h1>
+      <p class="guide-meta soft">Par <a class="text-link" href={author.url}>{author.name}</a> · <time datetime={g.updated}>{frDate(g.updated)}</time> · {g.minutes} min de lecture</p>
+    </div>
+  </section>
+
+  <section class="section theme-jour">
+    <div class="container guide">
+      <article class="prose guide__body">
+        <p class="guide__intro">{g.intro}</p>
+        <nav class="guide__toc" aria-labelledby="sommaire">
+          <p id="sommaire" class="eyebrow"><i class="px" aria-hidden="true"></i>Sommaire</p>
+          <ol>{g.sections.map((s, i) => <li><a href={`#${ids[i]}`}>{s.h2}</a></li>)}</ol>
+        </nav>
+        {g.sections.map((s, i) => (
+          <>
+            <h2 id={ids[i]}>{s.h2}</h2>
+            <Fragment set:html={s.html} />
+          </>
+        ))}
+        <aside class="guide__cta" aria-label="Démo gratuite">
+          <p><strong>Envie de voir ce que ça donnerait pour vous ?</strong> Je prépare la maquette de votre page d’accueil, offerte et sans engagement.</p>
+          <a class="btn" href="/contact/">{site.cta}</a>
+        </aside>
+      </article>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section theme-jour guide-related" aria-labelledby="related-title">
+      <div class="container">
+        <h2 id="related-title" class="h-3">À lire aussi</h2>
+        <ul class="guide-cards" role="list">
+          {related.map((r) => (
+            <li class="guide-card">
+              <p class="eyebrow"><i class="px" aria-hidden="true"></i>{r.kicker}</p>
+              <h3><a href={guidePath(r)}>{r.h1}</a></h3>
+              <p class="soft">{r.card}</p>
+            </li>
+          ))}
+        </ul>
+        <p style="margin-top:var(--s-4)"><a class="arrow-link" href="/guides/">Tous les guides</a></p>
+      </div>
+    </section>
+  )}
+
+  <FinalCta />
+</Base>

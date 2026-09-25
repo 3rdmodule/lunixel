@@ -3,10 +3,10 @@ import Logo from './Logo.astro';
 interface Props { path: string; assemble?: boolean }
 const { path, assemble = false } = Astro.props;
 const items = [
-  { href: '/realisations/', label: 'Réalisations' },
+  { href: '/creation-site-internet/', label: 'Création de site' },
   { href: '/salons/', label: 'Salons et instituts' },
+  { href: '/realisations/', label: 'Réalisations' },
   { href: '/tarifs/', label: 'Tarifs' },
-  { href: '/methode/', label: 'Méthode' },
   { href: '/a-propos/', label: 'À propos' },
 ];
 const current = (href) => (path.startsWith(href) || (href === '/realisations/' && path.startsWith('/concepts/')) ? 'page' : undefined);
@@ -43,6 +43,8 @@ import { site } from '../config.js';
     <ul>
       <li><a href="/" aria-current={path === '/' ? 'page' : undefined}><i class="px" aria-hidden="true"></i>Accueil</a></li>
       {items.map((i) => <li><a href={i.href} aria-current={current(i.href)}><i class="px" aria-hidden="true"></i>{i.label}</a></li>)}
+      <li><a href="/methode/" aria-current={current('/methode/')}><i class="px" aria-hidden="true"></i>Méthode</a></li>
+      <li><a href="/guides/" aria-current={current('/guides/')}><i class="px" aria-hidden="true"></i>Guides</a></li>
       <li><a href="/faq/" aria-current={current('/faq/')}><i class="px" aria-hidden="true"></i>Questions fréquentes</a></li>
     </ul>
   </nav>

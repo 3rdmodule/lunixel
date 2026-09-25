@@ -16,8 +16,9 @@ interface Props {
   mobileCta?: boolean;
   assembleLogo?: boolean;
   noindex?: boolean;
+  ogType?: string;
 }
-const { title, description, og, jsonld = [], mobileCta = true, assembleLogo = false, noindex = false } = Astro.props;
+const { title, description, og, jsonld = [], mobileCta = true, assembleLogo = false, noindex = false, ogType = 'website' } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, site.url).href;
 const ogExists = (s) => fs.existsSync(nodePath.join(process.cwd(), 'public/generated/og', `${s}.jpg`));
@@ -38,13 +39,25 @@ const graph = [
     address: { '@type': 'PostalAddress', addressLocality: site.location.city, addressRegion: site.location.region, addressCountry: 'FR' },
     areaServed: [
       { '@type': 'City', name: site.location.city },
+      { '@type': 'City', name: 'Lille' },
       { '@type': 'AdministrativeArea', name: 'Métropole européenne de Lille' },
       { '@type': 'Country', name: 'France' },
     ],
     priceRange: `À partir de ${site.prices.presence}`,
+    currenciesAccepted: 'EUR',
     knowsLanguage: 'fr',
-    ...(site.founder?.name ? { founder: { '@type': 'Person', name: site.founder.name } } : {}),
+    knowsAbout: ['Création de site internet', 'Web design', 'Développement web', 'Référencement naturel', 'Réservation en ligne'],
+    founder: { '@id': `${site.url}/#awen` },
+    ...(site.bookingUrl ? { potentialAction: { '@type': 'ReserveAction', target: site.bookingUrl, name: 'Réserver un appel' } } : {}),
     ...(socials.length ? { sameAs: socials.map((s) => s.url) } : {}),
+  },
+  {
+    '@type': 'Person',
+    '@id': `${site.url}/#awen`,
+    name: site.legal.publisher,
+    jobTitle: 'Web designer et développeur web',
+    url: `${site.url}/a-propos/`,
+    worksFor: { '@id': `${site.url}/#studio` },
   },
   { '@type': 'WebSite', '@id': `${site.url}/#site`, url: `${site.url}/`, name: 'Lunixel', inLanguage: 'fr-FR', publisher: { '@id': `${site.url}/#studio` } },
   ...jsonld,
@@ -59,6 +72,8 @@ const graph = [
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {site.verification?.google && <meta name="google-site-verification" content={site.verification.google} />}
+    {site.verification?.bing && <meta name="msvalidate.01" content={site.verification.bing} />}
     <meta name="theme-color" content="#1B1E3C" />
     <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -68,7 +83,7 @@ const graph = [
     <link rel="apple-touch-icon" href="/generated/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap.xml" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Lunixel" />
     <meta property="og:title" content={title} />

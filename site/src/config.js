@@ -28,6 +28,9 @@ export const site = {
     facebook: 'https://www.facebook.com/profile.php?id=61594670464461',
   },
 
+  // Codes de vérification Search Console (Google) et Bing Webmaster Tools. Vide = balise absente.
+  verification: { google: '', bing: '' },
+
   // Délai type et séries de corrections incluses.
   delay: '2 semaines',
   revisions: { standard: 2, surMesure: 3 },

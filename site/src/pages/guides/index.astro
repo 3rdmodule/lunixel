@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { site } from '../../config.js';
+import { guides, guidePath, frDate } from '../../data/guides.js';
+
+const url = `${site.url}/guides/`;
+const jsonld = [
+  {
+    '@type': 'CollectionPage',
+    name: 'Guides pour créer et faire vivre le site de votre entreprise',
+    url,
+    hasPart: guides.map((g) => ({ '@type': 'Article', headline: g.h1, url: `${site.url}${guidePath(g)}` })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: url },
+    ],
+  },
+];
+---
+<Base
+  title="Guides : prix, référencement, réservation en ligne · Lunixel"
+  description="Des guides clairs pour les artisans, commerçants et indépendants : prix d’un site internet, fiche Google, Planity ou site à soi, nom de domaine."
+  jsonld={jsonld}
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Guides</li></ol></nav>
+      <h1 class="h-1 display">Les guides</h1>
+      <p class="lead">Ce que je réponds le plus souvent aux artisans, commerçants et indépendants, écrit une bonne fois pour toutes.</p>
+    </div>
+  </section>
+  <section class="section theme-jour">
+    <div class="container">
+      <ul class="guide-cards guide-cards--all" role="list">
+        {guides.map((g) => (
+          <li class="guide-card">
+            <p class="eyebrow"><i class="px" aria-hidden="true"></i>{g.kicker}</p>
+            <h2 class="h-3"><a href={guidePath(g)}>{g.h1}</a></h2>
+            <p class="soft">{g.card}</p>
+            <p class="guide-card__meta soft"><time datetime={g.updated}>{frDate(g.updated)}</time> · {g.minutes} min</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

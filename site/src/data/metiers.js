@@ -4,6 +4,7 @@
 export const metiers = [
   {
     slug: 'institut-beaute',
+    guides: ['planity-treatwell-ou-site', 'fiche-google-salon'],
     activite: 'beaute',
     label: 'Instituts et ongleries',
     title: 'Site internet pour institut de beauté et onglerie · Lunixel',
@@ -26,6 +27,7 @@ export const metiers = [
   },
   {
     slug: 'coiffure',
+    guides: ['planity-treatwell-ou-site', 'fiche-google-salon'],
     activite: 'beaute',
     label: 'Coiffure',
     title: 'Site internet pour salon de coiffure et coiffeuse · Lunixel',
@@ -48,6 +50,7 @@ export const metiers = [
   },
   {
     slug: 'sante-bien-etre',
+    guides: ['site-naturopathe', 'fiche-google-salon'],
     activite: 'bien-etre',
     label: 'Bien-être et santé naturelle',
     title: 'Site internet pour masseur, naturopathe et bien-être · Lunixel',
@@ -70,6 +73,7 @@ export const metiers = [
   },
   {
     slug: 'commerce',
+    guides: ['fiche-google-salon', 'prix-site-internet'],
     activite: 'commerce',
     label: 'Boutiques',
     title: 'Site internet pour boutique et commerce · Lunixel',

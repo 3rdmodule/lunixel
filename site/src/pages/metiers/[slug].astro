@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Vitrine from '../../components/Vitrine.astro';
 import Status from '../../components/Status.astro';
 import FinalCta from '../../components/FinalCta.astro';
+import { guideBySlug, guidePath } from '../../data/guides.js';
 import { metiers, metierPath } from '../../data/metiers.js';
 import { projects, projectPath, linkLabel } from '../../data/projects.js';
 import { site } from '../../config.js';
@@ -100,6 +101,11 @@ const jsonld = [
         {autres.map((x, i) => (<>{i > 0 && ' · '}<a class="text-link" href={metierPath(x)}>{x.label}</a></>))}
         · <a class="text-link" href="/salons/">Salons et instituts</a>
       </p>
+      {m.guides?.length > 0 && (
+        <p class="soft autres">À lire :
+          {m.guides.map(guideBySlug).filter(Boolean).map((g, i) => (<>{i > 0 && ' · '}<a class="text-link" href={guidePath(g)}>{g.h1}</a></>))}
+        </p>
+      )}
     </div>
   </section>
 

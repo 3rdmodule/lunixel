@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 import { projects } from '../src/data/projects.js';
 import { metiers } from '../src/data/metiers.js';
+import { guides } from '../src/data/guides.js';
 import { MOON_CELLS, MOON_COLORS, WORDMARK_D } from '../src/data/logo.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -156,6 +157,9 @@ const ogPages = {
   conditions: ['Les règles du site, en clair.', 'Conditions d’utilisation'],
 };
 for (const m of metiers) ogPages[`metiers-${m.slug}`] = [m.h1 + '.', m.label];
+ogPages['creation-site-internet'] = ['Création de site internet, <em>du dessin à Google</em>.', 'Web design · Développement · Référencement'];
+ogPages.guides = ['Les guides.', 'Prix, référencement, réservation en ligne'];
+for (const g of guides) ogPages[`guides-${g.slug}`] = [g.og, `Guide · ${g.kicker}`];
 for (const p of projects) {
   const key = `${p.kind === 'realisation' ? 'realisations' : 'concepts'}-${p.slug}`;
   const wip = p.status === 'en-cours';
