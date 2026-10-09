@@ -11,9 +11,8 @@ export const projects = [
     business: 'Naturopathe',
     place: 'Agay, Saint-Raphaël',
     url: 'https://fabiennehiot.fr/',
-    prototypeUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
-    // Captures prises sur la maquette, même design que le site en ligne. Passer à https://fabiennehiot.fr/ une fois le site bien en ligne.
-    captureUrl: 'https://3rdmodule.com/concept/fabiennehiot/',
+    prototypeUrl: 'https://fabiennehiot.fr/',
+    captureUrl: 'https://fabiennehiot.fr/',
     question: 'Prendre rendez-vous en quelques secondes.',
     metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes. Réalisation Lunixel.',
     tagline: 'Rassurer avant le premier rendez-vous.',
