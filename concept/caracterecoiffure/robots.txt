@@ -1,0 +1,4 @@
+# Démo Lunixel. Tant que la page vit sur lunixel.fr/concept/caracterecoiffure,
+# elle ne doit pas concurrencer le futur site d'Elda dans les résultats.
+User-agent: *
+Disallow: /

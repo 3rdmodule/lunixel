@@ -142,17 +142,6 @@
       .from('.hero .hero-body.reveal', { y: 22, duration: .85, ease: 'power3.out' }, .45)
       .to('.hero .frame .shot img', { scale: 1, duration: 1.5, ease: 'power3.out' }, .15);
 
-    // le filet bronze se tire sous le bloc d'ancienneté
-    var meta = document.querySelector('.hero-meta');
-    if (meta) {
-      gsap.to({ p: 0 }, {
-        p: 1, duration: .9, delay: .95, ease: 'power2.inOut',
-        onUpdate: function () {
-          meta.style.setProperty('--draw', Math.round(this.targets()[0].p * 100) + '%');
-        }
-      });
-    }
-
     // parallaxe douce de la photo du hero
     gsap.to('.hero .frame .shot img', {
       yPercent: 7, ease: 'none',
@@ -197,56 +186,9 @@
     });
   }
 
-  /* ---------- bandeau défilant, vitesse liée au scroll ---------- */
-  function marquee() {
-    var track = document.querySelector('.marquee-track');
-    if (!track) return;
-    var half = track.scrollWidth / 2;
-    var x = gsap.quickSetter(track, 'x', 'px');
-    var pos = 0, dir = 1;
-    gsap.ticker.add(function () {
-      pos -= 0.55 * dir;
-      if (pos <= -half) pos += half;
-      if (pos > 0) pos -= half;
-      x(pos);
-    });
-    ST.create({
-      trigger: '.marquee', start: 'top bottom', end: 'bottom top',
-      onUpdate: function (self) { dir = self.direction; }
-    });
-  }
-
-  /* ---------- prestations longues : panoramique horizontal ---------- */
-  function pan() {
-    var wrap = document.querySelector('.pan');
-    var track = document.querySelector('.pan-track');
-    var fill = document.querySelector('.pan-hint .bar i');
-    if (!wrap || !track || window.innerWidth < 900) return;
-
-    var distance = track.scrollWidth - window.innerWidth + 40;
-    if (distance <= 0) return;
-
-    gsap.to(track, {
-      x: -distance, ease: 'none',
-      scrollTrigger: {
-        trigger: wrap,
-        start: 'top top',
-        end: function () { return '+=' + distance; },
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onUpdate: function (self) {
-          if (fill) fill.style.width = (28 + self.progress * 72) + '%';
-        }
-      }
-    });
-  }
-
   openCurtain(function () {
     heroIn();
     reveals();
-    marquee();
-    pan();
     ST.refresh();
   });
 })();

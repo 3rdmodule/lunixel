@@ -5,32 +5,21 @@ on dépose le dossier tel quel sur GitHub Pages.
 
 ## Mise en ligne sur GitHub Pages
 
-Le site est servi à `lunixel.fr/concept/caracterecoiffure/`.
-
-1. Copier `.nojekyll` à la racine du dépôt et le dossier `concept/` à la racine aussi.
+1. Pousser le contenu de ce dossier dans le dépôt, à la racine ou dans `/concept/caracterecoiffure/`.
 2. Settings, puis Pages : source `Deploy from a branch`, branche `main`, dossier `/ (root)`.
-3. Vérifier que `Enforce HTTPS` est coché.
+3. Le fichier `.nojekyll` est déjà là, il empêche Jekyll d'ignorer les dossiers et de casser les chemins.
+4. Vérifier que `Enforce HTTPS` est coché.
 
-`.nojekyll` est obligatoire à la racine : sans lui, Jekyll ignore les dossiers
-et les fichiers de `assets/` ne sont pas servis.
-
-Pas de robots.txt dans ce sous-dossier : un robots.txt n'est lu qu'à la racine
-d'un domaine. Ce qui protège la démo de l'indexation, c'est la balise `noindex`
-dans `index.html`. Pour doubler, ajouter `Disallow: /concept/` au robots.txt
-à la racine de lunixel.fr.
-
-`404.html` ne sera pas servi depuis un sous-dossier, GitHub Pages ne gère la
-page 404 personnalisée qu'à la racine du dépôt. Le fichier est gardé pour la
-bascule sur le vrai domaine d'Elda.
-
-Tous les chemins sont relatifs, il n'y a rien à modifier dans `index.html`.
+Tous les chemins sont relatifs, le site marche donc aussi bien à la racine
+du domaine que dans un sous-dossier.
 
 ## Arborescence
 
 ```
 index.html              la page
-404.html                page d'erreur, même habillage, à copier à la racine
-                        du dépôt si on veut qu'elle serve
+404.html                page d'erreur, même habillage
+robots.txt              interdit l'indexation tant que c'est une démo
+.nojekyll               désactive Jekyll
 assets/css/site.css     toute la mise en forme
 assets/js/site.js       les animations et le consentement des contenus tiers
 assets/js/*.min.js      GSAP, ScrollTrigger, SplitText, Lenis, servis depuis le dépôt
