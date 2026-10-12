@@ -1,0 +1,25 @@
+Photos du salon
+===============
+
+Sélection faite dans le dossier Drive du 25/08/2026, parmi les 15 clichés.
+
+hero.webp       DSC00972  4:5    un poste de coiffage, miroir doré, perspective vers l'entrée
+salon-01.webp   DSC00964  16:10  un poste de coiffage et l'étagère de produits (recadré serré
+                                       à droite pour exclure le portrait encadré)
+salon-02.webp   DSC00968  3:4    le miroir baroque près de l'entrée
+salon-03.webp   DSC00973  3:4    l'étagère de produits
+salon-04.webp   DSC00963  16:10  les deux bacs à shampoing
+og.jpg          DSC00964  1.91:1 aperçu réseaux sociaux
+apple-touch-icon.png                icône iOS, détail du miroir doré
+
+Écartées volontairement :
+DSC00965, DSC00966, DSC00970, DSC00977  grands portraits de célébrités encadrés
+                                        au mur, droits d'image incertains
+DSC00971                                affiche papier des tarifs, risque de
+                                        contredire les prix affichés sur le site
+DSC00975, DSC00976                      doublons des bacs
+
+
+Les originaux font 6000 x 3376 px. Les versions ici sont recadrées et compressées
+en WebP, entre 40 et 130 Ko. Pour les remplacer, repartir des originaux et garder
+les mêmes noms, formats et dimensions.
