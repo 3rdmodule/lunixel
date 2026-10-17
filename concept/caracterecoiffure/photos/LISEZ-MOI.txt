@@ -8,15 +8,19 @@ bleus baissés, légère densité en plus), compressées en WebP.
 hero.webp       DSC00972  4:5   un poste de coiffage et son grand miroir
 salon-01.webp   DSC00964  3:2   un poste de coiffage
 salon-02.webp   DSC00963  3:2   les deux bacs à shampoing
-salon-03.webp   DSC00973  3:2   l'étagère de produits
-salon-04.webp   DSC00968  3:2   le miroir doré de l'entrée
-salon-05.webp   DSC00969  3:2   la salle vue depuis l'entrée
+salon-03.webp   DSC00973  3:2   l'étagère de produits et les brosses
+salon-04.webp   DSC00969  3:2   la salle vue depuis l'entrée
+salon-05.webp   Facebook  3:2   les miroirs dorés et les lampes
+salon-06.webp   Facebook  3:2   le bouquet devant le miroir œil
 og.webp         DSC00964  1.91:1 aperçu réseaux sociaux
 apple-touch-icon.png              icône iOS
 
-Les cinq photos de la galerie sont toutes en 3:2 paysage, c'est ce qui permet
+Les six photos de la galerie sont toutes en 3:2 paysage, c'est ce qui permet
 au bandeau de défiler proprement. Pour en remplacer une, garder le même nom,
 le même format et le même cadrage approximatif.
+
+DSC00968, le miroir doré rococo de l'entrée, a été retiré le 17/10/2026 :
+il n'apportait rien et ne colle pas à la direction artistique.
 
 Écartées volontairement :
 DSC00965, DSC00966, DSC00970, DSC00977  grands portraits de célébrités encadrés
@@ -33,9 +37,13 @@ et harmonisés avec le reste de la page. Ils alimentent la section
 « Couleur et balayage ».
 
 resultat-01.webp   balayage blond sur base châtain, longueurs bouclées
-resultat-02.webp   balayage fondu, brushing bouclé sur cheveux longs
-resultat-03.webp   boucles blondes dorées
-resultat-04.webp   blond froid, mèches fines sur carré long
+resultat-02.webp   boucles blondes dorées
+resultat-03.webp   blond froid, mèches fines sur carré long
+resultat-04.webp   cheveux longs lissés, photo en noir et blanc
+
+Quatre personnes différentes. Une cinquième photo existait sur Facebook, mais
+c'était la même cliente que resultat-01 sous un autre angle : elle a été
+écartée le 17/10/2026.
 
 Les cadrages évitent volontairement les visages et les reflets de personnes
 dans les miroirs. Aucun client n'est identifiable.

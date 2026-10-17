@@ -15,8 +15,8 @@
 <meta name="theme-color" content="#14110D">
 <link rel="apple-touch-icon" href="photos/apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314110D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23C9A765' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/bodoni-moda-latin-400-normal.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/mulish-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin-600-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/work-sans-latin-400-normal.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -49,7 +49,7 @@
       <div class="hero-text">
         <p class="eyebrow">Salon de coiffure mixte · Agay</p>
         <h1>Caractère Coiffure</h1>
-        <p class="lede">Coupe, couleur, balayage et soin, pour les femmes, les hommes et les enfants. Dans l'espace bien-être des Mas de l'Estérel, à Agay. Si parla italiano, English spoken.</p>
+        <p class="lede">Prenez rendez-vous dans le salon de coiffure d'Elda&#8239;: coupe, couleur, balayage et soins, pour femmes, hommes et enfants, dans l'espace bien-être des Mas de l'Estérel, à Agay.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#rdv"><span>Prendre rendez-vous</span></a>
           <a class="btn btn-phone" href="tel:+33609317223"><span>06 09 31 72 23</span></a>
@@ -84,42 +84,43 @@
       <h2 class="sec-h reveal">Tarifs</h2>
       <div class="filtres reveal" id="js-filtres" role="group" aria-label="Filtrer les tarifs">
         <button type="button" class="chip is-on" data-f="tout">Tout</button>
-        <button type="button" class="chip" data-f="femme">Femme</button>
-        <button type="button" class="chip" data-f="homme">Homme</button>
-        <button type="button" class="chip" data-f="enfant">Enfant</button>
+        <button type="button" class="chip" data-f="coupe">Coupe</button>
+        <button type="button" class="chip" data-f="shampoing">Shampoing</button>
         <button type="button" class="chip" data-f="couleur">Couleur</button>
         <button type="button" class="chip" data-f="soin">Soin</button>
+        <button type="button" class="chip" data-f="forme">Forme</button>
+        <button type="button" class="chip" data-f="autre">Autre</button>
       </div>
 
       <div class="tarif-cols">
         <div class="tarif-grp reveal">
           <h3>Coupe</h3>
           <ul class="price">
-            <li data-cat="femme"><span class="n">Coupe femme</span><span class="v">25 €</span></li>
-            <li data-cat="homme"><span class="n">Coupe homme</span><span class="v">25 €</span></li>
-            <li data-cat="enfant"><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="v">20 €</span></li>
-            <li data-cat="femme homme enfant"><span class="n">Frange</span><span class="v">8 €</span></li>
+            <li data-cat="coupe"><span class="n">Coupe femme</span><span class="v">25 €</span></li>
+            <li data-cat="coupe"><span class="n">Coupe homme</span><span class="v">25 €</span></li>
+            <li data-cat="coupe"><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="v">20 €</span></li>
+            <li data-cat="coupe"><span class="n">Frange</span><span class="v">8 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Shampoing et brushing</h3>
           <ul class="price">
-            <li data-cat="femme"><span class="n">Brushing <small>cheveux courts</small></span><span class="v">25 €</span></li>
-            <li data-cat="femme"><span class="n">Brushing <small>mi-longs</small></span><span class="v">30 €</span></li>
-            <li data-cat="femme"><span class="n">Brushing <small>longs</small></span><span class="v">35 €</span></li>
-            <li data-cat="femme"><span class="n">Shampoing, coupe et brushing</span><span class="v">50 €</span></li>
+            <li data-cat="shampoing"><span class="n">Brushing <small>cheveux courts</small></span><span class="v">25 €</span></li>
+            <li data-cat="shampoing"><span class="n">Brushing <small>mi-longs</small></span><span class="v">30 €</span></li>
+            <li data-cat="shampoing"><span class="n">Brushing <small>longs</small></span><span class="v">35 €</span></li>
+            <li data-cat="shampoing coupe"><span class="n">Shampoing, coupe et brushing</span><span class="v">50 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Couleur</h3>
           <ul class="price">
-            <li data-cat="couleur femme"><span class="n">Couleur racine</span><span class="v">35 €</span></li>
-            <li data-cat="couleur femme"><span class="n">Couleur totale</span><span class="v">50 €</span></li>
-            <li data-cat="couleur femme"><span class="n">Patine, gloss</span><span class="v">20 €</span></li>
-            <li data-cat="couleur femme"><span class="n">Balayage</span><span class="v"><i>dès</i>65 €</span></li>
-            <li data-cat="couleur femme"><span class="n">Mèches, ombré hair</span><span class="v"><i>dès</i>70 €</span></li>
+            <li data-cat="couleur"><span class="n">Couleur racine</span><span class="v">35 €</span></li>
+            <li data-cat="couleur"><span class="n">Couleur totale</span><span class="v">50 €</span></li>
+            <li data-cat="couleur"><span class="n">Patine, gloss</span><span class="v">20 €</span></li>
+            <li data-cat="couleur"><span class="n">Balayage</span><span class="v"><i>dès</i>65 €</span></li>
+            <li data-cat="couleur"><span class="n">Mèches, ombré hair</span><span class="v"><i>dès</i>70 €</span></li>
           </ul>
         </div>
 
@@ -137,23 +138,23 @@
         <div class="tarif-grp reveal">
           <h3>Forme et lissage</h3>
           <ul class="price">
-            <li data-cat="couleur femme"><span class="n">Permanente</span><span class="v">50 €</span></li>
-            <li data-cat="couleur femme"><span class="n">Lissage brésilien</span><span class="v"><i>dès</i>120 €</span></li>
+            <li data-cat="forme"><span class="n">Permanente</span><span class="v">50 €</span></li>
+            <li data-cat="forme"><span class="n">Lissage brésilien</span><span class="v"><i>dès</i>120 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Chignon et occasions</h3>
           <ul class="price">
-            <li data-cat="femme"><span class="n">Chignon, attache</span><span class="v">45 €</span></li>
-            <li data-cat="femme"><span class="n">Coiffure d'événement <small>mariage, baptême, communion, cérémonie</small></span><span class="v">55 €</span></li>
+            <li data-cat="autre"><span class="n">Chignon, attache</span><span class="v">45 €</span></li>
+            <li data-cat="autre"><span class="n">Coiffure d'événement <small>mariage, baptême, communion, cérémonie</small></span><span class="v">55 €</span></li>
           </ul>
         </div>
       </div>
 
       <aside class="phone-note reveal">
-        <h3>Ces prestations se réservent par téléphone</h3>
-        <p>Balayage, mèches, ombré hair, lissage brésilien, permanente, chignon et coiffure d'événement. Ces rendez-vous sont plus longs, et le prix dépend de la longueur et de l'épaisseur du cheveu. Elda le fixe avec vous avant de commencer.</p>
+        <h3>Ces prestations demandent un appel en plus</h3>
+        <p>Balayage, mèches, ombré hair, lissage brésilien, permanente, chignon et coiffure d'événement. Réservez-les normalement dans le calendrier, puis appelez Elda&#8239;: la durée et le prix dépendent de la longueur et de l'épaisseur du cheveu, elle les cale avec vous avant le rendez-vous.</p>
         <a class="btn btn-solid" href="tel:+33609317223"><span>Appeler le 06 09 31 72 23</span></a>
       </aside>
     </div>
@@ -170,6 +171,7 @@
             <li><strong>Par téléphone</strong><span>Aux heures d'ouverture, du lundi au samedi.</span>
               <a class="rdv-tel" href="tel:+33609317223">06 09 31 72 23</a></li>
           </ol>
+          <p class="rdv-compact">Choisissez votre créneau ci-dessous. Une question avant de réserver&#8239;? <a href="tel:+33609317223">06 09 31 72 23</a></p>
         </div>
         <div class="embed reveal" id="cal-box">
           <h3>Calendrier en ligne</h3>
@@ -187,7 +189,6 @@
       <div class="salon-text reveal">
         <p>Caractère Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. Elda y reçoit sur rendez-vous, du lundi au samedi.</p>
         <p><strong>Le salon est ouvert à tout le monde.</strong> Vous n'avez pas besoin de séjourner au village vacances pour venir : l'entrée et le parking sont libres d'accès.</p>
-        <p>Elda est italienne. Elle reçoit en français, en italien et en anglais.</p>
       </div>
     </div>
 
@@ -195,9 +196,10 @@
       <div class="slider-track" data-track tabindex="0" role="group" aria-label="Photos du salon, faites défiler avec les flèches">
         <figure><img src="photos/salon-01.webp" alt="Un poste de coiffage du salon, avec son grand miroir" loading="lazy" width="1400" height="933"></figure>
         <figure><img src="photos/salon-02.webp" alt="Les deux bacs à shampoing et leurs fauteuils inclinables" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et de coiffage" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-04.webp" alt="Le miroir doré de l'entrée du salon" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-05.webp" alt="La salle du salon vue depuis l'entrée" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et les brosses de coiffage" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-04.webp" alt="La salle du salon vue depuis l'entrée" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-05.webp" alt="Les miroirs dorés et les lampes du mur de coiffage" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-06.webp" alt="Un bouquet de roses blanches devant le miroir œil du salon" loading="lazy" width="1400" height="933"></figure>
       </div>
       <div class="wrap slider-bar">
         <button class="arrow" type="button" data-prev aria-label="Photo précédente">
@@ -206,22 +208,22 @@
         <button class="arrow" type="button" data-next aria-label="Photo suivante">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <span class="slider-count" data-count aria-live="polite">1 / 5</span>
+        <span class="slider-count" data-count aria-live="polite">1 / 6</span>
       </div>
     </div>
   </section>
 
   <section id="couleurs">
     <div class="wrap">
-      <h2 class="sec-h reveal">Couleur et balayage</h2>
-      <p class="sec-intro reveal">Des couleurs faites au salon, photographiées par Elda.</p>
+      <h2 class="sec-h reveal">Couleur, balayage, lissage</h2>
+      <p class="sec-intro reveal">Quatre têtes faites au salon.</p>
       <div class="resultats">
         <figure class="reveal"><img src="photos/resultat-01.webp" alt="Balayage blond sur base châtain, longueurs bouclées au brushing" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Balayage fondu, brushing bouclé sur cheveux longs" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Blond froid, mèches fines sur un carré long ondulé" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Blond froid, mèches fines sur un carré long ondulé" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Cheveux longs lissés, photographiés en noir et blanc" loading="lazy" width="760" height="950"></figure>
       </div>
-      <p class="resultats-note reveal">Le balayage, les mèches et le lissage brésilien se réservent par téléphone&#8239;: Elda cale la durée avec vous avant de bloquer le créneau.</p>
+      <p class="resultats-note reveal">Balayage, mèches et lissage brésilien se réservent dans le calendrier comme le reste. Un appel au <a href="tel:+33609317223">06 09 31 72 23</a> en plus, et Elda cale la durée et le prix avec vous.</p>
     </div>
   </section>
 
@@ -257,7 +259,8 @@
       <div class="access">
         <div class="where reveal">
           <p><span class="label">Adresse</span>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël<br><small class="note-acces">Entrée et parking libres, même sans séjourner au village vacances.</small></p>
-          <p><span class="label">Téléphone</span><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a></p>
+          <p><span class="label">Trouver la porte</span>Entrez par l'accueil principal du village vacances BTP, traversez jusqu'à la salle de restauration, tournez à droite, puis entrez dans l'espace bien-être&#8239;: le salon est la première porte devant vous.</p>
+          <p><span class="label">Téléphone</span><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a><br><small class="note-acces">Elda vous reçoit en français, en italien et en anglais.</small></p>
           <p><span class="label">Horaires</span>Du lundi au samedi, 9h à 17h<br>Fermé le dimanche</p>
           <div class="social">
             <a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.4345022,6.8706645" rel="noopener" target="_blank"><span>Itinéraire sur Google Maps</span><span class="arw" aria-hidden="true">&rarr;</span></a>

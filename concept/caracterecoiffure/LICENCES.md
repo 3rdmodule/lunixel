@@ -5,8 +5,8 @@ depuis Google Fonts : la CNIL considère le chargement direct comme un transfert
 
 | Ressource | Version | Licence | Source |
 |---|---|---|---|
-| Bodoni Moda | Fontsource 5.3.0 | SIL Open Font License 1.1 | npm `@fontsource/bodoni-moda` |
-| Mulish | Fontsource 5.3.0 | SIL Open Font License 1.1 | npm `@fontsource/mulish` |
+| Fraunces | Fontsource | SIL Open Font License 1.1 | npm `@fontsource/fraunces` |
+| Work Sans | Fontsource | SIL Open Font License 1.1 | npm `@fontsource/work-sans` |
 
 Aucune bibliothèque JavaScript tierce. Les 150 lignes de `assets/js/site.js` sont
 écrites pour ce site : horaires en direct, galerie à flèches, consentement des
@@ -20,7 +20,8 @@ Deux origines, deux statuts différents.
 fourni par la cliente le 25/08/2026. Elles lui appartiennent. Licence d'usage
 [À COMPLÉTER] dans les mentions légales.
 
-**Résultats de coiffure** (`resultat-01` à `resultat-04`) : page Facebook
+**Résultats de coiffure** (`resultat-01` à `resultat-04`) et deux vues du
+salon (`salon-05`, `salon-06`) : page Facebook
 publique du salon. Les photos sont d'Elda, mais **les clientes photographiées
 n'ont pas forcément consenti à une publication sur un site web**. Accord à
 obtenir avant la mise en ligne définitive, même si les cadrages évitent les

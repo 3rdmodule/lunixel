@@ -10,10 +10,18 @@ Site statique, une seule page, aucun build. Publié à
 index.html              la page
 assets/css/site.css     toute la mise en forme
 assets/js/site.js       horaires, galerie, consentement des contenus tiers
-assets/fonts/*.woff2    Bodoni Moda et Mulish, sous-ensemble latin
+assets/fonts/*.woff2    Fraunces et Work Sans, sous-ensemble latin
 photos/                 photos du salon et résultats, voir photos/LISEZ-MOI.txt
 LICENCES.md             licences des polices
 ```
+
+## Direction artistique
+
+Direction **Atelier**, validée le 17/10/2026 parmi trois propositions.
+Fraunces pour les titres, Work Sans pour le texte, les deux auto-hébergées en
+woff2 (75 Ko au total, aucun appel à Google Fonts). Palette sable chaud, brun
+café et terre cuite, tirée des murs crème et des fauteuils du salon. Les angles
+sont arrondis : c'est un salon de quartier, pas une galerie.
 
 ## Choix techniques
 

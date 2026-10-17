@@ -147,6 +147,10 @@
       box.innerHTML = '';
       box.classList.add('is-loaded');
       box.appendChild(f);
+      // Le calendrier est bien plus haut que la colonne de gauche :
+      // on repasse la section sur une seule colonne pour supprimer le vide.
+      var grille = box.closest('.rdv-grid');
+      if (grille) grille.classList.add('is-embedded');
     });
   });
 
