@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Caractère Coiffure, coiffeur à Agay, Saint-Raphaël</title>
-<meta name="description" content="Salon de coiffure mixte à Agay. Coupe, couleur, balayage, soin. Tous les tarifs affichés, du lundi au samedi, toute l'année. Rendez-vous en ligne ou au 06 09 31 72 23.">
+<title>Caractère Coiffure, salon de coiffure à Agay (Saint-Raphaël)</title>
+<meta name="description" content="Caractère Coiffure, salon de coiffure mixte à Agay, dans l'espace bien-être des Mas de l'Estérel. Coupe, couleur, balayage, soin. Du lundi au samedi, 9h à 17h. Rendez-vous au 06 09 31 72 23.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://lunixel.fr/concept/caracterecoiffure/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Caractère Coiffure, coiffeur à Agay">
-<meta property="og:description" content="Salon mixte à Agay. Coupe, couleur, balayage, soin. Tarifs affichés, ouvert toute l'année du lundi au samedi.">
-<meta property="og:image" content="photos/og.jpg">
+<meta property="og:title" content="Caractère Coiffure, salon de coiffure à Agay">
+<meta property="og:description" content="Salon de coiffure mixte à Agay, espace bien-être des Mas de l'Estérel. Coupe, couleur, balayage, soin. Du lundi au samedi, 9h à 17h.">
+<meta property="og:image" content="photos/og.webp">
 <meta name="theme-color" content="#14110D">
 <link rel="apple-touch-icon" href="photos/apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314110D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23C9A765' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
@@ -20,19 +21,15 @@
 </head>
 <body>
 
-<div id="curtain" aria-hidden="true">
-  <span class="c-mark">Caractère</span>
-  <span class="c-sub">Coiffure · Agay</span>
-</div>
-
 <a class="skip" href="#contenu">Aller au contenu</a>
 
 <header class="topbar">
   <div class="wrap">
-    <a class="mark" href="#top">Caractère<small>Coiffure · Agay</small></a>
+    <a class="mark" href="#top">Caractère Coiffure<small>Agay · Saint-Raphaël</small></a>
     <nav class="topnav" aria-label="Navigation principale">
       <a href="#tarifs">Tarifs</a>
       <a href="#rdv">Rendez-vous</a>
+      <a href="#horaires">Horaires</a>
       <a href="#salon">Le salon</a>
       <a href="#acces">Accès</a>
     </nav>
@@ -48,146 +45,167 @@
 
   <section class="hero">
     <div class="wrap">
-      <div>
-        <p class="eyebrow reveal">Salon mixte · Agay, Saint-Raphaël</p>
-        <h1>Coiffeur à Agay,<span class="l2">ouvert toute l'année.</span></h1>
-        <div class="hero-body reveal">
-          <p class="lede">Elda coiffe les femmes, les hommes et les enfants depuis vingt ans. Coupe, couleur, balayage et soin, sur rendez-vous.</p>
-          <div class="hero-actions">
-            <a class="btn btn-solid" href="#rdv"><span>Prendre rendez-vous</span></a>
-            <a class="btn" href="#tarifs"><span>Voir les tarifs</span></a>
-          </div>
+      <div class="hero-text">
+        <p class="eyebrow">Salon de coiffure mixte · Agay</p>
+        <h1>Caractère Coiffure</h1>
+        <p class="lede">Coupe, couleur, balayage et soin, pour les femmes, les hommes et les enfants. Dans l'espace bien-être des Mas de l'Estérel, à Agay.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#rdv"><span>Prendre rendez-vous</span></a>
+          <a class="btn btn-phone" href="tel:+33609317223"><span>06 09 31 72 23</span></a>
         </div>
       </div>
       <div class="frame">
-        <div class="shot">
-          <img src="photos/hero.webp" alt="Un poste de coiffage du salon Caractère Coiffure à Agay" width="1200" height="1500">
-        </div>
+        <img src="photos/hero.webp" alt="L'intérieur du salon Caractère Coiffure à Agay" width="1200" height="1500" fetchpriority="high">
       </div>
     </div>
   </section>
 
-  <div class="facts">
+  <div class="statusbar" id="horaires">
     <div class="wrap">
-      <dl>
-        <div><dt>Horaires</dt><dd>Lundi au samedi, 9h à 17h</dd></div>
-        <div><dt>Tarifs</dt><dd>Affichés en entier, coupe dès 20 €</dd></div>
-        <div><dt>Rendez-vous</dt><dd>En ligne, ou au 06 09 31 72 23</dd></div>
-      </dl>
+      <div class="status-now">
+        <p class="status-line"><span class="dot" id="js-dot" aria-hidden="true"></span><strong id="js-status">Du lundi au samedi, 9h à 17h</strong></p>
+        <p class="status-sub" id="js-status-sub">Fermé le dimanche</p>
+      </div>
+      <ul class="week" id="js-week">
+        <li data-day="1"><span class="dname">Lundi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="2"><span class="dname">Mardi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="3"><span class="dname">Mercredi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="4"><span class="dname">Jeudi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="5"><span class="dname">Vendredi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="6"><span class="dname">Samedi</span><span class="dtime">9h - 17h</span></li>
+        <li data-day="0" class="closed"><span class="dname">Dimanche</span><span class="dtime">Fermé</span></li>
+      </ul>
     </div>
   </div>
 
   <section id="tarifs">
     <div class="wrap">
-      <div class="sec-top reveal">
-        <h2>Tous les tarifs du salon.</h2>
-        <p>Rien n'est caché, rien ne s'ajoute à la caisse. Les prestations marquées « à partir de » dépendent de la longueur et de la densité du cheveu : le prix exact est annoncé après le diagnostic, avant de commencer.</p>
-      </div>
+      <h2 class="sec-h reveal">Tarifs</h2>
 
       <div class="tarif-cols">
         <div class="tarif-grp reveal">
-          <h3>Coupe et coiffage</h3>
+          <h3>Coupe</h3>
           <ul class="price">
-            <li><span class="n">Coupe femme</span><span class="d"></span><span class="v">25 €</span></li>
-            <li><span class="n">Coupe homme</span><span class="d"></span><span class="v">25 €</span></li>
-            <li><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="d"></span><span class="v">20 €</span></li>
-            <li><span class="n">Frange</span><span class="d"></span><span class="v">8 €</span></li>
-            <li><span class="n">Shampoing brushing <small>cheveux courts</small></span><span class="d"></span><span class="v">25 €</span></li>
-            <li><span class="n">Shampoing brushing <small>mi-longs</small></span><span class="d"></span><span class="v">30 €</span></li>
-            <li><span class="n">Shampoing brushing <small>longs</small></span><span class="d"></span><span class="v">35 €</span></li>
-            <li><span class="n">Shampoing coupe brushing</span><span class="d"></span><span class="v">50 €</span></li>
+            <li><span class="n">Coupe femme</span><span class="v">25 €</span></li>
+            <li><span class="n">Coupe homme</span><span class="v">25 €</span></li>
+            <li><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="v">20 €</span></li>
+            <li><span class="n">Frange</span><span class="v">8 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
-          <h3>Couleur et texture</h3>
+          <h3>Shampoing et brushing</h3>
           <ul class="price">
-            <li><span class="n">Couleur racine</span><span class="d"></span><span class="v">35 €</span></li>
-            <li><span class="n">Couleur totale</span><span class="d"></span><span class="v">50 €</span></li>
-            <li><span class="n">Patine, gloss</span><span class="d"></span><span class="v">20 €</span></li>
-            <li><span class="n">Balayage</span><span class="d"></span><span class="v"><i>dès</i> 65 €</span></li>
-            <li><span class="n">Mèches, ombré hair</span><span class="d"></span><span class="v"><i>dès</i> 70 €</span></li>
-            <li><span class="n">Permanente</span><span class="d"></span><span class="v">50 €</span></li>
-            <li><span class="n">Lissage brésilien</span><span class="d"></span><span class="v"><i>dès</i> 120 €</span></li>
+            <li><span class="n">Brushing <small>cheveux courts</small></span><span class="v">25 €</span></li>
+            <li><span class="n">Brushing <small>mi-longs</small></span><span class="v">30 €</span></li>
+            <li><span class="n">Brushing <small>longs</small></span><span class="v">35 €</span></li>
+            <li><span class="n">Shampoing, coupe et brushing</span><span class="v">50 €</span></li>
+          </ul>
+        </div>
+
+        <div class="tarif-grp reveal">
+          <h3>Couleur</h3>
+          <ul class="price">
+            <li><span class="n">Couleur racine</span><span class="v">35 €</span></li>
+            <li><span class="n">Couleur totale</span><span class="v">50 €</span></li>
+            <li><span class="n">Patine, gloss</span><span class="v">20 €</span></li>
+            <li><span class="n">Balayage</span><span class="v"><i>dès</i>65 €</span></li>
+            <li><span class="n">Mèches, ombré hair</span><span class="v"><i>dès</i>70 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Soin du cheveu</h3>
           <ul class="price">
-            <li><span class="n">Soin profond</span><span class="d"></span><span class="v">6 €</span></li>
-            <li><span class="n">Sérum anti-chute et massage</span><span class="d"></span><span class="v">10 €</span></li>
-            <li><span class="n">Soin capillaire</span><span class="d"></span><span class="v">20 €</span></li>
-            <li><span class="n">Soin profond réparateur</span><span class="d"></span><span class="v">20 €</span></li>
-            <li><span class="n">Gommage du cuir chevelu</span><span class="d"></span><span class="v">25 €</span></li>
+            <li><span class="n">Soin profond</span><span class="v">6 €</span></li>
+            <li><span class="n">Sérum anti-chute et massage</span><span class="v">10 €</span></li>
+            <li><span class="n">Soin capillaire</span><span class="v">20 €</span></li>
+            <li><span class="n">Soin profond réparateur</span><span class="v">20 €</span></li>
+            <li><span class="n">Gommage du cuir chevelu</span><span class="v">25 €</span></li>
+          </ul>
+        </div>
+
+        <div class="tarif-grp reveal">
+          <h3>Forme et lissage</h3>
+          <ul class="price">
+            <li><span class="n">Permanente</span><span class="v">50 €</span></li>
+            <li><span class="n">Lissage brésilien</span><span class="v"><i>dès</i>120 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Chignon et occasions</h3>
           <ul class="price">
-            <li><span class="n">Chignon, attache</span><span class="d"></span><span class="v">45 €</span></li>
-            <li><span class="n">Coiffure événementielle <small>mariage, cérémonie</small></span><span class="d"></span><span class="v">55 €</span></li>
+            <li><span class="n">Chignon, attache</span><span class="v">45 €</span></li>
+            <li><span class="n">Coiffure d'événement <small>mariage, baptême, communion, cérémonie</small></span><span class="v">55 €</span></li>
           </ul>
-          <p class="grp-note">Pour un mariage, prévoyez un essai en amont. À caler au téléphone avec Elda.</p>
         </div>
       </div>
+
+      <aside class="phone-note reveal">
+        <h3>Ces prestations se réservent par téléphone</h3>
+        <p>Balayage, mèches, ombré hair, lissage brésilien, permanente, chignon et coiffure d'événement. Ces rendez-vous sont plus longs, et le prix dépend de la longueur et de l'épaisseur du cheveu. Elda le fixe avec vous avant de commencer.</p>
+        <a class="btn btn-solid" href="tel:+33609317223"><span>Appeler le 06 09 31 72 23</span></a>
+      </aside>
     </div>
   </section>
 
-  <section id="rdv" data-ink>
-    <div class="wrap rdv-grid">
-      <div class="sec-top reveal">
-        <h2>Prendre rendez-vous.</h2>
-        <p>Choisissez votre créneau en ligne, à l'heure qui vous arrange, même le soir. Ou appelez le salon pendant les heures d'ouverture.</p>
-        <p class="rdv-tel"><a href="tel:+33609317223">06 09 31 72 23</a></p>
-      </div>
-      <div class="embed reveal" id="cal-box">
-        <h3>Calendrier en ligne</h3>
-        <p>Le calendrier est fourni par Cal.com. En l'affichant, vous acceptez le dépôt de cookies par ce service.</p>
-        <button class="btn btn-light" type="button" data-embed="cal"><span>Afficher le calendrier</span></button>
-        <p class="fallback">Pour un balayage, un lissage ou un mariage, préférez le téléphone : Elda cale la durée avec vous.</p>
-        <noscript><p class="fallback">Le calendrier demande JavaScript. Appelez le 06 09 31 72 23.</p></noscript>
+  <section id="rdv">
+    <div class="wrap">
+      <h2 class="sec-h reveal">Prendre rendez-vous</h2>
+      <div class="rdv-grid">
+        <div class="rdv-side reveal">
+          <p class="rdv-intro">Deux façons de faire, au choix.</p>
+          <ol class="rdv-steps">
+            <li><strong>En ligne</strong><span>Choisissez un jour et une heure dans le calendrier, à toute heure du jour ou de la nuit.</span></li>
+            <li><strong>Par téléphone</strong><span>Aux heures d'ouverture, du lundi au samedi.</span>
+              <a class="rdv-tel" href="tel:+33609317223">06 09 31 72 23</a></li>
+          </ol>
+        </div>
+        <div class="embed reveal" id="cal-box">
+          <h3>Calendrier en ligne</h3>
+          <p>Le calendrier est fourni par Cal.com. En l'affichant, vous acceptez le dépôt de cookies par ce service.</p>
+          <button class="btn btn-solid" type="button" data-embed="cal"><span>Afficher le calendrier</span></button>
+          <noscript><p class="fallback">Le calendrier demande JavaScript. Appelez le 06 09 31 72 23.</p></noscript>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="salon">
     <div class="wrap">
-      <div class="salon-intro">
-        <div class="sec-top reveal">
-          <h2>Vingt ans de métier, un seul fauteuil à la fois.</h2>
-        </div>
-        <div class="salon-text reveal">
-          <p>Elda tient le salon à Agay, dans l'espace bien-être des Mas de l'Estérel. On y vient de tout le coin, d'Agay, du Dramont, de Boulouris, d'Anthéor et de Saint-Raphaël, et pas seulement l'été : le salon est ouvert six jours sur sept, toute l'année.</p>
-          <p>C'est un petit salon, et c'est voulu. Vous n'êtes pas installée sur un fauteuil pendant qu'on s'occupe de quelqu'un d'autre. Le diagnostic se fait avant de commencer, le prix est annoncé à ce moment-là, et on prend le temps qu'il faut.</p>
-        </div>
+      <h2 class="sec-h reveal">Le salon</h2>
+      <p class="salon-text reveal">Caractère Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. Elda y reçoit sur rendez-vous, du lundi au samedi.</p>
+    </div>
+
+    <div class="slider" data-slider>
+      <div class="slider-track" data-track tabindex="0" role="group" aria-label="Photos du salon, faites défiler avec les flèches">
+        <figure><img src="photos/salon-01.webp" alt="Un poste de coiffage du salon, avec son grand miroir" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-02.webp" alt="Les deux bacs à shampoing et leurs fauteuils inclinables" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et de coiffage" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-04.webp" alt="Le miroir doré de l'entrée du salon" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-05.webp" alt="La salle du salon vue depuis l'entrée" loading="lazy" width="1400" height="933"></figure>
       </div>
-      <div class="gal">
-        <figure><div class="shot"><img src="photos/salon-01.webp" alt="Un poste de coiffage vu depuis le grand miroir, avec l'étagère de produits au fond" loading="lazy" width="1600" height="1000"></div></figure>
-        <figure><div class="shot"><img src="photos/salon-02.webp" alt="Le miroir de l'entrée du salon" loading="lazy" width="1000" height="1334"></div></figure>
-        <figure><div class="shot"><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et de coiffage" loading="lazy" width="1000" height="1334"></div></figure>
-        <figure><div class="shot"><img src="photos/salon-04.webp" alt="Les deux bacs à shampoing et leurs fauteuils inclinables" loading="lazy" width="1600" height="1000"></div></figure>
+      <div class="wrap slider-bar">
+        <button class="arrow" type="button" data-prev aria-label="Photo précédente">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="arrow" type="button" data-next aria-label="Photo suivante">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="slider-count" data-count aria-live="polite">1 / 5</span>
       </div>
     </div>
   </section>
 
   <section id="acces">
     <div class="wrap">
-      <div class="sec-top reveal">
-        <h2>Venir au salon.</h2>
-      </div>
+      <h2 class="sec-h reveal">Venir au salon</h2>
       <div class="access">
         <div class="where reveal">
-          <p><span class="label">Adresse</span>Avenue du Cap-Roux<br>83530 Saint-Raphaël<br>Quartier d'Agay, espace bien-être des Mas de l'Estérel</p>
-          <p><span class="label">Téléphone</span><a href="tel:+33609317223">06 09 31 72 23</a></p>
-          <div class="hours-block">
-            <span class="label">Horaires</span>
-            <ul class="hours">
-              <li><span>Lundi au samedi</span><span class="d"></span><span class="h">9h - 17h</span></li>
-              <li class="off"><span>Dimanche</span><span class="d"></span><span class="h">Fermé</span></li>
-            </ul>
-          </div>
+          <p><span class="label">Adresse</span>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël</p>
+          <p><span class="label">Téléphone</span><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a></p>
+          <p><span class="label">Horaires</span>Du lundi au samedi, 9h à 17h<br>Fermé le dimanche</p>
           <div class="social">
             <a href="https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7" rel="noopener" target="_blank"><span>Itinéraire sur Google Maps</span><span class="arw" aria-hidden="true">&rarr;</span></a>
             <a href="https://www.facebook.com/eldadoda2101" rel="noopener" target="_blank"><span>Le salon sur Facebook</span><span class="arw" aria-hidden="true">&rarr;</span></a>
@@ -197,40 +215,41 @@
           <h3>Plan d'accès</h3>
           <p>La carte est fournie par Google Maps. En l'affichant, vous acceptez le dépôt de cookies par ce service.</p>
           <button class="btn btn-solid" type="button" data-embed="map"><span>Afficher la carte</span></button>
-          <p class="fallback"><a href="https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7" rel="noopener" target="_blank">Ouvrir l'itinéraire dans Google Maps</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="closing" data-ink>
+  <section class="closing">
     <div class="wrap">
       <div class="reveal">
-        <h2>Un créneau cette semaine ?</h2>
-        <p>Le planning du salon est à jour en ligne, et le téléphone répond aux heures d'ouverture.</p>
+        <h2>Prendre rendez-vous</h2>
+        <p>En ligne à toute heure, ou par téléphone aux heures d'ouverture.</p>
       </div>
-      <a class="btn btn-light reveal" href="#rdv"><span>Prendre rendez-vous</span></a>
+      <div class="closing-actions reveal">
+        <a class="btn btn-light" href="#rdv"><span>Voir le calendrier</span></a>
+        <a class="btn btn-light" href="tel:+33609317223"><span>06 09 31 72 23</span></a>
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer data-ink>
+<footer>
   <div class="wrap">
-    <div class="foot-rule"></div>
     <div class="foot-grid">
       <div>
         <h4>Caractère Coiffure</h4>
-        <p>Salon de coiffure mixte à Agay, quartier de Saint-Raphaël, dans l'espace bien-être des Mas de l'Estérel.</p>
-        <p>Avenue du Cap-Roux, 83530 Saint-Raphaël<br><a href="tel:+33609317223">06 09 31 72 23</a></p>
+        <p>Salon de coiffure mixte à Agay, quartier de Saint-Raphaël.</p>
+        <p>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël<br><a href="tel:+33609317223">06 09 31 72 23</a></p>
       </div>
       <div>
         <h4>Le salon</h4>
         <ul>
           <li><a href="#tarifs">Tarifs</a></li>
           <li><a href="#rdv">Prendre rendez-vous</a></li>
-          <li><a href="#salon">Le salon</a></li>
-          <li><a href="#acces">Accès et horaires</a></li>
+          <li><a href="#horaires">Horaires</a></li>
+          <li><a href="#acces">Accès</a></li>
         </ul>
       </div>
       <div>
@@ -249,10 +268,33 @@
   </div>
 </footer>
 
-<script src="assets/js/gsap.min.js"></script>
-<script src="assets/js/ScrollTrigger.min.js"></script>
-<script src="assets/js/SplitText.min.js"></script>
-<script src="assets/js/lenis.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Caractère Coiffure",
+  "description": "Salon de coiffure mixte à Agay, Saint-Raphaël. Coupe, couleur, balayage et soin.",
+  "telephone": "+33609317223",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Espace bien-être des Mas de l'Estérel, Agay",
+    "postalCode": "83530",
+    "addressLocality": "Saint-Raphaël",
+    "addressRegion": "Var",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 43.4345022, "longitude": 6.8706645 },
+  "areaServed": ["Agay", "Le Dramont", "Anthéor", "Boulouris", "Saint-Raphaël"],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00", "closes": "17:00"
+  }],
+  "sameAs": ["https://www.facebook.com/eldadoda2101"]
+}
+</script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>
