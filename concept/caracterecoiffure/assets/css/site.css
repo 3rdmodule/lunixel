@@ -264,3 +264,97 @@ footer :where(a,button):focus-visible{outline-color:var(--bronze-light)}
   .week li.is-today{background:#eee;color:#000}
   .slider-track{display:block}
 }
+
+/* ============================================================
+   Ajouts : filtres de tarifs, barre d'action mobile, avis
+   ============================================================ */
+
+/* ---------- filtres de tarifs ---------- */
+.filtres{display:flex;flex-wrap:wrap;gap:10px;margin:-24px 0 42px}
+.chip{font-family:"Mulish",sans-serif;font-size:.95rem;font-weight:600;
+  padding:11px 20px;min-height:46px;border:1.5px solid var(--rule);background:none;
+  color:var(--fg-muted);cursor:pointer;border-radius:999px;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.is-on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.price li.is-off{display:none}
+.tarif-grp.is-off{display:none}
+.tarif-grp,.price li{transition:opacity .2s var(--ease)}
+
+/* ---------- texte du salon ---------- */
+.salon-text p:last-child{margin-bottom:0}
+.salon-text strong{font-weight:600}
+.note-acces{display:block;margin-top:10px;font-size:.92rem;color:var(--fg-muted)}
+
+/* ---------- avis dans le pied de page ---------- */
+.foot-avis p{margin-bottom:16px;max-width:30ch}
+
+/* ---------- barre d'action fixe, mobile uniquement ---------- */
+.actionbar{display:none}
+@media(max-width:860px){
+  .actionbar{display:grid;grid-template-columns:auto 1fr;gap:10px;
+    position:fixed;left:0;right:0;bottom:0;z-index:55;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(250,247,241,.97);border-top:1px solid var(--rule)}
+  .actionbar a{display:flex;align-items:center;justify-content:center;gap:9px;
+    min-height:54px;text-decoration:none;font-weight:600;font-size:1rem}
+  .ab-call{padding:0 20px;border:1.5px solid var(--ink);color:var(--ink)}
+  .ab-book{background:var(--ink);color:var(--paper)}
+  body{padding-bottom:84px}
+  .topbar .wrap{min-height:66px}
+}
+@media(max-width:860px) and (prefers-color-scheme:dark){
+  .actionbar{background:rgba(250,247,241,.97)}
+}
+
+/* le numéro reste visible dès le plus petit écran */
+@media(min-width:420px){.tel{display:flex}}
+@media(max-width:419px){.tel{display:none}}
+
+@media print{.actionbar,.filtres{display:none}}
+
+/* ============================================================
+   Couleur et balayage : les vrais résultats du salon.
+   Quatre portraits de même format, jamais de trou dans la grille.
+   ============================================================ */
+#couleurs{background:var(--ink);color:var(--on-ink)}
+#couleurs .sec-h{color:var(--on-ink);border-bottom-color:var(--rule-on-ink)}
+#couleurs .sec-intro{color:var(--on-ink-muted)}
+#couleurs .resultats figure{background:var(--ink-2);border-color:var(--rule-on-ink)}
+#couleurs .resultats-note{color:var(--on-ink-muted);border-left-color:var(--bronze-light)}
+.sec-intro{margin:-30px 0 36px;max-width:52ch;color:var(--fg-muted)}
+.resultats{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(min-width:900px){.resultats{grid-template-columns:repeat(4,1fr);gap:18px}}
+.resultats figure{margin:0;overflow:hidden;background:var(--paper);
+  border:1px solid var(--rule);border-radius:2px}
+.resultats img{display:block;width:100%;height:auto;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+@media(hover:hover){.resultats figure:hover img{transform:scale(1.035)}}
+.resultats-note{margin:28px 0 0;max-width:56ch;font-size:.95rem;color:var(--fg-muted);
+  border-left:2px solid var(--bronze-light);padding-left:16px}
+
+/* ============================================================
+   Comparateur avant / après. En attente des photos d'Elda,
+   le bloc HTML est commenté dans index.html. Le composant est
+   complet : curseur à la souris, au doigt et au clavier.
+   ============================================================ */
+.compare{position:relative;max-width:520px;margin:0 auto;overflow:hidden;
+  border:1px solid var(--rule);border-radius:2px;background:var(--paper);
+  --cmp:50%;touch-action:pan-y}
+.compare img{display:block;width:100%;height:auto}
+.compare .cmp-b-wrap{position:absolute;inset:0;width:var(--cmp);overflow:hidden}
+.compare .cmp-b-wrap img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none}
+.cmp-tag{position:absolute;bottom:14px;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:6px 12px;border-radius:2px;
+  background:rgba(20,17,13,.78);color:var(--on-ink)}
+.cmp-tag-a{right:14px}
+.cmp-tag-b{left:14px}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--cmp);width:2px;
+  background:var(--on-ink);transform:translateX(-1px);pointer-events:none;
+  box-shadow:0 0 0 1px rgba(20,17,13,.25)}
+.cmp-handle::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;
+  transform:translate(-50%,-50%);border-radius:50%;background:var(--on-ink);
+  box-shadow:0 2px 10px rgba(20,17,13,.3)}
+.cmp-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;
+  cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent}
+.cmp-range:focus-visible{opacity:1;outline:3px solid var(--bronze);outline-offset:3px}

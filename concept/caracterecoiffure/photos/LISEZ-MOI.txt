@@ -2,8 +2,8 @@ Photos du salon
 ===============
 
 Sélection faite dans le dossier Drive du 25/08/2026, parmi les 15 clichés.
-Recadrées, légèrement reprises en couleur (saturation baissée, contraste et
-densité remontés), compressées en WebP.
+Recadrées, reprises en couleur vers une dominante plus chaude (rouges remontés,
+bleus baissés, légère densité en plus), compressées en WebP.
 
 hero.webp       DSC00972  4:5   un poste de coiffage et son grand miroir
 salon-01.webp   DSC00964  3:2   un poste de coiffage
@@ -25,5 +25,31 @@ DSC00971                                affiche papier des tarifs, risque de
                                         contredire les prix du site
 DSC00967, DSC00974, DSC00975, DSC00976  doublons
 
-Il n'existe aucune photo de personne ni de coiffure. Le jour où il y en aura,
-la galerie les accueille sans changement de code.
+Résultats de coiffure
+=====================
+
+Récupérés sur la page Facebook publique du salon, recadrés en 4:5 (760 x 950)
+et harmonisés avec le reste de la page. Ils alimentent la section
+« Couleur et balayage ».
+
+resultat-01.webp   balayage blond sur base châtain, longueurs bouclées
+resultat-02.webp   balayage fondu, brushing bouclé sur cheveux longs
+resultat-03.webp   boucles blondes dorées
+resultat-04.webp   blond froid, mèches fines sur carré long
+
+Les cadrages évitent volontairement les visages et les reflets de personnes
+dans les miroirs. Aucun client n'est identifiable.
+
+À faire valider par Elda avant la mise en ligne définitive : ce sont ses
+photos, mais les clientes photographiées n'ont pas forcément donné leur accord
+pour un site web.
+
+Avant / après
+=============
+
+Il n'en existe aucun, ni dans le Drive, ni sur Facebook, ni dans les neuf
+vidéos du Drive, qui sont toutes des panoramiques du salon vide. Les deux
+seules photos appairables montrent la même cliente sous deux angles, mais
+après coloration dans les deux cas.
+
+Le comparateur est prêt dans le code, voir LISEZ-MOI.md à la racine.

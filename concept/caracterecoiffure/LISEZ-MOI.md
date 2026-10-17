@@ -11,7 +11,7 @@ index.html              la page
 assets/css/site.css     toute la mise en forme
 assets/js/site.js       horaires, galerie, consentement des contenus tiers
 assets/fonts/*.woff2    Bodoni Moda et Mulish, sous-ensemble latin
-photos/                 les photos du salon, voir photos/LISEZ-MOI.txt
+photos/                 photos du salon et résultats, voir photos/LISEZ-MOI.txt
 LICENCES.md             licences des polices
 ```
 
@@ -34,13 +34,34 @@ LICENCES.md             licences des polices
 - Sans JavaScript, la page reste entièrement lisible. Seuls le calendrier et la
   carte demandent JavaScript, et les horaires restent affichés en statique.
 
+## Cal.com
+
+Les 14 prestations existent sur `cal.com/lead-major-sucah7`, classées par demande
+attendue, toutes en **rendez-vous sur place** à l'adresse du salon. Plus aucune
+visioconférence. Les trois événements par défaut de Cal.com sont masqués, pas
+supprimés : ils restent récupérables si besoin.
+
+## Avant / après
+
+Le comparateur est **codé et testé**, mais le bloc HTML est commenté dans
+`index.html`, juste après la section `#couleurs`. Raison : il n'existe aucune
+vraie paire avant/après, ni dans le Drive, ni sur le Facebook du salon.
+
+Pour l'activer, il faut deux photos prises le même jour :
+
+1. avant le shampoing, une photo de dos, la cliente assise au fauteuil ;
+2. après le brushing, **même place, même lumière, même cadrage, même distance**.
+
+Les enregistrer en `photos/avant-01.webp` et `photos/apres-01.webp`, au format
+4:5 (760 x 950), puis retirer les deux lignes de commentaire qui encadrent le
+bloc. Le CSS et le JavaScript sont déjà en place, rien d'autre à toucher.
+
 ## Ce qui reste à faire
 
-- Créer les prestations sur le compte Cal.com du salon, puis remplacer l'adresse
-  du calendrier en haut de `assets/js/site.js`
 - Écrire les pages mentions légales, confidentialité et cookies
 - Retirer `noindex` dans `index.html` le jour du vrai domaine
-- Faire valider à Elda l'usage des photos
+- Faire valider à Elda l'usage des photos, celles du salon comme celles de Facebook
+- Récupérer une vraie paire avant/après
 
 ## Adresse
 

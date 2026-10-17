@@ -31,6 +31,7 @@
       <a href="#rdv">Rendez-vous</a>
       <a href="#horaires">Horaires</a>
       <a href="#salon">Le salon</a>
+      <a href="#couleurs">Couleur</a>
       <a href="#acces">Accès</a>
     </nav>
     <div class="topbar-cta">
@@ -48,7 +49,7 @@
       <div class="hero-text">
         <p class="eyebrow">Salon de coiffure mixte · Agay</p>
         <h1>Caractère Coiffure</h1>
-        <p class="lede">Coupe, couleur, balayage et soin, pour les femmes, les hommes et les enfants. Dans l'espace bien-être des Mas de l'Estérel, à Agay.</p>
+        <p class="lede">Coupe, couleur, balayage et soin, pour les femmes, les hommes et les enfants. Dans l'espace bien-être des Mas de l'Estérel, à Agay. Si parla italiano, English spoken.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#rdv"><span>Prendre rendez-vous</span></a>
           <a class="btn btn-phone" href="tel:+33609317223"><span>06 09 31 72 23</span></a>
@@ -81,63 +82,71 @@
   <section id="tarifs">
     <div class="wrap">
       <h2 class="sec-h reveal">Tarifs</h2>
+      <div class="filtres reveal" id="js-filtres" role="group" aria-label="Filtrer les tarifs">
+        <button type="button" class="chip is-on" data-f="tout">Tout</button>
+        <button type="button" class="chip" data-f="femme">Femme</button>
+        <button type="button" class="chip" data-f="homme">Homme</button>
+        <button type="button" class="chip" data-f="enfant">Enfant</button>
+        <button type="button" class="chip" data-f="couleur">Couleur</button>
+        <button type="button" class="chip" data-f="soin">Soin</button>
+      </div>
 
       <div class="tarif-cols">
         <div class="tarif-grp reveal">
           <h3>Coupe</h3>
           <ul class="price">
-            <li><span class="n">Coupe femme</span><span class="v">25 €</span></li>
-            <li><span class="n">Coupe homme</span><span class="v">25 €</span></li>
-            <li><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="v">20 €</span></li>
-            <li><span class="n">Frange</span><span class="v">8 €</span></li>
+            <li data-cat="femme"><span class="n">Coupe femme</span><span class="v">25 €</span></li>
+            <li data-cat="homme"><span class="n">Coupe homme</span><span class="v">25 €</span></li>
+            <li data-cat="enfant"><span class="n">Coupe enfant <small>moins de 12 ans</small></span><span class="v">20 €</span></li>
+            <li data-cat="femme homme enfant"><span class="n">Frange</span><span class="v">8 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Shampoing et brushing</h3>
           <ul class="price">
-            <li><span class="n">Brushing <small>cheveux courts</small></span><span class="v">25 €</span></li>
-            <li><span class="n">Brushing <small>mi-longs</small></span><span class="v">30 €</span></li>
-            <li><span class="n">Brushing <small>longs</small></span><span class="v">35 €</span></li>
-            <li><span class="n">Shampoing, coupe et brushing</span><span class="v">50 €</span></li>
+            <li data-cat="femme"><span class="n">Brushing <small>cheveux courts</small></span><span class="v">25 €</span></li>
+            <li data-cat="femme"><span class="n">Brushing <small>mi-longs</small></span><span class="v">30 €</span></li>
+            <li data-cat="femme"><span class="n">Brushing <small>longs</small></span><span class="v">35 €</span></li>
+            <li data-cat="femme"><span class="n">Shampoing, coupe et brushing</span><span class="v">50 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Couleur</h3>
           <ul class="price">
-            <li><span class="n">Couleur racine</span><span class="v">35 €</span></li>
-            <li><span class="n">Couleur totale</span><span class="v">50 €</span></li>
-            <li><span class="n">Patine, gloss</span><span class="v">20 €</span></li>
-            <li><span class="n">Balayage</span><span class="v"><i>dès</i>65 €</span></li>
-            <li><span class="n">Mèches, ombré hair</span><span class="v"><i>dès</i>70 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Couleur racine</span><span class="v">35 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Couleur totale</span><span class="v">50 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Patine, gloss</span><span class="v">20 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Balayage</span><span class="v"><i>dès</i>65 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Mèches, ombré hair</span><span class="v"><i>dès</i>70 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Soin du cheveu</h3>
           <ul class="price">
-            <li><span class="n">Soin profond</span><span class="v">6 €</span></li>
-            <li><span class="n">Sérum anti-chute et massage</span><span class="v">10 €</span></li>
-            <li><span class="n">Soin capillaire</span><span class="v">20 €</span></li>
-            <li><span class="n">Soin profond réparateur</span><span class="v">20 €</span></li>
-            <li><span class="n">Gommage du cuir chevelu</span><span class="v">25 €</span></li>
+            <li data-cat="soin"><span class="n">Soin profond</span><span class="v">6 €</span></li>
+            <li data-cat="soin"><span class="n">Sérum anti-chute et massage</span><span class="v">10 €</span></li>
+            <li data-cat="soin"><span class="n">Soin capillaire</span><span class="v">20 €</span></li>
+            <li data-cat="soin"><span class="n">Soin profond réparateur</span><span class="v">20 €</span></li>
+            <li data-cat="soin"><span class="n">Gommage du cuir chevelu</span><span class="v">25 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Forme et lissage</h3>
           <ul class="price">
-            <li><span class="n">Permanente</span><span class="v">50 €</span></li>
-            <li><span class="n">Lissage brésilien</span><span class="v"><i>dès</i>120 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Permanente</span><span class="v">50 €</span></li>
+            <li data-cat="couleur femme"><span class="n">Lissage brésilien</span><span class="v"><i>dès</i>120 €</span></li>
           </ul>
         </div>
 
         <div class="tarif-grp reveal">
           <h3>Chignon et occasions</h3>
           <ul class="price">
-            <li><span class="n">Chignon, attache</span><span class="v">45 €</span></li>
-            <li><span class="n">Coiffure d'événement <small>mariage, baptême, communion, cérémonie</small></span><span class="v">55 €</span></li>
+            <li data-cat="femme"><span class="n">Chignon, attache</span><span class="v">45 €</span></li>
+            <li data-cat="femme"><span class="n">Coiffure d'événement <small>mariage, baptême, communion, cérémonie</small></span><span class="v">55 €</span></li>
           </ul>
         </div>
       </div>
@@ -175,7 +184,11 @@
   <section id="salon">
     <div class="wrap">
       <h2 class="sec-h reveal">Le salon</h2>
-      <p class="salon-text reveal">Caractère Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. Elda y reçoit sur rendez-vous, du lundi au samedi.</p>
+      <div class="salon-text reveal">
+        <p>Caractère Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. Elda y reçoit sur rendez-vous, du lundi au samedi.</p>
+        <p><strong>Le salon est ouvert à tout le monde.</strong> Vous n'avez pas besoin de séjourner au village vacances pour venir : l'entrée et le parking sont libres d'accès.</p>
+        <p>Elda est italienne. Elle reçoit en français, en italien et en anglais.</p>
+      </div>
     </div>
 
     <div class="slider" data-slider>
@@ -198,16 +211,56 @@
     </div>
   </section>
 
+  <section id="couleurs">
+    <div class="wrap">
+      <h2 class="sec-h reveal">Couleur et balayage</h2>
+      <p class="sec-intro reveal">Des couleurs faites au salon, photographiées par Elda.</p>
+      <div class="resultats">
+        <figure class="reveal"><img src="photos/resultat-01.webp" alt="Balayage blond sur base châtain, longueurs bouclées au brushing" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Balayage fondu, brushing bouclé sur cheveux longs" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Blond froid, mèches fines sur un carré long ondulé" loading="lazy" width="760" height="950"></figure>
+      </div>
+      <p class="resultats-note reveal">Le balayage, les mèches et le lissage brésilien se réservent par téléphone&#8239;: Elda cale la durée avec vous avant de bloquer le créneau.</p>
+    </div>
+  </section>
+
+<!-- ===========================================================
+     AVANT / APRÈS : composant prêt, en attente des photos d'Elda.
+     Il manque une seule chose, une vraie paire prise le même jour :
+     une photo de dos avant le shampoing, une photo de dos après le
+     brushing, même place, même lumière, même cadrage.
+     Pour l'activer : déposer photos/avant-01.webp et photos/apres-01.webp
+     (format 4:5, 760x950), puis retirer les deux lignes de commentaire
+     qui encadrent le bloc ci-dessous. Le CSS et le JS sont déjà en place.
+     =========================================================== -->
+<!--
+  <section id="avant-apres">
+    <div class="wrap">
+      <h2 class="sec-h reveal">Avant, après</h2>
+      <p class="sec-intro reveal">Faites glisser le curseur.</p>
+      <div class="compare reveal" data-compare>
+        <img class="cmp-a" src="photos/avant-01.webp" alt="Les cheveux avant le rendez-vous" width="760" height="950">
+        <div class="cmp-b-wrap"><img class="cmp-b" src="photos/apres-01.webp" alt="Les cheveux après la couleur et le brushing" width="760" height="950"></div>
+        <span class="cmp-tag cmp-tag-a">Avant</span>
+        <span class="cmp-tag cmp-tag-b">Après</span>
+        <input class="cmp-range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Comparer avant et après">
+        <span class="cmp-handle" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+-->
+
   <section id="acces">
     <div class="wrap">
       <h2 class="sec-h reveal">Venir au salon</h2>
       <div class="access">
         <div class="where reveal">
-          <p><span class="label">Adresse</span>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël</p>
+          <p><span class="label">Adresse</span>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël<br><small class="note-acces">Entrée et parking libres, même sans séjourner au village vacances.</small></p>
           <p><span class="label">Téléphone</span><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a></p>
           <p><span class="label">Horaires</span>Du lundi au samedi, 9h à 17h<br>Fermé le dimanche</p>
           <div class="social">
-            <a href="https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7" rel="noopener" target="_blank"><span>Itinéraire sur Google Maps</span><span class="arw" aria-hidden="true">&rarr;</span></a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.4345022,6.8706645" rel="noopener" target="_blank"><span>Itinéraire sur Google Maps</span><span class="arw" aria-hidden="true">&rarr;</span></a>
             <a href="https://www.facebook.com/eldadoda2101" rel="noopener" target="_blank"><span>Le salon sur Facebook</span><span class="arw" aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
@@ -223,7 +276,7 @@
   <section class="closing">
     <div class="wrap">
       <div class="reveal">
-        <h2>Prendre rendez-vous</h2>
+        <h2>Votre prochain rendez-vous</h2>
         <p>En ligne à toute heure, ou par téléphone aux heures d'ouverture.</p>
       </div>
       <div class="closing-actions reveal">
@@ -234,6 +287,14 @@
   </section>
 
 </main>
+
+<div class="actionbar" aria-label="Actions rapides">
+  <a class="ab-call" href="tel:+33609317223">
+    <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+    <span>Appeler</span>
+  </a>
+  <a class="ab-book" href="#rdv"><span>Prendre rendez-vous</span></a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -249,8 +310,14 @@
           <li><a href="#tarifs">Tarifs</a></li>
           <li><a href="#rdv">Prendre rendez-vous</a></li>
           <li><a href="#horaires">Horaires</a></li>
+          <li><a href="#couleurs">Couleur et balayage</a></li>
           <li><a href="#acces">Accès</a></li>
         </ul>
+      </div>
+      <div class="foot-avis">
+        <h4>Votre avis compte</h4>
+        <p>Content de votre coupe ? Un petit mot sur Google aide beaucoup le salon.</p>
+        <a class="btn btn-light btn-sm" href="https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7" rel="noopener" target="_blank"><span>Laisser un avis</span></a>
       </div>
       <div>
         <h4>Informations légales</h4>
@@ -292,7 +359,9 @@
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
     "opens": "09:00", "closes": "17:00"
   }],
-  "sameAs": ["https://www.facebook.com/eldadoda2101"]
+  "knowsLanguage": ["fr", "it", "en"],
+  "image": "photos/og.webp",
+  "sameAs": ["https://www.facebook.com/eldadoda2101", "https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7"]
 }
 </script>
 <script src="assets/js/site.js"></script>

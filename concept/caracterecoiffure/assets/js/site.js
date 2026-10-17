@@ -130,8 +130,8 @@
 
   /* ---------- 3. contenus tiers sous consentement ---------- */
   var sources = {
-    /* Compte Cal.com à remplacer par celui du salon. */
-    cal: { src: 'https://cal.com/lunixel?embed=true', title: 'Calendrier de rendez-vous Caractère Coiffure' },
+    /* Compte Cal.com du salon, 14 prestations, rendez-vous sur place. */
+    cal: { src: 'https://cal.com/lead-major-sucah7?embed=true', title: 'Calendrier de rendez-vous Caractère Coiffure' },
     map: { src: 'https://www.google.com/maps?q=43.4345022,6.8706645&hl=fr&z=16&output=embed', title: 'Plan d’accès au salon Caractère Coiffure' }
   };
   Array.prototype.forEach.call(document.querySelectorAll('[data-embed]'), function (btn) {
@@ -161,4 +161,69 @@
   } else {
     Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) { el.classList.add('in'); });
   }
+})();
+
+/* ============================================================
+   Filtres de tarifs. Ajouté après coup, volontairement séparé.
+   ============================================================ */
+(function () {
+  'use strict';
+  var barre = document.getElementById('js-filtres');
+  if (!barre) return;
+  var lignes = [].slice.call(document.querySelectorAll('.price li'));
+  var groupes = [].slice.call(document.querySelectorAll('.tarif-grp'));
+
+  function filtrer(f) {
+    lignes.forEach(function (li) {
+      var cats = (li.getAttribute('data-cat') || '').split(' ');
+      li.classList.toggle('is-off', f !== 'tout' && cats.indexOf(f) === -1);
+    });
+    groupes.forEach(function (g) {
+      var reste = g.querySelectorAll('.price li:not(.is-off)').length;
+      g.classList.toggle('is-off', reste === 0);
+    });
+  }
+
+  barre.addEventListener('click', function (e) {
+    var b = e.target.closest('.chip');
+    if (!b) return;
+    [].slice.call(barre.querySelectorAll('.chip')).forEach(function (c) {
+      c.classList.toggle('is-on', c === b);
+      c.setAttribute('aria-pressed', c === b ? 'true' : 'false');
+    });
+    filtrer(b.getAttribute('data-f'));
+  });
+  [].slice.call(barre.querySelectorAll('.chip')).forEach(function (c) {
+    c.setAttribute('aria-pressed', c.classList.contains('is-on') ? 'true' : 'false');
+  });
+})();
+
+/* ============================================================
+   Comparateur avant / après.
+   Inactif tant que le bloc HTML reste commenté dans index.html.
+   Souris, doigt et clavier passent tous par le même input range.
+   ============================================================ */
+(function () {
+  'use strict';
+  var boxes = document.querySelectorAll('[data-compare]');
+  if (!boxes.length) return;
+
+  Array.prototype.forEach.call(boxes, function (box) {
+    var range = box.querySelector('.cmp-range');
+    var wrap = box.querySelector('.cmp-b-wrap');
+    var img = wrap ? wrap.querySelector('img') : null;
+    if (!range || !wrap) return;
+
+    function largeur() {
+      // L'image du dessous garde sa largeur réelle, sinon elle se déforme.
+      if (img) img.style.width = box.clientWidth + 'px';
+    }
+    function pose(v) {
+      box.style.setProperty('--cmp', v + '%');
+    }
+    range.addEventListener('input', function () { pose(range.value); });
+    window.addEventListener('resize', largeur);
+    largeur();
+    pose(range.value);
+  });
 })();
