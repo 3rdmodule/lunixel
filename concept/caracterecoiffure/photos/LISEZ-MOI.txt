@@ -5,22 +5,35 @@ Sélection faite dans le dossier Drive du 25/08/2026, parmi les 15 clichés.
 Recadrées, reprises en couleur vers une dominante plus chaude (rouges remontés,
 bleus baissés, légère densité en plus), compressées en WebP.
 
-hero.webp       DSC00972  4:5   un poste de coiffage et son grand miroir
-salon-01.webp   DSC00964  3:2   un poste de coiffage
-salon-02.webp   DSC00963  3:2   les deux bacs à shampoing
-salon-03.webp   DSC00973  3:2   l'étagère de produits et les brosses
-salon-04.webp   DSC00969  3:2   la salle vue depuis l'entrée
-salon-05.webp   Facebook  3:2   les miroirs dorés et les lampes
-salon-06.webp   Facebook  3:2   le bouquet devant le miroir œil
-og.webp         DSC00964  1.91:1 aperçu réseaux sociaux
+hero-wide.webp       photo cliente  16:9  la salle, fond de la page d'accueil
+hero-wide-1100.webp  idem           16:9  version mobile, 1100 px
+salon-01.webp        DSC00964       3:2   un poste de coiffage
+salon-02.webp        DSC00963       3:2   les deux bacs à shampoing
+salon-03.webp        DSC00973       3:2   l'étagère de produits et les brosses
+salon-04.webp        DSC00969       3:2   la salle vue depuis l'entrée
+salon-05.webp        Facebook       3:2   le bouquet devant le miroir œil
+og.webp              photo cliente  16:9  aperçu réseaux sociaux
 apple-touch-icon.png              icône iOS
 
-Les six photos de la galerie sont toutes en 3:2 paysage, c'est ce qui permet
+Les quatre photos de la galerie sont toutes en 3:2 paysage, c'est ce qui permet
 au bandeau de défiler proprement. Pour en remplacer une, garder le même nom,
 le même format et le même cadrage approximatif.
 
 DSC00968, le miroir doré rococo de l'entrée, a été retiré le 17/10/2026 :
 il n'apportait rien et ne colle pas à la direction artistique.
+
+La photo Facebook des miroirs dorés a été retirée le même jour : trop floue.
+
+Photo d'accueil
+===============
+
+hero-wide.webp vient d'une photo fournie par la cliente le 17/10/2026, en
+16:9 natif. Elle sert de fond à toute la hauteur du haut de page. La moitié
+gauche est floutée en CSS pour porter le texte, la droite reste nette.
+
+Attention au cadrage si on la remplace : le grand portrait encadré du mur
+doit rester dans la zone floutée, ses droits ne sont pas acquis. Le
+object-position est réglé à 62% pour ça.
 
 Écartées volontairement :
 DSC00965, DSC00966, DSC00970, DSC00977  grands portraits de célébrités encadrés

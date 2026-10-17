@@ -128,31 +128,85 @@
     sync();
   }
 
-  /* ---------- 3. contenus tiers sous consentement ---------- */
-  var sources = {
-    /* Compte Cal.com du salon, 14 prestations, rendez-vous sur place. */
-    cal: { src: 'https://cal.com/lead-major-sucah7?embed=true', title: 'Calendrier de rendez-vous Caractère Coiffure' },
-    map: { src: 'https://www.google.com/maps?q=43.4345022,6.8706645&hl=fr&z=16&output=embed', title: 'Plan d’accès au salon Caractère Coiffure' }
-  };
-  Array.prototype.forEach.call(document.querySelectorAll('[data-embed]'), function (btn) {
+  /* ---------- 3. carte Google sous consentement ---------- */
+  var MAP_SRC = 'https://www.google.com/maps?q=43.4345022,6.8706645&hl=fr&z=16&output=embed';
+  Array.prototype.forEach.call(document.querySelectorAll('[data-embed="map"]'), function (btn) {
     btn.addEventListener('click', function () {
-      var cfg = sources[btn.getAttribute('data-embed')];
-      if (!cfg) return;
       var box = btn.closest('.embed');
       var f = document.createElement('iframe');
-      f.src = cfg.src;
-      f.title = cfg.title;
+      f.src = MAP_SRC;
+      f.title = 'Plan d\u2019acc\u00e8s au salon Caract\u00e8re Coiffure';
       f.loading = 'lazy';
       f.referrerPolicy = 'no-referrer-when-downgrade';
       box.innerHTML = '';
       box.classList.add('is-loaded');
       box.appendChild(f);
-      // Le calendrier est bien plus haut que la colonne de gauche :
-      // on repasse la section sur une seule colonne pour supprimer le vide.
-      var grille = box.closest('.rdv-grid');
-      if (grille) grille.classList.add('is-embedded');
     });
   });
+
+  /* ---------- 4. prise de rendez-vous ----------
+     Cal.com affiche ses prestations une par ligne, ce qui mange
+     un plein \u00e9cran pour quatorze lignes de texte. On garde notre
+     propre grille, trois par ligne, avec les prix que Cal.com
+     n'affiche pas, et on ne charge le calendrier qu'apr\u00e8s le clic,
+     directement sur la prestation choisie.
+     -------------------------------------------------------- */
+  var grille = document.getElementById('js-presta');
+  var boite = document.getElementById('cal-box');
+  if (grille && boite) {
+    var CAL = 'https://cal.com/lead-major-sucah7/';
+    var nomCible = document.getElementById('js-cal-nom');
+    var fermer = document.getElementById('js-cal-fermer');
+    var consent = document.getElementById('js-consent');
+    var cadre = null;
+
+    function choisir(btn) {
+      var slug = btn.getAttribute('data-slug');
+      if (!slug) return;
+      Array.prototype.forEach.call(grille.querySelectorAll('.presta'), function (b) {
+        b.classList.toggle('is-on', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      var nom = btn.querySelector('.p-n').childNodes[0].textContent.trim();
+      if (nomCible) nomCible.textContent = nom;
+      if (!cadre) {
+        cadre = document.createElement('iframe');
+        cadre.loading = 'lazy';
+        cadre.referrerPolicy = 'no-referrer-when-downgrade';
+        boite.appendChild(cadre);
+      }
+      cadre.title = 'Calendrier de rendez-vous, ' + nom;
+      cadre.src = CAL + slug + '?embed=true';
+      boite.hidden = false;
+      boite.classList.add('is-loaded');
+      if (consent) consent.hidden = true;
+      var y = boite.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    grille.addEventListener('click', function (e) {
+      var b = e.target.closest('.presta');
+      if (b) choisir(b);
+    });
+    Array.prototype.forEach.call(grille.querySelectorAll('.presta'), function (b) {
+      b.setAttribute('aria-pressed', 'false');
+    });
+
+    if (fermer) {
+      fermer.addEventListener('click', function () {
+        boite.hidden = true;
+        boite.classList.remove('is-loaded');
+        if (cadre) { cadre.src = 'about:blank'; }
+        if (consent) consent.hidden = false;
+        Array.prototype.forEach.call(grille.querySelectorAll('.presta'), function (b) {
+          b.classList.remove('is-on');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        var y = grille.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    }
+  }
 
   /* ---------- apparition discrète au défilement ---------- */
   if (!reduce && 'IntersectionObserver' in window) {

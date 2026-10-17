@@ -35,6 +35,17 @@ sont arrondis : c'est un salon de quartier, pas une galerie.
   avec l'heure de réouverture. Rafraîchi toutes les minutes.
 - **La galerie défile avec deux flèches**, jamais avec la molette. Le doigt et
   les flèches du clavier marchent aussi.
+- **Le haut de page est une photo 16:9 en fond**, floutée à gauche par
+  `backdrop-filter` pour porter le texte, nette à droite. Un repli en aplat
+  opaque est prévu pour les navigateurs sans `backdrop-filter`. Les contrastes
+  ont été mesurés au pixel sur le rendu réel, pas sur les valeurs CSS, et
+  passent AA de 320 à 1920 px.
+- **Le rendez-vous passe par notre propre grille de prestations**, trois par
+  ligne. Cal.com affiche ses quatorze prestations une par ligne, ce qui occupe
+  un écran entier. Le calendrier ne se charge qu'après le clic, et directement
+  sur la prestation choisie. Les cartes ne portent pas de prix : la section
+  Tarifs reste la seule source, sinon un « à partir de » finit par contredire
+  la liste.
 - **Les contenus tiers, Cal.com et Google Maps, ne se chargent qu'après un clic.**
   Aucun cookie avant. C'est pour ça qu'il n'y a pas de bandeau cookies.
 - **Données structurées** `HairSalon` en fin de page : nom, adresse, téléphone,
