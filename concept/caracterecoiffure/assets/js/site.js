@@ -1,5 +1,5 @@
 /* ============================================================
-   Caractère Coiffure
+   Elda Coiffure
    Trois choses, pas une de plus :
    1. horaires vivants  : jour du jour surligné, ouvert ou fermé maintenant
    2. galerie           : défilement par flèches, jamais par la molette
@@ -16,7 +16,7 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- 1. horaires ---------- */
-  var OPEN_H = 9, CLOSE_H = 17;          // du lundi au samedi
+  var OPEN_H = 9, CLOSE_H = 18;          // du lundi au vendredi
   var DAYS = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
 
   function parisNow() {
@@ -35,7 +35,7 @@
   }
 
   function nextOpenDay(day) {
-    for (var i = 1; i <= 7; i++) { var d = (day + i) % 7; if (d !== 0) return d; }
+    for (var i = 1; i <= 7; i++) { var d = (day + i) % 7; if (d >= 1 && d <= 5) return d; }
     return 1;
   }
 
@@ -43,7 +43,7 @@
     var now = parisNow();
     if (typeof now.day !== 'number' || isNaN(now.minutes)) return;
 
-    var open = now.day !== 0 && now.minutes >= OPEN_H * 60 && now.minutes < CLOSE_H * 60;
+    var open = now.day >= 1 && now.day <= 5 && now.minutes >= OPEN_H * 60 && now.minutes < CLOSE_H * 60;
     var dot = document.getElementById('js-dot');
     var label = document.getElementById('js-status');
     var sub = document.getElementById('js-status-sub');
@@ -60,7 +60,7 @@
         : 'Jusqu’à ' + CLOSE_H + 'h aujourd’hui';
     } else {
       label.textContent = 'Fermé maintenant';
-      if (now.day !== 0 && now.minutes < OPEN_H * 60) {
+      if (now.day >= 1 && now.day <= 5 && now.minutes < OPEN_H * 60) {
         sub.textContent = 'Ouvre aujourd’hui à ' + OPEN_H + 'h';
       } else {
         var nd = nextOpenDay(now.day);
