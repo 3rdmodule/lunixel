@@ -809,3 +809,50 @@ footer a{color:var(--on-ink)}
   .week li:last-child{grid-column:1 / -1;border-right:0}
   .week li:nth-last-child(2){border-bottom:1px solid var(--rule-soft)}
 }
+
+/* ============================================================
+   RETOUR AU HERO SOMBRE, 01/11/2026
+   Le fond clair faisait trop pop. On garde la typographie, les
+   pastilles et le vert, on remet le voile sombre.
+   ============================================================ */
+.hero-veil{background:
+  linear-gradient(100deg,rgba(14,12,10,.955) 0%,rgba(14,12,10,.9) 36%,rgba(14,12,10,.52) 64%,rgba(14,12,10,.34) 100%)}
+.hero .eyebrow{color:var(--bronze-light)}
+.hero h1{color:#fff}
+.hero h1 em{color:var(--bronze-light)}
+.hero .lede{color:#E6DBC9}
+.hero-lieu{background:rgba(255,255,255,.08);border-color:rgba(212,169,106,.42);color:#F3EADB;
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.hero-lieu .pin{fill:var(--bronze-light)}
+.pil-noir{background:var(--paper);color:var(--ink)}
+.pil-noir:hover,.pil-noir:focus-visible{background:#fff;color:var(--ink)}
+.pil-vert{background:var(--vert);color:#fff;box-shadow:0 0 0 1px rgba(212,169,106,.35)}
+.pil-vert:hover,.pil-vert:focus-visible{background:#3C4A38}
+
+/* ============================================================
+   RYTHME DES SECTIONS
+   Moins de vide, et un filet partout ou le fond ne change pas,
+   pour qu'on suive la page sans se perdre.
+   ============================================================ */
+section{padding:66px 0}
+#prestations{padding:66px 0}
+#tarifs{padding:66px 0 72px}
+#salon{padding:66px 0}
+#couleurs{padding:66px 0}
+#acces{padding:66px 0 72px}
+.closing{padding:58px 0}
+.avis .wrap{padding-top:0;padding-bottom:0}
+.statusbar{padding:40px 0}
+
+/* filet de separation quand deux sections partagent le meme fond */
+#prestations,#tarifs,#salon{border-top:1px solid var(--rule)}
+#prestations{border-top:0}
+.sec-h{margin-bottom:22px}
+.sec-intro{margin-bottom:30px}
+.grille,.vignettes,.tarif-cols,.resultats{margin-top:0}
+
+@media(max-width:620px){
+  section{padding:46px 0}
+  #prestations,#tarifs,#salon,#couleurs,#acces{padding:46px 0}
+  .statusbar{padding:32px 0}
+}
