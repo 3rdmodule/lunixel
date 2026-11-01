@@ -341,3 +341,60 @@
     c.classList.toggle('is-ouvert', !ouvert);
   });
 })();
+
+/* ------------------------------------------------------------
+   Vignettes de prestations : un clic ouvre la galerie
+   correspondante juste en dessous, une seule a la fois.
+   ------------------------------------------------------------ */
+(function () {
+  var vigs = document.querySelectorAll('.vig[data-gal]');
+  if (!vigs.length) { return; }
+
+  function fermer(v) {
+    var g = document.getElementById('gal-' + v.getAttribute('data-gal'));
+    v.setAttribute('aria-expanded', 'false');
+    if (g) { g.hidden = true; }
+  }
+
+  function ouvrir(v) {
+    var g = document.getElementById('gal-' + v.getAttribute('data-gal'));
+    if (!g) { return; }
+    for (var i = 0; i < vigs.length; i++) {
+      if (vigs[i] !== v) { fermer(vigs[i]); }
+    }
+    v.setAttribute('aria-expanded', 'true');
+    g.hidden = false;
+    g.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  for (var i = 0; i < vigs.length; i++) {
+    (function (v) {
+      v.addEventListener('click', function () {
+        if (v.getAttribute('aria-expanded') === 'true') { fermer(v); }
+        else { ouvrir(v); }
+      });
+    })(vigs[i]);
+  }
+
+  var croix = document.querySelectorAll('.gal-x');
+  for (var j = 0; j < croix.length; j++) {
+    (function (x) {
+      x.addEventListener('click', function () {
+        var g = x.closest('.gal');
+        if (!g) { return; }
+        var slug = g.id.replace('gal-', '');
+        var v = document.querySelector('.vig[data-gal="' + slug + '"]');
+        if (v) { fermer(v); v.focus(); }
+      });
+    })(croix[j]);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    for (var k = 0; k < vigs.length; k++) {
+      if (vigs[k].getAttribute('aria-expanded') === 'true') {
+        fermer(vigs[k]); vigs[k].focus(); return;
+      }
+    }
+  });
+})();

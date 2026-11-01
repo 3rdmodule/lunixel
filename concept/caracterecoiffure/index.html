@@ -84,6 +84,16 @@
   </div>
 
 
+<section class="bandeau-avis bandeau-haut" aria-labelledby="avis-t">
+  <div class="wrap">
+    <div class="avis-txt">
+      <p class="avis-sur" id="avis-t">Vous sortez de chez Elda&#8239;?</p>
+      <p class="avis-l">Un mot sur Google prend trente secondes, et c'est ce qui fait remonter le salon dans les recherches du coin.</p>
+    </div>
+    <a class="btn btn-solid" href="https://g.page/r/CVQ--VAc_IxwEBM/review" rel="noopener" target="_blank"><span>Laisser un avis Google</span></a>
+  </div>
+</section>
+
   <section class="avis" aria-labelledby="avis-note-t">
     <div class="wrap">
       <h2 class="sec-h reveal" id="avis-note-t">Ce qu'on en dit</h2>
@@ -189,17 +199,153 @@
   <section id="prestations">
     <div class="wrap">
       <h2 class="sec-h reveal">Nos prestations</h2>
-      <p class="sec-intro reveal">Du vrai travail d'<strong>Elda</strong>, réalisé dans le salon.</p>
+      <p class="sec-intro reveal">Des services sur mesure pour révéler la beauté de vos cheveux. Cliquez sur une prestation pour voir la galerie.</p>
       <div class="vignettes reveal">
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-coupe.webp" alt="Carré plongeant cuivré réalisé au salon" loading="lazy" width="480" height="480"><span class="px">25 €</span><figcaption><b>Coupe femme</b><i>Carré, dégradé, coupe courte</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-brushing.webp" alt="Brushing ondulé blond réalisé au salon" loading="lazy" width="480" height="480"><span class="px">dès 25 €</span><figcaption><b>Shampoing et brushing</b><i>Lisse, volume ou ondulations</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-coloration.webp" alt="Coloration cuivrée sur cheveux longs bouclés réalisée au salon" loading="lazy" width="480" height="480"><span class="px">dès 35 €</span><figcaption><b>Couleur</b><i>Racine, couleur totale, patine</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-balayage.webp" alt="Balayage contrasté blond réalisé au salon" loading="lazy" width="480" height="480"><span class="px">dès 65 €</span><figcaption><b>Mèches et balayage</b><i>Lumière et reflets naturels</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-lissage.webp" alt="Cheveux longs lissés réalisés au salon" loading="lazy" width="480" height="480"><span class="px">dès 120 €</span><figcaption><b>Lissage brésilien</b><i>Cheveux lisses et disciplinés</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-permanente.webp" alt="Permanente sur cheveux blonds réalisée au salon" loading="lazy" width="480" height="480"><span class="px">50 €</span><figcaption><b>Permanente</b><i>Boucles et mouvement</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-chignon.webp" alt="Chignon haut réalisé au salon" loading="lazy" width="480" height="480"><span class="px">45 €</span><figcaption><b>Chignon et attache</b><i>Soirée, cérémonie</i></figcaption></figure></a>
-        <a class="vig" href="#rdv"><figure><img src="photos/presta-evenement.webp" alt="Tresses avec nœud réalisées au salon" loading="lazy" width="480" height="480"><span class="px">dès 55 €</span><figcaption><b>Coiffure d'événement</b><i>Mariage, baptême, communion</i></figcaption></figure></a>
+        <button type="button" class="vig" data-gal="coupe-femme" aria-expanded="false" aria-controls="gal-coupe-femme">
+          <img src="photos/tuile-coupe-femme.webp" alt="Carré court brun, vu de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">25 €</span>
+          <span class="vig-cap"><b>Coupe femme</b><i>Carré, dégradé, coupe moderne.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="brushing" aria-expanded="false" aria-controls="gal-brushing">
+          <img src="photos/tuile-brushing.webp" alt="Brushing long blond ondulé, vu de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">dès 25 €</span>
+          <span class="vig-cap"><b>Brushing</b><i>Lisse, volume ou ondulations.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="coloration" aria-expanded="false" aria-controls="gal-coloration">
+          <img src="photos/tuile-coloration.webp" alt="Gros plan sur une chevelure châtain cuivré" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">dès 35 €</span>
+          <span class="vig-cap"><b>Coloration</b><i>Châtain, chocolat, cuivré, blond.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="balayage" aria-expanded="false" aria-controls="gal-balayage">
+          <img src="photos/tuile-balayage.webp" alt="Mise en boucle au fer sur un balayage blond, en salon" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">dès 65 €</span>
+          <span class="vig-cap"><b>Mèches et balayage</b><i>Blond lumineux et reflets naturels.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="chignon" aria-expanded="false" aria-controls="gal-chignon">
+          <img src="photos/tuile-chignon.webp" alt="Chignon torsadé tenu par deux épingles, vu de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">45 €</span>
+          <span class="vig-cap"><b>Chignon</b><i>Mariage, soirée et cérémonie.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="coupe-homme" aria-expanded="false" aria-controls="gal-coupe-homme">
+          <img src="photos/tuile-coupe-homme.webp" alt="Dégradé homme à la tondeuse, vu de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">25 €</span>
+          <span class="vig-cap"><b>Coupe homme</b><i>Classique ou moderne.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="coupe-enfant" aria-expanded="false" aria-controls="gal-coupe-enfant">
+          <img src="photos/tuile-coupe-enfant.webp" alt="Tresses d'enfant attachées, vues de profil" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">20 €</span>
+          <span class="vig-cap"><b>Coupe enfant</b><i>Une coupe adaptée à chaque âge.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="permanente" aria-expanded="false" aria-controls="gal-permanente">
+          <img src="photos/tuile-permanente.webp" alt="Permanente, boucles longues, vue de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="px">50 €</span>
+          <span class="vig-cap"><b>Permanente</b><i>Boucles et mouvement.</i></span>
+        </button>
       </div>
+
+      <section class="gal" id="gal-coupe-femme" hidden aria-label="Galerie Coupe femme">
+        <div class="gal-top">
+          <h3>Coupe femme</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Carré</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Dégradé</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Coupe moderne</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-brushing" hidden aria-label="Galerie Brushing">
+        <div class="gal-top">
+          <h3>Brushing</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Lisse</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Volume</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Ondulations</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-coloration" hidden aria-label="Galerie Coloration">
+        <div class="gal-top">
+          <h3>Coloration</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#6B4A2F" aria-hidden="true"></span><span class="gc-n">Châtain</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#422616" aria-hidden="true"></span><span class="gc-n">Chocolat</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#A9521E" aria-hidden="true"></span><span class="gc-n">Cuivré</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#D9B169" aria-hidden="true"></span><span class="gc-n">Blond</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-balayage" hidden aria-label="Galerie Mèches et balayage">
+        <div class="gal-top">
+          <h3>Mèches et balayage</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#E3C68A" aria-hidden="true"></span><span class="gc-n">Blond lumineux</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#B0855A" aria-hidden="true"></span><span class="gc-n">Reflets naturels</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#8A5A3A" aria-hidden="true"></span><span class="gc-n">Ombré hair</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-chignon" hidden aria-label="Galerie Chignon">
+        <div class="gal-top">
+          <h3>Chignon</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Mariage</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Soirée</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Cérémonie</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-coupe-homme" hidden aria-label="Galerie Coupe homme">
+        <div class="gal-top">
+          <h3>Coupe homme</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Classique</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Moderne</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-coupe-enfant" hidden aria-label="Galerie Coupe enfant">
+        <div class="gal-top">
+          <h3>Coupe enfant</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Petite enfance</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Enfant</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Pré-ado</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
+      <section class="gal" id="gal-permanente" hidden aria-label="Galerie Permanente">
+        <div class="gal-top">
+          <h3>Permanente</h3>
+          <a class="gal-rdv" href="#tarifs">Réserver cette prestation</a>
+          <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
+        </div>
+        <ul class="gal-p">
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Boucles</span></li>
+            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Mouvement</span></li>
+        </ul>
+        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+      </section>
     </div>
   </section>
 
@@ -332,10 +478,10 @@
       <h2 class="sec-h reveal">Couleur, balayage, lissage</h2>
       <p class="sec-intro reveal">Du travail récent d'<strong>Elda</strong>.</p>
       <div class="resultats">
-        <figure class="reveal"><img src="photos/resultat-01.webp" alt="Balayage blond sur base châtain, longueurs bouclées au brushing" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Blond froid, mèches fines sur un carré long ondulé" loading="lazy" width="760" height="950"></figure>
-        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Cheveux longs lissés, photographiés en noir et blanc" loading="lazy" width="760" height="950"></figure>
+        <figure class="reveal"><img src="photos/resultat-01.webp" alt="Balayage blond sur base châtain, longueurs bouclées au brushing" loading="lazy" width="520" height="520"></figure>
+        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="520" height="520"></figure>
+        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Blond froid, mèches fines sur un carré long ondulé" loading="lazy" width="414" height="414"></figure>
+        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Cheveux longs lissés, photographiés en noir et blanc" loading="lazy" width="520" height="520"></figure>
       </div>
       <p class="resultats-note reveal">Balayage, mèches et lissage brésilien se réservent dans le calendrier comme le reste. Un appel au <a href="tel:+33609317223">06 09 31 72 23</a> en plus, et <strong>Elda</strong> cale la durée et le prix avec vous.</p>
     </div>
@@ -414,15 +560,6 @@
   <a class="ab-book" href="#rdv"><span>Prendre rendez-vous</span></a>
 </div>
 
-<section class="bandeau-avis" aria-labelledby="avis-t">
-  <div class="wrap">
-    <div class="avis-txt">
-      <p class="avis-sur" id="avis-t">Votre avis compte</p>
-      <p class="avis-l">Content de votre coupe&#8239;? Un mot sur Google, et le salon remonte dans les recherches du coin.</p>
-    </div>
-    <a class="btn btn-solid" href="https://g.page/r/CVQ--VAc_IxwEBM/review" rel="noopener" target="_blank"><span>Laisser un avis Google</span></a>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">

@@ -26,6 +26,25 @@ publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que le
 clientes photographiées ont donné leur accord en amont et qu'Elda détient les
 autorisations. Aucune image générée par intelligence artificielle sur le site.
 
+**Vignettes des prestations** (`tuile-*`) : photographies libres de droit
+d'Unsplash, sous [licence Unsplash](https://unsplash.com/fr/licence), qui
+autorise l'usage commercial sans attribution obligatoire. Recadrées pour ne
+montrer que la chevelure, jamais un visage identifiable.
+
+| Fichier | Photo d'origine |
+|---|---|
+| `tuile-coupe-femme.webp` | https://unsplash.com/photos/photo-1525614686090-7a3108e3758e |
+| `tuile-brushing.webp` | https://unsplash.com/photos/photo-1554519934-e32b1629d9ee |
+| `tuile-coloration.webp` | https://unsplash.com/photos/photo-1602549179763-ce6c9df961b7 |
+| `tuile-balayage.webp` | https://unsplash.com/photos/photo-1629397685944-7073f5589754 |
+| `tuile-chignon.webp` | https://unsplash.com/photos/photo-1558265246-e84a824bcd83 |
+| `tuile-coupe-homme.webp` | https://unsplash.com/photos/photo-1593702275687-f8b402bf1fb5 |
+| `tuile-coupe-enfant.webp` | https://unsplash.com/photos/photo-1646793328429-dfe89bef8604 |
+| `tuile-permanente.webp` | https://unsplash.com/photos/photo-1665923148259-3340e61d3ff2 |
+
+Ces vignettes sont provisoires : elles sautent dès qu'Elda fournit ses propres
+photos de prestations.
+
 **Logo** (`logo-noir.png`) : créé par Elda. Le fichier utilisé ici est un
 recadrage de la maquette qu'elle a fournie, donc de qualité limitée. Fichier
 d'origine à récupérer auprès d'elle. [À COMPLÉTER]
