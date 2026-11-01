@@ -726,3 +726,5 @@ footer a{color:var(--on-ink)}
 .av-prev{left:4px}.av-next{right:4px}
 .avis .wrap{padding-top:56px;padding-bottom:44px}
 #prestations{padding-top:62px}
+.av-av{font-family:"Roboto",system-ui,sans-serif;font-weight:400;font-size:1.1rem}
+.g-note{margin-bottom:24px}
