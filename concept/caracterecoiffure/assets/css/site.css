@@ -644,3 +644,8 @@ footer a{color:var(--on-ink)}
 .price li>.presta{margin:0;padding:11px 10px}
 .tarif-grp h3{padding-left:10px}
 .price li{padding-left:0;padding-right:0}
+/* signature Lunixel en pied de page */
+.legal .credit{color:var(--on-ink);font-weight:600}
+.legal .credit a{color:var(--bronze-light);text-decoration:none;
+  border-bottom:1px solid rgba(212,169,106,.5);padding-bottom:1px;transition:color .18s,border-color .18s}
+.legal .credit a:hover,.legal .credit a:focus-visible{color:#E6C08A;border-bottom-color:#E6C08A}
