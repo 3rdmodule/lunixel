@@ -28,8 +28,8 @@ autorisations. Aucune image générée par intelligence artificielle sur le site
 
 **Vignettes des prestations** (`tuile-*`) : photographies libres de droit
 d'Unsplash, sous [licence Unsplash](https://unsplash.com/fr/licence), qui
-autorise l'usage commercial sans attribution obligatoire. Recadrées pour ne
-montrer que la chevelure, jamais un visage identifiable.
+autorise l'usage commercial sans attribution obligatoire. Aucun recadrage
+maison : le cadrage d'origine est conservé, centré sur le sujet.
 
 | Fichier | Photo d'origine |
 |---|---|
@@ -39,15 +39,18 @@ montrer que la chevelure, jamais un visage identifiable.
 | `tuile-balayage.webp` | https://unsplash.com/photos/photo-1629397685944-7073f5589754 |
 | `tuile-chignon.webp` | https://unsplash.com/photos/photo-1558265246-e84a824bcd83 |
 | `tuile-coupe-homme.webp` | https://unsplash.com/photos/photo-1593702275687-f8b402bf1fb5 |
-| `tuile-coupe-enfant.webp` | https://unsplash.com/photos/photo-1646793328429-dfe89bef8604 |
+| `tuile-coupe-enfant.webp` | https://unsplash.com/photos/photo-1602030028438-4cf153cbae9e |
 | `tuile-permanente.webp` | https://unsplash.com/photos/photo-1665923148259-3340e61d3ff2 |
 
 Ces vignettes sont provisoires : elles sautent dès qu'Elda fournit ses propres
 photos de prestations.
 
-**Logo** (`logo-noir.png`) : créé par Elda. Le fichier utilisé ici est un
-recadrage de la maquette qu'elle a fournie, donc de qualité limitée. Fichier
-d'origine à récupérer auprès d'elle. [À COMPLÉTER]
+**Logo** (`logo-encre.png`) : créé par Elda. Le fichier qu'elle a fourni
+(`logo-noir.png`) avait un fond noir incrusté dans l'image. La version servie
+ici en est dérivée : la luminance du dessin sert de couche alpha, et le tracé
+est reteinté en #3A332C, l'encre du site. Le dessin n'est pas modifié, seules
+les couleurs le sont. Fichier d'origine vectoriel toujours à récupérer auprès
+d'elle pour la version définitive. [À COMPLÉTER]
 
 Quatre photos du Drive ont été écartées : elles montrent de grands portraits
 de célébrités encadrés au mur du salon, dont les droits ne sont pas acquis.

@@ -1031,7 +1031,7 @@ footer h4{color:var(--fg)}
 .price .v{background:var(--bronze);color:#fff}
 .price li>.presta:hover .v,.price li>.presta:focus-visible .v{background:#6E4715}
 .price li>.presta.is-on .v{background:#fff;color:var(--bronze)}
-.mark img{border-radius:4px}
+.mark img{border-radius:0;background:none}
 /* pastille de couleur des galeries, assez haute pour se lire sur le noir */
 .gc-t{height:26px;border-top:1px solid var(--paper-2)}
 .vig-cap{background:linear-gradient(to top,rgba(32,22,14,.94),rgba(32,22,14,.6) 52%,rgba(32,22,14,0))}
