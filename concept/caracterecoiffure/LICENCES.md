@@ -29,8 +29,9 @@ Les deux grands portraits de femme encadrés visibles au mur du salon sont
 des images générées par intelligence artificielle, dont Elda détient les
 droits. Awen l'a confirmé le 01/11/2026. Rien à faire de ce côté.
 
-**Travail d'Elda** (`resultat-01` à `resultat-04`, `presta-*`) : page Facebook
-publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les
+**Travail d'Elda** (`resultat-01` à `resultat-04`) : page Facebook publique du
+salon, reprises le 01/11/2026 depuis les originaux en 720x960, et non plus
+depuis une planche contact basse définition. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les
 clientes photographiées ont donné leur accord en amont et qu'Elda détient les
 autorisations. Aucune image générée par intelligence artificielle sur le site.
 
