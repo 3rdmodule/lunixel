@@ -320,3 +320,24 @@
   window.addEventListener('resize', etat);
   etat();
 })();
+
+/* ------------------------------------------------------------
+   Avis : « Lire plus » bascule entre la phrase retenue et
+   l'avis complet. Les cartes gardent la meme hauteur.
+   ------------------------------------------------------------ */
+(function () {
+  var p = document.getElementById('js-avis');
+  if (!p) { return; }
+  p.addEventListener('click', function (e) {
+    var b = e.target.closest('.av-plus');
+    if (!b) { return; }
+    var c = b.closest('.av-c');
+    var court = c.querySelector('.av-court');
+    var long = c.querySelector('.av-long');
+    var ouvert = long.hidden === false;
+    long.hidden = ouvert;
+    court.hidden = !ouvert;
+    b.textContent = ouvert ? 'Lire plus' : 'Lire moins';
+    c.classList.toggle('is-ouvert', !ouvert);
+  });
+})();
