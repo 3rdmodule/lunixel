@@ -866,3 +866,8 @@ section{padding:66px 0}
 .hero-sous{display:block;margin-left:.42em;font-family:"Work Sans",system-ui,sans-serif;
   font-size:clamp(.95rem,2.2vw,1.24rem);font-weight:400;letter-spacing:.36em;
   text-transform:uppercase;color:#fff}
+
+/* separateur aussi entre les avis et les prestations */
+#prestations{border-top:1px solid var(--rule)}
+/* le bloc de texte du hero remonte legerement */
+.hero-inner{padding-bottom:52px}
