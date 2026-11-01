@@ -25,13 +25,14 @@
 
 <header class="topbar">
   <div class="wrap">
-    <a class="mark" href="#top">Elda Coiffure<small>Agay · Saint-Raphaël</small></a>
+    <a class="mark" href="#top" aria-label="Elda Coiffure à Agay, retour en haut"><img src="photos/logo-noir.png" alt="Elda Coiffure à Agay" width="438" height="168"></a>
     <nav class="topnav" aria-label="Navigation principale">
+      <a href="#prestations">Prestations</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#rdv">Rendez-vous</a>
+      <a href="#rdv">Réserver</a>
       <a href="#horaires">Horaires</a>
       <a href="#salon">Le salon</a>
-      <a href="#couleurs">Couleur</a>
+      
       <a href="#acces">Accès</a>
     </nav>
     <div class="topbar-cta">
@@ -52,8 +53,9 @@
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div class="hero-text">
-        <p class="eyebrow">Salon de coiffure mixte · Agay</p>
-        <h1>Elda Coiffure</h1>
+        <p class="eyebrow">Salon de coiffure mixte</p>
+        <h1><span class="hero-wordmark">Elda</span><span class="hero-sous">Coiffure</span></h1>
+        <p class="hero-ville">À Agay</p>
         <p class="lede">Prenez rendez-vous dans le salon de coiffure d'<strong>Elda</strong>&#8239;: coupe, couleur, balayage et soins, pour femmes, hommes et enfants, dans l'espace bien-être des Mas de l'Estérel, à Agay.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#rdv"><span>Prendre rendez-vous</span></a>
@@ -80,6 +82,36 @@
       </ul>
     </div>
   </div>
+
+
+  <section class="avis" aria-labelledby="avis-note-t">
+    <div class="wrap">
+      <h2 class="sec-h reveal" id="avis-note-t">Ce qu'elles en disent</h2>
+      <p class="reveal"><span class="note">5,0</span>
+        <span class="etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="sr-only">5 sur 5</span></p>
+      <p class="nb reveal"><strong>18 avis</strong> sur la fiche Google du salon</p>
+      <p class="mot reveal">Aucune note en dessous de cinq étoiles depuis l'ouverture. C'est la meilleure note des salons du secteur.</p>
+      <a class="btn reveal" href="https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7" target="_blank" rel="noopener"><span>Lire les avis sur Google</span></a>
+    </div>
+  </section>
+
+  <section id="prestations">
+    <div class="wrap">
+      <h2 class="sec-h reveal">Nos prestations</h2>
+      <p class="sec-intro reveal">Du vrai travail d'<strong>Elda</strong>, réalisé dans le salon.</p>
+      <div class="vignettes reveal">
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-coupe.webp" alt="Carré plongeant cuivré réalisé au salon" loading="lazy" width="414" height="414"><span class="px">25 €</span><figcaption><b>Coupe femme</b><i>Carré, dégradé, coupe courte</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-brushing.webp" alt="Brushing ondulé blond réalisé au salon" loading="lazy" width="414" height="414"><span class="px">dès 25 €</span><figcaption><b>Shampoing et brushing</b><i>Lisse, volume ou ondulations</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-coloration.webp" alt="Coloration cuivrée sur cheveux longs bouclés réalisée au salon" loading="lazy" width="414" height="414"><span class="px">dès 35 €</span><figcaption><b>Couleur</b><i>Racine, couleur totale, patine</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-balayage.webp" alt="Balayage contrasté blond réalisé au salon" loading="lazy" width="414" height="414"><span class="px">dès 65 €</span><figcaption><b>Mèches et balayage</b><i>Lumière et reflets naturels</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-lissage.webp" alt="Cheveux longs lissés réalisés au salon" loading="lazy" width="414" height="414"><span class="px">dès 120 €</span><figcaption><b>Lissage brésilien</b><i>Cheveux lisses et disciplinés</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-permanente.webp" alt="Permanente sur cheveux blonds réalisée au salon" loading="lazy" width="414" height="414"><span class="px">50 €</span><figcaption><b>Permanente</b><i>Boucles et mouvement</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-chignon.webp" alt="Chignon haut réalisé au salon" loading="lazy" width="414" height="414"><span class="px">45 €</span><figcaption><b>Chignon et attache</b><i>Soirée, cérémonie</i></figcaption></figure></a>
+        <a class="vig" href="#rdv"><figure><img src="photos/presta-evenement.webp" alt="Tresses avec nœud réalisées au salon" loading="lazy" width="414" height="414"><span class="px">dès 55 €</span><figcaption><b>Coiffure d'événement</b><i>Mariage, baptême, communion</i></figcaption></figure></a>
+      </div>
+    </div>
+  </section>
 
   <section id="tarifs">
     <div class="wrap">
@@ -176,15 +208,15 @@
           <span class="p-n">Coupe homme</span>
           <span class="p-m">30 min</span>
         </button>
-        <button type="button" class="presta" data-slug="coupe-enfant-moins-de-12-ans">
+        <button type="button" class="presta" data-slug="coupe-enfant">
           <span class="p-n">Coupe enfant <small>moins de 12 ans</small></span>
           <span class="p-m">30 min</span>
         </button>
-        <button type="button" class="presta" data-slug="shampoing-et-brushing">
+        <button type="button" class="presta" data-slug="shampoing-brushing">
           <span class="p-n">Shampoing et brushing</span>
           <span class="p-m">45 min</span>
         </button>
-        <button type="button" class="presta" data-slug="shampoing-coupe-et-brushing">
+        <button type="button" class="presta" data-slug="shampoing-coupe-brushing">
           <span class="p-n">Shampoing, coupe et brushing</span>
           <span class="p-m">75 min</span>
         </button>
@@ -200,15 +232,15 @@
           <span class="p-n">Couleur totale</span>
           <span class="p-m">90 min</span>
         </button>
-        <button type="button" class="presta" data-slug="patine-ou-gloss">
+        <button type="button" class="presta" data-slug="patine-gloss">
           <span class="p-n">Patine, gloss</span>
           <span class="p-m">45 min</span>
         </button>
-        <button type="button" class="presta" data-slug="balayage-ou-meches">
+        <button type="button" class="presta" data-slug="balayage-meches">
           <span class="p-n">Balayage, mèches</span>
           <span class="p-m">2 h 30</span>
         </button>
-        <button type="button" class="presta" data-slug="soin-du-cheveu">
+        <button type="button" class="presta" data-slug="soin-cheveu">
           <span class="p-n">Soin du cheveu</span>
           <span class="p-m">30 min</span>
         </button>
@@ -220,7 +252,7 @@
           <span class="p-n">Lissage brésilien</span>
           <span class="p-m">2 h 30</span>
         </button>
-        <button type="button" class="presta" data-slug="chignon-ou-coiffure-d-evenement">
+        <button type="button" class="presta" data-slug="chignon-evenement">
           <span class="p-n">Chignon, coiffure d'événement</span>
           <span class="p-m">60 min</span>
         </button>
@@ -372,7 +404,8 @@
       <div>
         <h4>Le salon</h4>
         <ul>
-          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#prestations">Prestations</a>
+      <a href="#tarifs">Tarifs</a></li>
           <li><a href="#rdv">Prendre rendez-vous</a></li>
           <li><a href="#horaires">Horaires</a></li>
           <li><a href="#couleurs">Couleur et balayage</a></li>
@@ -419,7 +452,7 @@
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
     "opens": "09:00", "closes": "18:00"
   }],
-  "knowsLanguage": ["fr", "it", "sq"],
+  "knowsLanguage": ["fr", "it", "en"],
   "image": "photos/og.webp",
   "sameAs": ["https://www.facebook.com/eldadoda2101", "https://www.instagram.com/caracterecoiffureagay", "https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7"]
 }

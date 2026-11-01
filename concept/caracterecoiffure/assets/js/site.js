@@ -154,7 +154,7 @@
   var grille = document.getElementById('js-presta');
   var boite = document.getElementById('cal-box');
   if (grille && boite) {
-    var CAL = 'https://cal.com/lead-major-sucah7/';
+    var CAL = 'https://cal.com/elda-coiffure/';
     var nomCible = document.getElementById('js-cal-nom');
     var fermer = document.getElementById('js-cal-fermer');
     var consent = document.getElementById('js-consent');
