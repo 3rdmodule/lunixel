@@ -25,9 +25,9 @@ en haut de page. `salon-coin` vient de DSC00966, `salon-06` à `salon-08` de
 DSC00968, DSC00971 et DSC00973. Toutes sont éclaircies pour coller à la
 lumière de sa maquette.
 
-Réserve sur le hero : deux grands portraits de femme encadrés sont visibles
-au mur du salon. Elda les garde sur son flyer papier, mais leurs droits ne
-sont pas acquis pour une publication en ligne. [À COMPLÉTER]
+Les deux grands portraits de femme encadrés visibles au mur du salon sont
+des images générées par intelligence artificielle, dont Elda détient les
+droits. Awen l'a confirmé le 01/11/2026. Rien à faire de ce côté.
 
 **Travail d'Elda** (`resultat-01` à `resultat-04`, `presta-*`) : page Facebook
 publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les
