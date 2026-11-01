@@ -7,6 +7,7 @@ depuis Google Fonts : la CNIL considère le chargement direct comme un transfert
 |---|---|---|---|
 | Fraunces | Fontsource | SIL Open Font License 1.1 | npm `@fontsource/fraunces` |
 | Work Sans | Fontsource | SIL Open Font License 1.1 | npm `@fontsource/work-sans` |
+| Great Vibes | Fontsource | SIL Open Font License 1.1 | npm `@fontsource/great-vibes` |
 
 Aucune bibliothèque JavaScript tierce. Les 150 lignes de `assets/js/site.js` sont
 écrites pour ce site : horaires en direct, galerie à flèches, consentement des
@@ -20,12 +21,14 @@ Deux origines, deux statuts différents.
 fourni par la cliente le 25/08/2026. Elles lui appartiennent. Licence d'usage
 [À COMPLÉTER] dans les mentions légales.
 
-**Résultats de coiffure** (`resultat-01` à `resultat-04`) et deux vues du
-salon (`salon-05`, `salon-06`) : page Facebook
-publique du salon. Les photos sont d'Elda, mais **les clientes photographiées
-n'ont pas forcément consenti à une publication sur un site web**. Accord à
-obtenir avant la mise en ligne définitive, même si les cadrages évitent les
-visages. [À COMPLÉTER]
+**Travail d'Elda** (`resultat-01` à `resultat-04`, `presta-*`) : page Facebook
+publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les
+clientes photographiées ont donné leur accord en amont et qu'Elda détient les
+autorisations. Aucune image générée par intelligence artificielle sur le site.
+
+**Logo** (`logo-noir.png`) : créé par Elda. Le fichier utilisé ici est un
+recadrage de la maquette qu'elle a fournie, donc de qualité limitée. Fichier
+d'origine à récupérer auprès d'elle. [À COMPLÉTER]
 
 Quatre photos du Drive ont été écartées : elles montrent de grands portraits
 de célébrités encadrés au mur du salon, dont les droits ne sont pas acquis.

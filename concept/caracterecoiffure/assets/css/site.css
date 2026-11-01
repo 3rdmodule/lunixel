@@ -589,3 +589,8 @@ footer a{color:var(--on-ink)}
   .ab-call{border-color:var(--bronze);color:var(--bronze)}
   .mark img{width:150px}
 }
+
+/* ---------- contrastes WCAG AA, audit du 01/11/2026 ---------- */
+.today-tag{color:var(--bronze-light)}
+.avis .etoiles{color:#7D562B;font-size:1.65rem}
+.bandeau-avis .avis-sur{color:#fff}
