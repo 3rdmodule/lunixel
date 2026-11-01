@@ -67,47 +67,32 @@
   </section>
 
   
-  <section class="elda-bloc" aria-labelledby="elda-t">
+  <section class="elda-bloc" aria-label="Horaires du salon">
     <div class="wrap elda-grid">
       <figure class="elda-ph reveal">
         <img src="photos/elda-portrait.webp" alt="Un poste de coiffage du salon et son grand miroir à cadre doré" loading="lazy" width="731" height="1300">
       </figure>
-      <div class="elda-tx reveal">
-        <p class="eyebrow">Le salon</p>
-        <h2 id="elda-t">Elda, plus de vingt ans de métier</h2>
-        <p>Elle tient seule son salon, dans l'espace bien-être des Mas de l'Estérel. Femmes, hommes et enfants, elle fait tout&#8239;: la coupe, la couleur, le balayage, le lissage et les soins.</p>
-        <ul class="elda-pts">
-          <li><b>Sur rendez-vous</b><span>Du lundi au vendredi, de 9h à 18h.</span></li>
-          <li><b>Entrée et parking libres</b><span>Pas besoin de séjourner au village vacances.</span></li>
-          <li><b>Trois langues</b><span>Elda vous reçoit en français, en italien et en albanais.</span></li>
+      <div class="elda-tx statusbar reveal" id="horaires">
+        <p class="eyebrow">Horaires</p>
+        <div class="status-card">
+          <p class="status-line"><span class="dot" id="js-dot" aria-hidden="true"></span><strong id="js-status">Du lundi au vendredi, 9h à 18h</strong></p>
+          <p class="status-sub" id="js-status-sub">Fermé samedi et dimanche</p>
+        </div>
+        <ul class="week" id="js-week">
+            <li data-day="1"><span class="dname">Lundi</span><span class="dtime">9h - 18h</span></li>
+            <li data-day="2"><span class="dname">Mardi</span><span class="dtime">9h - 18h</span></li>
+            <li data-day="3"><span class="dname">Mercredi</span><span class="dtime">9h - 18h</span></li>
+            <li data-day="4"><span class="dname">Jeudi</span><span class="dtime">9h - 18h</span></li>
+            <li data-day="5"><span class="dname">Vendredi</span><span class="dtime">9h - 18h</span></li>
+            <li data-day="6" class="closed"><span class="dname">Samedi</span><span class="dtime">Fermé</span></li>
+            <li data-day="0" class="closed"><span class="dname">Dimanche</span><span class="dtime">Fermé</span></li>
         </ul>
-        <a class="btn btn-solid" href="#rdv"><span>Voir les tarifs et réserver</span></a>
+        <p class="horaires-pied"><a class="btn btn-solid" href="#rdv"><span>Voir les tarifs et réserver</span></a></p>
       </div>
     </div>
   </section>
 
-  <div class="statusbar" id="horaires">
-    <div class="wrap">
-      <div class="status-annee">
-        <p class="sa-t">Ouvert toute l'année</p>
-        <p class="sa-s">Le salon tourne hors saison comme en été. Il est ouvert aux habitants d'Agay, du Dramont, d'Anthéor, de Boulouris et de Saint-Raphaël, sans rien à voir avec le village vacances.</p>
-      </div>
-      <div class="status-card">
-        <p class="status-line"><span class="dot" id="js-dot" aria-hidden="true"></span><strong id="js-status">Du lundi au vendredi, 9h à 18h</strong></p>
-        <p class="status-sub" id="js-status-sub">Fermé samedi et dimanche</p>
-      </div>
-      <ul class="week" id="js-week">
-          <li data-day="1"><span class="dname">Lundi</span><span class="dtime">9h - 18h</span></li>
-          <li data-day="2"><span class="dname">Mardi</span><span class="dtime">9h - 18h</span></li>
-          <li data-day="3"><span class="dname">Mercredi</span><span class="dtime">9h - 18h</span></li>
-          <li data-day="4"><span class="dname">Jeudi</span><span class="dtime">9h - 18h</span></li>
-          <li data-day="5"><span class="dname">Vendredi</span><span class="dtime">9h - 18h</span></li>
-          <li data-day="6" class="closed"><span class="dname">Samedi</span><span class="dtime">Fermé</span></li>
-          <li data-day="0" class="closed"><span class="dname">Dimanche</span><span class="dtime">Fermé</span></li>
-      </ul>
-    </div>
-  </div>
-
+  
 
 <section class="bandeau-avis bandeau-haut" aria-labelledby="avis-t">
   <div class="wrap">

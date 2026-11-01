@@ -1184,13 +1184,6 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
   .hero-bg img{object-position:56% 46%}
 }
 
-/* ---------- bandeau ouvert toute l'annee ---------- */
-.status-annee{text-align:center;margin:0 0 26px}
-.sa-t{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.3rem,3vw,1.7rem);
-  font-weight:600;color:var(--fg);margin:0 0 6px;letter-spacing:-.01em}
-.sa-s{margin:0 auto;max-width:62ch;color:#5C5147;font-size:.96rem}
-.status-annee{grid-column:1/-1;width:100%}
-
 /* ---------- photos du salon semees dans la page ---------- */
 
 .acces-photo{margin:30px 0 0;overflow:hidden;border:1px solid var(--rule)}
@@ -1210,3 +1203,31 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 .elda-pts li{display:grid;gap:2px;padding-left:16px;border-left:2px solid var(--or-moyen)}
 .elda-pts b{font-weight:600;color:var(--fg)}
 .elda-pts span{color:var(--fg-muted);font-size:.94rem}
+
+/* ---------- horaires dans le bloc a droite de la photo ---------- */
+.elda-bloc .statusbar{background:none;border:0;padding:0;color:var(--fg)}
+.elda-bloc .eyebrow{margin-bottom:14px}
+.elda-bloc .status-card{background:var(--paper);border:1px solid var(--rule);
+  padding:16px 20px;margin:0 0 16px}
+.elda-bloc .status-line{margin:0;display:flex;align-items:center;gap:11px;
+  font-family:"Fraunces",Georgia,serif;font-size:1.22rem;font-weight:600}
+.elda-bloc .status-sub{margin:4px 0 0 25px;color:var(--fg-muted);font-size:.95rem}
+.elda-bloc .week{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:1fr;border:1px solid var(--rule);background:var(--paper)}
+@media(min-width:560px){.elda-bloc .week{grid-template-columns:1fr 1fr}}
+.elda-bloc .week li{display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:11px 18px;border-bottom:1px solid var(--rule-soft);
+  color:var(--fg);font-size:.96rem}
+@media(min-width:560px){
+  .elda-bloc .week li:nth-child(odd){border-right:1px solid var(--rule-soft)}
+}
+.elda-bloc .week li:last-child{border-bottom:0}
+.elda-bloc .week li.closed .dtime{color:var(--fg-muted)}
+.elda-bloc .week li.is-today{background:var(--bronze);color:#fff}
+.elda-bloc .week li.is-today .dname,.elda-bloc .week li.is-today .dtime{color:#fff}
+.horaires-pied{margin:22px 0 0}
+.elda-ph img{max-height:none;aspect-ratio:3/4;object-fit:cover}
+/* enseigne Fermé lisible aussi sur la ligne du jour, en brun */
+.elda-bloc .week li.closed .dtime{background:var(--rouge);color:#fff}
+.elda-bloc .week li.is-today.closed{background:var(--paper-3);color:var(--fg)}
+.elda-bloc .week li.is-today.closed .dname{color:var(--fg)}
