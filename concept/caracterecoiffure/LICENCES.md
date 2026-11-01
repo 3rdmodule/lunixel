@@ -20,10 +20,14 @@ Deux origines, deux statuts différents.
 **Intérieur du salon** (`hero-wide`, `salon-coin`, `salon-01` à `salon-05`,
 `og`) : dossier Drive fourni par la cliente le 25/08/2026. Elles lui
 appartiennent. Licence d'usage [À COMPLÉTER] dans les mentions légales.
-Le hero vient de DSC00965 et `salon-coin` de DSC00966, les deux photos
-qu'Elda a elle-même retenues pour sa maquette. Les deux sont recadrées pour
-écarter les grands portraits encadrés du mur, dont les droits ne sont pas
-acquis, et éclaircies pour coller à la lumière de sa maquette.
+Le hero est la photo qu'Awen a transmise le 01/11/2026, celle qu'Elda veut
+en haut de page. `salon-coin` vient de DSC00966, `salon-06` à `salon-08` de
+DSC00968, DSC00971 et DSC00973. Toutes sont éclaircies pour coller à la
+lumière de sa maquette.
+
+Réserve sur le hero : deux grands portraits de femme encadrés sont visibles
+au mur du salon. Elda les garde sur son flyer papier, mais leurs droits ne
+sont pas acquis pour une publication en ligne. [À COMPLÉTER]
 
 **Travail d'Elda** (`resultat-01` à `resultat-04`, `presta-*`) : page Facebook
 publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les

@@ -398,3 +398,41 @@
     }
   });
 })();
+
+/* ------------------------------------------------------------
+   Tarifs et rendez-vous : repliés par défaut pour raccourcir
+   la page, dépliés au clic sur le bouton.
+   ------------------------------------------------------------ */
+(function () {
+  var bouton = document.getElementById('js-tarifs-ouvre');
+  var corps = document.getElementById('tarifs-corps');
+  if (!bouton || !corps) { return; }
+
+  function ouvrir() {
+    if (!corps.hidden) { return; }
+    corps.hidden = false;
+    bouton.setAttribute('aria-expanded', 'true');
+    bouton.querySelector('span').textContent = 'Masquer les tarifs';
+  }
+  function fermer() {
+    corps.hidden = true;
+    bouton.setAttribute('aria-expanded', 'false');
+    bouton.querySelector('span').textContent = 'Voir les tarifs et réserver';
+  }
+
+  bouton.addEventListener('click', function () {
+    if (corps.hidden) { ouvrir(); } else { fermer(); }
+  });
+
+  /* un lien vers #tarifs ou #rdv, ou un « Réserver cette prestation »
+     d'une galerie, doit trouver la liste déjà ouverte */
+  function surAncre() {
+    if (location.hash === '#tarifs' || location.hash === '#rdv') { ouvrir(); }
+  }
+  window.addEventListener('hashchange', surAncre);
+  surAncre();
+  var liens = document.querySelectorAll('a[href="#tarifs"],a[href="#rdv"]');
+  for (var i = 0; i < liens.length; i++) {
+    liens[i].addEventListener('click', ouvrir);
+  }
+})();

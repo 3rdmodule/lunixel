@@ -1109,3 +1109,48 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 .hero-veil{background:linear-gradient(104deg,
   rgba(253,249,244,.97) 0%,rgba(253,249,244,.93) 34%,
   rgba(253,249,244,.62) 64%,rgba(253,249,244,.34) 100%)}
+
+/* ---------- tarifs repliables ---------- */
+.tarif-ouvre{text-align:center;margin:0 0 8px}
+.tarif-ouvre .btn{font-size:1.02rem;padding:15px 30px}
+#tarifs-corps[hidden]{display:none}
+#tarifs-corps>.filtres{margin-top:34px}
+.hero-bg img{object-position:58% 52%}
+/* le voile s'ouvre plus vite : la salle d'Elda doit se voir */
+.hero-veil{background:linear-gradient(100deg,
+  rgba(253,249,244,.97) 0%,rgba(253,249,244,.9) 30%,
+  rgba(253,249,244,.4) 54%,rgba(253,249,244,.12) 100%)}
+.hero-bg img{object-position:46% 58%}
+.hero-bg img{object-position:52% 44%}
+.hero-veil{background:linear-gradient(100deg,
+  rgba(253,249,244,.97) 0%,rgba(253,249,244,.93) 26%,
+  rgba(253,249,244,.42) 50%,rgba(253,249,244,.1) 100%)}
+
+/* ============================================================
+   Hero en deux colonnes, comme la maquette d'Elda : le texte
+   sur le creme a gauche, la photo du salon entiere a droite.
+   ============================================================ */
+.hero{position:relative;background:var(--paper);min-height:0;overflow:visible;
+  border-bottom:1px solid var(--rule)}
+.hero-inner{display:grid;gap:0;align-items:center;padding:0;max-width:1320px}
+.hero-text{padding:52px 0 58px}
+.hero-bg{display:block;position:static;margin:0 calc(var(--gut)*-1) 0 0}
+.hero-bg img{position:static;width:100%;height:auto;object-fit:cover;object-position:50% 50%}
+@media(min-width:900px){
+  .hero-inner{grid-template-columns:minmax(0,42%) minmax(0,58%);gap:48px}
+  .hero-text{padding:64px 0 70px}
+  .hero-bg img{height:100%;max-height:560px;min-height:420px}
+  .hero-bg{height:100%;display:flex}
+}
+@media(max-width:899px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-text{padding:40px 0 34px;order:2}
+  .hero-bg{order:1;margin:0 calc(var(--gut)*-1)}
+  .hero-bg img{max-height:340px;object-position:50% 46%}
+}
+/* pas de debordement : la photo reste dans la colonne */
+.hero-bg,.hero-inner{margin-left:0;margin-right:0}
+.hero-inner{max-width:none}
+@media(max-width:899px){.hero-bg{margin:0}}
+/* le texte du hero reprend la gouttiere du site */
+.hero-inner{padding-left:var(--gut);padding-right:var(--gut);max-width:1240px;margin:0 auto}

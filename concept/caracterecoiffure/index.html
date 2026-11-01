@@ -46,12 +46,7 @@
 <div id="top"></div>
 
   <section class="hero">
-    <picture class="hero-bg">
-      <source media="(max-width:720px)" srcset="photos/hero-wide-1100.webp">
-      <img src="photos/hero-wide.webp" alt="La salle du salon Elda Coiffure, ses fauteuils noirs et ses grands miroirs dorés" width="1800" height="1366" fetchpriority="high">
-    </picture>
-    <div class="hero-veil" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
+        <div class="wrap hero-inner">
       <div class="hero-text">
         <p class="eyebrow">Salon de coiffure mixte</p>
         <h1><span class="hero-wordmark">Elda</span><span class="hero-sous">Coiffure</span></h1>
@@ -63,44 +58,14 @@
           <a class="pil pil-noir" href="tel:+33609317223">06 09 31 72 23</a>
         </div>
       </div>
+      <picture class="hero-bg">
+        <source media="(max-width:720px)" srcset="photos/hero-wide-1100.webp">
+        <img src="photos/hero-wide.webp" alt="La salle du salon Elda Coiffure, ses fauteuils noirs, ses grands miroirs dorés et la porte ouverte sur la terrasse" width="1400" height="990" fetchpriority="high">
+      </picture>
     </div>
   </section>
 
-  <section class="bande-ico" aria-label="Les prestations du salon en un coup d'oeil">
-    <ul class="wrap">
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l9 11M18 4L9 15" /><circle cx="7" cy="18" r="2.4"/><circle cx="17" cy="18" r="2.4"/></svg></span>
-        <b>Coupe femme</b>
-        <i>Style et élégance</i>
-      </li>
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11a7 7 0 0 1 14 0v3a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M4 10c2-4 5-6 8-6s6 2 8 6"/></svg></span>
-        <b>Coupe homme</b>
-        <i>Moderne et soignée</i>
-      </li>
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h9a4 4 0 0 1 0 8H4z"/><path d="M8 15v5"/><path d="M6 20h4"/></svg></span>
-        <b>Brushing</b>
-        <i>Brillance et volume</i>
-      </li>
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3l6 6-9 9H6v-6z"/><path d="M4 21h7"/></svg></span>
-        <b>Couleur</b>
-        <i>Éclat et personnalité</i>
-      </li>
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3c-3 4-3 8 0 12s3 5 0 6"/><path d="M13 3c-3 4-3 8 0 12s3 5 0 6"/><path d="M18 3c-3 4-3 8 0 12s3 5 0 6"/></svg></span>
-        <b>Mèches</b>
-        <i>Lumière et relief</i>
-      </li>
-      <li>
-        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span>
-        <b>Chignons</b>
-        <i>Pour vos occasions</i>
-      </li>
-    </ul>
-  </section>
-
+  
   <div class="statusbar" id="horaires">
     <div class="wrap">
       <div class="status-card">
@@ -381,6 +346,14 @@
     <span id="rdv" class="ancre" aria-hidden="true"></span>
     <div class="wrap">
       <h2 class="sec-h reveal">Tarifs et rendez-vous</h2>
+      <p class="sec-intro reveal">Toute la carte du salon, et le calendrier pour réserver.</p>
+      <p class="tarif-ouvre reveal">
+        <button type="button" class="btn btn-solid" id="js-tarifs-ouvre"
+                aria-expanded="false" aria-controls="tarifs-corps">
+          <span>Voir les tarifs et réserver</span>
+        </button>
+      </p>
+      <div id="tarifs-corps" hidden>
       <div class="filtres reveal" id="js-filtres" role="group" aria-label="Filtrer les tarifs">
         <button type="button" class="chip is-on" data-f="tout">Tout</button>
         <button type="button" class="chip" data-f="coupe">Coupe</button>
@@ -466,6 +439,7 @@
         <p class="cal-titre"><span id="js-cal-nom"></span> <button type="button" class="cal-fermer" id="js-cal-fermer">Changer de prestation</button></p>
       </div>
       <noscript><p class="fallback">Le calendrier demande JavaScript. Appelez le 06 09 31 72 23, du lundi au vendredi de 9h à 18h.</p></noscript>
+      </div>
     </div>
   </section>
 
@@ -489,6 +463,9 @@
         <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et les brosses de coiffage" loading="lazy" width="1400" height="933"></figure>
         <figure><img src="photos/salon-04.webp" alt="La salle du salon vue depuis l'entrée" loading="lazy" width="1400" height="933"></figure>
         <figure><img src="photos/salon-05.webp" alt="Un bouquet de roses blanches devant le miroir œil du salon" loading="lazy" width="1400" height="933"></figure>
+        <figure><img src="photos/salon-06.webp" alt="Un miroir à cadre doré au-dessus du plan de coiffage" loading="lazy" width="1400" height="788"></figure>
+        <figure><img src="photos/salon-07.webp" alt="Le téléphone vintage et la carte des tarifs sur la commode de l'entrée" loading="lazy" width="1400" height="788"></figure>
+        <figure><img src="photos/salon-08.webp" alt="L'étagère des colorations et le matériel de coiffage" loading="lazy" width="1400" height="788"></figure>
       </div>
       <div class="wrap slider-bar">
         <button class="arrow" type="button" data-prev aria-label="Photo précédente">
@@ -497,7 +474,7 @@
         <button class="arrow" type="button" data-next aria-label="Photo suivante">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <span class="slider-count" data-count aria-live="polite">1 / 6</span>
+        <span class="slider-count" data-count aria-live="polite">1 / 9</span>
       </div>
     </div>
   </section>
