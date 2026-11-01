@@ -1231,3 +1231,65 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 .elda-bloc .week li.closed .dtime{background:var(--rouge);color:#fff}
 .elda-bloc .week li.is-today.closed{background:var(--paper-3);color:var(--fg)}
 .elda-bloc .week li.is-today.closed .dname{color:var(--fg)}
+
+/* ============================================================
+   Telephone : la photo du salon se voit en haut, les textes
+   raccourcissent, les espacements se resserrent. Le site
+   principal d'Elda sera consulte au telephone.
+   ============================================================ */
+
+.sur-petit{display:none}
+@media(max-width:860px){
+  .sur-grand{display:none}
+  .sur-petit{display:inline}
+  p.sur-grand{display:none}
+  p.sur-petit{display:block}
+
+  /* hero : photo en premier, en vrai, puis le texte sur le creme */
+  .hero{display:block;min-height:0;overflow:visible;padding:0}
+  .hero-bg{position:relative;inset:auto;display:block;height:auto;margin:0}
+  .hero-bg img{position:relative;inset:auto;width:100%;
+    height:clamp(190px,34vh,270px);object-fit:cover;object-position:50% 54%}
+  .hero-veil{display:none}
+  .hero-inner{padding-top:0;padding-bottom:0}
+  .hero-text{padding:22px 0 26px;max-width:none}
+  .hero .eyebrow{margin-bottom:10px;font-size:.68rem}
+  .hero-wordmark{font-size:clamp(2.9rem,15vw,4rem);margin-bottom:2px}
+  .hero-sous{font-size:.92rem;letter-spacing:.3em;margin-bottom:10px}
+  .hero-lieu{margin-bottom:12px}
+  .hero-claim{font-size:1.5rem;margin:0 0 8px}
+  .hero .lede{margin:0 0 18px;font-size:1rem}
+  .hero-actions{gap:10px}
+  .hero-actions .pil{flex:1 1 auto;justify-content:center;text-align:center}
+
+  /* rythme vertical resserre */
+  section,.elda-bloc,.contact-bar{padding-top:44px;padding-bottom:44px}
+  .sec-h{font-size:clamp(2.3rem,10vw,3rem);margin-bottom:10px}
+  .sec-h::after{margin-top:8px}
+  .sec-intro{margin-bottom:26px;font-size:.96rem}
+  .elda-grid{gap:22px}
+  .elda-bloc .status-card{padding:13px 16px;margin-bottom:12px}
+  .elda-bloc .week li{padding:9px 15px;font-size:.92rem}
+  .horaires-pied{margin-top:16px}
+  .bandeau-haut{padding:22px 0}
+  .bandeau-haut .avis-sur{font-size:1.15rem}
+  .bandeau-haut .avis-l{font-size:.92rem}
+  .vignettes{gap:10px}
+  .vig-cap{padding:26px 11px 10px}
+  .vig-cap b{font-size:.98rem}
+  .vig-cap i{font-size:.75rem}
+  .gal{padding:16px}
+  .contact-bar li{padding:0}
+  .acces-photo{margin-top:22px}
+}
+@media(max-width:420px){
+  .hero-wordmark{font-size:3.2rem}
+  .sec-h{font-size:2.2rem}
+}
+@media(max-width:860px){
+  /* les deux actions du hero tiennent sur une ligne : la barre collante
+     du bas reprend deja les memes appels a l'action */
+  .hero-actions{display:flex;flex-wrap:nowrap;gap:9px}
+  .hero-actions .pil{flex:1 1 0;min-width:0;padding:13px 10px;font-size:.92rem;
+    white-space:nowrap}
+}
