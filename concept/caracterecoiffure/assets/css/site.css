@@ -649,3 +649,37 @@ footer a{color:var(--on-ink)}
 .legal .credit a{color:var(--bronze-light);text-decoration:none;
   border-bottom:1px solid rgba(212,169,106,.5);padding-bottom:1px;transition:color .18s,border-color .18s}
 .legal .credit a:hover,.legal .credit a:focus-visible{color:#E6C08A;border-bottom-color:#E6C08A}
+
+/* ---------- pages legales ---------- */
+.legalpage{padding:64px 0 86px}
+.legalpage .wrap{max-width:760px}
+.legalpage h1.sec-h{margin-bottom:34px}
+.legalpage h2{font-family:"Fraunces",Georgia,serif;font-size:1.42rem;font-weight:600;
+  margin:46px 0 14px;color:var(--fg)}
+.legalpage h3{font-family:"Fraunces",Georgia,serif;font-size:1.12rem;font-weight:600;margin:28px 0 10px}
+.legalpage p{font-size:1rem;line-height:1.72;color:var(--fg-muted)}
+.legalpage p strong,.legalpage li strong{color:var(--fg)}
+.legalpage ul{margin:0 0 18px;padding-left:22px;color:var(--fg-muted);line-height:1.72}
+.legalpage li{margin-bottom:8px}
+.legalpage a{color:var(--bronze);font-weight:600}
+.legalpage .chapo{font-size:1.1rem;color:var(--fg);border-left:3px solid var(--bronze-light);
+  padding:4px 0 4px 20px;margin-bottom:12px}
+.legalpage .maj{margin-top:52px;padding-top:20px;border-top:1px solid var(--rule);
+  font-size:.88rem;color:var(--fg-muted)}
+.legalpage .encadre{background:var(--paper-2);border-left:3px solid var(--bronze);
+  padding:18px 22px;margin:0}
+.fiche{display:grid;grid-template-columns:auto 1fr;gap:0;margin:0 0 18px;
+  border-top:1px solid var(--rule)}
+.fiche dt{font-weight:600;color:var(--fg);padding:12px 24px 12px 0;
+  border-bottom:1px solid var(--rule);font-size:.94rem}
+.fiche dd{margin:0;padding:12px 0;border-bottom:1px solid var(--rule);
+  color:var(--fg-muted);font-size:.98rem}
+.legalpage .todo{color:#8A3421;font-weight:600;background:#FBF1EC;padding:1px 7px}
+.tbl{overflow-x:auto;margin:0 0 18px}
+.tbl table{width:100%;border-collapse:collapse;font-size:.95rem}
+.tbl caption{text-align:left;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg-muted);padding-bottom:10px}
+.tbl th{text-align:left;font-weight:600;color:var(--fg);border-bottom:2px solid var(--bronze);padding:10px 14px 10px 0}
+.tbl td{border-bottom:1px solid var(--rule);padding:11px 14px 11px 0;color:var(--fg-muted);vertical-align:top}
+@media(max-width:620px){.fiche{grid-template-columns:1fr;gap:0}
+  .fiche dt{border-bottom:0;padding-bottom:2px}.fiche dd{padding-top:0}}
