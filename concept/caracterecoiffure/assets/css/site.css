@@ -1192,8 +1192,21 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 .status-annee{grid-column:1/-1;width:100%}
 
 /* ---------- photos du salon semees dans la page ---------- */
-/* la photo se montre en entier : aucun recadrage en bandeau */
-.bande-salon{margin:0 auto;display:block;max-width:1160px;padding:0 var(--gut)}
-.bande-salon img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+
 .acces-photo{margin:30px 0 0;overflow:hidden;border:1px solid var(--rule)}
 .acces-photo img{width:100%;height:auto;display:block}
+
+/* ---------- bloc Elda : photo a gauche, texte a droite ---------- */
+.elda-bloc{background:var(--paper-2);border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule)}
+.elda-grid{display:grid;gap:34px;align-items:center}
+@media(min-width:860px){.elda-grid{grid-template-columns:minmax(0,38%) minmax(0,62%);gap:56px}}
+.elda-ph{margin:0;overflow:hidden;border:1px solid var(--rule);background:var(--paper)}
+.elda-ph img{width:100%;height:100%;max-height:460px;object-fit:cover;
+  object-position:56% 50%;display:block}
+.elda-tx h2{font-size:clamp(1.5rem,3.2vw,2.1rem);color:var(--fg);margin:0 0 14px}
+.elda-tx>p{color:var(--fg-muted);max-width:52ch}
+.elda-pts{list-style:none;margin:22px 0 26px;padding:0;display:grid;gap:14px}
+.elda-pts li{display:grid;gap:2px;padding-left:16px;border-left:2px solid var(--or-moyen)}
+.elda-pts b{font-weight:600;color:var(--fg)}
+.elda-pts span{color:var(--fg-muted);font-size:.94rem}
