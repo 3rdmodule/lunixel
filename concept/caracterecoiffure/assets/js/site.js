@@ -151,7 +151,7 @@
      n'affiche pas, et on ne charge le calendrier qu'apr\u00e8s le clic,
      directement sur la prestation choisie.
      -------------------------------------------------------- */
-  var grille = document.getElementById('js-presta');
+  var grille = document.getElementById('tarifs');
   var boite = document.getElementById('cal-box');
   if (grille && boite) {
     var CAL = 'https://cal.com/elda-coiffure/';
@@ -284,4 +284,39 @@
     largeur();
     pose(range.value);
   });
+})();
+
+/* ------------------------------------------------------------
+   Carrousel d'avis. Defilement natif a l'horizontale, deux
+   fleches sur grand ecran. Aucune dependance, pas de defilement
+   automatique : on lit a son rythme.
+   ------------------------------------------------------------ */
+(function () {
+  var piste = document.getElementById('js-avis');
+  if (!piste) { return; }
+  var car = piste.closest('.av-car');
+  var prev = car.querySelector('.av-prev');
+  var next = car.querySelector('.av-next');
+  var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pas() {
+    var c = piste.querySelector('.av-c');
+    return c ? c.getBoundingClientRect().width + 18 : 400;
+  }
+  function bouge(sens) {
+    piste.scrollBy({ left: sens * pas(), behavior: doux ? 'smooth' : 'auto' });
+  }
+  prev.addEventListener('click', function () { bouge(-1); });
+  next.addEventListener('click', function () { bouge(1); });
+
+  function etat() {
+    var max = piste.scrollWidth - piste.clientWidth - 2;
+    prev.disabled = piste.scrollLeft <= 2;
+    next.disabled = piste.scrollLeft >= max;
+    prev.style.opacity = prev.disabled ? '.35' : '1';
+    next.style.opacity = next.disabled ? '.35' : '1';
+  }
+  piste.addEventListener('scroll', etat, { passive: true });
+  window.addEventListener('resize', etat);
+  etat();
 })();

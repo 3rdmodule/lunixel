@@ -594,3 +594,49 @@ footer a{color:var(--on-ink)}
 .today-tag{color:var(--bronze-light)}
 .avis .etoiles{color:#7D562B;font-size:1.65rem}
 .bandeau-avis .avis-sur{color:#fff}
+
+/* ---------- carrousel d'avis ---------- */
+.av-car{position:relative;margin:18px 0 20px}
+.av-p{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  list-style:none;margin:0;padding:4px 2px 18px;scroll-behavior:smooth;
+  scrollbar-width:thin;scrollbar-color:var(--bronze-light) transparent}
+.av-p::-webkit-scrollbar{height:6px}
+.av-p::-webkit-scrollbar-thumb{background:var(--bronze-light);border-radius:3px}
+.av-c{flex:0 0 min(420px,82vw);scroll-snap-align:center;background:var(--paper);
+  border:1px solid var(--rule);padding:26px 26px 22px;display:flex;flex-direction:column;
+  text-align:left}
+.av-s{color:#7D562B;letter-spacing:.16em;font-size:1.05rem;margin:0 0 12px}
+.av-c blockquote{margin:0;flex:1}
+.av-c blockquote p{font-size:1rem;line-height:1.62;color:var(--fg);margin:0 0 16px}
+.av-c cite{font-style:normal;font-weight:600;font-size:.92rem;color:var(--bronze)}
+.av-b{position:absolute;top:calc(50% - 26px);width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--rule);background:var(--paper);color:var(--bronze);
+  font-size:1.5rem;line-height:1;cursor:pointer;z-index:2;display:none}
+.av-b:hover,.av-b:focus-visible{background:var(--bronze);color:#fff;border-color:var(--bronze)}
+.av-prev{left:-10px}.av-next{right:-10px}
+@media(min-width:900px){.av-b{display:block}}
+.av-src{font-size:.88rem;color:var(--fg-muted);text-align:center;margin:0}
+.av-src a{color:var(--bronze);font-weight:600}
+.ancre{position:relative;top:-90px;display:block;height:0}
+
+/* ---------- tarifs cliquables ---------- */
+.price li>.presta{display:flex;align-items:baseline;gap:12px;width:100%;
+  background:none;border:0;border-radius:0;padding:11px 10px;margin:0 -10px;
+  font:inherit;color:inherit;text-align:left;cursor:pointer;
+  transition:background .18s var(--ease)}
+.price li>.presta:hover,.price li>.presta:focus-visible{background:var(--paper-2)}
+.price li>.presta:focus-visible{outline:3px solid var(--bronze);outline-offset:-3px}
+.price li>.presta .p-n{flex:1}
+.price li>.presta .p-m{flex:none;font-size:.8rem;color:var(--fg-muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.price li>.presta .v{flex:none;min-width:62px;text-align:right}
+.price li>.presta.is-on{background:var(--bronze);color:#fff}
+.price li>.presta.is-on .p-m,.price li>.presta.is-on .v,
+.price li>.presta.is-on small,.price li>.presta.is-on i{color:#F0E2CF}
+/* ligne de tarif : nom et duree a gauche, prix a droite */
+.price li>.presta{display:grid;grid-template-columns:1fr auto;
+  grid-template-areas:"n v" "m v";column-gap:14px;row-gap:1px;align-items:baseline}
+.price li>.presta .p-n{grid-area:n;flex:none}
+.price li>.presta .p-m{grid-area:m;font-size:.76rem;letter-spacing:.04em}
+.price li>.presta .v{grid-area:v;align-self:center;min-width:0}
+@media(min-width:900px){.tarif-cols{grid-template-columns:repeat(2,1fr)}}
