@@ -48,7 +48,7 @@
   <section class="hero">
     <picture class="hero-bg">
       <source media="(max-width:720px)" srcset="photos/hero-wide-1100.webp">
-      <img src="photos/hero-wide.webp" alt="La salle du salon Elda Coiffure, ses fauteuils noirs et ses grands miroirs dorés" width="1920" height="1080" fetchpriority="high">
+      <img src="photos/hero-wide.webp" alt="La salle du salon Elda Coiffure, ses fauteuils noirs et ses grands miroirs dorés" width="1800" height="1366" fetchpriority="high">
     </picture>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="wrap hero-inner">
@@ -56,13 +56,49 @@
         <p class="eyebrow">Salon de coiffure mixte</p>
         <h1><span class="hero-wordmark">Elda</span><span class="hero-sous">Coiffure</span></h1>
         <p class="hero-lieu"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg> Agay, Saint-Raphaël</p>
-        <p class="lede">Coupe, couleur, balayage et soins, pour femmes, hommes et enfants, dans l'espace bien-être des Mas de l'Estérel.</p>
+        <p class="hero-claim">Votre beauté,<br>notre passion.</p>
+        <p class="lede">Coupes, brushing, couleurs et coiffures personnalisées, pour femmes, hommes et enfants.</p>
         <div class="hero-actions">
           <a class="pil pil-vert" href="#rdv">Prendre rendez-vous</a>
           <a class="pil pil-noir" href="tel:+33609317223">06 09 31 72 23</a>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="bande-ico" aria-label="Les prestations du salon en un coup d'oeil">
+    <ul class="wrap">
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l9 11M18 4L9 15" /><circle cx="7" cy="18" r="2.4"/><circle cx="17" cy="18" r="2.4"/></svg></span>
+        <b>Coupe femme</b>
+        <i>Style et élégance</i>
+      </li>
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11a7 7 0 0 1 14 0v3a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M4 10c2-4 5-6 8-6s6 2 8 6"/></svg></span>
+        <b>Coupe homme</b>
+        <i>Moderne et soignée</i>
+      </li>
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h9a4 4 0 0 1 0 8H4z"/><path d="M8 15v5"/><path d="M6 20h4"/></svg></span>
+        <b>Brushing</b>
+        <i>Brillance et volume</i>
+      </li>
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3l6 6-9 9H6v-6z"/><path d="M4 21h7"/></svg></span>
+        <b>Couleur</b>
+        <i>Éclat et personnalité</i>
+      </li>
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3c-3 4-3 8 0 12s3 5 0 6"/><path d="M13 3c-3 4-3 8 0 12s3 5 0 6"/><path d="M18 3c-3 4-3 8 0 12s3 5 0 6"/></svg></span>
+        <b>Mèches</b>
+        <i>Lumière et relief</i>
+      </li>
+      <li>
+        <span class="ico-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span>
+        <b>Chignons</b>
+        <i>Pour vos occasions</i>
+      </li>
+    </ul>
   </section>
 
   <div class="statusbar" id="horaires">
@@ -447,6 +483,7 @@
 
     <div class="slider" data-slider>
       <div class="slider-track" data-track tabindex="0" role="group" aria-label="Photos du salon, faites défiler avec les flèches">
+        <figure><img src="photos/salon-coin.webp" alt="Le coin d'attente du salon, ses fauteuils et ses plantes devant la fenêtre" loading="lazy" width="1400" height="1074"></figure>
         <figure><img src="photos/salon-01.webp" alt="Un poste de coiffage du salon, avec son grand miroir" loading="lazy" width="1400" height="933"></figure>
         <figure><img src="photos/salon-02.webp" alt="Les deux bacs à shampoing et leurs fauteuils inclinables" loading="lazy" width="1400" height="933"></figure>
         <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et les brosses de coiffage" loading="lazy" width="1400" height="933"></figure>
@@ -460,7 +497,7 @@
         <button class="arrow" type="button" data-next aria-label="Photo suivante">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <span class="slider-count" data-count aria-live="polite">1 / 5</span>
+        <span class="slider-count" data-count aria-live="polite">1 / 6</span>
       </div>
     </div>
   </section>
@@ -552,6 +589,23 @@
   <a class="ab-book" href="#rdv"><span>Prendre rendez-vous</span></a>
 </div>
 
+
+<section class="contact-bar" aria-label="Coordonnées du salon">
+  <ul class="wrap">
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      <div><h3>Adresse</h3><p>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël</p></div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h3l2 5-2.4 1.4a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg>
+      <div><h3>Téléphone</h3><p><a href="tel:+33609317223">06 09 31 72 23</a></p></div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <div><h3>Horaires</h3><p>Du lundi au vendredi, 9h à 18h<br>Fermé samedi et dimanche</p></div>
+    </li>
+  </ul>
+</section>
 
 <footer>
   <div class="wrap">

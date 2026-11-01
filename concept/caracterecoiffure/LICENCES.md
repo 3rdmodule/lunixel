@@ -17,9 +17,13 @@ contenus tiers.
 
 Deux origines, deux statuts différents.
 
-**Intérieur du salon** (`hero`, `salon-01` à `salon-05`, `og`) : dossier Drive
-fourni par la cliente le 25/08/2026. Elles lui appartiennent. Licence d'usage
-[À COMPLÉTER] dans les mentions légales.
+**Intérieur du salon** (`hero-wide`, `salon-coin`, `salon-01` à `salon-05`,
+`og`) : dossier Drive fourni par la cliente le 25/08/2026. Elles lui
+appartiennent. Licence d'usage [À COMPLÉTER] dans les mentions légales.
+Le hero vient de DSC00965 et `salon-coin` de DSC00966, les deux photos
+qu'Elda a elle-même retenues pour sa maquette. Les deux sont recadrées pour
+écarter les grands portraits encadrés du mur, dont les droits ne sont pas
+acquis, et éclaircies pour coller à la lumière de sa maquette.
 
 **Travail d'Elda** (`resultat-01` à `resultat-04`, `presta-*`) : page Facebook
 publique du salon. Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les
@@ -34,8 +38,8 @@ maison : le cadrage d'origine est conservé, centré sur le sujet.
 | Fichier | Photo d'origine |
 |---|---|
 | `tuile-coupe-femme.webp` | https://unsplash.com/photos/photo-1525614686090-7a3108e3758e |
-| `tuile-brushing.webp` | https://unsplash.com/photos/photo-1554519934-e32b1629d9ee |
-| `tuile-coloration.webp` | https://unsplash.com/photos/photo-1602549179763-ce6c9df961b7 |
+| `tuile-brushing.webp` | https://unsplash.com/photos/photo-1793328556262-79fab6efd759 |
+| `tuile-coloration.webp` | https://unsplash.com/photos/photo-1678567535515-e23d231697a1 |
 | `tuile-balayage.webp` | https://unsplash.com/photos/photo-1629397685944-7073f5589754 |
 | `tuile-chignon.webp` | https://unsplash.com/photos/photo-1558265246-e84a824bcd83 |
 | `tuile-coupe-homme.webp` | https://unsplash.com/photos/photo-1593702275687-f8b402bf1fb5 |

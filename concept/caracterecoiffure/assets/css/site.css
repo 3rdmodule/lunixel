@@ -1036,3 +1036,76 @@ footer h4{color:var(--fg)}
 .gc-t{height:26px;border-top:1px solid var(--paper-2)}
 .vig-cap{background:linear-gradient(to top,rgba(32,22,14,.94),rgba(32,22,14,.6) 52%,rgba(32,22,14,0))}
 .g-badge{background:var(--bronze);color:#fff}
+
+/* ============================================================
+   Reprise de la maquette d'Elda : couleurs relevees au pixel
+   sur son flyer, bande des six icones dorees, bandeau contact.
+   ============================================================ */
+
+:root{
+  --paper:#FDF9F4;        /* fond du flyer */
+  --paper-2:#FAF3EA;      /* panneau des tarifs du flyer */
+  --paper-3:#F7EDE0;
+  --or-clair:#EDC587;     /* ronds des icones */
+  --or-moyen:#D9A85D;     /* filets et bouton du flyer */
+  --bronze:#8A5A1E;       /* meme famille, assez fonce pour le texte AA */
+  --rule:#EFE0CB;
+  --rule-soft:#F5EADA;
+  --gris-sous:#756E66;    /* sous-titres gris du flyer, remonte pour passer AA */
+}
+
+/* ---------- hero : l'accroche du flyer ---------- */
+.hero-claim{font-family:"Fraunces",Georgia,serif;font-weight:400;
+  font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.18;color:var(--fg);
+  margin:4px 0 12px;letter-spacing:-.01em}
+.hero .lede{max-width:30ch}
+
+/* ---------- bande des six icones ---------- */
+.bande-ico{background:var(--paper);border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);padding:34px 0}
+.bande-ico ul{list-style:none;margin:0;display:grid;
+  grid-template-columns:repeat(2,1fr);gap:28px 0}
+@media(min-width:680px){.bande-ico ul{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1040px){.bande-ico ul{grid-template-columns:repeat(6,1fr);gap:0}}
+.bande-ico li{text-align:center;padding:0 16px;position:relative}
+@media(min-width:1040px){
+  .bande-ico li+li::before{content:"";position:absolute;left:0;top:6px;bottom:6px;
+    width:1px;background:var(--rule)}
+}
+.ico-r{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;
+  background:var(--or-clair);margin:0 auto 12px}
+.ico-r svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.bande-ico b{display:block;font-size:1.02rem;font-weight:600;color:var(--fg)}
+.bande-ico i{font-style:normal;display:block;font-size:.84rem;color:var(--gris-sous);margin-top:2px}
+
+/* ---------- filets et accents dores du flyer ---------- */
+.sec-h::after{color:var(--or-moyen)}
+.orn::before,.orn::after{background:var(--or-moyen)}
+.hero-ville::before,.hero-ville::after{background:var(--or-moyen)}
+.bandeau-haut{background:var(--paper-3);border-bottom:2px solid var(--or-moyen)}
+.gal{border-top-color:var(--or-moyen)}
+footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
+.week li.is-today{background:var(--bronze)}
+
+/* ---------- bandeau contact, comme le bas du flyer ---------- */
+.contact-bar{background:var(--paper);border-top:1px solid var(--rule);padding:42px 0}
+.contact-bar ul{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+@media(min-width:760px){.contact-bar ul{grid-template-columns:repeat(3,1fr);gap:0}}
+.contact-bar li{display:flex;align-items:flex-start;gap:16px;padding:0 20px;position:relative}
+@media(min-width:760px){
+  .contact-bar li+li::before{content:"";position:absolute;left:0;top:2px;bottom:2px;
+    width:1px;background:var(--rule)}
+}
+.contact-bar svg{flex:none;width:30px;height:30px;fill:none;stroke:var(--or-moyen);
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.contact-bar h3{font-family:"Anglaise",cursive;font-weight:400;font-size:1.9rem;
+  line-height:1;color:var(--bronze);margin:0 0 6px;letter-spacing:0}
+.contact-bar p{margin:0;color:var(--fg);line-height:1.5}
+.contact-bar a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--or-moyen)}
+.contact-bar a:hover,.contact-bar a:focus-visible{color:var(--bronze)}
+/* le cadrage du hero remonte sur la piece claire, sous les luminaires */
+.hero-bg img{object-position:62% 46%}
+.hero-veil{background:linear-gradient(104deg,
+  rgba(253,249,244,.97) 0%,rgba(253,249,244,.93) 34%,
+  rgba(253,249,244,.62) 64%,rgba(253,249,244,.34) 100%)}
