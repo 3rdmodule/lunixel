@@ -1183,3 +1183,10 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .hero-bg img{object-position:56% 46%}
 }
+
+/* ---------- bandeau ouvert toute l'annee ---------- */
+.status-annee{text-align:center;margin:0 0 26px}
+.sa-t{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.3rem,3vw,1.7rem);
+  font-weight:600;color:var(--fg);margin:0 0 6px;letter-spacing:-.01em}
+.sa-s{margin:0 auto;max-width:62ch;color:#5C5147;font-size:.96rem}
+.status-annee{grid-column:1/-1;width:100%}
