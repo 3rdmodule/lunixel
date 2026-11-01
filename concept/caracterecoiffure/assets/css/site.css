@@ -856,3 +856,13 @@ section{padding:66px 0}
   #prestations,#tarifs,#salon,#couleurs,#acces{padding:46px 0}
   .statusbar{padding:32px 0}
 }
+
+/* ---------- bloc-marque du hero : Elda dans la police du logo ---------- */
+.hero h1{font-family:"Work Sans",system-ui,sans-serif;font-weight:400;letter-spacing:0;
+  line-height:1;margin:0;color:#fff}
+.hero-wordmark{display:block;font-family:"Anglaise",cursive;font-weight:400;
+  font-size:clamp(3.6rem,9.4vw,6.4rem);line-height:.86;color:var(--bronze-light);
+  margin:0 0 2px}
+.hero-sous{display:block;margin-left:.42em;font-family:"Work Sans",system-ui,sans-serif;
+  font-size:clamp(.95rem,2.2vw,1.24rem);font-weight:400;letter-spacing:.36em;
+  text-transform:uppercase;color:#fff}
