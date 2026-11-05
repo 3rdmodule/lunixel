@@ -1482,3 +1482,11 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 
 /* ---------- apercu des tarifs : les lignes sont des liens ---------- */
 a.apercu-ligne{text-decoration:none;color:inherit;width:100%}
+
+/* ---------- hero : le bouton telephone doit rester lisible ----------
+   Le voile creme s'efface vers la droite, et le bouton secondaire
+   tombait sur la photo floutee : texte bronze sur gris clair.
+   On lui donne le fond creme de la page, contraste 5,62 garanti. --- */
+.hero-actions .pil-noir{background:var(--paper);border-color:var(--bronze);color:var(--bronze)}
+.hero-actions .pil-noir:hover,
+.hero-actions .pil-noir:focus-visible{background:var(--bronze);color:var(--paper)}
