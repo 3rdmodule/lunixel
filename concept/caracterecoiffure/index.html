@@ -13,11 +13,12 @@
 <meta property="og:description" content="Salon de coiffure mixte à Agay, espace bien-être des Mas de l'Estérel. Coupe, couleur, balayage, soin. Du lundi au vendredi, 9h à 18h.">
 <meta property="og:image" content="photos/og.webp">
 <meta name="theme-color" content="#14110D">
-<link rel="apple-touch-icon" href="photos/apple-touch-icon.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314110D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23C9A765' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin-600-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/work-sans-latin-400-normal.woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611051401">
+<link rel="icon" href="photos/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="photos/apple-touch-icon.png" sizes="180x180">
+<link rel="apple-touch-icon" href="photos/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/site.css?v=202611051511">
 </head>
 <body>
 
@@ -31,7 +32,7 @@
       <a href="#tarifs">Tarifs</a>
       <a href="#rdv">Réserver</a>
       <a href="#horaires">Horaires</a>
-      <a href="#salon">Le salon</a>
+      <a href="galerie.html">Le salon</a>
       
       <a href="#acces">Accès</a>
     </nav>
@@ -80,6 +81,9 @@
           <p class="status-sub" id="js-status-sub">Fermé samedi et dimanche</p>
         </div>
         <p class="acces-rassure">Entrée et parking libres, <strong>sans séjourner au village vacances</strong>. Le salon est ouvert à tout le monde.</p>
+        <button type="button" class="week-ouvre" id="js-week-ouvre" aria-expanded="false" aria-controls="js-week">
+          <span>Voir tous les horaires</span><span class="chev" aria-hidden="true">&#9662;</span>
+        </button>
         <ul class="week" id="js-week">
             <li data-day="1"><span class="dname">Lundi</span><span class="dtime">9h - 18h</span></li>
             <li data-day="2"><span class="dname">Mardi</span><span class="dtime">9h - 18h</span></li>
@@ -254,11 +258,11 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Carré</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Dégradé</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Coupe moderne</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-femme-carre.webp" alt="Carré plongeant brun aux pointes éclairées, vu de dos" loading="lazy" width="300" height="300"><span class="gc-n">Carré</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-femme-degrade.webp" alt="Carré dégradé gris argenté, vu de profil" loading="lazy" width="300" height="300"><span class="gc-n">Dégradé</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-femme-moderne.webp" alt="Carré noir net avec frange droite" loading="lazy" width="300" height="300"><span class="gc-n">Coupe moderne</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-brushing" hidden aria-label="Galerie Brushing">
         <div class="gal-top">
@@ -267,11 +271,11 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Lisse</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Volume</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Ondulations</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-brushing-lisse.webp" alt="Longs cheveux blonds lissés au brushing, vus de dos" loading="lazy" width="300" height="300"><span class="gc-n">Lisse</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-brushing-volume.webp" alt="Fer à boucler donnant du volume sur des longueurs brunes" loading="lazy" width="300" height="300"><span class="gc-n">Volume</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-brushing-ondulations.webp" alt="Ondulations caramél de la racine aux pointes" loading="lazy" width="300" height="300"><span class="gc-n">Ondulations</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-coloration" hidden aria-label="Galerie Coloration">
         <div class="gal-top">
@@ -280,12 +284,12 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#6B4A2F" aria-hidden="true"></span><span class="gc-n">Châtain</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#422616" aria-hidden="true"></span><span class="gc-n">Chocolat</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#A9521E" aria-hidden="true"></span><span class="gc-n">Cuivré</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#D9B169" aria-hidden="true"></span><span class="gc-n">Blond</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coloration-chatain.webp" alt="Longueurs châtain clair, vues de trois quarts" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#6B4A2F" aria-hidden="true"></span><span class="gc-n">Châtain</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coloration-chocolat.webp" alt="Brun chocolat brillant en mouvement" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#422616" aria-hidden="true"></span><span class="gc-n">Chocolat</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coloration-cuivre.webp" alt="Carré cuivré naturel, vu de face" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#A9521E" aria-hidden="true"></span><span class="gc-n">Cuivré</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coloration-blond.webp" alt="Blond clair ondulé, vu de dos" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#D9B169" aria-hidden="true"></span><span class="gc-n">Blond</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-balayage" hidden aria-label="Galerie Mèches et balayage">
         <div class="gal-top">
@@ -294,11 +298,11 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#E3C68A" aria-hidden="true"></span><span class="gc-n">Blond lumineux</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#B0855A" aria-hidden="true"></span><span class="gc-n">Reflets naturels</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-t" style="background:#8A5A3A" aria-hidden="true"></span><span class="gc-n">Ombré hair</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-balayage-blond.webp" alt="Balayage blond lumineux sur longueurs ondulées" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#E3C68A" aria-hidden="true"></span><span class="gc-n">Blond lumineux</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-balayage-reflets.webp" alt="Reflets naturels caramél sur un carré long" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#B0855A" aria-hidden="true"></span><span class="gc-n">Reflets naturels</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-balayage-ombre.webp" alt="Ombré hair, racines foncées et pointes éclairées" loading="lazy" width="300" height="300"><span class="gc-t" style="background:#8A5A3A" aria-hidden="true"></span><span class="gc-n">Ombré hair</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-chignon" hidden aria-label="Galerie Chignon">
         <div class="gal-top">
@@ -307,11 +311,11 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Mariage</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Soirée</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Cérémonie</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-chignon-mariage.webp" alt="Chignon tressé orné de petites fleurs blanches" loading="lazy" width="300" height="300"><span class="gc-n">Mariage</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-chignon-soiree.webp" alt="Chignon bas blond platine tenu par un bijou de tête" loading="lazy" width="300" height="300"><span class="gc-n">Soirée</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-chignon-ceremonie.webp" alt="Chignon de cérémonie avec voile et bijou de tête" loading="lazy" width="300" height="300"><span class="gc-n">Cérémonie</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-coupe-homme" hidden aria-label="Galerie Coupe homme">
         <div class="gal-top">
@@ -320,10 +324,10 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Classique</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Moderne</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-homme-classique.webp" alt="Coupe homme classique coiffée sur le côté" loading="lazy" width="300" height="300"><span class="gc-n">Classique</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-homme-moderne.webp" alt="Coupe homme moderne, côtés courts et volume sur le dessus" loading="lazy" width="300" height="300"><span class="gc-n">Moderne</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-coupe-enfant" hidden aria-label="Galerie Coupe enfant">
         <div class="gal-top">
@@ -332,11 +336,11 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Petite enfance</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Enfant</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Pré-ado</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-enfant-petite.webp" alt="Jeune enfant après sa coupe, cheveux coiffés sur le côté" loading="lazy" width="300" height="300"><span class="gc-n">Petite enfance</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-enfant-enfant.webp" alt="Garçon en cape de coiffeur après sa coupe" loading="lazy" width="300" height="300"><span class="gc-n">Enfant</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-coupe-enfant-preado.webp" alt="Carré net sur cheveux raides, vu de profil" loading="lazy" width="300" height="300"><span class="gc-n">Pré-ado</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
       <section class="gal" id="gal-permanente" hidden aria-label="Galerie Permanente">
         <div class="gal-top">
@@ -345,10 +349,10 @@
           <button type="button" class="gal-x" aria-label="Fermer la galerie">&#10005;</button>
         </div>
         <ul class="gal-p">
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Boucles</span></li>
-            <li class="gc"><span class="gc-ph">Pas encore d'image</span><span class="gc-n">Mouvement</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-permanente-boucles.webp" alt="Boucles définies sur cheveux longs, vues de profil" loading="lazy" width="300" height="300"><span class="gc-n">Boucles</span></li>
+            <li class="gc"><img class="gc-i" src="photos/g-permanente-mouvement.webp" alt="Longues boucles serrées et volumineuses, vues de dos" loading="lazy" width="300" height="300"><span class="gc-n">Mouvement</span></li>
         </ul>
-        <p class="gal-note">Les photos de cette prestation seront ajoutées dès qu'Elda les aura prises.</p>
+        <p class="gal-note">Images d’illustration libres de droit, le temps qu’<strong>Elda</strong> photographie ses propres réalisations. Son travail réel est <a href="galerie.html">sur la page du salon</a>.</p>
       </section>
     </div>
   </section>
@@ -487,40 +491,11 @@
       </div>
     </div>
 
-    <div class="slider" data-slider>
-      <div class="slider-track" data-track tabindex="0" role="group" aria-label="Photos du salon, faites défiler avec les flèches">
-        <figure><img src="photos/salon-01.webp" alt="Un poste de coiffage du salon, avec son grand miroir" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-03.webp" alt="L'étagère des produits de soin et les brosses de coiffage" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-04.webp" alt="La salle du salon vue depuis l'entrée" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-05.webp" alt="Un bouquet de roses blanches devant le miroir œil du salon" loading="lazy" width="1400" height="933"></figure>
-        <figure><img src="photos/salon-07.webp" alt="Le téléphone vintage et la carte des tarifs sur la commode de l'entrée" loading="lazy" width="1400" height="788"></figure>
-        <figure><img src="photos/salon-08.webp" alt="La salle du salon, ses deux grands miroirs dorés et la porte ouverte sur la terrasse" loading="lazy" width="1400" height="788"></figure>
-      </div>
-      <div class="wrap slider-bar">
-        <button class="arrow" type="button" data-prev aria-label="Photo précédente">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="arrow" type="button" data-next aria-label="Photo suivante">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <span class="slider-count" data-count aria-live="polite">1 / 6</span>
-      </div>
-    </div>
+    <p class="salon-lien reveal">
+      <a class="btn" href="galerie.html"><span>Voir le salon en photos</span><span class="arw" aria-hidden="true">&rarr;</span></a>
+    </p>
   </section>
 
-  <section id="couleurs">
-    <div class="wrap">
-      <h2 class="sec-h reveal">Couleur, balayage, lissage</h2>
-      <p class="sec-intro reveal">Du travail récent d'<strong>Elda</strong>.</p>
-      <div class="resultats">
-        <figure class="reveal"><img src="photos/resultat-01.webp" alt="Balayage blond sur base châtain, longueurs lissées" loading="lazy" width="620" height="620"></figure>
-        <figure class="reveal"><img src="photos/resultat-02.webp" alt="Boucles blondes dorées travaillées au fer" loading="lazy" width="620" height="620"></figure>
-        <figure class="reveal"><img src="photos/resultat-03.webp" alt="Blond froid et mèches fines sur longueurs ondulées" loading="lazy" width="620" height="620"></figure>
-        <figure class="reveal"><img src="photos/resultat-04.webp" alt="Lissage sur cheveux longs, photographié en noir et blanc" loading="lazy" width="620" height="620"></figure>
-      </div>
-      <p class="resultats-note reveal">Balayage, mèches et lissage brésilien se chiffrent selon la longueur. <strong>Elda vous annonce le prix exact avant de commencer</strong>, jamais après. Un appel au <a href="tel:+33609317223">06 09 31 72 23</a> suffit pour le connaître à l'avance.</p>
-    </div>
-  </section>
 
 <!-- ===========================================================
      AVANT / APRÈS : composant prêt, en attente des photos d'Elda.
@@ -551,25 +526,13 @@
   <section id="acces">
     <div class="wrap">
       <h2 class="sec-h reveal">Venir au salon</h2>
-      <div class="access">
-        <div class="where reveal">
-          <p><span class="label">Adresse</span>Espace bien-être des Mas de l'Estérel<br>Agay, 83530 Saint-Raphaël<br><small class="note-acces">Entrée et parking libres, même sans séjourner au village vacances.</small></p>
-          <p><span class="label">Comment accéder au salon</span>Entrez par l'accueil principal du village vacances BTP, traversez jusqu'à la salle de restauration, tournez à droite, puis entrez dans l'espace bien-être&#8239;: le salon est la première porte devant vous.</p>
-          <p><span class="label">Téléphone</span><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a><br><small class="note-acces"><strong>Elda</strong> vous reçoit en français, en italien et en albanais.</small></p>
-          <p><span class="label">Horaires</span>Du lundi au vendredi, 9h à 18h<br>Fermé samedi et dimanche</p>
-          <div class="social">
-            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.4345022,6.8706645" rel="noopener" target="_blank"><span>Itinéraire sur Google Maps</span><span class="arw" aria-hidden="true">&rarr;</span></a>
-            <a href="https://www.facebook.com/eldadoda2101" rel="noopener" target="_blank"><span>Le salon sur Facebook</span><span class="arw" aria-hidden="true">&rarr;</span></a>
-            <a href="https://www.instagram.com/caracterecoiffureagay" rel="noopener" target="_blank"><span>Le salon sur Instagram</span><span class="arw" aria-hidden="true">&rarr;</span></a>
-          </div>
-          <figure class="acces-photo reveal">
-            <img src="photos/acces-salon.webp" alt="Un poste de coiffage du salon et son grand miroir à cadre doré" loading="lazy" width="788" height="1400">
-          </figure>
-        </div>
-        <div class="embed embed-map reveal" id="map-box">
-          <h3>Plan d'accès</h3>
-          <p>La carte est fournie par Google Maps. En l'affichant, vous acceptez le dépôt de cookies par ce service.</p>
-          <button class="btn btn-solid" type="button" data-embed="map"><span>Afficher la carte</span></button>
+      <div class="acces-court reveal">
+        <p class="acces-adr">Espace bien-être des Mas de l'Estérel<br>Avenue du Cap-Roux, 83530 Saint-Raphaël, quartier d'Agay</p>
+        <p class="acces-note">Entrée et parking libres, même sans séjourner au village vacances.</p>
+        <p class="acces-tel"><a class="big-tel" href="tel:+33609317223">06 09 31 72 23</a></p>
+        <div class="acces-btns">
+          <a class="btn btn-solid" href="acces.html"><span>Plan et accès détaillé</span></a>
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=43.4345022,6.8706645" rel="noopener" target="_blank"><span>Itinéraire</span><span class="arw" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </div>
@@ -631,8 +594,8 @@
           <li><a href="#tarifs">Tarifs</a></li>
           <li><a href="#rdv">Prendre rendez-vous</a></li>
           <li><a href="#horaires">Horaires</a></li>
-          <li><a href="#couleurs">Couleur et balayage</a></li>
-          <li><a href="#acces">Accès</a></li>
+          <li><a href="galerie.html">Le salon en photos</a></li>
+          <li><a href="acces.html">Venir au salon</a></li>
         </ul>
       </div>
       <div>
@@ -680,6 +643,6 @@
   "sameAs": ["https://www.facebook.com/eldadoda2101", "https://www.instagram.com/caracterecoiffureagay", "https://maps.app.goo.gl/EHwTs6AkHVYrM5nD7"]
 }
 </script>
-<script src="assets/js/site.js?v=202611051401"></script>
+<script src="assets/js/site.js?v=202611051511"></script>
 </body>
 </html>

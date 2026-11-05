@@ -489,3 +489,27 @@
   }, { threshold: 0.25 });
   oeil.observe(film);
 })();
+
+/* ---- horaires : la semaine se replie sur telephone, depliee ailleurs ---- */
+(function () {
+  var bouton = document.getElementById('js-week-ouvre');
+  var semaine = document.getElementById('js-week');
+  if (!bouton || !semaine) { return; }
+  var petit = window.matchMedia('(max-width: 700px)');
+
+  function ajuste() {
+    if (petit.matches) {
+      if (bouton.getAttribute('aria-expanded') !== 'true') { semaine.hidden = true; }
+    } else {
+      semaine.hidden = false;
+    }
+  }
+  bouton.addEventListener('click', function () {
+    var ouvert = semaine.hidden;
+    semaine.hidden = !ouvert;
+    bouton.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    bouton.querySelector('span').textContent = ouvert ? 'Masquer les horaires' : 'Voir tous les horaires';
+  });
+  if (petit.addEventListener) { petit.addEventListener('change', ajuste); }
+  ajuste();
+})();
