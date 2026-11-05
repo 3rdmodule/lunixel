@@ -43,13 +43,24 @@ du sol du champ.
 `piscine-large`) : photos d'Elda, envoyées le 05/11/2026. C'est la
 particularité du salon qu'elle tient à montrer.
 
-**Travail d'Elda** (`resultat-01` à `resultat-04`, `travail-blond-degrade`,
-`travail-homme-nuque`, `travail-homme-degrade`) : page Facebook publique du
-salon pour les quatre premières, reprises le 01/11/2026 depuis les
-originaux en 720x960 ; les trois autres envoyées directement le 05/11/2026.
+**Travail d'Elda** (`resultat-01`, `travail-blond-degrade`) : la première
+vient de la page Facebook publique du salon, reprise le 01/11/2026 depuis
+l'original en 720x960 ; la seconde a été envoyée directement le 05/11/2026.
 Les photos sont d'Elda. Awen a confirmé le 01/11/2026 que les clientes
 photographiées ont donné leur accord et qu'Elda détient les autorisations.
-Les trois dernières sont prises de dos, aucun visage n'est reconnaissable.
+Les deux sont prises de dos, aucun visage n'est reconnaissable.
+Cinq autres photos de son travail (`resultat-02` à `resultat-04`,
+`travail-homme-nuque`, `travail-homme-degrade`) ont été retirées du site le
+05/11/2026 à la demande d'Awen : les deux photos d'homme montraient la même
+coupe sous deux angles, et le lissage était en noir et blanc.
+
+**Visuels de présentation** (`e-*`, `w-*`) : images fournies par Elda via
+ChatGPT les 04 et 05/11/2026, qu'elle a demandé à utiliser. Awen a tranché
+le 05/11/2026 : la démo n'est pas indexée, c'est sa décision. Ces images
+servent uniquement à illustrer le type de prestation et seront remplacées
+par les photos d'Elda au fur et à mesure. Les emplacements sans image
+affichent un cadre « Pas encore d'image » plutôt qu'un visuel d'emprunt :
+chignon, coupe homme, coupe enfant, coupe ado et le lissage sont dans ce cas.
 
 **Étalonnage** : toutes les photos sont ramenées aux couleurs réelles du
 salon, mesurées sur les fichiers d'origine du Drive : saturation 0,19,
