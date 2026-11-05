@@ -24,7 +24,7 @@
   --on-ink:#F6EFE4;
   --on-ink-muted:#CDB4A3;
   --bronze:#8F4220;
-  --bronze-light:#D98A5C;
+  --bronze-light:#BD8635;
   --green:#2F6B3C;
   --green-light:#8FD4A0;
   --rule:#D6C3AC;
@@ -475,7 +475,7 @@ h1{letter-spacing:-.02em}
   --on-ink:#F7EFE2;
   --on-ink-muted:#BFAE96;
   --bronze:#8A5F23;
-  --bronze-light:#D4A96A;
+  --bronze-light:#BD8635;
   --rule:#E2D4BD;
   --rule-soft:#EDE2CF;
   --rule-on-ink:rgba(212,169,106,.26);
@@ -885,7 +885,7 @@ section{padding:66px 0}
   --fg:#3A332C;
   --fg-muted:#6B6057;
   --bronze:#8A5A1E;
-  --bronze-light:#D9B278;
+  --bronze-light:#BD8635;
   --rule:#EADCC8;
   --rule-soft:#F2E7D6;
   --on-ink:#3A332C;
@@ -1458,7 +1458,8 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 }
 
 /* ---------- lisibilite : deux dores trop clairs sur creme ---------- */
-.today-tag{color:var(--bronze)}
+.week li.is-today .today-tag{color:#fff}
+.week li.is-today.closed .today-tag{color:var(--bronze)}
 .legal .credit a{color:var(--bronze)}
 
 /* ---------- lisibilite et confort tactile sur telephone ----------
