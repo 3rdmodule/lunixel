@@ -57,7 +57,8 @@
         <h1><span class="hero-wordmark">Elda</span><span class="hero-sous">Coiffure</span></h1>
         <p class="hero-lieu"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg> Agay, Saint-Raphaël</p>
         <p class="hero-claim">Votre beauté,<br>notre passion.</p>
-        <p class="lede"><span class="sur-grand">Coupes, brushing, couleurs et coiffures personnalisées, pour femmes, hommes et enfants.</span><span class="sur-petit">Femmes, hommes et enfants.</span></p>
+        <p class="lede"><span class="sur-grand">Coupes, brushing, couleurs, soins et coiffures d'événement.</span><span class="sur-petit">Coupes, brushing, couleurs et soins.</span></p>
+        <p class="hero-preuve"><strong>Hommes, femmes et enfants.</strong> Coupe 25 €, coupe enfant 20 €, couleur à partir de 35 €. <span>Tous les tarifs sont affichés plus bas.</span></p>
         <div class="hero-actions">
           <a class="pil pil-vert" href="#rdv">Prendre rendez-vous</a>
           <a class="pil pil-noir" href="tel:+33609317223">06 09 31 72 23</a>
@@ -78,6 +79,7 @@
           <p class="status-line"><span class="dot" id="js-dot" aria-hidden="true"></span><strong id="js-status">Du lundi au vendredi, 9h à 18h</strong></p>
           <p class="status-sub" id="js-status-sub">Fermé samedi et dimanche</p>
         </div>
+        <p class="acces-rassure">Entrée et parking libres, <strong>sans séjourner au village vacances</strong>. Le salon est ouvert à tout le monde.</p>
         <ul class="week" id="js-week">
             <li data-day="1"><span class="dname">Lundi</span><span class="dtime">9h - 18h</span></li>
             <li data-day="2"><span class="dname">Mardi</span><span class="dtime">9h - 18h</span></li>
@@ -219,6 +221,14 @@
           <img src="photos/tuile-brushing.webp" alt="Brushing long blond ondulé, vu de dos" width="760" height="760" loading="lazy" decoding="async">
           <span class="vig-cap"><b>Brushing</b><i>Lisse, volume ou ondulations.</i></span>
         </button>
+        <button type="button" class="vig" data-gal="coupe-homme" aria-expanded="false" aria-controls="gal-coupe-homme">
+          <img src="photos/tuile-coupe-homme.webp" alt="Dégradé homme à la tondeuse, vu de dos" width="760" height="760" loading="lazy" decoding="async">
+          <span class="vig-cap"><b>Coupe homme</b><i>Classique ou moderne.</i></span>
+        </button>
+        <button type="button" class="vig" data-gal="coupe-enfant" aria-expanded="false" aria-controls="gal-coupe-enfant">
+          <img src="photos/tuile-coupe-enfant.webp" alt="Tresses d'enfant attachées, vues de profil" width="760" height="760" loading="lazy" decoding="async">
+          <span class="vig-cap"><b>Coupe enfant</b><i>Une coupe adaptée à chaque âge.</i></span>
+        </button>
         <button type="button" class="vig" data-gal="coloration" aria-expanded="false" aria-controls="gal-coloration">
           <img src="photos/tuile-coloration.webp" alt="Gros plan sur une chevelure châtain cuivré" width="760" height="760" loading="lazy" decoding="async">
           <span class="vig-cap"><b>Coloration</b><i>Châtain, chocolat, cuivré, blond.</i></span>
@@ -230,14 +240,6 @@
         <button type="button" class="vig" data-gal="chignon" aria-expanded="false" aria-controls="gal-chignon">
           <img src="photos/tuile-chignon.webp" alt="Chignon torsadé tenu par deux épingles, vu de dos" width="760" height="760" loading="lazy" decoding="async">
           <span class="vig-cap"><b>Chignon</b><i>Mariage, soirée et cérémonie.</i></span>
-        </button>
-        <button type="button" class="vig" data-gal="coupe-homme" aria-expanded="false" aria-controls="gal-coupe-homme">
-          <img src="photos/tuile-coupe-homme.webp" alt="Dégradé homme à la tondeuse, vu de dos" width="760" height="760" loading="lazy" decoding="async">
-          <span class="vig-cap"><b>Coupe homme</b><i>Classique ou moderne.</i></span>
-        </button>
-        <button type="button" class="vig" data-gal="coupe-enfant" aria-expanded="false" aria-controls="gal-coupe-enfant">
-          <img src="photos/tuile-coupe-enfant.webp" alt="Tresses d'enfant attachées, vues de profil" width="760" height="760" loading="lazy" decoding="async">
-          <span class="vig-cap"><b>Coupe enfant</b><i>Une coupe adaptée à chaque âge.</i></span>
         </button>
         <button type="button" class="vig" data-gal="permanente" aria-expanded="false" aria-controls="gal-permanente">
           <img src="photos/tuile-permanente.webp" alt="Permanente, boucles longues, vue de dos" width="760" height="760" loading="lazy" decoding="async">
@@ -357,10 +359,18 @@
     <div class="wrap">
       <h2 class="sec-h reveal">Tarifs et rendez-vous</h2>
       <p class="sec-intro reveal">Toute la carte, et le calendrier pour réserver.</p>
+      <ul class="tarif-apercu reveal">
+        <li><b>Coupe femme</b><span>25 €</span></li>
+        <li><b>Coupe homme</b><span>25 €</span></li>
+        <li><b>Coupe enfant</b><span>20 €</span></li>
+        <li><b>Couleur racine</b><span>35 €</span></li>
+        <li><b>Shampoing coupe brushing</b><span>50 €</span></li>
+        <li><b>Chignon</b><span>45 €</span></li>
+      </ul>
       <p class="tarif-ouvre reveal">
         <button type="button" class="btn btn-solid" id="js-tarifs-ouvre"
                 aria-expanded="false" aria-controls="tarifs-corps">
-          <span>Voir les tarifs et réserver</span>
+          <span>Voir les 22 prestations et réserver</span>
         </button>
       </p>
       <div id="tarifs-corps" hidden>
@@ -466,6 +476,18 @@
       </div>
     </div>
 
+    <div class="salon-video reveal">
+      <figure>
+        <video controls preload="none" playsinline muted
+               poster="photos/video-poster.webp" width="720" height="1272"
+               aria-label="Visite du salon Elda Coiffure en trente secondes">
+          <source src="video/salon-30s.mp4" type="video/mp4">
+          Votre navigateur ne lit pas cette vidéo. Les photos du salon sont juste en dessous.
+        </video>
+        <figcaption>Trente secondes dans le salon, filmées par <strong>Elda</strong>. Sans son, et la vidéo ne se charge qu'au clic.</figcaption>
+      </figure>
+    </div>
+
     <div class="slider" data-slider>
       <div class="slider-track" data-track tabindex="0" role="group" aria-label="Photos du salon, faites défiler avec les flèches">
         <figure><img src="photos/salon-01.webp" alt="Un poste de coiffage du salon, avec son grand miroir" loading="lazy" width="1400" height="933"></figure>
@@ -497,7 +519,7 @@
         <figure class="reveal"><img src="photos/resultat-03.webp" alt="Blond froid et mèches fines sur longueurs ondulées" loading="lazy" width="620" height="620"></figure>
         <figure class="reveal"><img src="photos/resultat-04.webp" alt="Lissage sur cheveux longs, photographié en noir et blanc" loading="lazy" width="620" height="620"></figure>
       </div>
-      <p class="resultats-note reveal">Balayage, mèches et lissage brésilien se réservent dans le calendrier comme le reste. Un appel au <a href="tel:+33609317223">06 09 31 72 23</a> en plus, et <strong>Elda</strong> cale la durée et le prix avec vous.</p>
+      <p class="resultats-note reveal">Balayage, mèches et lissage brésilien se chiffrent selon la longueur. <strong>Elda vous annonce le prix exact avant de commencer</strong>, jamais après. Un appel au <a href="tel:+33609317223">06 09 31 72 23</a> suffit pour le connaître à l'avance.</p>
     </div>
   </section>
 

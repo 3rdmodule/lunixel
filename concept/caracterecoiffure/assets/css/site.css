@@ -1293,3 +1293,87 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
   .hero-actions .pil{flex:1 1 0;min-width:0;padding:13px 10px;font-size:.92rem;
     white-space:nowrap}
 }
+
+/* ============================================================
+   Corrections issues du test des 200 visiteurs du 02/11/2026.
+   Trois défauts visés : le premier écran sans prix, les tarifs
+   derrière un clic, et « mixte » illisible qui faisait croire
+   à 11 visiteurs sur 200 à un salon réservé aux femmes.
+   ============================================================ */
+
+/* mixte doit se lire : 0,74 rem en doré pâle passait inaperçu */
+.hero .eyebrow{font-size:.84rem;color:var(--bronze);font-weight:600;letter-spacing:.2em}
+
+/* preuve chiffrée sur le premier écran */
+.hero-preuve{margin:0 0 20px;font-size:.98rem;color:var(--fg);line-height:1.55;max-width:38ch}
+.hero-preuve strong{font-weight:600}
+.hero-preuve span{color:var(--fg-muted)}
+
+/* six prix posés avant le bouton, le reste derrière */
+.tarif-apercu{list-style:none;margin:0 auto 26px;padding:0;max-width:720px;
+  display:grid;grid-template-columns:1fr;border:1px solid var(--rule);background:var(--paper)}
+@media(min-width:620px){.tarif-apercu{grid-template-columns:1fr 1fr}}
+.tarif-apercu li{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:12px 18px;border-bottom:1px solid var(--rule-soft)}
+@media(min-width:620px){
+  .tarif-apercu li:nth-child(odd){border-right:1px solid var(--rule-soft)}
+  .tarif-apercu li:nth-last-child(-n+2){border-bottom:0}
+}
+@media(max-width:619px){.tarif-apercu li:last-child{border-bottom:0}}
+.tarif-apercu b{font-weight:400;color:var(--fg)}
+.tarif-apercu span{flex:none;font-family:"Fraunces",Georgia,serif;font-weight:600;
+  color:var(--bronze);font-variant-numeric:tabular-nums}
+
+/* entrée libre, remontée dans le bloc horaires */
+.acces-rassure{margin:14px 0 0;font-size:.94rem;color:var(--fg-muted);
+  padding-left:14px;border-left:2px solid var(--or-moyen)}
+.acces-rassure strong{color:var(--fg);font-weight:600}
+
+@media(max-width:860px){
+  .hero-preuve{font-size:.94rem;margin-bottom:16px;max-width:none}
+  .tarif-apercu{margin-bottom:20px}
+  .tarif-apercu li{padding:11px 15px;font-size:.95rem}
+}
+
+/* ============================================================
+   Retour d'Elda du 05/11/2026, vu sur telephone :
+   « l'image est propre et la description en bas au dehors de
+   la photo ». Les legendes sortent des photos.
+   ============================================================ */
+
+.vig{position:relative;display:block;width:100%;padding:0;margin:0;cursor:pointer;
+  border:0;background:none;aspect-ratio:auto;overflow:visible;
+  text-align:left;font:inherit;color:inherit}
+.vig>img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;
+  border-radius:12px;border:1px solid var(--rule);
+  transition:box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.vig:hover>img{transform:none;border-color:var(--or-moyen)}
+.vig:focus-visible{outline:0}
+.vig:focus-visible>img{outline:3px solid var(--bronze);outline-offset:3px}
+.vig[aria-expanded="true"]{box-shadow:none}
+.vig[aria-expanded="true"]>img{border-color:var(--bronze);
+  box-shadow:0 0 0 2px var(--bronze)}
+
+/* la legende passe sous la photo, sur le fond de page */
+.vig-cap{position:static;display:block;padding:12px 2px 0;background:none;color:inherit}
+.vig-cap b{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.06rem;
+  font-weight:600;color:var(--fg);line-height:1.25}
+.vig-cap i{font-style:normal;display:block;font-size:.9rem;color:var(--fg-muted);
+  margin-top:4px;line-height:1.45}
+
+.vignettes{align-items:start;gap:22px 16px}
+@media(max-width:860px){
+  .vignettes{gap:20px 14px}
+  .vig-cap{padding-top:10px}
+  .vig-cap b{font-size:1rem}
+  .vig-cap i{font-size:.86rem}
+}
+
+/* ---------- video de presentation du salon ---------- */
+.salon-video{margin:0 auto 34px;max-width:420px;padding:0 var(--gut)}
+.salon-video figure{margin:0;position:relative;border-radius:12px;overflow:hidden;
+  border:1px solid var(--rule);background:var(--paper-2);line-height:0}
+.salon-video video{width:100%;height:auto;display:block;border-radius:12px}
+.salon-video figcaption{margin-top:10px;font-size:.9rem;color:var(--fg-muted);
+  text-align:center;line-height:1.45}
+@media(max-width:620px){.salon-video{max-width:none}}

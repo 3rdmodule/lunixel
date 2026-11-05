@@ -13,6 +13,15 @@ Aucune bibliothèque JavaScript tierce. Les 150 lignes de `assets/js/site.js` so
 écrites pour ce site : horaires en direct, galerie à flèches, consentement des
 contenus tiers.
 
+## Vidéo
+
+`video/salon-30s.mp4` : visite du salon filmée par Elda, 30 secondes, 720x1272,
+sans bande son, 4,5 Mo. C'est le montage déjà validé pour sa fiche Google,
+transmis par Awen le 05/11/2026. Elle en détient les droits.
+Chargement différé : `preload="none"`, rien ne part avant un clic.
+L'image d'attente `photos/video-poster.webp` est une image extraite de cette
+même vidéo.
+
 ## Photos
 
 Deux origines, deux statuts différents.

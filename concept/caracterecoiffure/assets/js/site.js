@@ -417,7 +417,7 @@
   function fermer() {
     corps.hidden = true;
     bouton.setAttribute('aria-expanded', 'false');
-    bouton.querySelector('span').textContent = 'Voir les tarifs et réserver';
+    bouton.querySelector('span').textContent = 'Voir les 22 prestations et réserver';
   }
 
   bouton.addEventListener('click', function () {
