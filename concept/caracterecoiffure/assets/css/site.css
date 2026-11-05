@@ -1490,3 +1490,25 @@ a.apercu-ligne{text-decoration:none;color:inherit;width:100%}
 .hero-actions .pil-noir{background:var(--paper);border-color:var(--bronze);color:var(--bronze)}
 .hero-actions .pil-noir:hover,
 .hero-actions .pil-noir:focus-visible{background:var(--bronze);color:var(--paper)}
+
+
+/* ---------- tuiles sans photo : le carre d'attente ----------
+   Elda fournira ses propres photos. En attendant on ne met rien
+   d'autre a la place, et la case le dit. --------------------- */
+.vig{display:flex;flex-direction:column}
+.vig-ph{position:static;display:grid;place-items:center;width:100%;aspect-ratio:1/1;flex:none;
+  border-radius:12px;background:var(--paper-3);border:1px dashed var(--rule);
+  color:var(--fg-muted);font-size:.92rem;text-align:center;padding:10px}
+.gc-ph{display:grid;place-items:center;aspect-ratio:1/1;border-radius:10px;
+  background:var(--paper-3);border:1px dashed var(--rule);
+  color:var(--fg-muted);font-size:.82rem;text-align:center;padding:8px}
+
+/* ---------- filets pointilles entre la prestation et son prix ----------
+   Le detail de mise en page qu'Elda a retenu sur la fiche qu'elle aime :
+   le nom, une ligne de points, le prix. ------------------------------- */
+@media(min-width:620px){
+  .price li>.presta .p-n{display:flex;align-items:baseline;gap:.45em}
+  .price li>.presta .p-n::after{content:"";flex:1 1 auto;min-width:18px;
+    margin:0 .1em .3em;border-bottom:1px dotted var(--rule)}
+  .price li>.presta.is-on .p-n::after{border-bottom-color:rgba(255,255,255,.45)}
+}
