@@ -1090,9 +1090,11 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 
 /* ---------- bandeau contact, comme le bas du flyer ---------- */
 .contact-bar{background:var(--paper);border-top:1px solid var(--rule);padding:42px 0}
-.contact-bar ul{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+.contact-bar ul{list-style:none;margin:0 auto;padding:0 var(--gut);display:grid;gap:30px}
 @media(min-width:760px){.contact-bar ul{grid-template-columns:repeat(3,1fr);gap:0}}
 .contact-bar li{display:flex;align-items:flex-start;gap:16px;padding:0 20px;position:relative}
+@media(min-width:760px){.contact-bar li:first-child{padding-left:0}
+  .contact-bar li:last-child{padding-right:0}}
 @media(min-width:760px){
   .contact-bar li+li::before{content:"";position:absolute;left:0;top:2px;bottom:2px;
     width:1px;background:var(--rule)}
@@ -1430,3 +1432,11 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
 .gc-i{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;
   border-radius:10px;border:1px solid var(--rule)}
 .gc-t{margin-top:7px;border-radius:2px}
+
+/* ---------- echelle d'affichage sur grand ecran ----------
+   Awen lit le site a 90 % dans Chrome : on cale la page a cette
+   echelle par defaut, uniquement sur ordinateur. Les telephones
+   et les tablettes gardent leur taille reelle. ------------- */
+@media(min-width:1024px){
+  html{zoom:.9}
+}
