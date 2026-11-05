@@ -55,7 +55,7 @@ Cinq autres photos de son travail (`resultat-02` à `resultat-04`,
 coupe sous deux angles, et le lissage était en noir et blanc.
 
 **Visuels de présentation** (`e-*`, `w-*`) : images fournies par Elda via
-ChatGPT les 04 et 05/11/2026, qu'elle a demandé à utiliser. Awen a tranché
+ChatGPT les 04 et 05/11/2026, plus `e-acajou` envoyée le 05/11/2026 au soir, qu'elle a demandé à utiliser. Awen a tranché
 le 05/11/2026 : la démo n'est pas indexée, c'est sa décision. Ces images
 servent uniquement à illustrer le type de prestation et seront remplacées
 par les photos d'Elda au fur et à mesure. Les emplacements sans image

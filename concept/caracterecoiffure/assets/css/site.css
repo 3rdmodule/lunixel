@@ -1497,11 +1497,20 @@ a.apercu-ligne{text-decoration:none;color:inherit;width:100%}
    d'autre a la place, et la case le dit. --------------------- */
 .vig{display:flex;flex-direction:column}
 .vig-ph{position:static;display:grid;place-items:center;width:100%;aspect-ratio:1/1;flex:none;
-  border-radius:12px;background:var(--paper-3);border:1px dashed var(--rule);
-  color:var(--fg-muted);font-size:.92rem;text-align:center;padding:10px}
+  border-radius:12px;background:#1C1915;
+  color:#CBBFAE;font-size:.92rem;text-align:center;padding:10px}
 .gc-ph{display:grid;place-items:center;aspect-ratio:1/1;border-radius:10px;
-  background:var(--paper-3);border:1px dashed var(--rule);
-  color:var(--fg-muted);font-size:.82rem;text-align:center;padding:8px}
+  background:#1C1915;
+  color:#CBBFAE;font-size:.82rem;text-align:center;padding:8px}
+
+/* Les galeries deroulent sur telephone, mais sur grand ecran toutes les
+   techniques doivent etre visibles d'un coup : Elda tient a ce que chaque
+   image porte sa technique, donc aucune ne doit sortir du cadre. */
+@media(min-width:760px){
+  .gal-p{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));
+    gap:16px 14px;overflow:visible;scroll-snap-type:none}
+  .gc{flex:none}
+}
 
 /* ---------- filets pointilles entre la prestation et son prix ----------
    Le detail de mise en page qu'Elda a retenu sur la fiche qu'elle aime :
