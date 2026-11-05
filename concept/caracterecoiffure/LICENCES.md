@@ -33,7 +33,8 @@ Deux origines, deux statuts différents.
 `elda-portrait`, `og`) : dossier Drive fourni par la cliente le 25/08/2026. Elles lui
 appartiennent. Licence d'usage [À COMPLÉTER] dans les mentions légales.
 Le hero est la photo qu'Awen a transmise le 01/11/2026, celle qu'Elda veut
-en haut de page. `salon-coin` vient de DSC00966, `salon-06` à `salon-08` de
+en haut de page ; elle est recadrée de 9 % en haut et 8 % en bas pour sortir
+le plafond et une partie du sol du champ. `salon-coin` vient de DSC00966, `salon-06` à `salon-08` de
 DSC00968, DSC00971 et DSC00973. Toutes sont éclaircies pour coller à la
 lumière de sa maquette.
 

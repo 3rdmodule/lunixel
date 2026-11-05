@@ -1438,5 +1438,46 @@ footer{background:var(--paper-3);border-top:1px solid var(--or-moyen)}
    echelle par defaut, uniquement sur ordinateur. Les telephones
    et les tablettes gardent leur taille reelle. ------------- */
 @media(min-width:1024px){
-  html{zoom:.9}
+  html{zoom:.95}
 }
+
+/* ---------- apercu des tarifs : trois colonnes sur grand ecran ----------
+   A 1440 le bloc de six prix ne tenait que 720 px au milieu de l'ecran,
+   ce qui laissait deux grandes marges vides. Trois colonnes sur deux
+   rangees remplissent la bande sans ajouter de contenu. ---------------- */
+@media(min-width:1024px){
+  .tarif-apercu{max-width:980px;grid-template-columns:repeat(3,1fr);margin-bottom:18px}
+  .tarif-apercu li:nth-child(odd){border-right:0}
+  .tarif-apercu li:nth-child(3n+1),
+  .tarif-apercu li:nth-child(3n+2){border-right:1px solid var(--rule-soft)}
+  .tarif-apercu li:nth-last-child(-n+2){border-bottom:1px solid var(--rule-soft)}
+  .tarif-apercu li:nth-last-child(-n+3){border-bottom:0}
+  .apercu-aide{margin:-6px 0 18px}
+  #tarifs .sec-intro{margin-bottom:30px}
+  #tarifs{padding-bottom:58px}
+}
+
+/* ---------- lisibilite : deux dores trop clairs sur creme ---------- */
+.today-tag{color:var(--bronze)}
+.legal .credit a{color:var(--bronze)}
+
+/* ---------- lisibilite et confort tactile sur telephone ----------
+   Mesure au doigt : tout ce qui se touche fait au moins 44 px de haut,
+   et plus rien ne descend sous 11,5 px de texte. ------------------ */
+@media(max-width:860px){
+  .today-tag{font-size:.72rem}
+  .gal-rdv{display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
+  .gal-x{width:44px;height:44px}
+  .av-plus{min-height:44px;display:inline-flex;align-items:center}
+  .legal .credit a,.av-src a,.gal-note a{display:inline-block;min-height:44px;
+    line-height:44px;padding:0}
+}
+@media(max-width:860px){
+  :where(main,footer,.contact-bar) a[href^="tel:"]{display:inline-block;min-height:44px;line-height:44px}
+  .big-tel{line-height:1.2;min-height:48px;display:inline-flex;align-items:center}
+  .eyebrow{font-size:.78rem}
+  .p-m{font-size:.8rem}
+}
+
+/* ---------- apercu des tarifs : les lignes sont des liens ---------- */
+a.apercu-ligne{text-decoration:none;color:inherit;width:100%}

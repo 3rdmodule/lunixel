@@ -513,3 +513,18 @@
   if (petit.addEventListener) { petit.addEventListener('change', ajuste); }
   ajuste();
 })();
+
+/* ---- page de reservation : ouvrir la prestation visee par l'adresse ---- */
+(function () {
+  var grille = document.getElementById('tarifs');
+  if (!grille || !document.getElementById('cal-box')) { return; }
+
+  function viser() {
+    var h = location.hash;
+    if (!h || h.indexOf('#p-') !== 0) { return; }
+    var cible = document.getElementById(h.slice(1));
+    if (cible && cible.classList.contains('presta')) { cible.click(); }
+  }
+  window.addEventListener('hashchange', viser);
+  viser();
+})();
