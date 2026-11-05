@@ -15,12 +15,15 @@ contenus tiers.
 
 ## Vidéo
 
-`video/salon-30s.mp4` : visite du salon filmée par Elda, 30 secondes, 720x1272,
-sans bande son, 4,5 Mo. C'est le montage déjà validé pour sa fiche Google,
-transmis par Awen le 05/11/2026. Elle en détient les droits.
-Chargement différé : `preload="none"`, rien ne part avant un clic.
-L'image d'attente `photos/video-poster.webp` est une image extraite de cette
-même vidéo.
+`video/salon-visite.mp4` : montage de 22 secondes, 1100x618, sans bande son,
+1,7 Mo. Monté par Lunixel à partir de huit des neuf rushes tournés par Elda
+dans son salon et transmis par Awen le 05/11/2026. Elda détient les droits des
+images sources, décoration du salon comprise.
+Lecture automatique en boucle, sans son et sans commandes ; la lecture se met en
+pause dès que la vidéo sort de l'écran, et elle est remplacée par une image fixe
+si le visiteur a demandé moins d'animations dans son système.
+L'image d'attente `photos/video-poster.webp` est extraite de ce même montage.
+Un seul rush a été écarté, où le fauteuil tourne trop longtemps.
 
 ## Photos
 

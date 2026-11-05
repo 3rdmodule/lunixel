@@ -436,3 +436,56 @@
     liens[i].addEventListener('click', ouvrir);
   }
 })();
+
+/* ------------------------------------------------------------
+   Aperçu des tarifs : chaque ligne ouvre la carte complète
+   puis déclenche la prestation correspondante, donc le même
+   chemin que si on avait cliqué dans la liste dépliée.
+   ------------------------------------------------------------ */
+(function () {
+  var apercu = document.querySelector('.tarif-apercu');
+  var corps = document.getElementById('tarifs-corps');
+  var bouton = document.getElementById('js-tarifs-ouvre');
+  if (!apercu || !corps) { return; }
+
+  apercu.addEventListener('click', function (e) {
+    var ligne = e.target.closest('.apercu-ligne');
+    if (!ligne) { return; }
+    var slug = ligne.getAttribute('data-slug');
+    if (!slug) { return; }
+
+    if (corps.hidden) {
+      corps.hidden = false;
+      if (bouton) {
+        bouton.setAttribute('aria-expanded', 'true');
+        bouton.querySelector('span').textContent = 'Masquer les tarifs';
+      }
+    }
+    var cible = corps.querySelector('.presta[data-slug="' + slug + '"]');
+    if (cible) { cible.click(); }
+  });
+})();
+
+/* ---- film du salon : lecture auto seulement quand il est visible ---- */
+(function () {
+  var film = document.querySelector('.salon-film video');
+  if (!film) { return; }
+  var calme = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (calme.matches) {
+    film.pause();
+    film.removeAttribute('autoplay');
+    return;
+  }
+  if (!('IntersectionObserver' in window)) { return; }
+  var oeil = new IntersectionObserver(function (entrees) {
+    entrees.forEach(function (e) {
+      if (e.isIntersecting) {
+        var essai = film.play();
+        if (essai && essai.catch) { essai.catch(function () {}); }
+      } else {
+        film.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  oeil.observe(film);
+})();

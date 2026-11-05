@@ -360,13 +360,14 @@
       <h2 class="sec-h reveal">Tarifs et rendez-vous</h2>
       <p class="sec-intro reveal">Toute la carte, et le calendrier pour réserver.</p>
       <ul class="tarif-apercu reveal">
-        <li><b>Coupe femme</b><span>25 €</span></li>
-        <li><b>Coupe homme</b><span>25 €</span></li>
-        <li><b>Coupe enfant</b><span>20 €</span></li>
-        <li><b>Couleur racine</b><span>35 €</span></li>
-        <li><b>Shampoing coupe brushing</b><span>50 €</span></li>
-        <li><b>Chignon</b><span>45 €</span></li>
+        <li><button type="button" class="apercu-ligne" data-slug="coupe-femme"><b>Coupe femme</b><span>25 €</span></button></li>
+        <li><button type="button" class="apercu-ligne" data-slug="coupe-homme"><b>Coupe homme</b><span>25 €</span></button></li>
+        <li><button type="button" class="apercu-ligne" data-slug="coupe-enfant"><b>Coupe enfant</b><span>20 €</span></button></li>
+        <li><button type="button" class="apercu-ligne" data-slug="couleur-racine"><b>Couleur racine</b><span>35 €</span></button></li>
+        <li><button type="button" class="apercu-ligne" data-slug="shampoing-brushing"><b>Shampoing brushing</b><span>dès 25 €</span></button></li>
+        <li><button type="button" class="apercu-ligne" data-slug="balayage-meches"><b>Balayage, mèches</b><span>dès 65 €</span></button></li>
       </ul>
+      <p class="apercu-aide reveal">Touchez une prestation pour ouvrir son calendrier.</p>
       <p class="tarif-ouvre reveal">
         <button type="button" class="btn btn-solid" id="js-tarifs-ouvre"
                 aria-expanded="false" aria-controls="tarifs-corps">
@@ -469,23 +470,21 @@
   <section id="salon">
     <div class="wrap">
       <h2 class="sec-h reveal">Le salon</h2>
-      <div class="salon-text reveal">
-        <p>Elda Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. <strong>Elda</strong> y reçoit sur rendez-vous, du lundi au vendredi.</p>
-        <p class="sur-grand"><strong>Le salon est ouvert à tout le monde, toute l'année.</strong> Vous n'avez pas besoin de séjourner au village vacances pour venir : l'entrée et le parking sont libres d'accès, et <strong>Elda</strong> reçoit ses clientes et ses clients du coin en toute saison.</p>
-        <p class="sur-petit"><strong>Ouvert à tout le monde, toute l'année.</strong> Entrée et parking libres, même sans séjourner au village vacances.</p>
+      <div class="salon-duo">
+        <div class="salon-film reveal">
+          <video poster="photos/video-poster.webp"
+                 autoplay loop muted playsinline preload="metadata"
+                 width="1100" height="618" disablepictureinpicture
+                 aria-label="Vue du salon Elda Coiffure à Agay">
+            <source src="video/salon-visite.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="salon-text reveal">
+          <p>Elda Coiffure est installé dans l'espace bien-être des Mas de l'Estérel, à Agay. <strong>Elda</strong> y reçoit sur rendez-vous, du lundi au vendredi.</p>
+          <p class="sur-grand"><strong>Le salon est ouvert à tout le monde, toute l'année.</strong> Vous n'avez pas besoin de séjourner au village vacances pour venir : l'entrée et le parking sont libres d'accès, et <strong>Elda</strong> reçoit ses clientes et ses clients du coin en toute saison.</p>
+          <p class="sur-petit"><strong>Ouvert à tout le monde, toute l'année.</strong> Entrée et parking libres, même sans séjourner au village vacances.</p>
+        </div>
       </div>
-    </div>
-
-    <div class="salon-video reveal">
-      <figure>
-        <video controls preload="none" playsinline muted
-               poster="photos/video-poster.webp" width="720" height="1272"
-               aria-label="Visite du salon Elda Coiffure en trente secondes">
-          <source src="video/salon-30s.mp4" type="video/mp4">
-          Votre navigateur ne lit pas cette vidéo. Les photos du salon sont juste en dessous.
-        </video>
-        <figcaption>Trente secondes dans le salon, filmées par <strong>Elda</strong>. Sans son, et la vidéo ne se charge qu'au clic.</figcaption>
-      </figure>
     </div>
 
     <div class="slider" data-slider>
