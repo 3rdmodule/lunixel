@@ -13,6 +13,9 @@ export const projects = [
     url: 'https://fabiennehiot.fr/',
     prototypeUrl: 'https://fabiennehiot.fr/',
     captureUrl: 'https://fabiennehiot.fr/',
+    // A 100 %, le cadre 1440x900 tranche le bouton « Prendre rendez-vous » et le portrait.
+    // A 83 %, le hero entier tient dans le cadre (895 px sur 900).
+    captureZoom: 0.83,
     question: 'Prendre rendez-vous en quelques secondes.',
     metaDescription: 'Le site de Fabienne Hiot, naturopathe à Agay : les soins et leurs tarifs dès l’accueil, et un rendez-vous pris en dix secondes. Réalisation Lunixel.',
     tagline: 'Rassurer avant le premier rendez-vous.',

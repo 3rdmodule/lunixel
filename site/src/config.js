@@ -68,6 +68,15 @@ export const site = {
     vat: 'TVA non applicable, article 293 B du CGI',
   },
 
+  // Conditions de vente. Ces trois valeurs sont des choix commerciaux : relis-les avant de publier.
+  // Les mentions legales obligatoires (penalites de retard, indemnite de 40 EUR) sont dans la page CGV.
+  vente: {
+    acompte: 40, // % demande a la commande, le solde a la livraison
+    validiteDevis: 30, // jours de validite d'un devis
+    delaiPaiement: 15, // jours apres emission de la facture
+    moyensPaiement: 'virement bancaire',
+  },
+
   // Prix « à partir de » (page Tarifs uniquement). Vide = « Sur devis ».
   prices: {
     presence: '200 €', // Site d'une page

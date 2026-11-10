@@ -23,6 +23,7 @@ const pages = [
   ['/mentions-legales/'],
   ['/confidentialite/'],
   ['/conditions/'],
+  ['/cgv/'],
 ];
 
 export function GET() {

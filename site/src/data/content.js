@@ -32,7 +32,7 @@ export const sources = {
 export const outcomes = [
   { value: '24 h/24', text: 'Vos clients réservent en ligne, même en dehors de vos horaires.' },
   { value: '0 %', text: 'de commission sur vos rendez-vous.' },
-  { value: '5 RDV', text: 'à 40 € suffisent à rembourser un site d’une page.', href: '/tarifs/' },
+  { value: 'Dès 200 €', text: 'une page, payée une fois. Site complet dès 400 €. Pas d’abonnement.', href: '/tarifs/' },
 ];
 
 // Le constat : des chiffres sourcés.

@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config.js';
+
+const v = site.vente;
+const maj = '10 novembre 2026';
+---
+<Base
+  title="Conditions générales de vente · Lunixel"
+  description="Les conditions de vente de Lunixel : devis, acompte, délais, corrections comprises, propriété du site, hébergement, nom de domaine, paiement et résiliation."
+>
+  <section class="page-hero theme-nuit">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Conditions générales de vente</li></ol></nav>
+      <h1 class="h-1 display">Conditions générales de vente</h1>
+      <p class="lead">Ce qui est compris, ce que ça coûte, qui possède quoi. En clair, et sans petites lignes.</p>
+    </div>
+  </section>
+
+  <section class="section theme-jour">
+    <div class="container prose">
+      <p><em>En vigueur au {maj}.</em></p>
+
+      <h2>1. Qui vend</h2>
+      <p>{site.legal.publisher}, {site.legal.status}, exerçant sous le nom commercial {site.name}, SIRET {site.legal.siret}, siège social {site.legal.address}. Contact : <a href={`mailto:${site.email}`}>{site.email}</a>, {site.legal.phone}. {site.legal.vat}.</p>
+      <p>Les prestations sont fournies à distance, depuis {site.location.city} ({site.location.near}), partout en France.</p>
+
+      <h2>2. À qui je vends</h2>
+      <p>Mes prestations s’adressent à des professionnels : entreprises, commerçants, artisans, indépendants et associations, agissant dans le cadre de leur activité. Elles ne s’adressent pas aux consommateurs au sens du code de la consommation.</p>
+
+      <h2>3. Ce que je vends</h2>
+      <p>La conception et la mise en ligne de sites internet : écriture et mise en page, intégration, réservation en ligne, mise en ligne et déclaration à Google. Le détail de votre projet est décrit dans le devis.</p>
+      <p>Les formules et les prix affichés sur la page <a href="/tarifs/">Tarifs</a> sont des prix de départ, donnés à titre indicatif.</p>
+
+      <h2>4. La maquette offerte</h2>
+      <p>Avant tout engagement, je prépare gratuitement une maquette de votre page d’accueil, sous {site.responseTime} après réception de vos informations. Elle ne crée aucune obligation d’achat et vous n’avez rien à payer à ce stade.</p>
+      <p>Cette maquette reste ma propriété tant qu’aucun devis n’a été accepté. Elle vous est fournie pour décider, pas pour être exploitée ou confiée à un tiers.</p>
+
+      <h2>5. Le devis, et lui seul</h2>
+      <p><strong>Seul le devis écrit que vous acceptez engage les deux parties.</strong> Il indique le prix, le délai et ce qui est compris. Rien de ce qui figure ailleurs sur le site ne vaut engagement de prix.</p>
+      <p>Un devis est valable {v.validiteDevis} jours. Il est accepté par retour écrit (e-mail suffit) et par le versement de l’acompte.</p>
+
+      <h2>6. Prix et paiement</h2>
+      <p>Les prix sont nets : {site.legal.vat.toLowerCase()}.</p>
+      <ul>
+        <li>Un acompte de <strong>{v.acompte} %</strong> est demandé à l’acceptation du devis. Je commence le travail à sa réception.</li>
+        <li>Le solde est dû à la livraison, avant la mise en ligne.</li>
+        <li>Paiement par {v.moyensPaiement}, sous {v.delaiPaiement} jours à compter de l’émission de la facture.</li>
+      </ul>
+      <p>En cas de retard de paiement, des pénalités sont dues de plein droit, au taux de trois fois le taux d’intérêt légal, sans qu’un rappel soit nécessaire. S’y ajoute l’indemnité forfaitaire pour frais de recouvrement de 40 €, prévue aux articles L.441-10 et D.441-5 du code de commerce. Si les frais réellement engagés dépassent ce montant, une indemnisation complémentaire peut être demandée sur justificatifs.</p>
+      <p>Aucun escompte n’est accordé pour paiement anticipé.</p>
+
+      <h2>7. Délais</h2>
+      <p>Le site est en général en ligne {site.delay} après notre premier appel. Ce délai court à partir du moment où j’ai reçu l’acompte <strong>et</strong> les contenus nécessaires (textes, photos, logo, accès).</p>
+      <p>Les délais sont donnés de bonne foi. Un retard raisonnable, notamment dû à l’attente de vos contenus ou de vos retours, n’ouvre pas droit à annulation ni à indemnité.</p>
+
+      <h2>8. Ce que vous me fournissez</h2>
+      <p>Vous me transmettez les textes, images, logo et accès nécessaires, et vous garantissez détenir les droits de les utiliser. Je ne peux pas être tenu responsable d’un contenu que vous m’auriez fourni sans en avoir les droits.</p>
+      <p>Si aucun contenu ne m’est transmis dans les trois mois suivant l’acompte, le projet est considéré comme suspendu et l’acompte reste acquis.</p>
+
+      <h2>9. Corrections comprises</h2>
+      <p>{site.revisions.standard} séries de corrections sont comprises dans les formules Présence et Vitrine, {site.revisions.surMesure} pour un projet sur mesure. Une série de corrections, c’est une liste de retours envoyée en une fois.</p>
+      <p>Au-delà, ou si vous demandez un changement qui sort de ce que décrit le devis (nouvelle page, nouvelle fonctionnalité, refonte graphique), je vous propose un devis complémentaire avant de commencer.</p>
+
+      <h2>10. Validation et mise en ligne</h2>
+      <p>Vous suivez l’avancée sur un lien privé. Sans retour de votre part dans les quinze jours suivant l’envoi d’une version pour validation, celle-ci est considérée comme acceptée.</p>
+      <p>La mise en ligne a lieu une fois le solde réglé.</p>
+
+      <h2>11. À qui appartient le site</h2>
+      <p><strong>Une fois le prix intégralement payé, le site est à vous</strong> : les textes, les images que vous m’avez fournies, la mise en page et le code de votre site vous sont cédés, pour une durée illimitée et pour le monde entier. Vous pouvez le faire évoluer par qui vous voulez.</p>
+      <p>Restent exclus de cette cession : les composants tiers sous leur propre licence (polices, bibliothèques open source, services de réservation), mes outils et méthodes internes, et les travaux non payés.</p>
+      <p>Sauf refus de votre part, je me réserve le droit de citer votre nom et de montrer des captures de votre site dans mes réalisations.</p>
+
+      <h2>12. Hébergement et nom de domaine</h2>
+      <p>L’hébergement du site est compris, sans frais mensuels. Le nom de domaine est réservé <strong>sur un compte à votre nom</strong> et reste votre propriété : c’est le seul frais récurrent, {site.domainCost}, à renouveler directement auprès du bureau d’enregistrement.</p>
+      <p>Je ne garantis pas une disponibilité ininterrompue du site : elle dépend de l’hébergeur et du bureau d’enregistrement, qui sont des services tiers.</p>
+
+      <h2>13. Réservation en ligne</h2>
+      <p>La prise de rendez-vous repose sur un service tiers (Cal.com), soumis à ses propres conditions. Je ne prélève aucune commission sur vos rendez-vous. Un dysfonctionnement de ce service tiers ne m’est pas imputable.</p>
+
+      <h2>14. Entretien, en option</h2>
+      <p>L’entretien mensuel est facultatif, sans durée d’engagement. Il est résiliable à tout moment par simple e-mail, avec effet à la fin du mois en cours. Il n’est pas nécessaire pour que votre site reste en ligne.</p>
+
+      <h2>15. Garantie après la mise en ligne</h2>
+      <p>Pendant trois mois après la mise en ligne, je corrige gratuitement tout dysfonctionnement provenant de mon travail. Ne sont pas couverts : les pannes d’un service tiers, les modifications faites par vous ou par un autre prestataire, et les évolutions demandées après coup.</p>
+      <p>Au-delà, je reste joignable {site.support} : un souci, vous m’écrivez.</p>
+
+      <h2>16. Annulation</h2>
+      <p>Si vous arrêtez le projet après l’acceptation du devis, l’acompte reste acquis et le travail déjà réalisé est dû au prorata.</p>
+      <p>Si j’arrête le projet de mon fait, je vous rembourse les sommes versées pour la part non réalisée.</p>
+
+      <h2>17. Responsabilité</h2>
+      <p>Je m’engage sur les moyens, pas sur un résultat commercial : je ne garantis ni un nombre de visites, ni un nombre de rendez-vous, ni une position précise dans les résultats de Google.</p>
+      <p>Ma responsabilité est limitée au montant payé pour la prestation concernée. Les dommages indirects, notamment la perte de chiffre d’affaires ou de clientèle, sont exclus.</p>
+
+      <h2>18. Données personnelles</h2>
+      <p>Le traitement de vos informations est décrit sur la page <a href="/confidentialite/">Confidentialité</a>. Si votre site collecte des données de vos propres clients, vous en êtes le responsable de traitement ; je vous mets à disposition les pages nécessaires, mais c’est à vous de vérifier qu’elles correspondent à votre activité.</p>
+
+      <h2>19. Droit applicable et litiges</h2>
+      <p>Ces conditions sont régies par le droit français.</p>
+      <p>En cas de désaccord, écrivez-moi d’abord à <a href={`mailto:${site.email}`}>{site.email}</a> : on trouve presque toujours une solution à l’amiable. À défaut d’accord, et les deux parties étant des professionnels, le tribunal compétent est celui du ressort de mon siège social.</p>
+
+      <h2>20. Modification</h2>
+      <p>Ces conditions peuvent évoluer. La version applicable à votre projet est celle en vigueur au jour de l’acceptation du devis.</p>
+    </div>
+  </section>
+</Base>

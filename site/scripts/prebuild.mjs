@@ -92,7 +92,7 @@ async function encode(buf, name, widths) {
   return { widths: ws, w: max, h: Math.round((meta.height * max) / meta.width) };
 }
 
-async function shoot(url, { mobile, scheme, offsets = [0] }) {
+async function shoot(url, { mobile, scheme, offsets = [0], zoom = 1 }) {
   const ctx = await browser.newContext({
     viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 900 },
     deviceScaleFactor: 2,
@@ -106,6 +106,12 @@ async function shoot(url, { mobile, scheme, offsets = [0] }) {
   try {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 }).catch(() => page.goto(url, { waitUntil: 'load', timeout: 45000 }));
     await page.waitForTimeout(2500);
+    // Certains sites placent un bouton ou une photo juste sous la ligne de flottaison :
+    // un zoom leger fait tenir la section entiere dans le cadre au lieu de la trancher.
+    if (zoom !== 1) {
+      await page.evaluate((z) => { document.body.style.zoom = String(z); }, zoom);
+      await page.waitForTimeout(600);
+    }
     const shots = [];
     for (const k of offsets) {
       await page.evaluate((y) => window.scrollTo(0, y), Math.round(k * (mobile ? 844 : 900)));
@@ -122,13 +128,13 @@ if (browser) {
   for (const p of projects) {
     const entry = {};
     try {
-      const [desk] = await shoot(p.captureUrl, { mobile: false, scheme: p.captureScheme });
+      const [desk] = await shoot(p.captureUrl, { mobile: false, scheme: p.captureScheme, zoom: p.captureZoom });
       entry.desktop = await encode(desk, `${p.slug}-desktop`, [720, 1440, 2160]);
       const phones = await shoot(p.captureUrl, { mobile: true, scheme: p.captureScheme, offsets: [0, 1.05, 2.1] });
       entry.mobile = [];
       for (let i = 0; i < phones.length; i++) entry.mobile.push(await encode(phones[i], `${p.slug}-mobile-${i}`, [390, 780]));
       for (const x of p.extraCaptures || []) {
-        const [shot] = await shoot(x.url, { mobile: false, scheme: p.captureScheme });
+        const [shot] = await shoot(x.url, { mobile: false, scheme: p.captureScheme, zoom: x.zoom ?? p.captureZoom });
         entry.extra = { ...(entry.extra || {}), [x.key]: await encode(shot, `${p.slug}-${x.key}`, [720, 1440, 2160]) };
       }
       log('captures ok :', p.slug);
