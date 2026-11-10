@@ -409,6 +409,26 @@ dd {
 .btn--ghost:hover {
   background: var(--surface);
 }
+/* Sur fond sombre, le filet a 20 % ne tient pas la comparaison avec le bouton plein :
+   le bouton secondaire doit peser autant que le principal. */
+.theme-nuit .btn--ghost,
+.theme-profonde .btn--ghost {
+  box-shadow: inset 0 0 0 1px rgb(246 242 234 / 0.38);
+}
+.theme-nuit .btn--ghost:hover,
+.theme-profonde .btn--ghost:hover {
+  background: rgb(246 242 234 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(246 242 234 / 0.6);
+}
+/* Deux boutons cote a cote : ils passent l'un sous l'autre sur petit ecran. */
+.cta-row .btn {
+  flex: 0 1 auto;
+}
+@media (max-width: 26rem) {
+  .cta-row .btn {
+    flex: 1 1 100%;
+  }
+}
 .btn--block {
   width: 100%;
 }

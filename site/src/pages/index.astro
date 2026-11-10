@@ -45,6 +45,7 @@ const autresEnLigne = enLigne.filter((p) => !vedettes.includes(p));
         </ul>
         <div class="cta-row">
           <a class="btn" href="/contact/">{site.cta}</a>
+          {site.bookingUrl && <a class="btn btn--ghost" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel · 30 min<span class="sr-only"> (nouvel onglet)</span></a>}
           <a class="arrow-link" href="#travaux">Voir des exemples</a>
         </div>
         <p class="reassure"><span><i class="px" aria-hidden="true"></i>Maquette sous 48 h, offerte</span><span>En ligne en 2 semaines</span><span>Sans engagement</span></p>
@@ -117,6 +118,7 @@ const autresEnLigne = enLigne.filter((p) => !vedettes.includes(p));
       </ol>
       <div class="cta-row" style="margin-top:var(--s-5)">
         <a class="btn btn--dark" href="/contact/">{site.cta}</a>
+        {site.bookingUrl && <a class="btn btn--ghost" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel · 30 min<span class="sr-only"> (nouvel onglet)</span></a>}
         <a class="arrow-link" href="/methode/">Et ensuite ? La méthode</a>
       </div>
     </div>

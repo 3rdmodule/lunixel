@@ -37,6 +37,7 @@ const {
     </div>
     <div class="cta-row" style="margin-top:var(--s-5)">
       <a class="btn" href="/contact/">{site.cta}</a>
+      {site.bookingUrl && <a class="btn btn--ghost" href={site.bookingUrl} rel="noopener" target="_blank">Réserver un appel · 30 min<span class="sr-only"> (nouvel onglet)</span></a>}
       <span class="soft">Maquette sous 48 h, offerte et sans engagement.</span>
     </div>
   </div>
