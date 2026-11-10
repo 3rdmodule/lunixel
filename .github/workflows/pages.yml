@@ -96,3 +96,8 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Par defaut l'action abandonne au bout de 10 min. Quand GitHub Pages
+          # est lent a synchroniser, le deploiement est annule alors qu'il etait
+          # sur le point d'aboutir. 20 min laissent passer ces coups de mou.
+          timeout: 1200000
